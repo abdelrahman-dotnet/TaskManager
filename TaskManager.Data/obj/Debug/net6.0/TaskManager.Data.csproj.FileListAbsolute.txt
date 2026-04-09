@@ -1,0 +1,30 @@
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\bin\Debug\net6.0\TaskManager.Data.deps.json
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\bin\Debug\net6.0\TaskManager.Data.runtimeconfig.json
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\bin\Debug\net6.0\TaskManager.Data.dll
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\bin\Debug\net6.0\TaskManager.Data.pdb
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.csproj.AssemblyReference.cache
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.AssemblyInfoInputs.cache
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.AssemblyInfo.cs
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.csproj.CoreCompileInputs.cache
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.dll
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\refint\TaskManager.Data.dll
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.pdb
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.genruntimeconfig.cache
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\ref\TaskManager.Data.dll
+D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.sourcelink.json
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.csproj.AssemblyReference.cache
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.AssemblyInfoInputs.cache
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.AssemblyInfo.cs
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.csproj.CoreCompileInputs.cache
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.sourcelink.json
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.dll
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\refint\TaskManager.Data.dll
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.pdb
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\bin\Debug\net6.0\TaskManager.Data.deps.json
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\bin\Debug\net6.0\TaskManager.Data.runtimeconfig.json
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\bin\Debug\net6.0\TaskManager.Data.dll
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\bin\Debug\net6.0\TaskManager.Data.pdb
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\TaskManager.Data.genruntimeconfig.cache
+D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Data\obj\Debug\net6.0\ref\TaskManager.Data.dll
