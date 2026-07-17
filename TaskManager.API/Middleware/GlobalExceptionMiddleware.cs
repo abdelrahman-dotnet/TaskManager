@@ -1,14 +1,14 @@
-﻿using System.Diagnostics;
+﻿using TaskManager.API.Exceptions;
 using TaskManager.API.Responses;
-
 namespace TaskManager.API.Middleware
 {
     public class GlobalExceptionMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<GlobalExceptionMiddleware> _logger;
-
-        public GlobalExceptionMiddleware(RequestDelegate next,ILogger<GlobalExceptionMiddleware> logger)
+        public GlobalExceptionMiddleware(
+            RequestDelegate next,
+            ILogger<GlobalExceptionMiddleware> logger)
         {
             _next = next;
             _logger = logger;
@@ -21,43 +21,47 @@ namespace TaskManager.API.Middleware
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Unhandled Exception");
-                var statusCode = ex switch
+                var correlationId = context.TraceIdentifier;
+                _logger.LogError(
+                    ex,
+                    "Unhandled exception. CorrelationId: {CorrelationId}, Path: {Path}, Method: {Method}",
+                    correlationId,
+                    context.Request.Path,
+                    context.Request.Method);
+                var httpStatusCode = ex switch
                 {
-                    ArgumentException => StatusCodes.Status400BadRequest,
-                    UnauthorizedAccessException => StatusCodes.Status401Unauthorized,
-                    KeyNotFoundException => StatusCodes.Status404NotFound,
+                    BadRequestException => StatusCodes.Status400BadRequest,
+                    NotFoundException => StatusCodes.Status404NotFound,
+                    ForbiddenException => StatusCodes.Status403Forbidden,
+                    ConflictException => StatusCodes.Status409Conflict,
                     _ => StatusCodes.Status500InternalServerError
                 };
+                IReadOnlyList<string>? errors = null;
+                if (ex is BadRequestException badRequestException)
+                {
+                    errors = badRequestException.Errors;
+                }
                 context.Response.ContentType = "application/json";
-                context.Response.StatusCode = statusCode;
+                context.Response.StatusCode = httpStatusCode;
+                var message = httpStatusCode == StatusCodes.Status500InternalServerError
+                        ? "An unexpected error occurred."
+                        : ex.Message;
                 var response = ApiResponse<object>.Failure(
-                    message:"Request Failed",
-                    errors : new List<string> { ex.Message},
-                    code : $"ERR-{statusCode}"
-                //context.Response.ContentType = "application/json";
-                //context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                //var response = new ApiResponse<object>(
-                //    message:"Internal Server Error",
-                //    errors:new List<string> { ex.Message }
-                );
+                    message: message,
+                    errors: errors,
+                    code: $"ERR-{httpStatusCode}",
+                    correlationId: correlationId);
 #if DEBUG
-                //response.Data = new
-                //{
-                //   exception = ex.Message,
-                //   StackTrace = ex.StackTrace,
-                //   Source = ex.Source
                 response.Data = new
                 {
-                    Data = new
-                    {
-                        exception = ex.Message,
-                        StackTrace = ex.StackTrace,
-                        source = ex.Source
-                    }
+                    /*exception = ex.Message*/ // Will back to this again
+                    ex.InnerException?.Message,
+                    type = ex.GetType().Name,
+                    stackTrace = ex.StackTrace,
+                    source = ex.Source
                 };
 #endif
-                await context.Response.WriteAsJsonAsync( response );
+                await context.Response.WriteAsJsonAsync(response);
             }
         }
     }

@@ -2,7 +2,7 @@
 {
     public class AuthResponseDto
     {
-        public string AccessToken { get; set; } = null;
+        public string AccessToken { get; set; } = null!;
         public DateTime ExpiresAt ;
     }
 }

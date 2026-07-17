@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Bussiness\\TaskManager.Bussiness.csproj": {}
+    "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Bussiness\\TaskManager.Bussiness.csproj": {}
   },
   "projects": {
-    "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Bussiness\\TaskManager.Bussiness.csproj": {
+    "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Bussiness\\TaskManager.Bussiness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+        "projectUniqueName": "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
         "projectName": "TaskManager.Bussiness",
-        "projectPath": "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+        "projectPath": "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
         "packagesPath": "C:\\Users\\Abdelrahman\\.nuget\\packages\\",
-        "outputPath": "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Bussiness\\obj\\",
+        "outputPath": "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Bussiness\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj": {
-                "projectPath": "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj"
+              "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj": {
+                "projectPath": "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj"
               }
             }
           }
@@ -53,6 +53,16 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.3.11, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.7.27, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -73,14 +83,14 @@
         }
       }
     },
-    "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj": {
+    "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj",
+        "projectUniqueName": "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj",
         "projectName": "TaskManager.Data",
-        "projectPath": "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj",
+        "projectPath": "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Data\\TaskManager.Data.csproj",
         "packagesPath": "C:\\Users\\Abdelrahman\\.nuget\\packages\\",
-        "outputPath": "D:\\asp.net\\API Projects\\2026\\TaskManagerRefactor\\TaskManager.Data\\obj\\",
+        "outputPath": "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

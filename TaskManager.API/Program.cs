@@ -1,26 +1,27 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Security.Cryptography.X509Certificates;
+using Serilog;
+using StackExchange.Redis;
 using System.Text;
-using System.Threading.Tasks;
-using TaskManager.Bussiness.Interfaces;
-using TaskManager.Bussiness.Repositories;
-//using TaskManager.API.Authorization.Handlers;
-//using TaskManager.API.Authorization.Requirements;
+using System.Text.Json.Serialization;
+using TaskManager.API.Authorization;
+using TaskManager.API.Filters;
 using TaskManager.API.Middleware;
-//using TaskManager.Bussiness.Helpers;
-//using TaskManager.Bussiness.Services;
-using TaskManager.Data.Context;
-using TaskManager.Data.Entities;
+using TaskManager.API.Services;
+using TaskManager.API.Validators.Task;
+using TaskManager.Business.Services.Interfaces;
+using TaskManager.Business.UnitOfWork;
 using TaskManager.Bussiness.Config;
 using TaskManager.Bussiness.Services;
-using TaskManager.Data.Seeders;
-//using TaskManager.Data.Seeders;
+using TaskManager.Data.Context;
+using TaskManager.Data.Entities;
+using TaskManager.Data.UnitOfWork;
 
 namespace TaskManager.API
 {
@@ -28,16 +29,40 @@ namespace TaskManager.API
     {
         public static async Task Main(string[] args)
         {
+            // serilog
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(
+                new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build())
+              .CreateLogger();
             var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
-
-            builder.Services.AddControllers(options =>
+            // serilog
+            builder.Host.UseSerilog((ctx, lc) =>
             {
-                options.Filters.Add<ApiResponseFilter>();
+                lc.ReadFrom.Configuration(ctx.Configuration)
+                  .Enrich.FromLogContext()
+                  .Enrich.WithProperty("Application", "TaskManagerAPI")
+                  .Enrich.WithProperty("Environment", ctx.HostingEnvironment.EnvironmentName)
+                  .WriteTo.Console();
             });
-            
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            // Add services to the container.
+            builder.Services.AddControllers(options =>
+            {                
+                options.Filters.Add<ValidationFilter>();
+                options.Filters.Add<ApiResponseFilter>();
+            }).AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions
+                .Converters
+                .Add(new JsonStringEnumConverter());
+            });
+            // Cache
+            builder.Services.AddMemoryCache();
+            builder.Services.AddScoped<ICacheService, CacheService>();
+            builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+                ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379"));
+            // Swagger/OpenAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
             {
@@ -54,43 +79,64 @@ namespace TaskManager.API
 
                 // Apply Security to all endpoints
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                 {
                 {
-                 new OpenApiSecurityScheme
-                 {
-                     Reference = new OpenApiReference
-                     {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                     }
-                 },
-                  Array.Empty<string>()
-                }
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
                 });
             });
-            builder.Services.AddDbContext<AppDbContext>(Options =>
-            {
-                Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
 
-            builder.Services.AddIdentity<ApplicationUser, Role>()
+            // DbContext
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+            // current user
+            builder.Services.AddHttpContextAccessor();
+
+            builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+            // Identity
+            builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
-            //bind jwt settings
+            // Auto Mapper
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            // JWT Settings
             builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JWT"));
-            builder.Services.AddScoped<ITokenService ,TokenServices>();
+            builder.Services.AddScoped<ITokenService, TokenServices>();
             builder.Services.AddScoped<AuthService>();
+            builder.Services.AddScoped<ITaskService, TaskService>();
+            builder.Services.AddScoped<IProjectService, ProjectService>();
+            builder.Services.AddScoped<ITeamService, TeamService>();
+            builder.Services.AddScoped<ICommentService, CommentService>();
+            builder.Services.AddScoped<IAttachmentService, AttachmentService>();
+            builder.Services.AddScoped<INotificationService, NotificationService>();
+            builder.Services.AddScoped<ITaskAssignmentService, TaskAssignmentService>();
+            builder.Services.AddScoped<ITaskStatusHistoryService, TaskStatusHistoryService>();
+            builder.Services.AddScoped<IAuditLogService, AuditLogService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
 
-            ////DIRECT BINDING FOR NOW USING
-            var JwtSettings = builder.Configuration.GetSection("JWT").Get<JwtSettings>();           
-            builder.Services.AddSingleton(JwtSettings);
-            var Key = Encoding.UTF8.GetBytes(JwtSettings.Key);
-            //Add Authintication
+            //Jwt Settings
+            var jwtSettings = builder.Configuration.GetSection("JWT").Get<JwtSettings>();
+            builder.Services.AddSingleton(jwtSettings);
+            var key = Encoding.UTF8.GetBytes(jwtSettings.Key);
+
+            // Authentication
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
+            {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
@@ -98,25 +144,28 @@ namespace TaskManager.API
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
 
-                    ValidIssuer = JwtSettings.Issuer,
-                    ValidAudience = JwtSettings.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Key)
-                }
-            );
-            //builder.Services.AddSingleton<IAuthorizationHandler, OwnerOrAdminHandler>();
-            //builder.Services.AddSingleton<IAuthorizationHandler,TaskIsNotCompletedHandler>();
-            //builder.Services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("Manager", policy => policy.RequireRole("Manager"));
-            //    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
-            //    options.AddPolicy("User", policy => policy.RequireRole("User"));
-            //    options.AddPolicy("ManagerOrAdmin", policy => policy.RequireRole("Manager","Admin"));
-            //    options.AddPolicy("AdminOrOwner", policy => policy.Requirements.Add(new OwnerOrAdminRequirment()));
-            //    options.AddPolicy("EditTaskIsNotCompleted", policy => policy.Requirements.Add(new TaskIsNotCompletedRequirement()));
-            //    //options.AddPolicy("CanEditOwnTask", policy => policy.Requirements.Add(new CanEditOwnTaskRequirement()));
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
+            });
 
-            //    options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-            //});
+            // Authorization
+            builder.Services.AddAuthorization(options =>
+            {
+                foreach (var permission in Permissions.All)
+                {
+                    options.AddPolicy(permission,
+                        policy =>
+                        {
+                            policy.RequireClaim(
+                                CustomClaimTypes.Permission,
+                                permission);
+                        });
+                }
+            });
+
+            // CORS
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
@@ -126,7 +175,20 @@ namespace TaskManager.API
                           .AllowAnyHeader();
                 });
             });
-            builder.Services.AddScoped<IUnitOfWork,UnitOfWorkRepo>();
+
+            // Repositories & Services
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
+            // FluentValidation
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateTaskValidator>();
+
+            // ApiBehaviorOptions (لمنع الرد الافتراضي للأخطاء)
+            builder.Services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             var app = builder.Build();
 
@@ -136,19 +198,35 @@ namespace TaskManager.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            // CorrelationIdMiddleware
+            app.UseMiddleware<CorrelationIdMiddleware>();
+            // Middleware
             app.UseMiddleware<GlobalExceptionMiddleware>();
+            //serilog
+            app.UseSerilogRequestLogging();
             //app.UseMiddleware<ResponseWrapperMiddleware>();
+
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
             app.UseAuthentication();
             app.UseAuthorization();
 
-            using (var scope = app.Services.CreateScope())
-            { 
-                await IdentitySeeder.SeedAsync(scope.ServiceProvider);
-            }
+            // Identity Seeder
+            using var scope = app.Services.CreateScope();
+
+            var services = scope.ServiceProvider;
+
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var roleManager =
+                services.GetRequiredService<RoleManager<ApplicationRole>>();
+
+            var dbContext =
+                services.GetRequiredService<AppDbContext>();
+
+            await PermissionAndRoleSeeder.SeedAsync(userManager, roleManager, dbContext);
+
             app.MapControllers();
-            
+
             app.Run();
         }
     }

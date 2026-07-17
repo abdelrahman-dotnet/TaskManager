@@ -1,32 +1,16 @@
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.deps.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.pdb
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Data.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Data.pdb
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.csproj.AssemblyReference.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.GeneratedMSBuildEditorConfig.editorconfig
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.AssemblyInfoInputs.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.AssemblyInfo.cs
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.csproj.CoreCompileInputs.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskMana.080B81F5.Up2Date
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\refint\TaskManager.Bussiness.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.pdb
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\ref\TaskManager.Bussiness.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.sourcelink.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.deps.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.pdb
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Data.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Data.pdb
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.csproj.AssemblyReference.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.GeneratedMSBuildEditorConfig.editorconfig
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.AssemblyInfoInputs.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.AssemblyInfo.cs
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.csproj.CoreCompileInputs.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.sourcelink.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskMana.080B81F5.Up2Date
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\refint\TaskManager.Bussiness.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.pdb
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\ref\TaskManager.Bussiness.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.deps.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Bussiness.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Data.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\bin\Debug\net6.0\TaskManager.Data.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.csproj.AssemblyReference.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.GeneratedMSBuildEditorConfig.editorconfig
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.AssemblyInfoInputs.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.AssemblyInfo.cs
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.csproj.CoreCompileInputs.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.sourcelink.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskMana.080B81F5.Up2Date
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\refint\TaskManager.Bussiness.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\TaskManager.Bussiness.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\obj\Debug\net6.0\ref\TaskManager.Bussiness.dll

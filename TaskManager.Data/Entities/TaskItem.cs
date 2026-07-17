@@ -1,31 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TaskManager.Data.Entities
 {
-    public class TaskItem
+    public class TaskItem : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
         [MaxLength(200)]
         public string Title { get; set; } = null!;
-        [MaxLength(2000)]
+
         public string? Description { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
-        public DateTime DueDate { get; set; }
-        public bool IsCompleted { get; set; } = false;
 
-        // Owner Of The Task
-        [ForeignKey(nameof(User))]
-        public string UserId { get; set; } = null!;
-        public ApplicationUser User { get; set; } = null!;
-        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public TaskItemStatus Status { get; set; }
 
+        public TaskPriority Priority { get; set; }
+
+        public DateTime? DueDate { get; set; }
+
+        public DateTime? CompletedAt { get; set; }
+
+        public long ProjectId { get; set; }
+
+        public Project Project { get; set; } = null!;
+
+        public string CreatedByUserId { get; set; } = null!;
+
+        public ApplicationUser CreatedByUser { get; set; } = null!;
+
+        public ICollection<TaskAssignment> Assignments { get; set; }
+            = new List<TaskAssignment>();
+
+        public ICollection<Comment> Comments { get; set; }
+            = new List<Comment>();
+
+        public ICollection<Attachment> Attachments { get; set; }
+            = new List<Attachment>();
+
+        public ICollection<TaskStatusHistory> StatusHistory { get; set; }
+            = new List<TaskStatusHistory>();
     }
 }

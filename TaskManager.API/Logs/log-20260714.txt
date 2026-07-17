@@ -1,0 +1,15 @@
+[2026-07-14 01:54:58 WRN] [CorrelationId: 1728590d-d4ae-42d3-9cb6-26d75d622531] Failed to determine the https port for redirect.
+[2026-07-14 01:55:00 WRN] [CorrelationId: 1728590d-d4ae-42d3-9cb6-26d75d622531] Invalid password for user.
+[2026-07-14 01:55:00 WRN] [CorrelationId: 1728590d-d4ae-42d3-9cb6-26d75d622531] User failed to provide the correct password.
+[2026-07-14 01:55:00 INF] [CorrelationId: 1728590d-d4ae-42d3-9cb6-26d75d622531] HTTP POST /api/Auth/Login responded 401 in 1733.5069 ms
+[2026-07-14 01:55:25 WRN] [CorrelationId: 30c153bb-b861-484d-ade4-c0b01d602cad] Invalid password for user.
+[2026-07-14 01:55:25 WRN] [CorrelationId: 30c153bb-b861-484d-ade4-c0b01d602cad] User failed to provide the correct password.
+[2026-07-14 01:55:25 INF] [CorrelationId: 30c153bb-b861-484d-ade4-c0b01d602cad] HTTP POST /api/Auth/Login responded 401 in 75.8783 ms
+[2026-07-14 01:55:43 INF] [CorrelationId: 1caab462-2d5a-412e-a042-bbafa9be0942] HTTP POST /api/Auth/Login responded 200 in 360.6701 ms
+[2026-07-14 01:56:56 INF] [CorrelationId: 839f6a97-261e-4768-b820-8f8981dadaf2] Tasks cache miss. CacheKey: Tasks:List:2:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-07-14 01:56:56 WRN] [CorrelationId: 839f6a97-261e-4768-b820-8f8981dadaf2] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2026-07-14 01:56:56 WRN] [CorrelationId: 839f6a97-261e-4768-b820-8f8981dadaf2] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2026-07-14 01:56:56 INF] [CorrelationId: 839f6a97-261e-4768-b820-8f8981dadaf2] Tasks retrieved successfully. Count: 1
+[2026-07-14 01:56:56 INF] [CorrelationId: 839f6a97-261e-4768-b820-8f8981dadaf2] HTTP GET /api/Task responded 200 in 601.9979 ms
+[2026-07-14 03:44:29 WRN] [CorrelationId: 3c4b9f30-3461-4831-bb3a-e42295c2d908] Failed to determine the https port for redirect.
+[2026-07-14 03:44:30 INF] [CorrelationId: 3c4b9f30-3461-4831-bb3a-e42295c2d908] HTTP GET /api/Task responded 401 in 207.1591 ms

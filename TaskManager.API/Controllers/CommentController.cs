@@ -1,93 +1,108 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
+using TaskManager.API.Authorization;
 using TaskManager.API.DTOs.Comment;
-using TaskManager.Bussiness.Interfaces;
-using TaskManager.Bussiness.Repositories;
-using TaskManager.Data.Entities;
+using TaskManager.API.DTOs.FilterQueryParams;
+using TaskManager.API.Helpers;
+using TaskManager.Business.Services.Interfaces;
+using TaskManager.Bussiness.Caching;
+using TaskManager.Bussiness.Services;
 
 namespace TaskManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CommentController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ICommentService _commentService;
+        private readonly ICacheService _cacheService;
+        private readonly ILogger<CommentController> _logger;
+        private readonly ICurrentUserService _currentUser;
 
-        public CommentController(IUnitOfWork unitOfWork)
+        public CommentController(ICommentService commentService, ICacheService cacheService, ILogger<CommentController> logger, ICurrentUserService currentUser)
         {
-            _unitOfWork = unitOfWork;
+            _commentService = commentService;
+            _cacheService = cacheService;
+            _logger = logger;
+            _currentUser = currentUser;
         }
-        [HttpGet("tasks/{taskId}/comments")]
-        public async Task<IActionResult> GetByTask(int taskId)
+
+        private string CurrentUserId => _currentUser.UserId!;
+
+        // No dedicated "Comments.View" permission exists in Permissions.cs, so these two
+        // stay under the class-level plain [Authorize] - any authenticated user can read comments.
+        [HttpGet]
+        public async Task<IActionResult> GetAllComments([FromQuery] CommentQueryParams q, CancellationToken cancellationToken)
         {
-            var comments = await _unitOfWork.commentRepository.GetByTaskIdAsync(taskId);
-            if (comments == null || !comments.Any()) 
-                return NotFound();
-            var result = comments.Select(c => new CommentReadDto
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Comments);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.CommentsList, version, q);
+
+            var cached = await _cacheService.GetAsync<PagedResult<CommentReadDto>>(cacheKey);
+            if (cached != null)
             {
-                Id = c.Id,
-                Content = c.Content,
-                CreatedAt = c.CreatedAt,
-                TaskItemId = c.TaskItemId,
-                UserId = c.UserId,
-            });
+                _logger.LogInformation("Comment cache hit. CacheKey: {CacheKey}", cacheKey);
+                return Ok(cached);
+            }
+
+            _logger.LogInformation("Comment cache miss. CacheKey: {CacheKey}", cacheKey);
+            var result = await _commentService.GetAllAsync(q, cancellationToken);
+            await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
+
             return Ok(result);
         }
+
+        [HttpGet("tasks/{taskId}/comments")]
+        public async Task<IActionResult> GetByTask(long taskId, CancellationToken cancellationToken)
+        {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Comments);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.CommentsByTask, version, taskId);
+
+            var cached = await _cacheService.GetAsync<IEnumerable<CommentReadDto>>(cacheKey);
+            if (cached != null)
+            {
+                _logger.LogInformation("Comments by Task cache HIT. TaskId: {TaskId}", taskId);
+                return Ok(cached);
+            }
+
+            _logger.LogInformation("Comments by Task cache MISS. TaskId: {TaskId}", taskId);
+            var comments = await _commentService.GetByTaskIdAsync(taskId, cancellationToken);
+
+            await _cacheService.SetAsync(cacheKey, comments, TimeSpan.FromMinutes(5));
+            return Ok(comments);
+        }
+
         [HttpPost("tasks/{taskId}/comments")]
-        public async Task<IActionResult> Creat(int taskId, [FromBody] CommentCreateDto dto)
+        [Authorize(Policy = Permissions.CommentsCreate)]
+        public async Task<IActionResult> Create(long taskId, [FromBody] CommentCreateDto dto, CancellationToken cancellationToken)
         {
-           if(!ModelState.IsValid)
-                return BadRequest(ModelState.Values.SelectMany(e=>e.Errors).Select(e=>e.ErrorMessage));
-           var task = await _unitOfWork.taskRepository.GetByIdAsync(taskId);
-            if (task == null)
-                return NotFound();
-            /// add get user id from claims to put it in comment 
-            var coment = new Comment
-            {
-                Content = dto.Content,
-                CreatedAt = DateTime.Now,
-                TaskItemId = taskId,
-            };
-            await _unitOfWork.commentRepository.AddAsync(coment);
-            await _unitOfWork.Complete();
-            var read = new CommentReadDto
-            {
-                Id = coment.Id,
-                Content = coment.Content,
-                CreatedAt = DateTime.Now,
-                TaskItemId = taskId,
-                UserId = coment.UserId,
-            };
-            return CreatedAtAction(nameof(GetByTask),new {TaskId = taskId},read);
+            var created = await _commentService.CreateAsync(taskId, dto, CurrentUserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Comments);
+
+            return CreatedAtAction(nameof(GetByTask), new { taskId }, created);
         }
-        [HttpPut]
-        public async Task<IActionResult> UpdateComment(int id,CommentCreateDto dto)
+
+        [HttpPut("{id}")]
+        [Authorize(Policy = Permissions.CommentsUpdate)]
+        public async Task<IActionResult> UpdateComment(long id, [FromBody] CommentUpdateDto dto,bool canManageAny, CancellationToken cancellationToken)
         {
-            var comment= await _unitOfWork.commentRepository.GetByIdAsync(id);
-            if (comment == null)
-                return NotFound();
-            comment.Content = dto.Content;
-            _unitOfWork.commentRepository.Update(comment);
-            await _unitOfWork.Complete();
-            return Ok(new CommentReadDto
-            {
-                Id = comment.Id,
-                Content = comment.Content,
-                CreatedAt = comment.CreatedAt,
-                TaskItemId = comment.TaskItemId,
-                UserId = comment.UserId,
-            });
+            // NOTE: CommentsUpdate only gates whether the endpoint can be called at all.
+            // CommentService.UpdateAsync still enforces "only the author can edit" -
+            // there's no CommentsManageAny-style bypass for Update, only for Delete.
+            var updated = await _commentService.UpdateAsync(id, dto,canManageAny , CurrentUserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Comments);
+
+            return Ok(updated);
         }
+
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [Authorize(Policy = Permissions.CommentsDelete)]
+        public async Task<IActionResult> Delete(long id, CancellationToken cancellationToken)
         {
-            var comment = await _unitOfWork.commentRepository.GetByIdAsync(id);
-            if (comment == null)
-                return NotFound();
-            // wiil add authorization here
-            _unitOfWork.commentRepository.Delete(comment);   
-            await _unitOfWork.Complete();
+            var isAdmin = _currentUser.HasPermission(Permissions.CommentsManageAny);
+            await _commentService.DeleteAsync(id, CurrentUserId, isAdmin, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Comments);
+
             return NoContent();
         }
     }

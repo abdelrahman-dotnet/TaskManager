@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskManager.Data.Entities;
 
 namespace TaskManager.Bussiness.Interfaces
 {
     public interface ICommentRepository : IGenericRepository<Comment>
     {
-        Task<IEnumerable<Comment>> GetByTaskIdAsync(int taskId);
-
+        // FIX: TaskItem.Id (and TaskItemId everywhere else) is a "long".
+        // This parameter was an "int", which silently narrows/can't
+        // represent ids above int.MaxValue. Aligned to "long".
+        Task<IEnumerable<Comment>> GetByTaskIdAsync(long taskId);
     }
 }

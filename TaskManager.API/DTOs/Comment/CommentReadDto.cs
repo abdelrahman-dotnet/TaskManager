@@ -1,11 +1,13 @@
-﻿namespace TaskManager.API.DTOs.Comment
+namespace TaskManager.API.DTOs.Comment
 {
     public class CommentReadDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
+        public long TaskItemId { get; set; }
+        public string UserId { get; set; } = null!;
+        public string? UserFullName { get; set; }
         public string Content { get; set; } = null!;
         public DateTime CreatedAt { get; set; }
-        public int TaskItemId { get; set; }
-        public string UserId { get; set; } = null!;
+        public DateTime? UpdatedAt { get; set; }
     }
 }

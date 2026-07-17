@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.API.DTOs.Account;
 using TaskManager.Bussiness.Services;
@@ -17,28 +17,39 @@ namespace TaskManager.API.Controllers
             _authService = authService;
         }
 
-        [HttpPost]
+        // ValidationFilter already rejects an invalid ModelState before the action runs,
+        // so the manual "if (!ModelState.IsValid)" checks were dead code and are removed here.
+
+        [HttpPost("Register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterDto dto)
         {
-            if(!ModelState.IsValid)
-                return BadRequest(ModelState.Values.SelectMany(v=>v.Errors.Select(e=>e.ErrorMessage)).ToList());
             var user = new ApplicationUser
             {
                 UserName = dto.UserName,
                 Email = dto.Email,
             };
-            var result = await _authService.RegisterAsync(user,dto.Password);
+
+            var result = await _authService.RegisterAsync(user, dto.Password);
+
+            if (!result.Succeeded)
+                return BadRequest(result.Errors.Select(e => e.Description));
+
             return Ok("User Registered");
         }
+
         [HttpPost("Login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginDto dto)
         {
-            if(!ModelState.IsValid) 
-                return BadRequest(ModelState.Values.SelectMany(v=>v.Errors.Select(e=>e.ErrorMessage)).ToList());
-            var(token,expiry) = await _authService.LoginAsync(dto.UserName,dto.Password);
+            var (token, expiry, error) = await _authService.LoginAsync(dto.Email, dto.Password);
+
             if (token == null)
-                return Unauthorized();
-            return Ok(new AuthResponseDto { AccessToken = token , ExpiresAt = expiry });
+                return Unauthorized(error);
+
+            return Ok(new AuthResponseDto { AccessToken = token, ExpiresAt = expiry });
         }
+
+        //will add refresh token end point here
     }
 }

@@ -36,28 +36,22 @@ public class ApiResponseFilter : IActionFilter
 
     private void WrapResult(ActionExecutedContext context, object? value, int statusCode)
     {
-        var isSuccess = statusCode >= 200 && statusCode < 300;
-        ApiResponse<object> wrapped;
-
-        if (value != null &&
-             value.GetType().IsGenericType &&
-             value.GetType().GetGenericTypeDefinition() == typeof(ApiResponse<>))
-        {
-            return;
-        }
         if (statusCode == StatusCodes.Status204NoContent)
         {
             context.Result = new StatusCodeResult(StatusCodes.Status204NoContent);
             return;
         }
-        if (isSuccess)
+
+        if (value is not null &&
+            value.GetType().IsGenericType &&
+            value.GetType().GetGenericTypeDefinition() == typeof(ApiResponse<>))
         {
-            wrapped = ApiResponse<object>.SuccessResult(value, "Success");
+            return;
         }
-        else
-        {
-            wrapped = ApiResponse<object>.Failure("Request Failed", null, $"ERR-{statusCode}");
-        }
+
+        var wrapped = ApiResponse<object>.SuccessResult(
+            value,
+            "Request completed successfully.");
 
         context.Result = new ObjectResult(wrapped)
         {

@@ -1,0 +1,217 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\asp.net\\API Projects\\TaskManager\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{27B2298B-8D4B-41E7-9F1C-FB4C6A69A191}|TaskManager.API\\TaskManager.API.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.api\\controllers\\exceptiontestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B2298B-8D4B-41E7-9F1C-FB4C6A69A191}|TaskManager.API\\TaskManager.API.csproj|solutionrelative:taskmanager.api\\controllers\\exceptiontestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DAB1C69-FAC1-422F-B182-A23FBB358026}|TaskManager.Data\\TaskManager.Data.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.data\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DAB1C69-FAC1-422F-B182-A23FBB358026}|TaskManager.Data\\TaskManager.Data.csproj|solutionrelative:taskmanager.data\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27B2298B-8D4B-41E7-9F1C-FB4C6A69A191}|TaskManager.API\\TaskManager.API.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.api\\seeders\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B2298B-8D4B-41E7-9F1C-FB4C6A69A191}|TaskManager.API\\TaskManager.API.csproj|solutionrelative:taskmanager.api\\seeders\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.bussiness\\helpers\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|solutionrelative:taskmanager.bussiness\\helpers\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.bussiness\\repositories\\genericrepositorie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|solutionrelative:taskmanager.bussiness\\repositories\\genericrepositorie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.bussiness\\repositories\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|solutionrelative:taskmanager.bussiness\\repositories\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DAB1C69-FAC1-422F-B182-A23FBB358026}|TaskManager.Data\\TaskManager.Data.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.data\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DAB1C69-FAC1-422F-B182-A23FBB358026}|TaskManager.Data\\TaskManager.Data.csproj|solutionrelative:taskmanager.data\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27B2298B-8D4B-41E7-9F1C-FB4C6A69A191}|TaskManager.API\\TaskManager.API.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.api\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B2298B-8D4B-41E7-9F1C-FB4C6A69A191}|TaskManager.API\\TaskManager.API.csproj|solutionrelative:taskmanager.api\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.bussiness\\helpers\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|solutionrelative:taskmanager.bussiness\\helpers\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.bussiness\\interfaces\\igenericrepositorie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|solutionrelative:taskmanager.bussiness\\interfaces\\igenericrepositorie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.bussiness\\repositories\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|solutionrelative:taskmanager.bussiness\\repositories\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|d:\\asp.net\\api projects\\taskmanager\\taskmanager.bussiness\\helpers\\paginationparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A0C990-E439-4A69-8C50-50431853C36B}|TaskManager.Bussiness\\TaskManager.Bussiness.csproj|solutionrelative:taskmanager.bussiness\\helpers\\paginationparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExceptionTestController.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.API\\Controllers\\ExceptionTestController.cs",
+              "RelativeDocumentMoniker": "TaskManager.API\\Controllers\\ExceptionTestController.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.API\\Controllers\\ExceptionTestController.cs",
+              "RelativeToolTip": "TaskManager.API\\Controllers\\ExceptionTestController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T00:49:07.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RefreshToken.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Data\\Entities\\RefreshToken.cs",
+              "RelativeDocumentMoniker": "TaskManager.Data\\Entities\\RefreshToken.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Data\\Entities\\RefreshToken.cs",
+              "RelativeToolTip": "TaskManager.Data\\Entities\\RefreshToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T00:48:37.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "JwtSettings.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Helpers\\JwtSettings.cs",
+              "RelativeDocumentMoniker": "TaskManager.Bussiness\\Helpers\\JwtSettings.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Helpers\\JwtSettings.cs",
+              "RelativeToolTip": "TaskManager.Bussiness\\Helpers\\JwtSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T00:45:47.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoleRepository.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Repositories\\RoleRepository.cs",
+              "RelativeDocumentMoniker": "TaskManager.Bussiness\\Repositories\\RoleRepository.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Repositories\\RoleRepository.cs",
+              "RelativeToolTip": "TaskManager.Bussiness\\Repositories\\RoleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T00:44:39.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Data\\Entities\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "TaskManager.Data\\Entities\\ApplicationUser.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Data\\Entities\\ApplicationUser.cs",
+              "RelativeToolTip": "TaskManager.Data\\Entities\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T00:01:47.869Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RoleSeeder.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.API\\Seeders\\RoleSeeder.cs",
+              "RelativeDocumentMoniker": "TaskManager.API\\Seeders\\RoleSeeder.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.API\\Seeders\\RoleSeeder.cs",
+              "RelativeToolTip": "TaskManager.API\\Seeders\\RoleSeeder.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwCQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T20:40:38.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TaskRepository.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Repositories\\TaskRepository.cs",
+              "RelativeDocumentMoniker": "TaskManager.Bussiness\\Repositories\\TaskRepository.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Repositories\\TaskRepository.cs",
+              "RelativeToolTip": "TaskManager.Bussiness\\Repositories\\TaskRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T15:30:48.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IGenericRepositorie.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Interfaces\\IGenericRepositorie.cs",
+              "RelativeDocumentMoniker": "TaskManager.Bussiness\\Interfaces\\IGenericRepositorie.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Interfaces\\IGenericRepositorie.cs",
+              "RelativeToolTip": "TaskManager.Bussiness\\Interfaces\\IGenericRepositorie.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T14:58:27.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TaskController.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.API\\Controllers\\TaskController.cs",
+              "RelativeDocumentMoniker": "TaskManager.API\\Controllers\\TaskController.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.API\\Controllers\\TaskController.cs",
+              "RelativeToolTip": "TaskManager.API\\Controllers\\TaskController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowDAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T14:46:52.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PaginationParams.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Helpers\\PaginationParams.cs",
+              "RelativeDocumentMoniker": "TaskManager.Bussiness\\Helpers\\PaginationParams.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Helpers\\PaginationParams.cs",
+              "RelativeToolTip": "TaskManager.Bussiness\\Helpers\\PaginationParams.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T23:06:03.817Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PagedResult.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Helpers\\PagedResult.cs",
+              "RelativeDocumentMoniker": "TaskManager.Bussiness\\Helpers\\PagedResult.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Helpers\\PagedResult.cs",
+              "RelativeToolTip": "TaskManager.Bussiness\\Helpers\\PagedResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T23:00:28.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GenericRepositorie.cs",
+              "DocumentMoniker": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Repositories\\GenericRepositorie.cs",
+              "RelativeDocumentMoniker": "TaskManager.Bussiness\\Repositories\\GenericRepositorie.cs",
+              "ToolTip": "D:\\asp.net\\API Projects\\TaskManager\\TaskManager.Bussiness\\Repositories\\GenericRepositorie.cs",
+              "RelativeToolTip": "TaskManager.Bussiness\\Repositories\\GenericRepositorie.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAA7wCAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T21:39:26.656Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

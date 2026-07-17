@@ -1,0 +1,99 @@
+[2026-06-06 19:12:27 ERR] [CorrelationId: ] Failed executing DbCommand (694ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Discriminator], [a].[Name], [a].[NormalizedName], [a].[Description]
+FROM [AspNetRoles] AS [a]
+WHERE ([a].[Discriminator] = N'Role') AND ([a].[NormalizedName] = @__normalizedName_0)
+[2026-06-06 19:12:27 ERR] [CorrelationId: ] An exception occurred while iterating over the results of a query for context type 'TaskManager.Data.Context.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Discriminator'.
+Invalid column name 'Discriminator'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:e8efacf5-80e7-40d7-825d-25376a941daa
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Discriminator'.
+Invalid column name 'Discriminator'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:e8efacf5-80e7-40d7-825d-25376a941daa
+Error Number:207,State:1,Class:16
+[2026-06-06 19:12:45 ERR] [CorrelationId: ] Failed executing DbCommand (547ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Discriminator], [a].[Name], [a].[NormalizedName], [a].[Description]
+FROM [AspNetRoles] AS [a]
+WHERE ([a].[Discriminator] = N'Role') AND ([a].[NormalizedName] = @__normalizedName_0)
+[2026-06-06 19:12:45 ERR] [CorrelationId: ] An exception occurred while iterating over the results of a query for context type 'TaskManager.Data.Context.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Discriminator'.
+Invalid column name 'Discriminator'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9085e235-9e4d-48f6-a412-ca3254f18966
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Discriminator'.
+Invalid column name 'Discriminator'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9085e235-9e4d-48f6-a412-ca3254f18966
+Error Number:207,State:1,Class:16
+[2026-06-06 19:16:24 WRN] [CorrelationId: ] Failed to determine the https port for redirect.
+[2026-06-06 19:16:25 INF] [CorrelationId: ] Tasks list cache miss. CacheKey: Tasks:List:1:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-06-06 19:16:25 WRN] [CorrelationId: ] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2026-06-06 19:16:25 WRN] [CorrelationId: ] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2026-06-06 19:16:25 INF] [CorrelationId: ] Tasks list retrieved successfully. Page: 1 PageSize: 10 Count: 0
+[2026-06-06 19:16:25 INF] [CorrelationId: ] HTTP GET /api/Task responded 200 in 1605.8602 ms
+[2026-06-06 19:22:01 WRN] [CorrelationId: ] Failed to determine the https port for redirect.
+[2026-06-06 19:22:01 INF] [CorrelationId: ] HTTP POST /api/Role responded 201 in 448.9391 ms
+[2026-06-06 19:52:53 WRN] [CorrelationId: ] Failed to determine the https port for redirect.
+[2026-06-06 19:52:53 INF] [CorrelationId: ] Tasks list cache miss. CacheKey: Tasks:List:1:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-06-06 19:52:53 WRN] [CorrelationId: ] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2026-06-06 19:52:53 WRN] [CorrelationId: ] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[2026-06-06 19:52:53 INF] [CorrelationId: ] Tasks list retrieved successfully. Page: 1 PageSize: 10 Count: 0
+[2026-06-06 19:52:53 INF] [CorrelationId: ] HTTP GET /api/Task responded 200 in 405.6155 ms
+[2026-06-06 19:55:51 WRN] [CorrelationId: f7e1ccc3-9d7c-4ad4-a2ce-6e229ecf147c] Failed to determine the https port for redirect.
+[2026-06-06 19:55:51 INF] [CorrelationId: f7e1ccc3-9d7c-4ad4-a2ce-6e229ecf147c] Tasks list cache hit. CacheKey: Tasks:List:1:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-06-06 19:55:51 INF] [CorrelationId: f7e1ccc3-9d7c-4ad4-a2ce-6e229ecf147c] HTTP GET /api/Task responded 200 in 308.1649 ms
+[2026-06-06 21:33:45 WRN] [CorrelationId: f14eb556-e7f8-4006-aebf-c45706bad2c7] Failed to determine the https port for redirect.
+[2026-06-06 21:33:45 INF] [CorrelationId: f14eb556-e7f8-4006-aebf-c45706bad2c7] HTTP POST /api/User responded 400 in 385.2882 ms
+[2026-06-06 21:34:07 INF] [CorrelationId: 00abf500-f830-4375-bb26-da99fd30cc31] User created successfully. UserId: 5b911c01-b57c-4b7e-b74a-0c61e2a7ebfc UserName: string
+[2026-06-06 21:34:07 INF] [CorrelationId: 00abf500-f830-4375-bb26-da99fd30cc31] HTTP POST /api/User responded 201 in 160.8118 ms

@@ -9,5 +9,6 @@ namespace TaskManager.Bussiness.Interfaces
 {
     public interface ITaskRepository : IGenericRepository<TaskItem>
     {
+        Task<TaskItem?> GetDetailsAsync(long id, CancellationToken cancellationToken = default);
     }
 }

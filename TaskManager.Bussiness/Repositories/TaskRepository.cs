@@ -1,37 +1,30 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using TaskManager.Bussiness.Interfaces;
 using TaskManager.Data.Context;
 using TaskManager.Data.Entities;
+using TaskManager.Data.Repositories;
 
 namespace TaskManager.Bussiness.Repositories
 {
-    public class TaskRepository : GenericRepository<TaskItem> , ITaskRepository
+    public class TaskRepository : Repository<TaskItem>, ITaskRepository
     {
-        private readonly AppDbContext _context;
+        public TaskRepository(AppDbContext context)
+            : base(context)
+        {
+        }
 
-        public TaskRepository(AppDbContext context) : base(context)
+        public async Task<TaskItem?> GetDetailsAsync(long id,CancellationToken cancellationToken = default)
         {
-            _context = context;
-        }
-        public async Task<TaskItem?> GetTaskWithCommentsAsync (int taskId)
-        {
-            return await _context.taskItems
-                .Include(t=>t.Comments)
-                .Include(t=>t.User)
-                .FirstOrDefaultAsync(t => t.Id == taskId);
-        }
-        public async Task<IEnumerable<TaskItem>> GetUserTaskAsync(string userId)
-        {
-            return await _context.taskItems
-                .Where(t=>t.UserId == userId)
-                .Include(t=>t.Comments)
-                .OrderByDescending(t=>t.CreatedDate)
-                .ToListAsync();
+            return await _context.TaskItems
+                .AsNoTracking()
+                .Include(t => t.Project)
+                .Include(t => t.CreatedByUser)
+                .Include(t => t.Assignments)
+                    .ThenInclude(a => a.User)
+                .Include(t => t.Comments)
+                .Include(t => t.Attachments)
+                .FirstOrDefaultAsync(t => t.Id == id,cancellationToken);
         }
     }
 }

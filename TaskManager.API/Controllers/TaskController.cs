@@ -1,173 +1,147 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using TaskManager.API.DTOs.Comment;
-using TaskManager.API.DTOs.TaskItem;
-using TaskManager.Bussiness.Interfaces;
-using TaskManager.Data.Entities;
+using TaskManager.API.Authorization;
+using TaskManager.API.DTOs.FilterQueryParams;
+using TaskManager.API.DTOs.Task;
+using TaskManager.API.Helpers;
+using TaskManager.Business.Services.Interfaces;
+using TaskManager.Bussiness.Caching;
+using TaskManager.Bussiness.Services;
 
 namespace TaskManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TaskController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ITaskService _taskService;
+        private readonly ICacheService _cacheService;
         private readonly ILogger<TaskController> _logger;
+        private readonly ICurrentUserService _currentUser;
 
-        public TaskController(IUnitOfWork unitOfWork, ILogger<TaskController> logger)
+        public TaskController(ITaskService taskService, ICacheService cacheService, ILogger<TaskController> logger, ICurrentUserService currentUser)
         {
-            _unitOfWork = unitOfWork;
+            _taskService = taskService;
+            _cacheService = cacheService;
             _logger = logger;
+            _currentUser = currentUser;
         }
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var tasks = await _unitOfWork.taskRepository.GetAllAsync();
-            var dto = tasks.Select(t => new TaskReadDto
-            {
-                Id = t.Id,
-                Title = t.Title,
-                Description = t.Description,
-                CreatedDate = t.CreatedDate,
-                DueDate = t.DueDate,
-                IsCompleted = t.IsCompleted,
-                UserId = t.UserId,
-            });
-            return Ok(dto);
-        }
-        [HttpGet("{WithIncludes}")]
-        public async Task<IActionResult> GetTasksWithComments()
-        {
-            var tasks = await _unitOfWork.taskRepository.GetAllWithIncludeAsync(t => t.Comments);
-            var dto = tasks.Select(t => new TaskReadDto
-            {
-                Id = t.Id,
-                Title = t.Title,
-                Description = t.Description,
-                CreatedDate = t.CreatedDate,
-                DueDate = t.DueDate,
-                IsCompleted = t.IsCompleted,
-                UserId = t.UserId,
-                Comments = t.Comments.Select(c => new CommentReadDto
-                {
-                    Id = c.Id,
-                    Content = c.Content,
-                    CreatedAt = c.CreatedAt,
-                    UserId = c.UserId,
-                }).ToList(),
-            });
-            return Ok(dto);
-        }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            if (id <= 0)
-                return BadRequest("invalid id");
-            var task = await _unitOfWork.taskRepository.GetByIdAsync(id);
-            if (task == null)
-                return NotFound("Task Not Found");
-            var dto = new TaskReadDto
-            {
-                Id = task.Id,
-                Title = task.Title,
-                Description = task.Description,
-                CreatedDate = task.CreatedDate,
-                DueDate = task.DueDate,
-                IsCompleted = task.IsCompleted,
-                UserId = task.UserId,
-            };
-            return Ok(dto);
-        }
-        [HttpGet("{withComments}")]
-        public async Task<IActionResult> GetByIdWithIncludes(int id)
-        {
-            var task = await _unitOfWork.taskRepository.GetByIdWithIncludesAsync(id,t=>t.Comments);
-            if (task == null)
-                return BadRequest("Task Not Found");
-            var dto = new TaskReadDto
-            {
-                Id = task.Id,
-                Title = task.Title,
-                Description = task.Description,
-                CreatedDate = task.CreatedDate,
-                DueDate = task.DueDate,
-                IsCompleted = task.IsCompleted,
-                UserId = task.UserId,
-                Comments = task.Comments.Select(t => new CommentReadDto
-                {
-                    Id = t.Id,
-                    Content = t.Content,
-                    CreatedAt = t.CreatedAt,
-                    UserId = t.UserId,
-                }).ToList()
-            };
-            return Ok(dto);
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateTask([FromBody] TaskCreateDto dto)
-        {
-            _logger.LogInformation("Create Task Started");
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.Values.SelectMany(v=>v.Errors).Select(e=>e.ErrorMessage).ToList());
-            // will take id from claim here
-            var entity = new TaskItem
-            {
-                Title = dto.Title,
-                Description = dto.Description,
-                CreatedDate = dto.CreatedDate,
-                DueDate = dto.DueDate,
-                IsCompleted = dto.IsCompleted,
-            };
-            await _unitOfWork.taskRepository.AddAsync(entity);
-            await _unitOfWork.Complete();
 
-            var read = new TaskReadDto
+        private string CurrentUserId => _currentUser.UserId!;
+        private bool CanManageAny =>_currentUser.HasPermission(Permissions.TasksManageAny);
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] TaskQueryParam q,CancellationToken cancellationToken)
+        {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Tasks);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TasksList, version, q);
+
+            var cached = await _cacheService.GetAsync<PagedResult<TaskReadDto>>(cacheKey);
+            if (cached != null)
             {
-                Id = entity.Id,
-                Title = entity.Title,
-                Description = entity.Description,
-                CreatedDate = entity.CreatedDate,
-                DueDate = entity.DueDate,
-                IsCompleted = entity.IsCompleted,
-            };
-            return Ok(read);
+                _logger.LogInformation("Tasks cache hit. CacheKey: {CacheKey}", cacheKey);
+                return Ok(cached);
+            }
+
+            _logger.LogInformation("Tasks cache miss. CacheKey: {CacheKey}", cacheKey);
+            var result = await _taskService.GetAllAsync(q,cancellationToken);
+            await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
+
+            return Ok(result);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(long id, CancellationToken cancellationToken)
+        {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Tasks);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TaskByIdWithIncludes, version, id);
+
+            var cached = await _cacheService.GetAsync<TaskDetailsReadDto>(cacheKey);
+            if (cached != null)
+            {
+                _logger.LogInformation("Task cache hit. TaskId: {TaskId}", id);
+                return Ok(cached);
+            }
+
+            _logger.LogInformation("Task cache miss. TaskId: {TaskId}", id);
+            var task = await _taskService.GetByIdAsync(id,cancellationToken);
+            await _cacheService.SetAsync(cacheKey, task, TimeSpan.FromMinutes(5));
+
+            return Ok(task);
+        }
+
+        [HttpPost]
+        [Authorize(Policy = Permissions.TasksCreate)]
+        public async Task<IActionResult> Create([FromBody] TaskCreateDto dto,CancellationToken cancellationToken)
+        {
+            var created = await _taskService.CreateAsync(dto, CurrentUserId,cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        }
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id ,[FromBody]TaskUpdateDto dto)
+        [Authorize(Policy = Permissions.TasksUpdate)]
+        public async Task<IActionResult> Update(long id, [FromBody] TaskUpdateDto dto,CancellationToken cancellationToken)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList());
-            var existing = await _unitOfWork.taskRepository.GetByIdAsync(id);
-            if (existing == null)
-                return NotFound("Task Not Found");
-            //will do authorization here for admin and for task is not completed
-            existing.Description = dto.Description;
-            existing.DueDate= dto.DueDate;
-            existing.Title = dto.Title; 
-            _unitOfWork.taskRepository.Update(existing);
-           await _unitOfWork.Complete();
-            var read = new TaskReadDto
-            {
-                Id = existing.Id,
-                Title = existing.Title,
-                Description = existing.Description,
-                DueDate = existing.DueDate,
-                IsCompleted = existing.IsCompleted,
-                UserId = existing.UserId,
-            };
-            return Ok(read);
+            var updated = await _taskService.UpdateAsync(id, dto, CurrentUserId,CanManageAny, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+
+            return Ok(updated);
         }
+
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [Authorize(Policy = Permissions.TasksDelete)]
+        public async Task<IActionResult> Delete(long id,CancellationToken cancellationToken)
         {
-            var existing = await _unitOfWork.taskRepository.GetByIdAsync (id);
-            if (existing == null)
-                return NotFound("Task Not Found");
-            // will add authorization here in the future
-            _unitOfWork.taskRepository.Delete (existing);
-            await _unitOfWork.Complete();
-            return Ok("Task Deleted Succsfully");
+            await _taskService.DeleteAsync(id, CurrentUserId,CanManageAny, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+
+            return NoContent();
+        }
+
+        [HttpPost("{id}/assign")]
+        [Authorize(Policy = Permissions.TasksAssign)]
+        public async Task<IActionResult> Assign(long id, [FromBody] AssignTaskDto dto,CancellationToken cancellationToken)
+        {
+            var result = await _taskService.AssignAsync(id, dto,CurrentUserId,cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+            await _cacheService.IncrementVersionAsync(CacheDomains.TaskAssignments);
+
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}/assign/{userId}")]
+        [Authorize(Policy = Permissions.TasksAssign)]
+        public async Task<IActionResult> Unassign(long id,string userId,CancellationToken cancellationToken)
+        {
+            var result = await _taskService.UnassignAsync(id,CurrentUserId,userId,cancellationToken);
+
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+            await _cacheService.IncrementVersionAsync(CacheDomains.TaskAssignments);
+            return Ok(result);
+        }
+
+        [HttpPatch("{id}/status")]
+        [Authorize(Policy = Permissions.TasksUpdate)]
+        public async Task<IActionResult> ChangeStatus(long id, [FromBody] ChangeTaskStatusDto dto,CancellationToken cancellationToken)
+        {
+            var result = await _taskService.ChangeStatusAsync(id, dto, CurrentUserId,cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+            await _cacheService.IncrementVersionAsync(CacheDomains.TaskStatusHistories);
+
+            return Ok(result);
+        }
+
+        [HttpPatch("{id}/priority")]
+        [Authorize(Policy = Permissions.TasksUpdate)]
+        public async Task<IActionResult> ChangePriority(long id, [FromBody] ChangeTaskPriorityDto dto,CancellationToken cancellationToken)
+        {
+            var result = await _taskService.ChangePriorityAsync(id, dto, CurrentUserId);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+
+            return Ok(result);
         }
     }
 }

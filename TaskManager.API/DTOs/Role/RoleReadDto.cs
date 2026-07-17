@@ -1,7 +1,8 @@
-﻿namespace TaskManager.API.DTOs.Role
+namespace TaskManager.API.DTOs.Role
 {
     public class RoleReadDto
     {
+        public string Id { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
     }

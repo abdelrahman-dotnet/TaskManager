@@ -1,179 +1,120 @@
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\appsettings.Development.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\appsettings.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.API.staticwebassets.endpoints.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.API.exe
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.API.deps.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.API.runtimeconfig.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.API.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.API.pdb
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Humanizer.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.Collections.Immutable.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.Drawing.Common.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.Runtime.Caching.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.Security.Permissions.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\System.Windows.Extensions.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.Bussiness.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.Data.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.Bussiness.pdb
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\bin\Debug\net6.0\TaskManager.Data.pdb
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.csproj.AssemblyReference.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\rpswa.dswa.cache.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.GeneratedMSBuildEditorConfig.editorconfig
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.AssemblyInfoInputs.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.AssemblyInfo.cs
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.csproj.CoreCompileInputs.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.MvcApplicationPartsAssemblyInfo.cs
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.MvcApplicationPartsAssemblyInfo.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\rjimswa.dswa.cache.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\rjsmrazor.dswa.cache.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\rjsmcshtml.dswa.cache.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\scopedcss\bundle\TaskManager.API.styles.css
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.json.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\staticwebassets.development.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.endpoints.json
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskMana.FE476EE3.Up2Date
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\refint\TaskManager.API.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.pdb
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.genruntimeconfig.cache
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\ref\TaskManager.API.dll
-D:\asp.net\new assignments 2025\API Projects\TaskManager\TaskManager.API\obj\Debug\net6.0\TaskManager.API.sourcelink.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.csproj.AssemblyReference.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\rpswa.dswa.cache.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.GeneratedMSBuildEditorConfig.editorconfig
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.AssemblyInfoInputs.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.AssemblyInfo.cs
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.csproj.CoreCompileInputs.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.MvcApplicationPartsAssemblyInfo.cs
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.MvcApplicationPartsAssemblyInfo.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\refint\TaskManager.API.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.pdb
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\appsettings.Development.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.staticwebassets.endpoints.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\appsettings.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.exe
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.deps.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.runtimeconfig.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.pdb
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Humanizer.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Collections.Immutable.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Drawing.Common.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Runtime.Caching.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Security.Permissions.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Windows.Extensions.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.Bussiness.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.Data.dll
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.Bussiness.pdb
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.Data.pdb
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\rjimswa.dswa.cache.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\rjsmrazor.dswa.cache.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\rjsmcshtml.dswa.cache.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\scopedcss\bundle\TaskManager.API.styles.css
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.json.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.development.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.endpoints.json
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskMana.FE476EE3.Up2Date
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.genruntimeconfig.cache
-D:\asp.net\API Projects\2026\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\ref\TaskManager.API.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\appsettings.Development.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\appsettings.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.staticwebassets.endpoints.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.exe
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.deps.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.runtimeconfig.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.API.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\AutoMapper.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\FluentValidation.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Humanizer.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.AspNetCore.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.Formatting.Compact.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Serilog.Sinks.File.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\StackExchange.Redis.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Collections.Immutable.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Windows.Extensions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.Bussiness.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.Data.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.Bussiness.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\TaskManager.Data.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.csproj.AssemblyReference.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\rpswa.dswa.cache.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.AssemblyInfoInputs.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.AssemblyInfo.cs
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.csproj.CoreCompileInputs.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.MvcApplicationPartsAssemblyInfo.cs
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.MvcApplicationPartsAssemblyInfo.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.sourcelink.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\rjimswa.dswa.cache.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\rjsmrazor.dswa.cache.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\rjsmcshtml.dswa.cache.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\scopedcss\bundle\TaskManager.API.styles.css
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.json.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.development.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskMana.FE476EE3.Up2Date
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\refint\TaskManager.API.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\TaskManager.API.genruntimeconfig.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\obj\Debug\net6.0\ref\TaskManager.API.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.ObjectPool.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\Microsoft.Extensions.WebEncoders.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Formats.Asn1.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Security.Cryptography.Xml.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

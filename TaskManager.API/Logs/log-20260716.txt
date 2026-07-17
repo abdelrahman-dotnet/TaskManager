@@ -1,0 +1,181 @@
+[2026-07-16 04:17:46 WRN] [CorrelationId: b4822619-5bf2-49a4-b8b2-a0ecc4d22f20] Failed to determine the https port for redirect.
+[2026-07-16 04:17:47 INF] [CorrelationId: b4822619-5bf2-49a4-b8b2-a0ecc4d22f20] HTTP POST /api/Auth/Register responded 400 in 947.2914 ms
+[2026-07-16 04:18:18 INF] [CorrelationId: 7fcd4881-b281-4447-9483-d0483b0803f0] HTTP POST /api/Auth/Register responded 200 in 262.7452 ms
+[2026-07-16 04:19:24 INF] [CorrelationId: db4df26a-a047-4b02-b1d0-e17609983f66] HTTP POST /api/Auth/Login responded 200 in 323.7919 ms
+[2026-07-16 04:19:54 ERR] [CorrelationId: 1e9908f8-0a12-48fb-955b-bff64780cf9a] HTTP GET /api/Comment responded 500 in 8377.6337 ms
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType, EndPointCollection endpoints) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 723
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(ConfigurationOptions configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 685
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 663
+   at TaskManager.API.Program.<>c__DisplayClass0_0.<Main>b__3(IServiceProvider sp) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Program.cs:line 64
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at lambda_method474(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass7_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-07-16 04:19:54 ERR] [CorrelationId: 1e9908f8-0a12-48fb-955b-bff64780cf9a] Unhandled exception. CorrelationId: 1e9908f8-0a12-48fb-955b-bff64780cf9a, Path: /api/Comment, Method: GET
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType, EndPointCollection endpoints) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 723
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(ConfigurationOptions configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 685
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 663
+   at TaskManager.API.Program.<>c__DisplayClass0_0.<Main>b__3(IServiceProvider sp) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Program.cs:line 64
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at lambda_method474(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass7_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-07-16 04:20:27 INF] [CorrelationId: 493046bc-62ca-402f-8e45-93a827bd9aa6] Comment cache miss. CacheKey: Comments:List:1:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-07-16 04:20:27 INF] [CorrelationId: 493046bc-62ca-402f-8e45-93a827bd9aa6] Comments retrieved successfully. Count: 0
+[2026-07-16 04:20:27 INF] [CorrelationId: 493046bc-62ca-402f-8e45-93a827bd9aa6] HTTP GET /api/Comment responded 200 in 302.1965 ms
+[2026-07-16 04:24:27 INF] [CorrelationId: dc6d3d11-1340-4fd5-bbb8-3adc0ec48407] HTTP DELETE /api/Project/1 responded 403 in 5.6640 ms
+[2026-07-16 04:24:46 INF] [CorrelationId: 7e895103-22f5-4a4e-aad9-5914c33227ec] Projects cache miss. CacheKey: Projects:List:2:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-07-16 04:24:46 INF] [CorrelationId: 7e895103-22f5-4a4e-aad9-5914c33227ec] Projects retrieved successfully. Count: 1
+[2026-07-16 04:24:46 INF] [CorrelationId: 7e895103-22f5-4a4e-aad9-5914c33227ec] HTTP GET /api/Project responded 200 in 72.9718 ms
+[2026-07-16 05:11:53 INF] [CorrelationId: d77fef84-2b3f-4093-8a62-c0b0b48d3665] HTTP GET /api/TaskAssignment responded 403 in 3.9401 ms
+[2026-07-16 05:16:21 INF] [CorrelationId: 4a92ef65-8e32-4844-ac28-c75892f7a66d] HTTP GET /api/User responded 403 in 0.7917 ms
+[2026-07-16 05:16:58 WRN] [CorrelationId: 9d4b7dad-c752-4f79-a899-e34e78c0ff35] Failed to determine the https port for redirect.
+[2026-07-16 05:16:58 INF] [CorrelationId: 9d4b7dad-c752-4f79-a899-e34e78c0ff35] HTTP GET /api/User responded 401 in 73.9024 ms
+[2026-07-16 05:17:46 INF] [CorrelationId: 86c19b4b-8bcc-4fa6-b69c-b7445b634edd] HTTP POST /api/Auth/Login responded 200 in 433.1355 ms
+[2026-07-16 05:18:15 INF] [CorrelationId: 9f1d39a9-acce-4df9-b149-4ff2ac5931d0] Users cache miss. CacheKey: Users:List:1:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-07-16 05:18:15 INF] [CorrelationId: 9f1d39a9-acce-4df9-b149-4ff2ac5931d0] Users retrieved successfully. Count: 2
+[2026-07-16 05:18:15 INF] [CorrelationId: 9f1d39a9-acce-4df9-b149-4ff2ac5931d0] HTTP GET /api/User responded 200 in 428.5729 ms
+[2026-07-16 05:19:33 INF] [CorrelationId: b7c9b033-1936-4c81-aec9-bbca31d35e50] Audit log created. Action: AssignRole, Entity: User, EntityId: 7c249f39-416e-4b91-9467-b6a4fa67615a
+[2026-07-16 05:19:33 INF] [CorrelationId: b7c9b033-1936-4c81-aec9-bbca31d35e50] Role assigned. UserId: 7c249f39-416e-4b91-9467-b6a4fa67615a, Role: Manager, CurrentUserId: 72fc995a-0779-427d-8a22-2bb5824d151a
+[2026-07-16 05:19:33 INF] [CorrelationId: b7c9b033-1936-4c81-aec9-bbca31d35e50] HTTP POST /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a/roles responded 204 in 177.3704 ms
+[2026-07-16 05:21:56 ERR] [CorrelationId: de4deaa2-2303-4f2f-8ac7-c0b75d1bb002] HTTP POST /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a/roles responded 500 in 40.3815 ms
+TaskManager.API.Exceptions.ConflictException: User already has this role.
+   at TaskManager.API.Services.UserService.AssignRoleAsync(String userId, AssignRoleDto dto, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\UserService.cs:line 221
+   at TaskManager.API.Controllers.UserController.AssignRole(String id, AssignRoleDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\UserController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-07-16 05:21:56 ERR] [CorrelationId: de4deaa2-2303-4f2f-8ac7-c0b75d1bb002] Unhandled exception. CorrelationId: de4deaa2-2303-4f2f-8ac7-c0b75d1bb002, Path: /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a/roles, Method: POST
+TaskManager.API.Exceptions.ConflictException: User already has this role.
+   at TaskManager.API.Services.UserService.AssignRoleAsync(String userId, AssignRoleDto dto, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\UserService.cs:line 221
+   at TaskManager.API.Controllers.UserController.AssignRole(String id, AssignRoleDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\UserController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-07-16 05:22:42 INF] [CorrelationId: 2edd63a9-be82-4564-897f-58e1aff7c049] Users cache miss. CacheKey: Users:List:2:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-07-16 05:22:42 INF] [CorrelationId: 2edd63a9-be82-4564-897f-58e1aff7c049] Users retrieved successfully. Count: 2
+[2026-07-16 05:22:42 INF] [CorrelationId: 2edd63a9-be82-4564-897f-58e1aff7c049] HTTP GET /api/User responded 200 in 46.9846 ms
+[2026-07-16 05:22:58 INF] [CorrelationId: 4a52f116-862c-4c55-a321-b2bf68412934] Audit log created. Action: AssignRole, Entity: User, EntityId: 7c249f39-416e-4b91-9467-b6a4fa67615a
+[2026-07-16 05:22:58 INF] [CorrelationId: 4a52f116-862c-4c55-a321-b2bf68412934] Role assigned. UserId: 7c249f39-416e-4b91-9467-b6a4fa67615a, Role: Admin, CurrentUserId: 72fc995a-0779-427d-8a22-2bb5824d151a
+[2026-07-16 05:22:58 INF] [CorrelationId: 4a52f116-862c-4c55-a321-b2bf68412934] HTTP POST /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a/roles responded 204 in 53.3777 ms
+[2026-07-16 05:25:07 ERR] [CorrelationId: a2e99f5e-a564-4388-8eec-b79735827518] HTTP POST /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a/roles responded 500 in 14.6384 ms
+TaskManager.API.Exceptions.ConflictException: User already has this role.
+   at TaskManager.API.Services.UserService.AssignRoleAsync(String userId, AssignRoleDto dto, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\UserService.cs:line 221
+   at TaskManager.API.Controllers.UserController.AssignRole(String id, AssignRoleDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\UserController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-07-16 05:25:07 ERR] [CorrelationId: a2e99f5e-a564-4388-8eec-b79735827518] Unhandled exception. CorrelationId: a2e99f5e-a564-4388-8eec-b79735827518, Path: /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a/roles, Method: POST
+TaskManager.API.Exceptions.ConflictException: User already has this role.
+   at TaskManager.API.Services.UserService.AssignRoleAsync(String userId, AssignRoleDto dto, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\UserService.cs:line 221
+   at TaskManager.API.Controllers.UserController.AssignRole(String id, AssignRoleDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\UserController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-07-16 05:25:17 INF] [CorrelationId: c4ceff0f-2147-4c4d-83c3-2aa8050a8bdd] Users cache miss. CacheKey: Users:List:3:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-07-16 05:25:17 INF] [CorrelationId: c4ceff0f-2147-4c4d-83c3-2aa8050a8bdd] Users retrieved successfully. Count: 2
+[2026-07-16 05:25:17 INF] [CorrelationId: c4ceff0f-2147-4c4d-83c3-2aa8050a8bdd] HTTP GET /api/User responded 200 in 65.5759 ms
+[2026-07-16 05:25:47 INF] [CorrelationId: ff62b64d-d1cb-4964-af3b-0d281627a4b2] Audit log created. Action: RemoveRole, Entity: User, EntityId: 7c249f39-416e-4b91-9467-b6a4fa67615a
+[2026-07-16 05:25:47 INF] [CorrelationId: ff62b64d-d1cb-4964-af3b-0d281627a4b2] Role removed. UserId: 7c249f39-416e-4b91-9467-b6a4fa67615a, Role: user, CurrentUserId: 72fc995a-0779-427d-8a22-2bb5824d151a
+[2026-07-16 05:25:47 INF] [CorrelationId: ff62b64d-d1cb-4964-af3b-0d281627a4b2] HTTP DELETE /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a/roles/user responded 204 in 122.4977 ms
+[2026-07-16 05:25:53 INF] [CorrelationId: e27a16b1-e600-4ad3-9f04-b2e6ea183270] Audit log created. Action: RemoveRole, Entity: User, EntityId: 7c249f39-416e-4b91-9467-b6a4fa67615a
+[2026-07-16 05:25:53 INF] [CorrelationId: e27a16b1-e600-4ad3-9f04-b2e6ea183270] Role removed. UserId: 7c249f39-416e-4b91-9467-b6a4fa67615a, Role: Admin, CurrentUserId: 72fc995a-0779-427d-8a22-2bb5824d151a
+[2026-07-16 05:25:53 INF] [CorrelationId: e27a16b1-e600-4ad3-9f04-b2e6ea183270] HTTP DELETE /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a/roles/Admin responded 204 in 29.0305 ms
+[2026-07-16 05:26:05 INF] [CorrelationId: ab31427a-cc0f-4ef0-9a6d-a991a8f1711e] Users cache miss. CacheKey: Users:List:5:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-07-16 05:26:05 INF] [CorrelationId: ab31427a-cc0f-4ef0-9a6d-a991a8f1711e] Users retrieved successfully. Count: 2
+[2026-07-16 05:26:05 INF] [CorrelationId: ab31427a-cc0f-4ef0-9a6d-a991a8f1711e] HTTP GET /api/User responded 200 in 48.4334 ms
+[2026-07-16 05:27:42 INF] [CorrelationId: d155b93c-0c61-443c-957d-2a0d38dcce86] Audit log created. Action: Delete, Entity: User, EntityId: 7c249f39-416e-4b91-9467-b6a4fa67615a
+[2026-07-16 05:27:42 INF] [CorrelationId: d155b93c-0c61-443c-957d-2a0d38dcce86] User deleted successfully. UserId: 7c249f39-416e-4b91-9467-b6a4fa67615a, CurrentUserId: 72fc995a-0779-427d-8a22-2bb5824d151a
+[2026-07-16 05:27:42 INF] [CorrelationId: d155b93c-0c61-443c-957d-2a0d38dcce86] HTTP DELETE /api/User/7c249f39-416e-4b91-9467-b6a4fa67615a responded 204 in 72.7085 ms
+[2026-07-16 05:28:03 INF] [CorrelationId: 9441e504-a144-4fc4-b674-511c161c7fd8] Users cache miss. CacheKey: Users:List:6:query50028AADA4989BFC61DCE69ACDF224DF573ADBBCC1133F2045D310F62DFFD78E
+[2026-07-16 05:28:03 INF] [CorrelationId: 9441e504-a144-4fc4-b674-511c161c7fd8] Users retrieved successfully. Count: 1
+[2026-07-16 05:28:03 INF] [CorrelationId: 9441e504-a144-4fc4-b674-511c161c7fd8] HTTP GET /api/User responded 200 in 56.0529 ms
