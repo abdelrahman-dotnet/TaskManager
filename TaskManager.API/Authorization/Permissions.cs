@@ -8,6 +8,12 @@ namespace TaskManager.API.Authorization
         public const string ProjectsCreate = "Projects.Create";
         public const string ProjectsUpdate = "Projects.Update";
         public const string ProjectsDelete = "Projects.Delete";
+        // NEW (Membership System): gates the Management API endpoints
+        // (POST/DELETE/PATCH /projects/{id}/members). Deliberately separate from
+        // ProjectsUpdate - editing a project's own fields and managing who belongs to it
+        // are different responsibilities. The Service still enforces
+        // EnsureCanManageProjectAsync (Membership) on top of this (Permission && Membership).
+        public const string ProjectsManageMembers = "Projects.ManageMembers";
 
         // ── Tasks ─────────────────────────────────────────────────────────────
         // Create/Assign have no ownership concept (you're acting on someone
@@ -40,6 +46,10 @@ namespace TaskManager.API.Authorization
         public const string TeamsCreate = "Teams.Create";
         public const string TeamsUpdate = "Teams.Update";
         public const string TeamsDelete = "Teams.Delete";
+        // NEW (Membership System): gates the Management API endpoints
+        // (POST/DELETE/PATCH /teams/{id}/members). Same reasoning as
+        // ProjectsManageMembers above - separate from TeamsUpdate on purpose.
+        public const string TeamsManageMembers = "Teams.ManageMembers";
 
         // ── Users ─────────────────────────────────────────────────────────────
         public const string UsersView = "Users.View";
@@ -62,7 +72,7 @@ namespace TaskManager.API.Authorization
 
         public static readonly string[] All =
         {
-            ProjectsCreate, ProjectsUpdate, ProjectsDelete,
+            ProjectsCreate, ProjectsUpdate, ProjectsDelete, ProjectsManageMembers,
 
             TasksCreate, TasksAssign, TasksUpdate, TasksDelete, TasksManageAny,
 
@@ -70,7 +80,7 @@ namespace TaskManager.API.Authorization
 
             AttachmentsCreate, AttachmentsManageAny,
 
-            TeamsCreate, TeamsUpdate, TeamsDelete,
+            TeamsCreate, TeamsUpdate, TeamsDelete, TeamsManageMembers,
 
             UsersView, UsersCreate, UsersManageStatus, UsersDelete, UsersManageRoles, UsersManageAny,
 

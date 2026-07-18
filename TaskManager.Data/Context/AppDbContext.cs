@@ -26,16 +26,23 @@ namespace TaskManager.Data.Context
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
+
+        // NEW: Membership System.
+        public DbSet<TeamMember> TeamMembers { get; set; }
+        public DbSet<ProjectMember> ProjectMembers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            // ─── ApplicationUser And Team
+            // INCREMENTAL REFACTOR: kept as-is for now (see ApplicationUser.TeamId's comment) -
+            // coexists with the new TeamMember configuration below until the old single-team
+            // model is dropped in its own later migration.
             builder.Entity<ApplicationUser>()
                 .HasOne(u => u.Team)
                 .WithMany(t => t.Members)
                 .HasForeignKey(u => u.TeamId)
-                .OnDelete(DeleteBehavior.SetNull);  // mean set child null
+                .OnDelete(DeleteBehavior.SetNull);
 
             // ─── Team ─ Manager(User)
             builder.Entity<Team>()
@@ -60,6 +67,55 @@ namespace TaskManager.Data.Context
                 .WithMany(t => t.Projects)
                 .HasForeignKey(p => p.TeamId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // ─── TeamMember ─ Team - User (Membership System) ──────────────────────
+            builder.Entity<TeamMember>(entity =>
+            {
+                entity.Property(tm => tm.Role)
+                    .HasConversion<string>();
+
+                entity.HasOne(tm => tm.Team)
+                    .WithMany(t => t.TeamMembers)
+                    .HasForeignKey(tm => tm.TeamId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(tm => tm.User)
+                    .WithMany(u => u.TeamMemberships)
+                    .HasForeignKey(tm => tm.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                // A user can't be added to the same Team twice.
+                // FIX: filtered so a soft-deleted (removed) membership row doesn't block
+                // re-adding the same user later - Delete() on BaseEntity types is a soft
+                // delete (IsDeleted = true, row stays), so an unfiltered unique index here
+                // would still see the old row and reject the re-add with a duplicate-key error.
+                entity.HasIndex(tm => new { tm.TeamId, tm.UserId })
+                    .IsUnique()
+                    .HasFilter("[IsDeleted] = 0");
+            });
+
+            // ─── ProjectMember ─ Project - User (Membership System) ────────────────
+            builder.Entity<ProjectMember>(entity =>
+            {
+                entity.Property(pm => pm.Role)
+                    .HasConversion<string>();
+
+                entity.HasOne(pm => pm.Project)
+                    .WithMany(p => p.ProjectMembers)
+                    .HasForeignKey(pm => pm.ProjectId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(pm => pm.User)
+                    .WithMany(u => u.ProjectMemberships)
+                    .HasForeignKey(pm => pm.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                // A user can't be added to the same Project twice.
+                // FIX: same reasoning as TeamMember's index above.
+                entity.HasIndex(pm => new { pm.ProjectId, pm.UserId })
+                    .IsUnique()
+                    .HasFilter("[IsDeleted] = 0");
+            });
 
             // ─── TaskItem ─ Creator - Project
             builder.Entity<TaskItem>(entity =>

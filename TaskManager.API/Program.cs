@@ -98,6 +98,9 @@ namespace TaskManager.API
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                //options.UseNpgsql(
+                //      builder.Configuration.GetConnectionString("DefaultConnection"));
+
             });
             // current user
             builder.Services.AddHttpContextAccessor();
@@ -124,6 +127,7 @@ namespace TaskManager.API
             builder.Services.AddScoped<IAuditLogService, AuditLogService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
+            builder.Services.AddScoped<IMembershipService, MembershipService>();
 
             //Jwt Settings
             var jwtSettings = builder.Configuration.GetSection("JWT").Get<JwtSettings>();
@@ -193,11 +197,11 @@ namespace TaskManager.API
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
+            //}
             // CorrelationIdMiddleware
             app.UseMiddleware<CorrelationIdMiddleware>();
             // Middleware
@@ -212,18 +216,18 @@ namespace TaskManager.API
             app.UseAuthorization();
 
             // Identity Seeder
-            using var scope = app.Services.CreateScope();
+            //using var scope = app.Services.CreateScope();
 
-            var services = scope.ServiceProvider;
+            //var services = scope.ServiceProvider;
 
-            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            var roleManager =
-                services.GetRequiredService<RoleManager<ApplicationRole>>();
+            //var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            //var roleManager =
+            //    services.GetRequiredService<RoleManager<ApplicationRole>>();
 
-            var dbContext =
-                services.GetRequiredService<AppDbContext>();
+            //var dbContext =
+            //    services.GetRequiredService<AppDbContext>();
 
-            await PermissionAndRoleSeeder.SeedAsync(userManager, roleManager, dbContext);
+            //await PermissionAndRoleSeeder.SeedAsync(userManager, roleManager, dbContext);
 
             app.MapControllers();
 

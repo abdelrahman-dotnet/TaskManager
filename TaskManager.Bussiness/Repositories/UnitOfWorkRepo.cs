@@ -27,6 +27,10 @@ public class UnitOfWork : IUnitOfWork
     private IGenericRepository<Permission>? _permissions;
     private IGenericRepository<RolePermission>? _rolePermissions;
 
+    // NEW (Membership System).
+    private IGenericRepository<TeamMember>? _teamMembers;
+    private IGenericRepository<ProjectMember>? _projectMembers;
+
     public UnitOfWork(AppDbContext context)
     {
         _context = context;
@@ -65,9 +69,18 @@ public class UnitOfWork : IUnitOfWork
     public IGenericRepository<RolePermission> RolePermissions
         => _rolePermissions ??= new Repository<RolePermission>(_context);
 
+    // NEW (Membership System).
+    public IGenericRepository<TeamMember> TeamMembers
+        => _teamMembers ??= new Repository<TeamMember>(_context);
+
+    public IGenericRepository<ProjectMember> ProjectMembers
+        => _projectMembers ??= new Repository<ProjectMember>(_context);
+
     public async Task<int> CompleteAsync(CancellationToken cancellationToken = default)
     {
-        return await _context.SaveChangesAsync();
+        // FIX: cancellationToken was accepted but never actually forwarded - SaveChangesAsync()
+        // was called with no arguments, so cancellation silently did nothing.
+        return await _context.SaveChangesAsync(cancellationToken);
     }
 
     //public async Task BeginTransactionAsync()

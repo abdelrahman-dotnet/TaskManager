@@ -17,13 +17,26 @@ namespace TaskManager.Data.Entities
 
         public DateTime? LastLoginAt { get; set; }
 
+        // TODO:
+        // Legacy navigation kept temporarily for incremental migration.
+        // Remove after Membership system is fully adopted.
+        // Do NOT use this in any new Service or Feature - use TeamMemberships instead.
         public long? TeamId { get; set; }
 
         public Team? Team { get; set; }
 
-        // Teams managed by this user
+        // Teams managed by this user (Team.ManagerId) - unrelated to Membership, left as-is.
         public ICollection<Team> ManagedTeams { get; set; }
             = new List<Team>();
+
+        // NEW: every Team this user belongs to, with their Team-scoped Role in each.
+        // Coexists with TeamId/Team above until the old single-team model is retired.
+        public ICollection<TeamMember> TeamMemberships { get; set; }
+            = new List<TeamMember>();
+
+        // NEW: every Project this user belongs to, with their Project-scoped Role in each.
+        public ICollection<ProjectMember> ProjectMemberships { get; set; }
+            = new List<ProjectMember>();
 
         public ICollection<Project> CreatedProjects { get; set; }
             = new List<Project>();

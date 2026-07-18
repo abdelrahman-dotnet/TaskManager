@@ -54,6 +54,7 @@ public static class PermissionAndRoleSeeder
         "Projects.Create",
         "Projects.Update",
         "Projects.Delete",
+        "Projects.ManageMembers",
 
         // Tasks - Create/Assign have no ownership concept; Update/Delete are
         // "base" (you can touch your own); ManageAny bypasses ownership
@@ -77,6 +78,7 @@ public static class PermissionAndRoleSeeder
         "Teams.Create",
         "Teams.Update",
         "Teams.Delete",
+        "Teams.ManageMembers",
 
         // Users
         "Users.View",
@@ -144,6 +146,7 @@ public static class PermissionAndRoleSeeder
         {
             "Projects.Create",
             "Projects.Update",
+            "Projects.ManageMembers",
 
             "Tasks.Create",
             "Tasks.Assign",
@@ -160,6 +163,7 @@ public static class PermissionAndRoleSeeder
             "Attachments.ManageAny",
 
             "Teams.Update",
+            "Teams.ManageMembers",
 
             "Users.View",
 
@@ -247,7 +251,6 @@ public static class PermissionAndRoleSeeder
         {
             throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
         }
-
         await userManager.AddToRoleAsync(admin, "Admin");
     }
 }

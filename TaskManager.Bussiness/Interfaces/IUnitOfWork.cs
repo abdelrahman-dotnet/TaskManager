@@ -28,6 +28,14 @@ public interface IUnitOfWork : IDisposable
 
     IGenericRepository<RolePermission> RolePermissions { get; }
 
+    // NEW (Membership System): plain IGenericRepository<T> - per the "repository is introduced
+    // by repeated behavior, not by entity existence" decision, no specialized
+    // ITeamMemberRepository/IProjectMemberRepository yet. Revisit only if IMembershipService
+    // ends up needing a query complex/repeated enough to justify one.
+    IGenericRepository<TeamMember> TeamMembers { get; }
+
+    IGenericRepository<ProjectMember> ProjectMembers { get; }
+
     Task<int> CompleteAsync(CancellationToken cancellationToken = default);
 
     //Task BeginTransactionAsync();
