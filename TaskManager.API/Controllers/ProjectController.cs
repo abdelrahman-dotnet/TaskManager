@@ -34,7 +34,9 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> GetAll([FromQuery] ProjectQueryParams q, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Projects);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.ProjectsList, version, q);
+            // MEMBERSHIP: results now depend on who's asking - CurrentUserId must be part of
+            // the cache key, same reasoning as TaskController.GetAll.
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.ProjectsList, version, new { q, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<PagedResult<ProjectReadDto>>(cacheKey);
             if (cached != null)
@@ -44,7 +46,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Projects cache miss. CacheKey: {CacheKey}", cacheKey);
-            var result = await _projectService.GetAllAsync(q, cancellationToken);
+            var result = await _projectService.GetAllAsync(q, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);
@@ -54,7 +56,7 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> GetById(long id, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Projects);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.ProjectById, version, id);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.ProjectById, version, new { id, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<ProjectDetailsReadDto>(cacheKey);
             if (cached != null)
@@ -64,7 +66,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Project cache miss. ProjectId: {ProjectId}", id);
-            var project = await _projectService.GetByIdAsync(id, cancellationToken);
+            var project = await _projectService.GetByIdAsync(id, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, project, TimeSpan.FromMinutes(5));
 
             return Ok(project);
@@ -84,10 +86,6 @@ namespace TaskManager.API.Controllers
         [Authorize(Policy = Permissions.ProjectsUpdate)]
         public async Task<IActionResult> Update(long id, [FromBody] ProjectUpdateDto dto, CancellationToken cancellationToken)
         {
-            // FIX: dropped `_currentUser.HasPermission("Admin")` - "Admin" isn't a Permission
-            // constant (it's a Role name, and Permissions.cs has no "Admin" entry), and per the
-            // Ownership Pattern standard, Projects don't use an ownership-bypass flag at all -
-            // the [Authorize(Policy = Permissions.ProjectsUpdate)] above is the only gate needed.
             var updated = await _projectService.UpdateAsync(id, dto, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
 

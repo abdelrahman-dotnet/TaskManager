@@ -30,15 +30,13 @@ namespace TaskManager.API.Controllers
 
         private string CurrentUserId => _currentUser.UserId!;
 
-        // NOTE: no Permissions.TeamsView constant exists in Permissions.cs, so GetAll/GetById
-        // stay under the class-level [Authorize] only (authenticated users) - not inventing a
-        // permission that isn't there.
-
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] TeamQueryParams q, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Teams);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TeamsList, version, q);
+            // MEMBERSHIP: results now depend on who's asking - CurrentUserId must be part of
+            // the cache key, same reasoning as TaskController.GetAll.
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TeamsList, version, new { q, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<PagedResult<TeamReadDto>>(cacheKey);
             if (cached != null)
@@ -48,7 +46,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Teams cache miss. CacheKey: {CacheKey}", cacheKey);
-            var result = await _teamService.GetAllAsync(q, cancellationToken);
+            var result = await _teamService.GetAllAsync(q, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);
@@ -58,7 +56,7 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> GetById(long id, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Teams);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TeamById, version, id);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TeamById, version, new { id, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<TeamReadDto>(cacheKey);
             if (cached != null)
@@ -68,7 +66,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Team cache miss. TeamId: {TeamId}", id);
-            var team = await _teamService.GetByIdAsync(id, cancellationToken);
+            var team = await _teamService.GetByIdAsync(id, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, team, TimeSpan.FromMinutes(5));
 
             return Ok(team);

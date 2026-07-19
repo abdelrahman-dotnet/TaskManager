@@ -21,6 +21,7 @@ namespace TaskManager.API.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IAuditLogService _auditLogService;
+        private readonly IMembershipService _membershipService;
         private readonly IMapper _mapper;
         private readonly ILogger<TeamService> _logger;
 
@@ -28,19 +29,29 @@ namespace TaskManager.API.Services
             IUnitOfWork unitOfWork,
             UserManager<ApplicationUser> userManager,
             IAuditLogService auditLogService,
+            IMembershipService membershipService,
             IMapper mapper,
             ILogger<TeamService> logger)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _auditLogService = auditLogService;
+            _membershipService = membershipService;
             _mapper = mapper;
             _logger = logger;
         }
 
-        public async Task<PagedResult<TeamReadDto>> GetAllAsync(TeamQueryParams queryParams, CancellationToken cancellationToken = default)
+        // MEMBERSHIP: filters to teams the user belongs to, as an IN subquery against
+        // TeamMembers. No bypass - see ITeamService.cs's comment.
+        public async Task<PagedResult<TeamReadDto>> GetAllAsync(TeamQueryParams queryParams, string currentUserId, CancellationToken cancellationToken = default)
         {
             var query = _unitOfWork.Teams.GetAllQuery().AsNoTracking();
+
+            var memberTeamIds = _unitOfWork.TeamMembers.GetAllQuery()
+                .Where(tm => tm.UserId == currentUserId)
+                .Select(tm => tm.TeamId);
+
+            query = query.Where(t => memberTeamIds.Contains(t.Id));
 
             query = query.ApplyFiltering(queryParams, TeamFilterConfig.map);
 
@@ -59,9 +70,9 @@ namespace TaskManager.API.Services
             return result;
         }
 
-        public async Task<TeamReadDto> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<TeamReadDto> GetByIdAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
         {
-            
+
             var team = await _unitOfWork.Teams.FirstOrDefaultAsync(
                 t => t.Id == id,
                 cancellationToken,
@@ -73,6 +84,13 @@ namespace TaskManager.API.Services
             {
                 _logger.LogWarning("GetTeamById failed. Team not found. TeamId: {TeamId}", id);
                 throw new NotFoundException("Team not found.");
+            }
+
+            var canAccess = await _membershipService.CanAccessTeamAsync(id, currentUserId, cancellationToken);
+            if (!canAccess)
+            {
+                _logger.LogWarning("GetTeamById forbidden (Membership). UserId: {UserId}, TeamId: {TeamId}", currentUserId, id);
+                throw new ForbiddenException("You are not a member of this team.");
             }
 
             return _mapper.Map<TeamReadDto>(team);
@@ -87,9 +105,21 @@ namespace TaskManager.API.Services
             // Save first - Team.Id is DB-generated, so it isn't known until after this completes.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
+            // MEMBERSHIP: creating the first Owner is this method's job, not
+            // IMembershipService.AddTeamMemberAsync's - it goes in directly, bypassing that
+            // method entirely (which requires an existing Owner/Manager to authorize the add -
+            // there isn't one yet for a brand-new team). See MembershipService's comments.
+            var ownerMembership = new TeamMember
+            {
+                TeamId = team.Id,
+                UserId = managerId,
+                Role = MembershipRole.Owner
+            };
+            await _unitOfWork.TeamMembers.AddAsync(ownerMembership, cancellationToken);
+
             var newValues = JsonSerializer.Serialize(new { team.Name, team.Description, team.ManagerId });
-            await _auditLogService.LogAsync(managerId,"Create Team",nameof(Team),team.Id.ToString(), newValues: newValues);
-            // Second save - persists the audit row now that team.Id exists.
+            await _auditLogService.LogAsync(managerId, "Create Team", nameof(Team), team.Id.ToString(), newValues: newValues);
+            // Second save - persists the TeamMember(Owner) and the audit row together.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Team created successfully. TeamId: {TeamId}, UserId: {CurrentUserId}", team.Id, managerId);
@@ -104,6 +134,10 @@ namespace TaskManager.API.Services
                 _logger.LogWarning("UpdateTeam failed. Team not found. TeamId: {TeamId}", id);
                 throw new NotFoundException("Team not found.");
             }
+
+            // MEMBERSHIP: Permission (TeamsUpdate, checked at the Controller) && Membership
+            // (must be Owner/Manager of THIS team) - both have to succeed.
+            await _membershipService.EnsureCanManageTeamAsync(id, currentUserId, cancellationToken);
 
             if (!string.Equals(dto.ManagerId, team.ManagerId, StringComparison.Ordinal))
             {
@@ -139,7 +173,8 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Team not found.");
             }
 
-            // No Ownership check here either, same reasoning as UpdateAsync above.
+            // MEMBERSHIP: same as UpdateAsync above - Permission && Membership.
+            await _membershipService.EnsureCanManageTeamAsync(id, currentUserId, cancellationToken);
 
             var oldValues = JsonSerializer.Serialize(new { team.Name, team.Description, team.ManagerId });
 

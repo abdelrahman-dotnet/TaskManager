@@ -21,18 +21,34 @@ namespace TaskManager.API.Services
         private readonly IMapper _mapper;
         private readonly ILogger<ProjectService> _logger;
         private readonly IAuditLogService _auditLogService;
+        private readonly IMembershipService _membershipService;
 
-        public ProjectService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<ProjectService> logger, IAuditLogService auditLogService)
+        public ProjectService(
+            IUnitOfWork unitOfWork,
+            IMapper mapper,
+            ILogger<ProjectService> logger,
+            IAuditLogService auditLogService,
+            IMembershipService membershipService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _auditLogService = auditLogService;
+            _membershipService = membershipService;
         }
 
-        public async Task<PagedResult<ProjectReadDto>> GetAllAsync(ProjectQueryParams queryParams, CancellationToken cancellationToken = default)
+        // MEMBERSHIP: filters to projects the user belongs to, as an IN subquery against
+        // ProjectMembers. No bypass - see IProjectService.cs's comment (no Projects.ManageAny
+        // exists yet).
+        public async Task<PagedResult<ProjectReadDto>> GetAllAsync(ProjectQueryParams queryParams, string currentUserId, CancellationToken cancellationToken = default)
         {
             var query = _unitOfWork.Projects.GetAllQuery().AsNoTracking();
+
+            var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.UserId == currentUserId)
+                .Select(pm => pm.ProjectId);
+
+            query = query.Where(p => memberProjectIds.Contains(p.Id));
 
             query = query.ApplyFiltering(queryParams, ProjectFilterConfig.map);
 
@@ -53,13 +69,20 @@ namespace TaskManager.API.Services
             return result;
         }
 
-        public async Task<ProjectDetailsReadDto> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<ProjectDetailsReadDto> GetByIdAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
         {
             var project = await _unitOfWork.Projects.GetDetailsAsync(id, cancellationToken);
             if (project == null)
             {
                 _logger.LogWarning("GetProjectById failed. Project not found. ProjectId: {ProjectId}", id);
                 throw new NotFoundException("Project not found.");
+            }
+
+            var canAccess = await _membershipService.CanAccessProjectAsync(id, currentUserId, cancellationToken);
+            if (!canAccess)
+            {
+                _logger.LogWarning("GetProjectById forbidden (Membership). UserId: {UserId}, ProjectId: {ProjectId}", currentUserId, id);
+                throw new ForbiddenException("You are not a member of this project.");
             }
 
             return _mapper.Map<ProjectDetailsReadDto>(project);
@@ -84,6 +107,16 @@ namespace TaskManager.API.Services
             await _unitOfWork.Projects.AddAsync(project, cancellationToken);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
+            // MEMBERSHIP: same pattern as TeamService.CreateAsync - creating the first Owner
+            // is this method's job, not IMembershipService.AddProjectMemberAsync's.
+            var ownerMembership = new ProjectMember
+            {
+                ProjectId = project.Id,
+                UserId = currentUserId,
+                Role = MembershipRole.Owner
+            };
+            await _unitOfWork.ProjectMembers.AddAsync(ownerMembership, cancellationToken);
+
             // Audit: Create is Save -> Audit -> Save, since project.Id only exists after the first save.
             var newValues = JsonSerializer.Serialize(new
             {
@@ -93,7 +126,8 @@ namespace TaskManager.API.Services
                 project.StartDate,
                 project.EndDate
             });
-            await _auditLogService.LogAsync(currentUserId,"Create Project", nameof(Project), project.Id.ToString(), null, newValues);
+            await _auditLogService.LogAsync(currentUserId, "Create Project", nameof(Project), project.Id.ToString(), null, newValues);
+            // Second save - persists the ProjectMember(Owner) and the audit row together.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Project created successfully. ProjectId: {ProjectId},CurrentUserId:{UserId}", project.Id, currentUserId);
@@ -106,13 +140,16 @@ namespace TaskManager.API.Services
             var project = await _unitOfWork.Projects.GetByIdAsync(id, cancellationToken);
             if (project == null)
             {
-                _logger.LogWarning("UpdateProject failed. Project not found.ProjectId:{ProjectId}",id);
+                _logger.LogWarning("UpdateProject failed. Project not found.ProjectId:{ProjectId}", id);
                 throw new NotFoundException("Project not found.");
             }
 
-            // No Ownership/Permission check here by design - Projects aren't a Personal Resource
-            // (see IProjectService.cs). The endpoint itself is gated by
-            // [Authorize(Policy = Permissions.ProjectsUpdate)] at the Controller.
+            // MEMBERSHIP: Permission (ProjectsUpdate, checked at the Controller) && Membership
+            // (must be Owner/Manager of THIS project) - both have to succeed. This replaces the
+            // old "Projects have no Ownership concept" note - that was true before the
+            // Membership System existed; Membership is a distinct, additional check from
+            // Identity Permissions, not the old ownership-by-CreatedByUserId pattern.
+            await _membershipService.EnsureCanManageProjectAsync(id, currentUserId, cancellationToken);
 
             // Business Validation.
             if (dto.StartDate.HasValue && dto.EndDate.HasValue && dto.EndDate < dto.StartDate)
@@ -161,7 +198,8 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Project not found.");
             }
 
-            // No Ownership/Permission check here by design - see UpdateAsync above.
+            // MEMBERSHIP: same as UpdateAsync above - Permission && Membership.
+            await _membershipService.EnsureCanManageProjectAsync(id, currentUserId, cancellationToken);
 
             // Repository.
             _unitOfWork.Projects.Delete(project);

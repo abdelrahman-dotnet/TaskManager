@@ -1,17 +1,21 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using StackExchange.Redis;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using TaskManager.API.Authorization;
 using TaskManager.API.Filters;
+using TaskManager.API.HealthChecks;
 using TaskManager.API.Middleware;
 using TaskManager.API.Services;
 using TaskManager.API.Validators.Task;
@@ -57,6 +61,8 @@ namespace TaskManager.API
                 .Converters
                 .Add(new JsonStringEnumConverter());
             });
+            //HEALTH CHECK
+            builder.Services.AddApplicationHealthChecks(builder.Configuration);
             // Cache
             builder.Services.AddMemoryCache();
             builder.Services.AddScoped<ICacheService, CacheService>();
@@ -230,7 +236,8 @@ namespace TaskManager.API
             //await PermissionAndRoleSeeder.SeedAsync(userManager, roleManager, dbContext);
 
             app.MapControllers();
-
+            // health check
+            app.MapApplicationHealthChecks();
             app.Run();
         }
     }
