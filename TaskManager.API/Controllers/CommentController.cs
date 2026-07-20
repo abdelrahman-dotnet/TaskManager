@@ -29,14 +29,18 @@ namespace TaskManager.API.Controllers
         }
 
         private string CurrentUserId => _currentUser.UserId!;
+        private bool CanManageAny => _currentUser.HasPermission(Permissions.CommentsManageAny);
 
         // No dedicated "Comments.View" permission exists in Permissions.cs, so these two
-        // stay under the class-level plain [Authorize] - any authenticated user can read comments.
+        // stay under the class-level plain [Authorize] - any authenticated user can call them
+        // (Membership still filters which comments they actually see).
         [HttpGet]
         public async Task<IActionResult> GetAllComments([FromQuery] CommentQueryParams q, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Comments);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.CommentsList, version, q);
+            // MEMBERSHIP: results now depend on who's asking - CurrentUserId/CanManageAny must
+            // be part of the cache key.
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.CommentsList, version, new { q, CurrentUserId, CanManageAny });
 
             var cached = await _cacheService.GetAsync<PagedResult<CommentReadDto>>(cacheKey);
             if (cached != null)
@@ -46,7 +50,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Comment cache miss. CacheKey: {CacheKey}", cacheKey);
-            var result = await _commentService.GetAllAsync(q, cancellationToken);
+            var result = await _commentService.GetAllAsync(q, CurrentUserId, CanManageAny, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);
@@ -56,7 +60,7 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> GetByTask(long taskId, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Comments);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.CommentsByTask, version, taskId);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.CommentsByTask, version, new { taskId, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<IEnumerable<CommentReadDto>>(cacheKey);
             if (cached != null)
@@ -66,7 +70,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Comments by Task cache MISS. TaskId: {TaskId}", taskId);
-            var comments = await _commentService.GetByTaskIdAsync(taskId, cancellationToken);
+            var comments = await _commentService.GetByTaskIdAsync(taskId, CurrentUserId, cancellationToken);
 
             await _cacheService.SetAsync(cacheKey, comments, TimeSpan.FromMinutes(5));
             return Ok(comments);
@@ -84,12 +88,9 @@ namespace TaskManager.API.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Policy = Permissions.CommentsUpdate)]
-        public async Task<IActionResult> UpdateComment(long id, [FromBody] CommentUpdateDto dto,bool canManageAny, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateComment(long id, [FromBody] CommentUpdateDto dto, CancellationToken cancellationToken)
         {
-            // NOTE: CommentsUpdate only gates whether the endpoint can be called at all.
-            // CommentService.UpdateAsync still enforces "only the author can edit" -
-            // there's no CommentsManageAny-style bypass for Update, only for Delete.
-            var updated = await _commentService.UpdateAsync(id, dto,canManageAny , CurrentUserId, cancellationToken);
+            var updated = await _commentService.UpdateAsync(id, dto, CanManageAny, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Comments);
 
             return Ok(updated);
@@ -99,8 +100,7 @@ namespace TaskManager.API.Controllers
         [Authorize(Policy = Permissions.CommentsDelete)]
         public async Task<IActionResult> Delete(long id, CancellationToken cancellationToken)
         {
-            var isAdmin = _currentUser.HasPermission(Permissions.CommentsManageAny);
-            await _commentService.DeleteAsync(id, CurrentUserId, isAdmin, cancellationToken);
+            await _commentService.DeleteAsync(id, CurrentUserId, CanManageAny, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Comments);
 
             return NoContent();

@@ -460,13 +460,6 @@
               "type": "integer",
               "format": "int64"
             }
-          },
-          {
-            "name": "canManageAny",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
         "requestBody": {

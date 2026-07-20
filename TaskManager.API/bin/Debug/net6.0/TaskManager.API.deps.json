@@ -10,6 +10,7 @@
         "dependencies": {
           "AspNetCore.HealthChecks.Redis": "6.0.4",
           "AspNetCore.HealthChecks.UI": "6.0.5",
+          "AspNetCore.HealthChecks.UI.Client": "6.0.5",
           "AspNetCore.HealthChecks.UI.InMemory.Storage": "6.0.5",
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
@@ -55,6 +56,18 @@
         },
         "runtime": {
           "lib/net6.0/HealthChecks.UI.dll": {
+            "assemblyVersion": "6.0.5.0",
+            "fileVersion": "6.0.5.0"
+          }
+        }
+      },
+      "AspNetCore.HealthChecks.UI.Client/6.0.5": {
+        "dependencies": {
+          "AspNetCore.HealthChecks.UI.Core": "6.0.5",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.36"
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.UI.Client.dll": {
             "assemblyVersion": "6.0.5.0",
             "fileVersion": "6.0.5.0"
           }
@@ -1759,6 +1772,13 @@
       "sha512": "sha512-mz9sheD2G7nmjHxc/DZPTNb+qso8PivFhyU02qaXQ9yl+wwmZOHNeQ+43Atyfj4nMWjBGhFSmXCdqHdHMNKomA==",
       "path": "aspnetcore.healthchecks.ui/6.0.5",
       "hashPath": "aspnetcore.healthchecks.ui.6.0.5.nupkg.sha512"
+    },
+    "AspNetCore.HealthChecks.UI.Client/6.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ko4CM9lI3ZklTDW3LRtHoiDU/Soo/r3yYRM28jbvOGaN5MjkWYGtVFwkwuNcjLFkJoFxfjqjITf+TWEqNENBzA==",
+      "path": "aspnetcore.healthchecks.ui.client/6.0.5",
+      "hashPath": "aspnetcore.healthchecks.ui.client.6.0.5.nupkg.sha512"
     },
     "AspNetCore.HealthChecks.UI.Core/6.0.5": {
       "type": "package",

@@ -45,6 +45,26 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "AspNetCore.HealthChecks.UI.Client/6.0.5": {
+        "type": "package",
+        "dependencies": {
+          "AspNetCore.HealthChecks.UI.Core": "6.0.5",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.7"
+        },
+        "compile": {
+          "lib/net6.0/HealthChecks.UI.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.UI.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "AspNetCore.HealthChecks.UI.Core/6.0.5": {
         "type": "package",
         "dependencies": {
@@ -2838,6 +2858,20 @@
         "lib/net6.0/HealthChecks.UI.dll",
         "lib/net6.0/HealthChecks.UI.runtimeconfig.json",
         "lib/net6.0/HealthChecks.UI.xml"
+      ]
+    },
+    "AspNetCore.HealthChecks.UI.Client/6.0.5": {
+      "sha512": "Ko4CM9lI3ZklTDW3LRtHoiDU/Soo/r3yYRM28jbvOGaN5MjkWYGtVFwkwuNcjLFkJoFxfjqjITf+TWEqNENBzA==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.ui.client/6.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.ui.client.6.0.5.nupkg.sha512",
+        "aspnetcore.healthchecks.ui.client.nuspec",
+        "icon.png",
+        "lib/net6.0/HealthChecks.UI.Client.dll",
+        "lib/net6.0/HealthChecks.UI.Client.xml"
       ]
     },
     "AspNetCore.HealthChecks.UI.Core/6.0.5": {
@@ -7739,6 +7773,7 @@
     "net6.0": [
       "AspNetCore.HealthChecks.Redis >= 6.0.4",
       "AspNetCore.HealthChecks.UI >= 6.0.5",
+      "AspNetCore.HealthChecks.UI.Client >= 6.0.5",
       "AspNetCore.HealthChecks.UI.InMemory.Storage >= 6.0.5",
       "AutoMapper >= 12.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
@@ -7815,6 +7850,10 @@
             "version": "[6.0.4, )"
           },
           "AspNetCore.HealthChecks.UI": {
+            "target": "Package",
+            "version": "[6.0.5, )"
+          },
+          "AspNetCore.HealthChecks.UI.Client": {
             "target": "Package",
             "version": "[6.0.5, )"
           },

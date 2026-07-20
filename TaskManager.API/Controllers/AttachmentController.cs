@@ -29,14 +29,16 @@ namespace TaskManager.API.Controllers
         }
 
         private string CurrentUserId => _currentUser.UserId!;
+        private bool CanManageAny => _currentUser.HasPermission(Permissions.AttachmentsManageAny);
 
         // No "Attachments.View" permission exists in Permissions.cs, so this stays under
-        // the class-level plain [Authorize] - any authenticated user can list attachments.
+        // the class-level plain [Authorize] - any authenticated user can list attachments
+        // (Membership still filters which ones they actually see).
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] AttachmentQueryParams q, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Attachments);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.AttachmentsList, version, q);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.AttachmentsList, version, new { q, CurrentUserId, CanManageAny });
 
             var cached = await _cacheService.GetAsync<PagedResult<AttachmentReadDto>>(cacheKey);
             if (cached != null)
@@ -46,7 +48,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Attachments cache miss. CacheKey: {CacheKey}", cacheKey);
-            var result = await _attachmentService.GetAllAsync(q, cancellationToken);
+            var result = await _attachmentService.GetAllAsync(q, CurrentUserId, CanManageAny, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);
@@ -64,16 +66,16 @@ namespace TaskManager.API.Controllers
             return Ok(created);
         }
 
-        // No dedicated "Attachments.Delete" permission exists (unlike Comments, which has
-        // Create/Update/Delete/ManageAny). Only AttachmentsCreate and AttachmentsManageAny
-        // exist, so Delete stays under the class-level [Authorize] and the Service enforces
-        // ownership, with AttachmentsManageAny as the elevated bypass.
+        // FIX: was [Authorize(Policy = Permissions.AttachmentsManageAny)], which meant only
+        // ManageAny holders could reach this endpoint AT ALL - a plain user could never delete
+        // even their own attachment, contradicting the Service's own ownership-check logic
+        // (which assumed regular users would get in and be allowed to delete what they
+        // uploaded). Relaxed to plain [Authorize] - Authentication only at the Controller; the
+        // full decision (owner OR ManageAny) now lives entirely in AttachmentService.DeleteAsync.
         [HttpDelete("{id}")]
-        [Authorize(Policy = Permissions.AttachmentsManageAny)]
         public async Task<IActionResult> Delete(long id, CancellationToken cancellationToken)
         {
-            var isAdmin = _currentUser.HasPermission(Permissions.AttachmentsManageAny);
-            await _attachmentService.DeleteAsync(id, CurrentUserId, isAdmin, cancellationToken);
+            await _attachmentService.DeleteAsync(id, CurrentUserId, CanManageAny, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Attachments);
 
             return NoContent();

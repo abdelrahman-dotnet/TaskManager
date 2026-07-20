@@ -248,11 +248,6 @@
         "Name": "dto",
         "Type": "TaskManager.API.DTOs.Comment.CommentUpdateDto",
         "IsRequired": true
-      },
-      {
-        "Name": "canManageAny",
-        "Type": "System.Boolean",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []

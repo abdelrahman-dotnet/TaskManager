@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using System.Text.Json;
 using TaskManager.API.HealthChecks.Models;
 using TaskManager.Data.Context;
-
+using HealthChecks.UI.Client;
 namespace TaskManager.API.HealthChecks;
 
 public static class HealthCheckExtensions
@@ -15,7 +15,6 @@ public static class HealthCheckExtensions
         IConfiguration configuration)
     {
         services.AddHealthChecks()
-
             .AddCheck(
                 HealthCheckNames.Self,
                 () => HealthCheckResult.Healthy("Application is running"),
@@ -27,6 +26,9 @@ public static class HealthCheckExtensions
             .AddRedis(
                 configuration.GetConnectionString("Redis")!,
                 name: HealthCheckNames.Redis);
+
+        // ui
+
         services.AddHealthChecksUI(options =>
         {
             options.SetEvaluationTimeInSeconds(30);
@@ -41,24 +43,35 @@ public static class HealthCheckExtensions
     }
 
     public static IEndpointRouteBuilder MapApplicationHealthChecks(
-        this IEndpointRouteBuilder endpoints)
+    this IEndpointRouteBuilder endpoints)
     {
+        // Endpoint الخاص بالـ HealthChecks UI
         endpoints.MapHealthChecks("/health", new HealthCheckOptions
         {
-            ResponseWriter = WriteResponse
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
 
+        // Liveness Probe
         endpoints.MapHealthChecks("/health/live", new HealthCheckOptions
         {
             Predicate = check => check.Tags.Contains(HealthCheckTags.Live),
             ResponseWriter = WriteResponse
         });
+
+
+        // development not for ui
+        endpoints.MapHealthChecks("/health/details", new HealthCheckOptions
+        {
+            ResponseWriter = WriteResponse
+        });
+
+        // HealthChecks Dashboard
         endpoints.MapHealthChecksUI(options =>
         {
-            options.UIPath = "/health-ui";
-
-            options.ApiPath = "/health-ui-api";
+            options.UIPath = "/health-ui"; // path
+            options.ApiPath = "/health-ui-api"; //api path
         });
+
         return endpoints;
     }
 

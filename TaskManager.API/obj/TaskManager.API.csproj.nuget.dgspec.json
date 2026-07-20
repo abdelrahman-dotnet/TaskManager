@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[6.0.5, )"
             },
+            "AspNetCore.HealthChecks.UI.Client": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
             "AspNetCore.HealthChecks.UI.InMemory.Storage": {
               "target": "Package",
               "version": "[6.0.5, )"

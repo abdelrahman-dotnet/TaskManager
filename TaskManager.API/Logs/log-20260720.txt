@@ -633,3 +633,931 @@ StackExchange.Redis.RedisConnectionException: It was not possible to connect to 
 [2026-07-20 00:38:48 INF] [CorrelationId: ] Received HTTP response headers after 12204.4963ms - 503
 [2026-07-20 00:38:48 INF] [CorrelationId: ] End processing HTTP request after 12226.6017ms - 503
 [2026-07-20 00:38:48 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:04:13 INF] [CorrelationId: ] Initializing UI Database
+[2026-07-20 03:04:13 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-07-20 03:04:14 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:04:14 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:04:14 WRN] [CorrelationId: 97d07f02-d9cb-46ae-879c-b78ff0f256c8] Failed to determine the https port for redirect.
+[2026-07-20 03:04:22 ERR] [CorrelationId: 97d07f02-d9cb-46ae-879c-b78ff0f256c8] Health check redis with status "Unhealthy" completed after 8262.7761ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:04:22 ERR] [CorrelationId: 97d07f02-d9cb-46ae-879c-b78ff0f256c8] HTTP GET /health responded 503 in 8410.3739 ms
+[2026-07-20 03:04:22 INF] [CorrelationId: ] Received HTTP response headers after 8540.997ms - 503
+[2026-07-20 03:04:22 INF] [CorrelationId: ] End processing HTTP request after 8574.8478ms - 503
+[2026-07-20 03:04:51 ERR] [CorrelationId: 7d3459b4-80e4-4291-90ba-ec70049c9d0f] Health check redis with status "Unhealthy" completed after 12220.0348ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:04:51 ERR] [CorrelationId: 7d3459b4-80e4-4291-90ba-ec70049c9d0f] HTTP GET /health responded 503 in 12227.2010 ms
+[2026-07-20 03:04:51 INF] [CorrelationId: 1297b81c-2112-475b-ae78-843b3afb6f58] HTTP GET /favicon.ico responded 404 in 1.9300 ms
+[2026-07-20 03:04:52 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:04:52 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:05:04 ERR] [CorrelationId: 3454f59a-99e9-4261-ad29-fd65d4aad18f] Health check redis with status "Unhealthy" completed after 12205.9312ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:05:05 ERR] [CorrelationId: 3454f59a-99e9-4261-ad29-fd65d4aad18f] HTTP GET /health responded 503 in 12212.1518 ms
+[2026-07-20 03:05:05 INF] [CorrelationId: ] Received HTTP response headers after 12212.7202ms - 503
+[2026-07-20 03:05:05 INF] [CorrelationId: ] End processing HTTP request after 12223.9779ms - 503
+[2026-07-20 03:05:05 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:05:35 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:05:35 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:05:47 ERR] [CorrelationId: 7e2d023b-6f85-4102-9f25-a237fdd582d5] Health check redis with status "Unhealthy" completed after 12167.9937ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:05:47 ERR] [CorrelationId: 7e2d023b-6f85-4102-9f25-a237fdd582d5] HTTP GET /health responded 503 in 12175.1299 ms
+[2026-07-20 03:05:47 INF] [CorrelationId: ] Received HTTP response headers after 12175.8618ms - 503
+[2026-07-20 03:05:47 INF] [CorrelationId: ] End processing HTTP request after 12186.4701ms - 503
+[2026-07-20 03:05:47 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:06:17 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:06:17 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:06:29 ERR] [CorrelationId: cc5132e9-0169-441e-9aac-f77ab8590190] Health check redis with status "Unhealthy" completed after 12177.4575ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:06:29 ERR] [CorrelationId: cc5132e9-0169-441e-9aac-f77ab8590190] HTTP GET /health responded 503 in 12189.6866 ms
+[2026-07-20 03:06:29 INF] [CorrelationId: ] Received HTTP response headers after 12192.8731ms - 503
+[2026-07-20 03:06:29 INF] [CorrelationId: ] End processing HTTP request after 12207.2239ms - 503
+[2026-07-20 03:06:29 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:06:59 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:06:59 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:07:11 ERR] [CorrelationId: 55d129db-bab3-4d53-bbb6-6892616272e7] Health check redis with status "Unhealthy" completed after 12189.8109ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:07:11 ERR] [CorrelationId: 55d129db-bab3-4d53-bbb6-6892616272e7] HTTP GET /health responded 503 in 12200.2679 ms
+[2026-07-20 03:07:11 INF] [CorrelationId: ] Received HTTP response headers after 12200.6992ms - 503
+[2026-07-20 03:07:11 INF] [CorrelationId: ] End processing HTTP request after 12214.936ms - 503
+[2026-07-20 03:07:11 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:07:41 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:07:41 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:07:53 ERR] [CorrelationId: 67cff283-fd30-4a53-80c5-2142ec3d4bfc] Health check redis with status "Unhealthy" completed after 12202.9462ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:07:53 ERR] [CorrelationId: 67cff283-fd30-4a53-80c5-2142ec3d4bfc] HTTP GET /health responded 503 in 12211.6324 ms
+[2026-07-20 03:07:53 INF] [CorrelationId: ] Received HTTP response headers after 12212.2477ms - 503
+[2026-07-20 03:07:53 INF] [CorrelationId: ] End processing HTTP request after 12223.5818ms - 503
+[2026-07-20 03:07:53 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:08:23 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:08:23 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:08:36 ERR] [CorrelationId: d1aa7b4b-336d-402a-be60-9bdb089fd5ad] Health check redis with status "Unhealthy" completed after 12145.0744ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:08:36 ERR] [CorrelationId: d1aa7b4b-336d-402a-be60-9bdb089fd5ad] HTTP GET /health responded 503 in 12154.0183 ms
+[2026-07-20 03:08:36 INF] [CorrelationId: ] Received HTTP response headers after 12156.2888ms - 503
+[2026-07-20 03:08:36 INF] [CorrelationId: ] End processing HTTP request after 12170.4998ms - 503
+[2026-07-20 03:08:36 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:09:06 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:09:06 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:09:18 ERR] [CorrelationId: b42c53f6-ac22-4c67-a065-4adff92c3600] Health check redis with status "Unhealthy" completed after 12230.3989ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:09:18 ERR] [CorrelationId: b42c53f6-ac22-4c67-a065-4adff92c3600] HTTP GET /health responded 503 in 12239.0541 ms
+[2026-07-20 03:09:18 INF] [CorrelationId: ] Received HTTP response headers after 12239.9512ms - 503
+[2026-07-20 03:09:18 INF] [CorrelationId: ] End processing HTTP request after 12251.0866ms - 503
+[2026-07-20 03:09:18 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:09:48 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:09:48 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:10:00 ERR] [CorrelationId: f5e9b7dd-0730-42c1-b0f7-5baa0d3235fa] Health check redis with status "Unhealthy" completed after 12212.6421ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:10:00 ERR] [CorrelationId: f5e9b7dd-0730-42c1-b0f7-5baa0d3235fa] HTTP GET /health responded 503 in 12220.2341 ms
+[2026-07-20 03:10:00 INF] [CorrelationId: ] Received HTTP response headers after 12220.9409ms - 503
+[2026-07-20 03:10:00 INF] [CorrelationId: ] End processing HTTP request after 12231.8553ms - 503
+[2026-07-20 03:10:00 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:10:30 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:10:30 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:10:42 ERR] [CorrelationId: 6e284eb6-f24c-4aff-bd67-19da3bb3da94] Health check redis with status "Unhealthy" completed after 12160.3818ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:10:42 ERR] [CorrelationId: 6e284eb6-f24c-4aff-bd67-19da3bb3da94] HTTP GET /health responded 503 in 12167.8705 ms
+[2026-07-20 03:10:42 INF] [CorrelationId: ] Received HTTP response headers after 12170.8348ms - 503
+[2026-07-20 03:10:42 INF] [CorrelationId: ] End processing HTTP request after 12183.8131ms - 503
+[2026-07-20 03:10:42 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:11:12 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:11:12 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:11:25 ERR] [CorrelationId: b3f44c22-883f-463f-aa25-6c20c72ba636] Health check redis with status "Unhealthy" completed after 12245.5448ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:11:25 ERR] [CorrelationId: b3f44c22-883f-463f-aa25-6c20c72ba636] HTTP GET /health responded 503 in 12254.5617 ms
+[2026-07-20 03:11:25 INF] [CorrelationId: ] Received HTTP response headers after 12255.0958ms - 503
+[2026-07-20 03:11:25 INF] [CorrelationId: ] End processing HTTP request after 12266.5759ms - 503
+[2026-07-20 03:11:25 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:11:55 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:11:55 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:12:05 INF] [CorrelationId: ] Initializing UI Database
+[2026-07-20 03:12:05 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-07-20 03:12:05 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:12:05 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:12:06 WRN] [CorrelationId: 5aa26db9-1353-4fdb-8936-5960d426295f] Failed to determine the https port for redirect.
+[2026-07-20 03:12:14 ERR] [CorrelationId: 5aa26db9-1353-4fdb-8936-5960d426295f] Health check redis with status "Unhealthy" completed after 8325.5868ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:12:14 ERR] [CorrelationId: 5aa26db9-1353-4fdb-8936-5960d426295f] HTTP GET /health responded 503 in 8421.8254 ms
+[2026-07-20 03:12:14 INF] [CorrelationId: ] Received HTTP response headers after 8574.7028ms - 503
+[2026-07-20 03:12:14 INF] [CorrelationId: ] End processing HTTP request after 8603.5271ms - 503
+[2026-07-20 03:12:40 ERR] [CorrelationId: aceaa99d-feb2-45a0-a9c5-151d498e29aa] Health check redis with status "Unhealthy" completed after 12244.412ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:12:40 ERR] [CorrelationId: aceaa99d-feb2-45a0-a9c5-151d498e29aa] HTTP GET /Health responded 503 in 12257.9767 ms
+[2026-07-20 03:12:44 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:12:44 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:12:54 INF] [CorrelationId: 067d3292-7fde-4695-ad20-341b0160a68b] HTTP GET /Health-ui responded 200 in 1.6938 ms
+[2026-07-20 03:12:54 INF] [CorrelationId: 0ac3ee08-a196-4a51-a80e-ff96c48503f5] HTTP GET /ui/resources/healthchecksui-min.css responded 200 in 0.6919 ms
+[2026-07-20 03:12:54 INF] [CorrelationId: 3d11f0d9-dfcd-4c72-9e5b-ec972f454306] HTTP GET /ui/resources/healthchecks-bundle.js responded 200 in 2.0417 ms
+[2026-07-20 03:12:54 INF] [CorrelationId: 72a21b78-1861-423b-a1ca-6fd31f3cb971] HTTP GET /ui/resources/vendors-dll.js responded 200 in 2.8427 ms
+[2026-07-20 03:12:54 INF] [CorrelationId: 934062a9-2f3b-49df-b635-19fa34f61b40] HTTP GET /health-ui-api/ui-settings responded 200 in 91.2347 ms
+[2026-07-20 03:12:54 INF] [CorrelationId: b19219a7-213b-469f-8ae2-ebd656d6ea08] HTTP GET /health-ui-api responded 200 in 68.3467 ms
+[2026-07-20 03:12:56 ERR] [CorrelationId: 45700b8a-7109-4bcf-bfe1-6f00ae23ea7d] Health check redis with status "Unhealthy" completed after 12248.4398ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:12:56 ERR] [CorrelationId: 45700b8a-7109-4bcf-bfe1-6f00ae23ea7d] HTTP GET /health responded 503 in 12256.7198 ms
+[2026-07-20 03:12:56 INF] [CorrelationId: ] Received HTTP response headers after 12257.2854ms - 503
+[2026-07-20 03:12:56 INF] [CorrelationId: ] End processing HTTP request after 12268.6698ms - 503
+[2026-07-20 03:12:56 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:13:26 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:13:26 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:13:39 ERR] [CorrelationId: 4ed5701a-c6db-4f8f-ba9c-cf909719a950] Health check redis with status "Unhealthy" completed after 12164.2462ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:13:39 ERR] [CorrelationId: 4ed5701a-c6db-4f8f-ba9c-cf909719a950] HTTP GET /health responded 503 in 12177.9190 ms
+[2026-07-20 03:13:39 INF] [CorrelationId: ] Received HTTP response headers after 12179.2896ms - 503
+[2026-07-20 03:13:39 INF] [CorrelationId: ] End processing HTTP request after 12201.5138ms - 503
+[2026-07-20 03:13:39 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:14:09 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:14:09 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:14:21 ERR] [CorrelationId: b33d0cec-5227-495c-8b1e-96c7093db8c7] Health check redis with status "Unhealthy" completed after 12193.6085ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:14:21 ERR] [CorrelationId: b33d0cec-5227-495c-8b1e-96c7093db8c7] HTTP GET /health responded 503 in 12200.6905 ms
+[2026-07-20 03:14:21 INF] [CorrelationId: ] Received HTTP response headers after 12203.3252ms - 503
+[2026-07-20 03:14:21 INF] [CorrelationId: ] End processing HTTP request after 12268.4973ms - 503
+[2026-07-20 03:14:21 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:14:51 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:14:51 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:15:03 ERR] [CorrelationId: 708bec8d-3cfc-4e64-9c7b-f40eb0f7efc7] Health check redis with status "Unhealthy" completed after 12145.2995ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:15:03 ERR] [CorrelationId: 708bec8d-3cfc-4e64-9c7b-f40eb0f7efc7] HTTP GET /health responded 503 in 12152.3940 ms
+[2026-07-20 03:15:03 INF] [CorrelationId: ] Received HTTP response headers after 12153.0457ms - 503
+[2026-07-20 03:15:03 INF] [CorrelationId: ] End processing HTTP request after 12164.4198ms - 503
+[2026-07-20 03:15:03 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:15:33 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:15:33 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:15:45 ERR] [CorrelationId: 9581455d-a5d3-4922-bc23-0c87678002c3] Health check redis with status "Unhealthy" completed after 12202.1428ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:15:45 ERR] [CorrelationId: 9581455d-a5d3-4922-bc23-0c87678002c3] HTTP GET /health responded 503 in 12211.1110 ms
+[2026-07-20 03:15:45 INF] [CorrelationId: ] Received HTTP response headers after 12212.1884ms - 503
+[2026-07-20 03:15:45 INF] [CorrelationId: ] End processing HTTP request after 12226.9434ms - 503
+[2026-07-20 03:15:45 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:16:15 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:16:15 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:16:28 ERR] [CorrelationId: fa35e84f-6d91-4e70-8e30-1418446dddc6] Health check redis with status "Unhealthy" completed after 12222.2803ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:16:28 ERR] [CorrelationId: fa35e84f-6d91-4e70-8e30-1418446dddc6] HTTP GET /health responded 503 in 12230.5992 ms
+[2026-07-20 03:16:28 INF] [CorrelationId: ] Received HTTP response headers after 12233.4802ms - 503
+[2026-07-20 03:16:28 INF] [CorrelationId: ] End processing HTTP request after 12244.8995ms - 503
+[2026-07-20 03:16:28 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:16:58 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:16:58 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:17:10 ERR] [CorrelationId: 157964eb-2dfb-4380-a6ae-3cfab21e4cc7] Health check redis with status "Unhealthy" completed after 12178.2253ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:17:10 ERR] [CorrelationId: 157964eb-2dfb-4380-a6ae-3cfab21e4cc7] HTTP GET /health responded 503 in 12184.9802 ms
+[2026-07-20 03:17:10 INF] [CorrelationId: ] Received HTTP response headers after 12185.5161ms - 503
+[2026-07-20 03:17:10 INF] [CorrelationId: ] End processing HTTP request after 12198.1302ms - 503
+[2026-07-20 03:17:10 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:17:40 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:17:40 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:17:52 ERR] [CorrelationId: 2dedcb0c-9722-4da8-a0f9-9288641cf02c] Health check redis with status "Unhealthy" completed after 12258.4107ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:17:52 ERR] [CorrelationId: 2dedcb0c-9722-4da8-a0f9-9288641cf02c] HTTP GET /health responded 503 in 12266.3989 ms
+[2026-07-20 03:17:52 INF] [CorrelationId: ] Received HTTP response headers after 12266.9297ms - 503
+[2026-07-20 03:17:52 INF] [CorrelationId: ] End processing HTTP request after 12277.8228ms - 503
+[2026-07-20 03:17:52 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:18:22 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:18:22 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:18:34 ERR] [CorrelationId: df6de885-aa5a-43ad-9118-04d0df76ad9f] Health check redis with status "Unhealthy" completed after 12188.4805ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:18:34 ERR] [CorrelationId: df6de885-aa5a-43ad-9118-04d0df76ad9f] HTTP GET /health responded 503 in 12196.5862 ms
+[2026-07-20 03:18:34 INF] [CorrelationId: ] Received HTTP response headers after 12198.8489ms - 503
+[2026-07-20 03:18:34 INF] [CorrelationId: ] End processing HTTP request after 12209.5134ms - 503
+[2026-07-20 03:18:34 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:19:04 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:19:04 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:19:17 ERR] [CorrelationId: f30a4c50-4245-4983-8924-08d4df855425] Health check redis with status "Unhealthy" completed after 12200.7167ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:19:17 ERR] [CorrelationId: f30a4c50-4245-4983-8924-08d4df855425] HTTP GET /health responded 503 in 12210.8193 ms
+[2026-07-20 03:19:17 INF] [CorrelationId: ] Received HTTP response headers after 12211.3251ms - 503
+[2026-07-20 03:19:17 INF] [CorrelationId: ] End processing HTTP request after 12221.2257ms - 503
+[2026-07-20 03:19:17 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:19:47 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:19:47 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:19:59 ERR] [CorrelationId: b9ac4754-5baf-4e54-8cae-ff7cbbbc9244] Health check redis with status "Unhealthy" completed after 12224.6605ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:19:59 ERR] [CorrelationId: b9ac4754-5baf-4e54-8cae-ff7cbbbc9244] HTTP GET /health responded 503 in 12233.2061 ms
+[2026-07-20 03:19:59 INF] [CorrelationId: ] Received HTTP response headers after 12233.907ms - 503
+[2026-07-20 03:19:59 INF] [CorrelationId: ] End processing HTTP request after 12247.2554ms - 503
+[2026-07-20 03:19:59 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:20:29 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:20:29 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:20:41 ERR] [CorrelationId: 3c45ba02-0f2d-40b6-a580-5da117fc3df8] Health check redis with status "Unhealthy" completed after 12260.144ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:20:41 ERR] [CorrelationId: 3c45ba02-0f2d-40b6-a580-5da117fc3df8] HTTP GET /health responded 503 in 12269.6226 ms
+[2026-07-20 03:20:41 INF] [CorrelationId: ] Received HTTP response headers after 12271.8537ms - 503
+[2026-07-20 03:20:41 INF] [CorrelationId: ] End processing HTTP request after 12286.2166ms - 503
+[2026-07-20 03:20:41 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:21:11 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:21:11 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:21:23 ERR] [CorrelationId: 18ae64ea-f95f-4ec9-a891-455931356105] Health check redis with status "Unhealthy" completed after 12281.9437ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:21:23 ERR] [CorrelationId: 18ae64ea-f95f-4ec9-a891-455931356105] HTTP GET /health responded 503 in 12289.4248 ms
+[2026-07-20 03:21:23 INF] [CorrelationId: ] Received HTTP response headers after 12301.8494ms - 503
+[2026-07-20 03:21:23 INF] [CorrelationId: ] End processing HTTP request after 12309.9062ms - 503
+[2026-07-20 03:21:23 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:21:53 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:21:54 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:22:06 ERR] [CorrelationId: e2b773ac-3530-4f6e-869f-bf501aef4935] Health check redis with status "Unhealthy" completed after 12197.5205ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:22:06 ERR] [CorrelationId: e2b773ac-3530-4f6e-869f-bf501aef4935] HTTP GET /health responded 503 in 12205.8189 ms
+[2026-07-20 03:22:06 INF] [CorrelationId: ] Received HTTP response headers after 12206.4242ms - 503
+[2026-07-20 03:22:06 INF] [CorrelationId: ] End processing HTTP request after 12256.7913ms - 503
+[2026-07-20 03:22:06 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:22:36 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:22:36 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:22:44 ERR] [CorrelationId: e05f0ce7-6898-4a9f-94d6-869f062811a1] Health check redis with status "Unhealthy" completed after 8134.5623ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:22:44 ERR] [CorrelationId: e05f0ce7-6898-4a9f-94d6-869f062811a1] HTTP GET /health responded 503 in 8141.1160 ms
+[2026-07-20 03:22:44 INF] [CorrelationId: ] Received HTTP response headers after 8143.4324ms - 503
+[2026-07-20 03:22:44 INF] [CorrelationId: ] End processing HTTP request after 8155.6385ms - 503
+[2026-07-20 03:23:14 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:23:14 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:23:26 ERR] [CorrelationId: f777f16d-3486-4561-b8f8-3df385c97ea7] Health check redis with status "Unhealthy" completed after 12187.4451ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:23:26 ERR] [CorrelationId: f777f16d-3486-4561-b8f8-3df385c97ea7] HTTP GET /health responded 503 in 12196.8570 ms
+[2026-07-20 03:23:26 INF] [CorrelationId: ] Received HTTP response headers after 12197.3948ms - 503
+[2026-07-20 03:23:26 INF] [CorrelationId: ] End processing HTTP request after 12210.1005ms - 503
+[2026-07-20 03:23:26 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:23:56 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:23:56 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:24:08 ERR] [CorrelationId: 533dd28f-a267-4b0a-a7d7-ef9860b2fefa] Health check redis with status "Unhealthy" completed after 12244.4067ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:24:08 ERR] [CorrelationId: 533dd28f-a267-4b0a-a7d7-ef9860b2fefa] HTTP GET /health responded 503 in 12251.5643 ms
+[2026-07-20 03:24:08 INF] [CorrelationId: ] Received HTTP response headers after 12252.4546ms - 503
+[2026-07-20 03:24:08 INF] [CorrelationId: ] End processing HTTP request after 12265.2082ms - 503
+[2026-07-20 03:24:08 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:24:38 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:24:38 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:24:51 ERR] [CorrelationId: 8b5b68e3-1019-4aa7-8cf2-1bd0e2eeb17f] Health check redis with status "Unhealthy" completed after 12195.216ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:24:51 ERR] [CorrelationId: 8b5b68e3-1019-4aa7-8cf2-1bd0e2eeb17f] HTTP GET /health responded 503 in 12203.6539 ms
+[2026-07-20 03:24:51 INF] [CorrelationId: ] Received HTTP response headers after 12205.8747ms - 503
+[2026-07-20 03:24:51 INF] [CorrelationId: ] End processing HTTP request after 12218.6496ms - 503
+[2026-07-20 03:24:51 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:25:21 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:25:21 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:25:33 ERR] [CorrelationId: 7ecd43b1-e845-43c8-bc33-6e005410bcc8] Health check redis with status "Unhealthy" completed after 12277.915ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:25:33 ERR] [CorrelationId: 7ecd43b1-e845-43c8-bc33-6e005410bcc8] HTTP GET /health responded 503 in 12285.3601 ms
+[2026-07-20 03:25:33 INF] [CorrelationId: ] Received HTTP response headers after 12286.1789ms - 503
+[2026-07-20 03:25:33 INF] [CorrelationId: ] End processing HTTP request after 12299.5142ms - 503
+[2026-07-20 03:25:33 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:26:03 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:26:03 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:26:15 ERR] [CorrelationId: 7bb57d13-fe0b-440a-bd38-14fbce105bb8] Health check redis with status "Unhealthy" completed after 12246.2587ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:26:15 ERR] [CorrelationId: 7bb57d13-fe0b-440a-bd38-14fbce105bb8] HTTP GET /health responded 503 in 12256.8990 ms
+[2026-07-20 03:26:15 INF] [CorrelationId: ] Received HTTP response headers after 12257.7176ms - 503
+[2026-07-20 03:26:15 INF] [CorrelationId: ] End processing HTTP request after 12271.6028ms - 503
+[2026-07-20 03:26:15 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:26:45 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:26:45 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:26:57 ERR] [CorrelationId: 194dbb77-cd69-40e7-ad6d-63a14f3071e2] Health check redis with status "Unhealthy" completed after 12220.3551ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:26:57 ERR] [CorrelationId: 194dbb77-cd69-40e7-ad6d-63a14f3071e2] HTTP GET /health responded 503 in 12230.9272 ms
+[2026-07-20 03:26:57 INF] [CorrelationId: ] Received HTTP response headers after 12233.4647ms - 503
+[2026-07-20 03:26:57 INF] [CorrelationId: ] End processing HTTP request after 12246.5851ms - 503
+[2026-07-20 03:26:57 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:27:28 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:27:28 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:27:40 ERR] [CorrelationId: a7ab288a-c647-42e9-a07a-1d6bf978bc58] Health check redis with status "Unhealthy" completed after 12211.7229ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:27:40 ERR] [CorrelationId: a7ab288a-c647-42e9-a07a-1d6bf978bc58] HTTP GET /health responded 503 in 12218.0896 ms
+[2026-07-20 03:27:40 INF] [CorrelationId: ] Received HTTP response headers after 12218.5998ms - 503
+[2026-07-20 03:27:40 INF] [CorrelationId: ] End processing HTTP request after 12229.6089ms - 503
+[2026-07-20 03:27:40 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:28:10 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:28:10 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:28:22 ERR] [CorrelationId: 9656546a-65b6-4183-a2e0-f651a12beb73] Health check redis with status "Unhealthy" completed after 12176.6692ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:28:22 ERR] [CorrelationId: 9656546a-65b6-4183-a2e0-f651a12beb73] HTTP GET /health responded 503 in 12183.5902 ms
+[2026-07-20 03:28:22 INF] [CorrelationId: ] Received HTTP response headers after 12184.2796ms - 503
+[2026-07-20 03:28:22 INF] [CorrelationId: ] End processing HTTP request after 12196.1185ms - 503
+[2026-07-20 03:28:22 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:28:52 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:28:52 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:29:04 ERR] [CorrelationId: 9b96fae2-ef84-473c-84a7-102d47432bce] Health check redis with status "Unhealthy" completed after 12197.4598ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:29:04 ERR] [CorrelationId: 9b96fae2-ef84-473c-84a7-102d47432bce] HTTP GET /health responded 503 in 12205.4857 ms
+[2026-07-20 03:29:04 INF] [CorrelationId: ] Received HTTP response headers after 12207.8661ms - 503
+[2026-07-20 03:29:04 INF] [CorrelationId: ] End processing HTTP request after 12218.9762ms - 503
+[2026-07-20 03:29:04 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:29:34 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:29:34 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:29:46 ERR] [CorrelationId: 053d94f7-30f9-4400-9d98-15e24158e38e] Health check redis with status "Unhealthy" completed after 12138.5294ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:29:46 ERR] [CorrelationId: 053d94f7-30f9-4400-9d98-15e24158e38e] HTTP GET /health responded 503 in 12145.2616 ms
+[2026-07-20 03:29:46 INF] [CorrelationId: ] Received HTTP response headers after 12145.6671ms - 503
+[2026-07-20 03:29:46 INF] [CorrelationId: ] End processing HTTP request after 12159.7782ms - 503
+[2026-07-20 03:29:46 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:30:16 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:30:16 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:30:29 ERR] [CorrelationId: 75e99274-ba32-4a09-9e55-aed25020c5c0] Health check redis with status "Unhealthy" completed after 12186.1404ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:30:29 ERR] [CorrelationId: 75e99274-ba32-4a09-9e55-aed25020c5c0] HTTP GET /health responded 503 in 12196.3122 ms
+[2026-07-20 03:30:29 INF] [CorrelationId: ] Received HTTP response headers after 12196.8591ms - 503
+[2026-07-20 03:30:29 INF] [CorrelationId: ] End processing HTTP request after 12209.9737ms - 503
+[2026-07-20 03:30:29 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:30:59 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:30:59 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:31:11 ERR] [CorrelationId: 4076c6b6-c039-40e2-b08f-0687a659441e] Health check redis with status "Unhealthy" completed after 12231.8439ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:31:11 ERR] [CorrelationId: 4076c6b6-c039-40e2-b08f-0687a659441e] HTTP GET /health responded 503 in 12289.9037 ms
+[2026-07-20 03:31:11 INF] [CorrelationId: ] Received HTTP response headers after 12291.9129ms - 503
+[2026-07-20 03:31:11 INF] [CorrelationId: ] End processing HTTP request after 12306.7127ms - 503
+[2026-07-20 03:31:11 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:31:41 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:31:41 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:31:53 ERR] [CorrelationId: 667f7c1e-274f-41b1-b7df-a7346a128b4f] Health check redis with status "Unhealthy" completed after 12270.3581ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:31:53 ERR] [CorrelationId: 667f7c1e-274f-41b1-b7df-a7346a128b4f] HTTP GET /health responded 503 in 12280.4491 ms
+[2026-07-20 03:31:53 INF] [CorrelationId: ] Received HTTP response headers after 12280.8511ms - 503
+[2026-07-20 03:31:53 INF] [CorrelationId: ] End processing HTTP request after 12296.9225ms - 503
+[2026-07-20 03:31:53 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:32:23 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:32:23 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:32:35 ERR] [CorrelationId: 2f7f68ae-112d-4e7e-a47f-47890872cc43] Health check redis with status "Unhealthy" completed after 12138.6804ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:32:35 ERR] [CorrelationId: 2f7f68ae-112d-4e7e-a47f-47890872cc43] HTTP GET /health responded 503 in 12145.6009 ms
+[2026-07-20 03:32:35 INF] [CorrelationId: ] Received HTTP response headers after 12146.3499ms - 503
+[2026-07-20 03:32:35 INF] [CorrelationId: ] End processing HTTP request after 12162.4385ms - 503
+[2026-07-20 03:32:35 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:33:05 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:33:05 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:33:18 ERR] [CorrelationId: 13882f66-667b-48a4-bb31-551b4a821680] Health check redis with status "Unhealthy" completed after 12194.6768ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:33:18 ERR] [CorrelationId: 13882f66-667b-48a4-bb31-551b4a821680] HTTP GET /health responded 503 in 12202.3633 ms
+[2026-07-20 03:33:18 INF] [CorrelationId: ] Received HTTP response headers after 12204.5667ms - 503
+[2026-07-20 03:33:18 INF] [CorrelationId: ] End processing HTTP request after 12217.3411ms - 503
+[2026-07-20 03:33:48 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:33:48 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:34:00 ERR] [CorrelationId: 009026d6-1aba-4a26-bab0-dfe0cbec1844] Health check redis with status "Unhealthy" completed after 12209.9665ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:34:00 ERR] [CorrelationId: 009026d6-1aba-4a26-bab0-dfe0cbec1844] HTTP GET /health responded 503 in 12220.0512 ms
+[2026-07-20 03:34:00 INF] [CorrelationId: ] Received HTTP response headers after 12220.6857ms - 503
+[2026-07-20 03:34:00 INF] [CorrelationId: ] End processing HTTP request after 12234.0552ms - 503
+[2026-07-20 03:34:00 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:34:30 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:34:30 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:34:42 ERR] [CorrelationId: 64c5574a-3d54-4dba-bcbc-634f53dbaa60] Health check redis with status "Unhealthy" completed after 12175.38ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:34:42 ERR] [CorrelationId: 64c5574a-3d54-4dba-bcbc-634f53dbaa60] HTTP GET /health responded 503 in 12184.7891 ms
+[2026-07-20 03:34:42 INF] [CorrelationId: ] Received HTTP response headers after 12185.2054ms - 503
+[2026-07-20 03:34:42 INF] [CorrelationId: ] End processing HTTP request after 12197.9972ms - 503
+[2026-07-20 03:34:42 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:35:12 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:35:12 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:35:24 ERR] [CorrelationId: 5fd8c43f-959a-458f-88ef-74d192b88563] Health check redis with status "Unhealthy" completed after 12269.5632ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:35:24 ERR] [CorrelationId: 5fd8c43f-959a-458f-88ef-74d192b88563] HTTP GET /health responded 503 in 12277.7771 ms
+[2026-07-20 03:35:24 INF] [CorrelationId: ] Received HTTP response headers after 12281.1736ms - 503
+[2026-07-20 03:35:24 INF] [CorrelationId: ] End processing HTTP request after 12294.1205ms - 503
+[2026-07-20 03:35:24 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:35:54 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:35:54 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:36:07 ERR] [CorrelationId: af7453ea-ee1d-4479-8929-d9c9f4798e52] Health check redis with status "Unhealthy" completed after 12211.9996ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:36:07 ERR] [CorrelationId: af7453ea-ee1d-4479-8929-d9c9f4798e52] HTTP GET /health responded 503 in 12218.7857 ms
+[2026-07-20 03:36:07 INF] [CorrelationId: ] Received HTTP response headers after 12219.2055ms - 503
+[2026-07-20 03:36:07 INF] [CorrelationId: ] End processing HTTP request after 12230.9655ms - 503
+[2026-07-20 03:36:07 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:36:37 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:36:37 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:36:49 ERR] [CorrelationId: 8eeb6512-aa0e-4101-8288-3e36b4ce40d7] Health check redis with status "Unhealthy" completed after 12226.9179ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:36:49 ERR] [CorrelationId: 8eeb6512-aa0e-4101-8288-3e36b4ce40d7] HTTP GET /health responded 503 in 12233.7051 ms
+[2026-07-20 03:36:49 INF] [CorrelationId: ] Received HTTP response headers after 12234.3522ms - 503
+[2026-07-20 03:36:49 INF] [CorrelationId: ] End processing HTTP request after 12246.5103ms - 503
+[2026-07-20 03:36:49 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:37:19 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:37:19 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:37:31 ERR] [CorrelationId: 1a42ded8-1d3b-4336-b008-5b0b761ca6bd] Health check redis with status "Unhealthy" completed after 12183.6923ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:37:31 ERR] [CorrelationId: 1a42ded8-1d3b-4336-b008-5b0b761ca6bd] HTTP GET /health responded 503 in 12190.5399 ms
+[2026-07-20 03:37:31 INF] [CorrelationId: ] Received HTTP response headers after 12192.765ms - 503
+[2026-07-20 03:37:31 INF] [CorrelationId: ] End processing HTTP request after 12202.8376ms - 503
+[2026-07-20 03:37:31 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:38:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:38:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:38:13 ERR] [CorrelationId: 0da7f46f-dcab-4b3e-8cbd-d3247f6a58ce] Health check redis with status "Unhealthy" completed after 12182.5628ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:38:13 ERR] [CorrelationId: 0da7f46f-dcab-4b3e-8cbd-d3247f6a58ce] HTTP GET /health responded 503 in 12190.4130 ms
+[2026-07-20 03:38:13 INF] [CorrelationId: ] Received HTTP response headers after 12190.8766ms - 503
+[2026-07-20 03:38:13 INF] [CorrelationId: ] End processing HTTP request after 12205.249ms - 503
+[2026-07-20 03:38:13 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:38:43 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:38:43 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:38:56 ERR] [CorrelationId: 7c15b7fa-365b-49b5-9761-2f4ae526b44c] Health check redis with status "Unhealthy" completed after 12222.9935ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:38:56 ERR] [CorrelationId: 7c15b7fa-365b-49b5-9761-2f4ae526b44c] HTTP GET /health responded 503 in 12229.6995 ms
+[2026-07-20 03:38:56 INF] [CorrelationId: ] Received HTTP response headers after 12230.1819ms - 503
+[2026-07-20 03:38:56 INF] [CorrelationId: ] End processing HTTP request after 12243.1088ms - 503
+[2026-07-20 03:38:56 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:39:26 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:39:26 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:39:38 ERR] [CorrelationId: 25ed6322-5639-47ba-975b-0e91f22ff604] Health check redis with status "Unhealthy" completed after 12242.1649ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:39:38 ERR] [CorrelationId: 25ed6322-5639-47ba-975b-0e91f22ff604] HTTP GET /health responded 503 in 12248.5190 ms
+[2026-07-20 03:39:38 INF] [CorrelationId: ] Received HTTP response headers after 12250.9694ms - 503
+[2026-07-20 03:39:38 INF] [CorrelationId: ] End processing HTTP request after 12264.3125ms - 503
+[2026-07-20 03:39:38 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:40:08 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:40:08 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:40:20 ERR] [CorrelationId: 519572a4-51a6-4cd7-9b60-9268f8b878d5] Health check redis with status "Unhealthy" completed after 12255.7797ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:40:20 ERR] [CorrelationId: 519572a4-51a6-4cd7-9b60-9268f8b878d5] HTTP GET /health responded 503 in 12264.3290 ms
+[2026-07-20 03:40:20 INF] [CorrelationId: ] Received HTTP response headers after 12264.6462ms - 503
+[2026-07-20 03:40:20 INF] [CorrelationId: ] End processing HTTP request after 12279.2889ms - 503
+[2026-07-20 03:40:20 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:40:50 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:40:50 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:41:02 ERR] [CorrelationId: 2a2a0fac-2680-4616-8f29-7b4dd2a01c53] Health check redis with status "Unhealthy" completed after 12244.4037ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:41:02 ERR] [CorrelationId: 2a2a0fac-2680-4616-8f29-7b4dd2a01c53] HTTP GET /health responded 503 in 12252.5680 ms
+[2026-07-20 03:41:02 INF] [CorrelationId: ] Received HTTP response headers after 12253.0906ms - 503
+[2026-07-20 03:41:02 INF] [CorrelationId: ] End processing HTTP request after 12265.1612ms - 503
+[2026-07-20 03:41:02 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:41:33 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:41:33 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:41:45 ERR] [CorrelationId: a11f3efc-5b81-4228-b625-b7fc9019fa3b] Health check redis with status "Unhealthy" completed after 12200.1355ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:41:45 ERR] [CorrelationId: a11f3efc-5b81-4228-b625-b7fc9019fa3b] HTTP GET /health responded 503 in 12207.5837 ms
+[2026-07-20 03:41:45 INF] [CorrelationId: ] Received HTTP response headers after 12209.8652ms - 503
+[2026-07-20 03:41:45 INF] [CorrelationId: ] End processing HTTP request after 12220.7474ms - 503
+[2026-07-20 03:41:45 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:42:15 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:42:15 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:42:27 ERR] [CorrelationId: d488deb4-df28-4ccf-a920-49c3709d69a5] Health check redis with status "Unhealthy" completed after 12237.929ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:42:27 ERR] [CorrelationId: d488deb4-df28-4ccf-a920-49c3709d69a5] HTTP GET /health responded 503 in 12245.4618 ms
+[2026-07-20 03:42:27 INF] [CorrelationId: ] Received HTTP response headers after 12245.9862ms - 503
+[2026-07-20 03:42:27 INF] [CorrelationId: ] End processing HTTP request after 12257.3687ms - 503
+[2026-07-20 03:42:27 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:42:57 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:42:57 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:43:09 ERR] [CorrelationId: 088c75a5-20d9-4058-9659-667751d45979] Health check redis with status "Unhealthy" completed after 12200.86ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:43:09 ERR] [CorrelationId: 088c75a5-20d9-4058-9659-667751d45979] HTTP GET /health responded 503 in 12207.7814 ms
+[2026-07-20 03:43:09 INF] [CorrelationId: ] Received HTTP response headers after 12208.5584ms - 503
+[2026-07-20 03:43:09 INF] [CorrelationId: ] End processing HTTP request after 12222.0216ms - 503
+[2026-07-20 03:43:09 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:43:39 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:43:39 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:43:51 ERR] [CorrelationId: 6bf69aa2-ee2c-4de3-85af-320209ef958b] Health check redis with status "Unhealthy" completed after 12183.4847ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:43:51 ERR] [CorrelationId: 6bf69aa2-ee2c-4de3-85af-320209ef958b] HTTP GET /health responded 503 in 12193.3808 ms
+[2026-07-20 03:43:51 INF] [CorrelationId: ] Received HTTP response headers after 12195.5417ms - 503
+[2026-07-20 03:43:51 INF] [CorrelationId: ] End processing HTTP request after 12208.2858ms - 503
+[2026-07-20 03:44:21 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:44:21 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:44:34 ERR] [CorrelationId: 26e66b88-4fef-47fe-9a32-bdb904177d73] Health check redis with status "Unhealthy" completed after 12250.2222ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:44:34 ERR] [CorrelationId: 26e66b88-4fef-47fe-9a32-bdb904177d73] HTTP GET /health responded 503 in 12258.3801 ms
+[2026-07-20 03:44:34 INF] [CorrelationId: ] Received HTTP response headers after 12258.986ms - 503
+[2026-07-20 03:44:34 INF] [CorrelationId: ] End processing HTTP request after 12272.0492ms - 503
+[2026-07-20 03:44:34 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:45:04 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:45:04 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:45:16 ERR] [CorrelationId: 6ad0c967-0f73-4fc2-871f-f4ca6724567d] Health check redis with status "Unhealthy" completed after 12179.4746ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:45:16 ERR] [CorrelationId: 6ad0c967-0f73-4fc2-871f-f4ca6724567d] HTTP GET /health responded 503 in 12189.9588 ms
+[2026-07-20 03:45:16 INF] [CorrelationId: ] Received HTTP response headers after 12190.5832ms - 503
+[2026-07-20 03:45:16 INF] [CorrelationId: ] End processing HTTP request after 12204.8429ms - 503
+[2026-07-20 03:45:16 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:45:46 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:45:46 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:45:58 ERR] [CorrelationId: 4072f898-95be-49e8-bf75-d7ce6a4ee713] Health check redis with status "Unhealthy" completed after 12232.3884ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:45:58 ERR] [CorrelationId: 4072f898-95be-49e8-bf75-d7ce6a4ee713] HTTP GET /health responded 503 in 12241.8365 ms
+[2026-07-20 03:45:58 INF] [CorrelationId: ] Received HTTP response headers after 12243.9729ms - 503
+[2026-07-20 03:45:58 INF] [CorrelationId: ] End processing HTTP request after 12255.028ms - 503
+[2026-07-20 03:45:58 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:46:28 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:46:28 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:46:41 ERR] [CorrelationId: 67e5d5d4-c749-406b-85e2-3d045dab0b2f] Health check redis with status "Unhealthy" completed after 12281.794ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:46:41 ERR] [CorrelationId: 67e5d5d4-c749-406b-85e2-3d045dab0b2f] HTTP GET /health responded 503 in 12290.0485 ms
+[2026-07-20 03:46:41 INF] [CorrelationId: ] Received HTTP response headers after 12290.3923ms - 503
+[2026-07-20 03:46:41 INF] [CorrelationId: ] End processing HTTP request after 12304.7302ms - 503
+[2026-07-20 03:46:41 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:47:11 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:47:11 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:47:23 ERR] [CorrelationId: cd429449-b969-444f-8b5d-f6ace8b9fcc4] Health check redis with status "Unhealthy" completed after 12178.1221ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:47:23 ERR] [CorrelationId: cd429449-b969-444f-8b5d-f6ace8b9fcc4] HTTP GET /health responded 503 in 12184.6236 ms
+[2026-07-20 03:47:23 INF] [CorrelationId: ] Received HTTP response headers after 12185.1147ms - 503
+[2026-07-20 03:47:23 INF] [CorrelationId: ] End processing HTTP request after 12199.4686ms - 503
+[2026-07-20 03:47:23 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:47:53 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:47:53 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:48:05 ERR] [CorrelationId: c35299f7-1510-4257-87eb-e9522ad68ab6] Health check redis with status "Unhealthy" completed after 12262.4489ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:48:05 ERR] [CorrelationId: c35299f7-1510-4257-87eb-e9522ad68ab6] HTTP GET /health responded 503 in 12271.9531 ms
+[2026-07-20 03:48:05 INF] [CorrelationId: ] Received HTTP response headers after 12273.8534ms - 503
+[2026-07-20 03:48:05 INF] [CorrelationId: ] End processing HTTP request after 12288.5865ms - 503
+[2026-07-20 03:48:05 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:48:35 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:48:35 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:48:47 ERR] [CorrelationId: 67b76e1d-df19-49b4-a2e5-0afc75ba2bc3] Health check redis with status "Unhealthy" completed after 12237.4462ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:48:47 ERR] [CorrelationId: 67b76e1d-df19-49b4-a2e5-0afc75ba2bc3] HTTP GET /health responded 503 in 12247.1242 ms
+[2026-07-20 03:48:47 INF] [CorrelationId: ] Received HTTP response headers after 12247.5377ms - 503
+[2026-07-20 03:48:47 INF] [CorrelationId: ] End processing HTTP request after 12262.3155ms - 503
+[2026-07-20 03:48:47 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:49:17 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:49:17 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:49:30 ERR] [CorrelationId: 94d14a8f-17d8-4267-b3e8-4d0ff0e6336a] Health check redis with status "Unhealthy" completed after 12270.3844ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:49:30 ERR] [CorrelationId: 94d14a8f-17d8-4267-b3e8-4d0ff0e6336a] HTTP GET /health responded 503 in 12276.6839 ms
+[2026-07-20 03:49:30 INF] [CorrelationId: ] Received HTTP response headers after 12277.4063ms - 503
+[2026-07-20 03:49:30 INF] [CorrelationId: ] End processing HTTP request after 12289.8218ms - 503
+[2026-07-20 03:49:30 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:50:00 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:50:00 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:50:12 ERR] [CorrelationId: f66d76ab-0ab1-48c9-a29b-fc8d106a2afb] Health check redis with status "Unhealthy" completed after 12208.5976ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:50:12 ERR] [CorrelationId: f66d76ab-0ab1-48c9-a29b-fc8d106a2afb] HTTP GET /health responded 503 in 12216.8822 ms
+[2026-07-20 03:50:12 INF] [CorrelationId: ] Received HTTP response headers after 12219.1147ms - 503
+[2026-07-20 03:50:12 INF] [CorrelationId: ] End processing HTTP request after 12231.9507ms - 503
+[2026-07-20 03:50:12 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:50:42 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:50:42 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:50:54 ERR] [CorrelationId: 81633a76-b0f0-4d74-8ee8-bf56d311f432] Health check redis with status "Unhealthy" completed after 12238.2286ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:50:54 ERR] [CorrelationId: 81633a76-b0f0-4d74-8ee8-bf56d311f432] HTTP GET /health responded 503 in 12246.7778 ms
+[2026-07-20 03:50:54 INF] [CorrelationId: ] Received HTTP response headers after 12247.122ms - 503
+[2026-07-20 03:50:54 INF] [CorrelationId: ] End processing HTTP request after 12258.6977ms - 503
+[2026-07-20 03:50:54 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:51:24 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:51:24 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:51:36 ERR] [CorrelationId: 967c6085-68ac-4bf9-bce1-e67bbdd59b73] Health check redis with status "Unhealthy" completed after 12274.6692ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:51:36 ERR] [CorrelationId: 967c6085-68ac-4bf9-bce1-e67bbdd59b73] HTTP GET /health responded 503 in 12281.1580 ms
+[2026-07-20 03:51:36 INF] [CorrelationId: ] Received HTTP response headers after 12281.5886ms - 503
+[2026-07-20 03:51:36 INF] [CorrelationId: ] End processing HTTP request after 12295.1936ms - 503
+[2026-07-20 03:51:36 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:52:07 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:52:07 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:52:19 ERR] [CorrelationId: 185bcac2-ed82-452c-aeba-326e8c4faff4] Health check redis with status "Unhealthy" completed after 12268.5269ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:52:19 ERR] [CorrelationId: 185bcac2-ed82-452c-aeba-326e8c4faff4] HTTP GET /health responded 503 in 12274.4543 ms
+[2026-07-20 03:52:19 INF] [CorrelationId: ] Received HTTP response headers after 12276.4689ms - 503
+[2026-07-20 03:52:19 INF] [CorrelationId: ] End processing HTTP request after 12291.3139ms - 503
+[2026-07-20 03:52:19 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:52:49 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:52:49 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:53:01 ERR] [CorrelationId: 8c5b8549-abb1-4449-aa90-2262938d4b00] Health check redis with status "Unhealthy" completed after 12217.9303ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:53:01 ERR] [CorrelationId: 8c5b8549-abb1-4449-aa90-2262938d4b00] HTTP GET /health responded 503 in 12224.8225 ms
+[2026-07-20 03:53:01 INF] [CorrelationId: ] Received HTTP response headers after 12225.144ms - 503
+[2026-07-20 03:53:01 INF] [CorrelationId: ] End processing HTTP request after 12235.2811ms - 503
+[2026-07-20 03:53:01 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:53:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:53:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:53:43 ERR] [CorrelationId: 68fad440-28d5-427c-9075-710a9ef830a3] Health check redis with status "Unhealthy" completed after 12280.0524ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:53:43 ERR] [CorrelationId: 68fad440-28d5-427c-9075-710a9ef830a3] HTTP GET /health responded 503 in 12287.9756 ms
+[2026-07-20 03:53:43 INF] [CorrelationId: ] Received HTTP response headers after 12289.0016ms - 503
+[2026-07-20 03:53:43 INF] [CorrelationId: ] End processing HTTP request after 12300.6635ms - 503
+[2026-07-20 03:53:43 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:54:13 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:54:13 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:54:26 ERR] [CorrelationId: 88f9dfaa-4236-4d50-90be-33e7f144913a] Health check redis with status "Unhealthy" completed after 12172.4419ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:54:26 ERR] [CorrelationId: 88f9dfaa-4236-4d50-90be-33e7f144913a] HTTP GET /health responded 503 in 12181.4166 ms
+[2026-07-20 03:54:26 INF] [CorrelationId: ] Received HTTP response headers after 12183.7902ms - 503
+[2026-07-20 03:54:26 INF] [CorrelationId: ] End processing HTTP request after 12195.249ms - 503
+[2026-07-20 03:54:56 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:54:56 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:55:08 ERR] [CorrelationId: 48df5cf1-24f1-4260-813e-c9399af003f4] Health check redis with status "Unhealthy" completed after 12222.2899ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:55:08 ERR] [CorrelationId: 48df5cf1-24f1-4260-813e-c9399af003f4] HTTP GET /health responded 503 in 12231.1641 ms
+[2026-07-20 03:55:08 INF] [CorrelationId: ] Received HTTP response headers after 12231.5054ms - 503
+[2026-07-20 03:55:08 INF] [CorrelationId: ] End processing HTTP request after 12244.3997ms - 503
+[2026-07-20 03:55:08 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:55:38 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:55:38 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:55:50 ERR] [CorrelationId: e109630e-8c16-4aa9-976f-b0e3cd55fa22] Health check redis with status "Unhealthy" completed after 12174.5702ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:55:50 ERR] [CorrelationId: e109630e-8c16-4aa9-976f-b0e3cd55fa22] HTTP GET /health responded 503 in 12181.5250 ms
+[2026-07-20 03:55:50 INF] [CorrelationId: ] Received HTTP response headers after 12181.8548ms - 503
+[2026-07-20 03:55:50 INF] [CorrelationId: ] End processing HTTP request after 12192.2332ms - 503
+[2026-07-20 03:55:50 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:56:20 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:56:20 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:56:32 ERR] [CorrelationId: 2666fda1-b493-48eb-ad15-f91e190143f2] Health check redis with status "Unhealthy" completed after 12222.4645ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:56:32 ERR] [CorrelationId: 2666fda1-b493-48eb-ad15-f91e190143f2] HTTP GET /health responded 503 in 12229.8068 ms
+[2026-07-20 03:56:32 INF] [CorrelationId: ] Received HTTP response headers after 12232.2815ms - 503
+[2026-07-20 03:56:32 INF] [CorrelationId: ] End processing HTTP request after 12244.4473ms - 503
+[2026-07-20 03:56:32 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:57:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:57:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:57:15 ERR] [CorrelationId: 91227ea4-329f-4da9-8516-c1983a835f42] Health check redis with status "Unhealthy" completed after 12203.9422ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:57:15 ERR] [CorrelationId: 91227ea4-329f-4da9-8516-c1983a835f42] HTTP GET /health responded 503 in 12210.8230 ms
+[2026-07-20 03:57:15 INF] [CorrelationId: ] Received HTTP response headers after 12211.2262ms - 503
+[2026-07-20 03:57:15 INF] [CorrelationId: ] End processing HTTP request after 12222.7511ms - 503
+[2026-07-20 03:57:15 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:57:45 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:57:45 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:57:57 ERR] [CorrelationId: 59d9b438-506d-4ccc-af1b-75bfe4cb255d] Health check redis with status "Unhealthy" completed after 12241.944ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:57:57 ERR] [CorrelationId: 59d9b438-506d-4ccc-af1b-75bfe4cb255d] HTTP GET /health responded 503 in 12248.5861 ms
+[2026-07-20 03:57:57 INF] [CorrelationId: ] Received HTTP response headers after 12249.3759ms - 503
+[2026-07-20 03:57:57 INF] [CorrelationId: ] End processing HTTP request after 12261.9098ms - 503
+[2026-07-20 03:57:57 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:58:27 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:58:27 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:58:39 ERR] [CorrelationId: d41e53b8-9ec3-4855-b0b9-a3b9129bd2c1] Health check redis with status "Unhealthy" completed after 12200.2339ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:58:39 ERR] [CorrelationId: d41e53b8-9ec3-4855-b0b9-a3b9129bd2c1] HTTP GET /health responded 503 in 12207.5857 ms
+[2026-07-20 03:58:39 INF] [CorrelationId: ] Received HTTP response headers after 12209.8064ms - 503
+[2026-07-20 03:58:39 INF] [CorrelationId: ] End processing HTTP request after 12221.9336ms - 503
+[2026-07-20 03:58:39 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:59:09 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:59:09 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:59:21 ERR] [CorrelationId: b73c6444-87ff-46cf-9c5c-bc73e5d2cfb0] Health check redis with status "Unhealthy" completed after 12195.7261ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 03:59:21 ERR] [CorrelationId: b73c6444-87ff-46cf-9c5c-bc73e5d2cfb0] HTTP GET /health responded 503 in 12202.6846 ms
+[2026-07-20 03:59:21 INF] [CorrelationId: ] Received HTTP response headers after 12203.1017ms - 503
+[2026-07-20 03:59:21 INF] [CorrelationId: ] End processing HTTP request after 12215.6032ms - 503
+[2026-07-20 03:59:21 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 03:59:51 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 03:59:51 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:00:03 ERR] [CorrelationId: ddd7546b-b141-44c2-a4b3-a8e40f524394] Health check redis with status "Unhealthy" completed after 12201.4862ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:00:03 ERR] [CorrelationId: ddd7546b-b141-44c2-a4b3-a8e40f524394] HTTP GET /health responded 503 in 12208.7716 ms
+[2026-07-20 04:00:03 INF] [CorrelationId: ] Received HTTP response headers after 12209.3834ms - 503
+[2026-07-20 04:00:03 INF] [CorrelationId: ] End processing HTTP request after 12223.5449ms - 503
+[2026-07-20 04:00:03 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:00:34 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:00:34 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:00:46 ERR] [CorrelationId: a1187312-c0f0-4364-a1be-bc591c2bb294] Health check redis with status "Unhealthy" completed after 12196.0609ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:00:46 ERR] [CorrelationId: a1187312-c0f0-4364-a1be-bc591c2bb294] HTTP GET /health responded 503 in 12203.0770 ms
+[2026-07-20 04:00:46 INF] [CorrelationId: ] Received HTTP response headers after 12205.1926ms - 503
+[2026-07-20 04:00:46 INF] [CorrelationId: ] End processing HTTP request after 12214.4309ms - 503
+[2026-07-20 04:00:46 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:01:16 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:01:16 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:01:28 ERR] [CorrelationId: 62dca5dc-42de-4266-8c07-256c81b7b3fd] Health check redis with status "Unhealthy" completed after 12257.1744ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:01:28 ERR] [CorrelationId: 62dca5dc-42de-4266-8c07-256c81b7b3fd] HTTP GET /health responded 503 in 12264.0089 ms
+[2026-07-20 04:01:28 INF] [CorrelationId: ] Received HTTP response headers after 12264.3693ms - 503
+[2026-07-20 04:01:28 INF] [CorrelationId: ] End processing HTTP request after 12276.2977ms - 503
+[2026-07-20 04:01:28 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:01:58 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:01:58 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:02:10 ERR] [CorrelationId: af32f318-6a14-454c-9179-b97c0e410987] Health check redis with status "Unhealthy" completed after 12278.6486ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:02:10 ERR] [CorrelationId: af32f318-6a14-454c-9179-b97c0e410987] HTTP GET /health responded 503 in 12287.3716 ms
+[2026-07-20 04:02:10 INF] [CorrelationId: ] Received HTTP response headers after 12288.1005ms - 503
+[2026-07-20 04:02:10 INF] [CorrelationId: ] End processing HTTP request after 12299.0873ms - 503
+[2026-07-20 04:02:10 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:02:40 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:02:40 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:02:53 ERR] [CorrelationId: c4f9d01f-1948-4640-9e6e-447b075983ac] Health check redis with status "Unhealthy" completed after 12191.4304ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:02:53 ERR] [CorrelationId: c4f9d01f-1948-4640-9e6e-447b075983ac] HTTP GET /health responded 503 in 12198.5421 ms
+[2026-07-20 04:02:53 INF] [CorrelationId: ] Received HTTP response headers after 12200.4719ms - 503
+[2026-07-20 04:02:53 INF] [CorrelationId: ] End processing HTTP request after 12211.8646ms - 503
+[2026-07-20 04:02:53 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:03:23 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:03:23 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:03:35 ERR] [CorrelationId: 715a4795-a444-4d70-97b3-f59eba7d5843] Health check redis with status "Unhealthy" completed after 12154.2467ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:03:35 ERR] [CorrelationId: 715a4795-a444-4d70-97b3-f59eba7d5843] HTTP GET /health responded 503 in 12160.4489 ms
+[2026-07-20 04:03:35 INF] [CorrelationId: ] Received HTTP response headers after 12160.8307ms - 503
+[2026-07-20 04:03:35 INF] [CorrelationId: ] End processing HTTP request after 12174.8167ms - 503
+[2026-07-20 04:03:35 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:04:05 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:04:05 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:04:17 ERR] [CorrelationId: 06d71e2a-581f-466c-a052-f1faa876d116] Health check redis with status "Unhealthy" completed after 12169.2261ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:04:17 ERR] [CorrelationId: 06d71e2a-581f-466c-a052-f1faa876d116] HTTP GET /health responded 503 in 12180.4002 ms
+[2026-07-20 04:04:17 INF] [CorrelationId: ] Received HTTP response headers after 12180.8283ms - 503
+[2026-07-20 04:04:17 INF] [CorrelationId: ] End processing HTTP request after 12195.4497ms - 503
+[2026-07-20 04:04:17 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:04:47 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:04:47 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:04:59 ERR] [CorrelationId: 76696127-c588-446b-9b70-a3a442e5f9d7] Health check redis with status "Unhealthy" completed after 12160.8564ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:04:59 ERR] [CorrelationId: 76696127-c588-446b-9b70-a3a442e5f9d7] HTTP GET /health responded 503 in 12169.5614 ms
+[2026-07-20 04:04:59 INF] [CorrelationId: ] Received HTTP response headers after 12171.7101ms - 503
+[2026-07-20 04:04:59 INF] [CorrelationId: ] End processing HTTP request after 12183.1371ms - 503
+[2026-07-20 04:05:29 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:05:29 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:05:41 ERR] [CorrelationId: 7689630e-b322-4ff6-b538-cd2ffced8f9a] Health check redis with status "Unhealthy" completed after 12185.2079ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:05:41 ERR] [CorrelationId: 7689630e-b322-4ff6-b538-cd2ffced8f9a] HTTP GET /health responded 503 in 12193.7131 ms
+[2026-07-20 04:05:41 INF] [CorrelationId: ] Received HTTP response headers after 12194.0642ms - 503
+[2026-07-20 04:05:41 INF] [CorrelationId: ] End processing HTTP request after 12204.8525ms - 503
+[2026-07-20 04:05:41 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:06:11 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:06:11 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:06:24 ERR] [CorrelationId: a0115714-6227-4f9e-8b96-ae9e5dfb4219] Health check redis with status "Unhealthy" completed after 12202.485ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:06:24 ERR] [CorrelationId: a0115714-6227-4f9e-8b96-ae9e5dfb4219] HTTP GET /health responded 503 in 12210.1675 ms
+[2026-07-20 04:06:24 INF] [CorrelationId: ] Received HTTP response headers after 12210.5756ms - 503
+[2026-07-20 04:06:24 INF] [CorrelationId: ] End processing HTTP request after 12221.4271ms - 503
+[2026-07-20 04:06:24 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:06:54 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:06:54 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:07:06 ERR] [CorrelationId: 3b4b9090-e1a9-48b8-b371-e417ab625c26] Health check redis with status "Unhealthy" completed after 12238.5516ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:07:06 ERR] [CorrelationId: 3b4b9090-e1a9-48b8-b371-e417ab625c26] HTTP GET /health responded 503 in 12245.0754 ms
+[2026-07-20 04:07:06 INF] [CorrelationId: ] Received HTTP response headers after 12247.9866ms - 503
+[2026-07-20 04:07:06 INF] [CorrelationId: ] End processing HTTP request after 12260.1291ms - 503
+[2026-07-20 04:07:06 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:07:36 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:07:36 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:07:48 ERR] [CorrelationId: 9f5de36f-c804-4ecc-aff5-baa1223c18c7] Health check redis with status "Unhealthy" completed after 12225.8899ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 643
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:07:48 ERR] [CorrelationId: 9f5de36f-c804-4ecc-aff5-baa1223c18c7] HTTP GET /health responded 503 in 12232.0119 ms
+[2026-07-20 04:07:48 INF] [CorrelationId: ] Received HTTP response headers after 12232.4124ms - 503
+[2026-07-20 04:07:48 INF] [CorrelationId: ] End processing HTTP request after 12247.385ms - 503
+[2026-07-20 04:07:48 INF] [CorrelationId: ] Notification is sent on same window time.

@@ -40,7 +40,9 @@ namespace TaskManager.API
                 .AddJsonFile("appsettings.json")
                 .Build())
               .CreateLogger();
+            
             var builder = WebApplication.CreateBuilder(args);
+
             // serilog
             builder.Host.UseSerilog((ctx, lc) =>
             {
@@ -237,7 +239,7 @@ namespace TaskManager.API
 
             app.MapControllers();
             // health check
-            app.MapApplicationHealthChecks();
+            app.MapApplicationHealthChecks(); // Register All Checks
             app.Run();
         }
     }
