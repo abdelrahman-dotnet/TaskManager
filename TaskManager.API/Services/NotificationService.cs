@@ -9,6 +9,8 @@ using TaskManager.API.DTOs.Notification;
 using TaskManager.API.Extentions;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
+using TaskManager.Bussiness.Authorization;
+using TaskManager.Bussiness.Authorization.ResourceConditions;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Data.Entities;
 
@@ -19,12 +21,14 @@ namespace TaskManager.API.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<NotificationService> _logger;
+        private readonly IWorkspaceAuthorizationService _authService;
 
-        public NotificationService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<NotificationService> logger)
+        public NotificationService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<NotificationService> logger, IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<PagedResult<NotificationReadDto>> GetAllAsync(NotificationQueryParams queryParams, CancellationToken cancellationToken = default)
@@ -53,17 +57,16 @@ namespace TaskManager.API.Services
         public async Task<NotificationReadDto> CreateAsync(NotificationCreateDto dto)
         {
             // WORKSPACE PIVOT: Notification.WorkspaceMemberId (long) replaces the old string UserId.
-            // Resolve the recipient's workspace membership via ProjectMember (notifications are
-            // raised in a project/task context by callers), matching Option 1 approved by the user.
-            var recipientMember = await _unitOfWork.ProjectMembers.GetAllQuery()
-                .Where(pm => pm.WorkspaceMember.UserId == dto.UserId)
-                .Include(pm => pm.WorkspaceMember)
-                .OrderBy(pm => pm.Id)
+            // The recipient's WorkspaceMember is resolved WITHIN the target workspace (dto.WorkspaceId)
+            // instead of scanning for membership in any project.
+            var recipientMember = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .Where(wm => wm.WorkspaceId == dto.WorkspaceId && wm.UserId == dto.UserId)
+                .OrderBy(wm => wm.Id)
                 .FirstOrDefaultAsync();
             if (recipientMember == null)
-                throw new BadRequestException("The notification recipient is not a member of any project.");
+                throw new BadRequestException("The notification recipient is not a member of the target workspace.");
             var notification = _mapper.Map<Notification>(dto);
-            notification.WorkspaceMemberId = recipientMember.WorkspaceMemberId;
+            notification.WorkspaceMemberId = recipientMember.Id;
 
             await _unitOfWork.Notifications.AddAsync(notification);
             await _unitOfWork.CompleteAsync();
@@ -83,10 +86,15 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Notification not found.");
             }
 
-            if (notification.WorkspaceMember.UserId != currentUserId)
+            var readResult = await _authService.AuthorizeAsync(
+                notification.WorkspaceMember.WorkspaceId,
+                currentUserId,
+                Permissions.WorkspaceView,
+                new NotificationRecipientOnlyCondition(notification));
+            if (!readResult.Succeeded)
             {
                 _logger.LogWarning("MarkAsRead forbidden. UserId: {UserId} tried to read NotificationId: {NotificationId}", currentUserId, id);
-                throw new ForbiddenException("You can only read your own notifications.");
+                throw readResult.ToAuthorizationException();
             }
 
             notification.IsRead = true;
@@ -107,10 +115,15 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Notification not found.");
             }
 
-            if (notification.WorkspaceMember.UserId != currentUserId)
+            var deleteResult = await _authService.AuthorizeAsync(
+                notification.WorkspaceMember.WorkspaceId,
+                currentUserId,
+                Permissions.WorkspaceView,
+                new NotificationRecipientOnlyCondition(notification));
+            if (!deleteResult.Succeeded)
             {
                 _logger.LogWarning("DeleteNotification forbidden. UserId: {UserId} tried to delete NotificationId: {NotificationId}", currentUserId, id);
-                throw new ForbiddenException("You can only delete your own notifications.");
+                throw deleteResult.ToAuthorizationException();
             }
 
             _unitOfWork.Notifications.Delete(notification);

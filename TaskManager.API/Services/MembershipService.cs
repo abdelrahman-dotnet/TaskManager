@@ -2,8 +2,11 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskManager.API.Exceptions;
+using TaskManager.API.Extentions;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
+using TaskManager.Bussiness.Authorization;
+using TaskManager.Bussiness.Authorization.ResourceConditions;
 using TaskManager.Data.Entities;
 
 namespace TaskManager.API.Services
@@ -14,17 +17,20 @@ namespace TaskManager.API.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IAuditLogService _auditLogService;
         private readonly ILogger<MembershipService> _logger;
+        private readonly IWorkspaceAuthorizationService _authService;
 
         public MembershipService(
             IUnitOfWork unitOfWork,
             UserManager<ApplicationUser> userManager,
             IAuditLogService auditLogService,
-            ILogger<MembershipService> logger)
+            ILogger<MembershipService> logger,
+            IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _auditLogService = auditLogService;
             _logger = logger;
+            _authService = authService;
         }
 
         // ══════════════════════════════ Access Checks ══════════════════════════════
@@ -101,23 +107,45 @@ namespace TaskManager.API.Services
             return role == WorkspaceRole.Owner;
         }
 
+        // Authorization Pipeline: Visibility -> Permission (Teams.ManageMembers).
         public async Task EnsureCanManageTeamAsync(long teamId, string userId, CancellationToken cancellationToken = default)
         {
-            var role = await GetUserTeamRoleAsync(teamId, userId, cancellationToken);
-            if (role != WorkspaceRole.Owner && role != WorkspaceRole.Admin)
+            var team = await _unitOfWork.Teams.GetByIdAsync(teamId, cancellationToken);
+            if (team is null)
+                throw new NotFoundException("Team not found.");
+
+            var authResult = await _authService.AuthorizeAsync(
+                team.WorkspaceId,
+                userId,
+                Permissions.TeamsManageMembers,
+                null);
+
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("EnsureCanManageTeam forbidden. TeamId: {TeamId}, UserId: {UserId}", teamId, userId);
-                throw new ForbiddenException("You must be a Team Owner or Admin to perform this action.");
+                _logger.LogWarning("EnsureCanManageTeam pipeline failed. Reason: {Reason}, TeamId: {TeamId}, UserId: {UserId}",
+                    authResult.FailureReason, teamId, userId);
+                throw authResult.ToAuthorizationException();
             }
         }
 
+        // Authorization Pipeline: Visibility -> Permission (Projects.ManageMembers).
         public async Task EnsureCanManageProjectAsync(long projectId, string userId, CancellationToken cancellationToken = default)
         {
-            var role = await GetUserProjectRoleAsync(projectId, userId, cancellationToken);
-            if (role != WorkspaceRole.Owner && role != WorkspaceRole.Admin)
+            var project = await _unitOfWork.Projects.GetByIdAsync(projectId, cancellationToken);
+            if (project is null)
+                throw new NotFoundException("Project not found.");
+
+            var authResult = await _authService.AuthorizeAsync(
+                project.WorkspaceId,
+                userId,
+                Permissions.ProjectsManageMembers,
+                null);
+
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("EnsureCanManageProject forbidden. ProjectId: {ProjectId}, UserId: {UserId}", projectId, userId);
-                throw new ForbiddenException("You must be a Project Owner or Admin to perform this action.");
+                _logger.LogWarning("EnsureCanManageProject pipeline failed. Reason: {Reason}, ProjectId: {ProjectId}, UserId: {UserId}",
+                    authResult.FailureReason, projectId, userId);
+                throw authResult.ToAuthorizationException();
             }
         }
         // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• Listings â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -313,13 +341,38 @@ namespace TaskManager.API.Services
             if (ws is null)
                 throw new NotFoundException("Workspace not found.");
 
-            await EnsureCanManageWorkspaceAsync(workspaceId, currentUserId, cancellationToken);
+            // Authorization Pipeline: Visibility -> Permission (Members.ChangeRole).
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.MembersChangeRole,
+                null);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("ChangeWorkspaceMemberRole pipeline failed. Reason: {Reason}, WorkspaceId: {WorkspaceId}, UserId: {CurrentUserId}",
+                    authResult.FailureReason, workspaceId, currentUserId);
+                throw authResult.ToAuthorizationException();
+            }
 
             var wm = await _unitOfWork.WorkspaceMembers.GetAllQuery()
                 .Where(x => x.WorkspaceId == workspaceId && x.UserId == userId)
                 .FirstOrDefaultAsync(cancellationToken);
             if (wm is null)
                 throw new NotFoundException("This user is not a member of this workspace.");
+
+            // Resource Condition (S-12): an Admin cannot change the role of an Owner or another Admin.
+            var protectedCheck = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.MembersChangeRole,
+                new MemberProtectedRoleCondition(wm));
+
+            if (!protectedCheck.Succeeded)
+            {
+                _logger.LogWarning("ChangeWorkspaceMemberRole protected-role check failed. UserId: {CurrentUserId}, TargetUserId: {UserId}", currentUserId, userId);
+                throw protectedCheck.ToAuthorizationException();
+            }
 
             if (wm.Role == newRole)
                 return;
@@ -339,17 +392,20 @@ namespace TaskManager.API.Services
         }
 
         // Throws ForbiddenException if the user isn't Owner/Admin of the Workspace.
+        // Authorization Pipeline: Visibility -> Permission (Workspace.Update).
         public async Task EnsureCanManageWorkspaceAsync(long workspaceId, string userId, CancellationToken cancellationToken = default)
         {
-            var wm = await _unitOfWork.WorkspaceMembers.GetAllQuery()
-                .Where(x => x.WorkspaceId == workspaceId && x.UserId == userId)
-                .FirstOrDefaultAsync(cancellationToken);
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                userId,
+                Permissions.WorkspaceUpdate,
+                null);
 
-            var role = wm?.Role;
-            if (role != WorkspaceRole.Owner && role != WorkspaceRole.Admin)
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("EnsureCanManageWorkspace failed. User is not Owner/Admin of workspace. UserId: {UserId}, WorkspaceId: {WorkspaceId}", userId, workspaceId);
-                throw new ForbiddenException("Only the Workspace Owner or Admin can perform this action.");
+                _logger.LogWarning("EnsureCanManageWorkspace pipeline failed. Reason: {Reason}, UserId: {UserId}, WorkspaceId: {WorkspaceId}",
+                    authResult.FailureReason, userId, workspaceId);
+                throw authResult.ToAuthorizationException();
             }
         }
     }

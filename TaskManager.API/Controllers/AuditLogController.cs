@@ -19,19 +19,23 @@ namespace TaskManager.API.Controllers
         private readonly IAuditLogService _auditLogService;
         private readonly ICacheService _cacheService;
         private readonly ILogger<AuditLogController> _logger;
+        private readonly ICurrentUserService _currentUser;
 
-        public AuditLogController(IAuditLogService auditLogService, ICacheService cacheService, ILogger<AuditLogController> logger)
+        public AuditLogController(IAuditLogService auditLogService, ICacheService cacheService, ILogger<AuditLogController> logger, ICurrentUserService currentUser)
         {
             _auditLogService = auditLogService;
             _cacheService = cacheService;
             _logger = logger;
+            _currentUser = currentUser;
         }
+
+        private string CurrentUserId => _currentUser.UserId!;
 
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] AuditLogQueryParams q, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.AuditLogs);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.AuditLogsList, version, q);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.AuditLogsList, version, new { q, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<PagedResult<AuditLogReadDto>>(cacheKey);
             if (cached != null)
@@ -41,7 +45,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Audit logs cache miss. CacheKey: {CacheKey}", cacheKey);
-            var result = await _auditLogService.GetAllAsync(q, cancellationToken);
+            var result = await _auditLogService.GetAllAsync(q, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);

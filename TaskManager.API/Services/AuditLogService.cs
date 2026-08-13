@@ -9,6 +9,7 @@ using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.Extentions;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
+using TaskManager.Bussiness.Authorization;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Data.Entities;
 
@@ -19,17 +20,28 @@ namespace TaskManager.API.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<AuditLogService> _logger;
+        private readonly IWorkspaceAuthorizationService _authService;
 
-        public AuditLogService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<AuditLogService> logger)
+        public AuditLogService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<AuditLogService> logger, IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
+            _authService = authService;
         }
 
-        public async Task<PagedResult<AuditLogReadDto>> GetAllAsync(AuditLogQueryParams queryParams, CancellationToken cancellationToken = default)
+        // Visibility (stage 1): audit logs are only visible to members of the workspaces
+        // the logs belong to. The permission stage (AuditLogsView) is enforced by the
+        // controller policy; ResourceCondition is not needed beyond the workspace scope.
+        public async Task<PagedResult<AuditLogReadDto>> GetAllAsync(AuditLogQueryParams queryParams, string currentUserId, CancellationToken cancellationToken = default)
         {
             var query = _unitOfWork.AuditLogs.GetAllQuery().AsNoTracking();
+
+            // Scope to workspaces where the caller is an active member (Visibility).
+            var memberWorkspaceIds = _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .Where(wm => wm.UserId == currentUserId)
+                .Select(wm => wm.WorkspaceId);
+            query = query.Where(a => memberWorkspaceIds.Contains(a.WorkspaceId));
 
             query = query.ApplyFiltering(queryParams, AuditLogFilterConfig.map);
 
