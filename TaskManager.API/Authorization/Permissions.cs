@@ -65,6 +65,14 @@ namespace TaskManager.API.Authorization
         // ── Roles ─────────────────────────────────────────────────────────────
         public const string RolesManage = "Roles.Manage";
 
+        // -- Workspaces --
+        // Creating a workspace makes the caller its Owner (Membership System).
+        public const string WorkspacesCreate = "Workspaces.Create";
+
+        // Reading own workspaces (GET /workspaces/mine) is membership-gated
+        // in the Service, not role-gated here.
+        public const string WorkspacesView = "Workspaces.View";
+
         // ── Reporting / oversight (read-only) ────────────────────────────────
         public const string TaskAssignmentsView = "TaskAssignments.View";
         public const string TaskItemStatusHistoryView = "TaskItemStatusHistory.View";
@@ -84,7 +92,7 @@ namespace TaskManager.API.Authorization
 
             UsersView, UsersCreate, UsersManageStatus, UsersDelete, UsersManageRoles, UsersManageAny,
 
-            RolesManage,
+            RolesManage, WorkspacesCreate, WorkspacesView,
 
             TaskAssignmentsView, TaskItemStatusHistoryView, AuditLogsView
         };

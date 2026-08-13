@@ -133,6 +133,7 @@ namespace TaskManager.API
             builder.Services.AddScoped<IAttachmentService, AttachmentService>();
             builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<ITaskAssignmentService, TaskAssignmentService>();
+builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             builder.Services.AddScoped<ITaskItemStatusHistoryService, TaskItemStatusHistoryService>();
             builder.Services.AddScoped<IAuditLogService, AuditLogService>();
             builder.Services.AddScoped<IUserService, UserService>();
