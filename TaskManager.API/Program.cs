@@ -139,6 +139,7 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<IMembershipService, MembershipService>();
+            builder.Services.AddScoped<IInvitationService, InvitationService>();
 
             // AUTH PIPELINE (13 أغسطس 2026) — الـ Authorization Pipeline الجديد
             builder.Services.AddScoped<IWorkspaceAuthorizationService, WorkspaceAuthorizationService>();

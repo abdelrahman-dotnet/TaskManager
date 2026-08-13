@@ -65,6 +65,21 @@ namespace TaskManager.API.Authorization
         // ── Roles ─────────────────────────────────────────────────────────────
         public const string RolesManage = "Roles.Manage";
 
+        // ── Members ───────────────────────────────────────────────────────────
+        // Membership System: Owner/Admin gates (pipeline stage 2 runs in the
+        // Service — WorkspaceMember.Role + RolePermissionCatalog). These gate
+        // the endpoints; the Service still enforces the full pipeline.
+        public const string MembersView = "Members.View";
+        public const string MembersInvite = "Members.Invite";
+        public const string MembersRemove = "Members.Remove";
+        public const string MembersChangeRole = "Members.ChangeRole";
+        public const string MembersSuspend = "Members.Suspend";
+
+        // ── Invitations ───────────────────────────────────────────────────────
+        public const string InvitationsView = "Invitations.View";
+        public const string InvitationsCancel = "Invitations.Cancel";
+        public const string InvitationsResend = "Invitations.Resend";
+
         // -- Workspaces --
         // Creating a workspace makes the caller its Owner (Membership System).
         public const string WorkspacesCreate = "Workspaces.Create";
@@ -92,7 +107,13 @@ namespace TaskManager.API.Authorization
 
             UsersView, UsersCreate, UsersManageStatus, UsersDelete, UsersManageRoles, UsersManageAny,
 
-            RolesManage, WorkspacesCreate, WorkspacesView,
+            RolesManage,
+
+            MembersView, MembersInvite, MembersRemove, MembersChangeRole, MembersSuspend,
+
+            InvitationsView, InvitationsCancel, InvitationsResend,
+
+            WorkspacesCreate, WorkspacesView,
 
             TaskAssignmentsView, TaskItemStatusHistoryView, AuditLogsView
         };
