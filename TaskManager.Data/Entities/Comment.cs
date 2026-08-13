@@ -1,4 +1,4 @@
-﻿namespace TaskManager.Data.Entities
+namespace TaskManager.Data.Entities
 {
     public class Comment : BaseEntity
     {
@@ -6,9 +6,9 @@
 
         public TaskItem TaskItem { get; set; } = null!;
 
-        public string UserId { get; set; } = null!;
+        public long WorkspaceMemberId { get; set; }
 
-        public ApplicationUser User { get; set; } = null!;
+        public WorkspaceMember WorkspaceMember { get; set; } = null!;
 
         public string Content { get; set; } = null!;
     }

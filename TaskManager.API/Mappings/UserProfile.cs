@@ -9,7 +9,14 @@ namespace TaskManager.API.Mapping
         public UserProfile()
         {
             CreateMap<ApplicationUser, UserReadDto>()
-                .ForMember(d => d.TeamName, o => o.MapFrom(s => s.Team != null ? s.Team.Name : null))
+                .ForMember(d => d.TeamIds, o => o.MapFrom(s =>
+                    s.WorkspaceMemberships.SelectMany(wm => wm.TeamMemberships).Select(tm => tm.TeamId)))
+                .ForMember(d => d.TeamNames, o => o.MapFrom(s =>
+                    s.WorkspaceMemberships.SelectMany(wm => wm.TeamMemberships).Select(tm => tm.Team.Name)))
+                .ForMember(d => d.ProjectIds, o => o.MapFrom(s =>
+                    s.WorkspaceMemberships.SelectMany(wm => wm.ProjectMemberships).Select(pm => pm.ProjectId)))
+                .ForMember(d => d.ProjectNames, o => o.MapFrom(s =>
+                    s.WorkspaceMemberships.SelectMany(wm => wm.ProjectMemberships).Select(pm => pm.Project.Name)))
                 .ForMember(d => d.Roles, o => o.Ignore()); // filled in separately via UserManager.GetRolesAsync
         }
     }

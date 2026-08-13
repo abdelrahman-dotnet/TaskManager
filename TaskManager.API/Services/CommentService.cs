@@ -48,7 +48,7 @@ namespace TaskManager.API.Services
             if (!canManageAny)
             {
                 var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()
-                    .Where(pm => pm.UserId == currentUserId)
+                    .Where(pm => pm.WorkspaceMember.UserId == currentUserId)
                     .Select(pm => pm.ProjectId);
 
                 var accessibleTaskIds = _unitOfWork.Tasks.GetAllQuery()
@@ -99,12 +99,21 @@ namespace TaskManager.API.Services
 
         public async Task<CommentReadDto> CreateAsync(long taskId, CommentCreateDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var taskExists = await _unitOfWork.Tasks.ExistsAsync(t => t.Id == taskId, cancellationToken);
-            if (!taskExists)
+            var task = await _unitOfWork.Tasks.GetByIdAsync(taskId, cancellationToken);
+            if (task == null)
             {
                 _logger.LogWarning("CreateComment failed. Task not found. TaskId: {TaskId}", taskId);
                 throw new NotFoundException("Task not found.");
             }
+
+            // WORKSPACE PIVOT: the FK is now a member id; resolve the caller's membership
+            // within the task's project (same workspace scope used by the Authorization pipeline).
+            var callerMemberId = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.ProjectId == task.ProjectId && pm.WorkspaceMember.UserId == currentUserId)
+                .Select(pm => pm.WorkspaceMemberId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (callerMemberId == 0)
+                throw new ForbiddenException("You are not a member of this task's project.");
 
             var canAccess = await _membershipService.CanAccessTaskAsync(taskId, currentUserId, cancellationToken);
             if (!canAccess)
@@ -115,10 +124,10 @@ namespace TaskManager.API.Services
 
             var comment = _mapper.Map<Comment>(dto);
             comment.TaskItemId = taskId;
-            comment.UserId = currentUserId;
+            comment.WorkspaceMemberId = callerMemberId;
 
             await _unitOfWork.Comments.AddAsync(comment, cancellationToken);
-            var newValues = JsonSerializer.Serialize(new { comment.Content, comment.TaskItemId, comment.UserId });
+            var newValues = JsonSerializer.Serialize(new { comment.Content, comment.TaskItemId, comment.WorkspaceMemberId });
             // Save first - comment.Id is DB-generated, so it isn't known until after this completes.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -148,7 +157,7 @@ namespace TaskManager.API.Services
                 throw new ForbiddenException("You are not a member of this task's project.");
             }
 
-            if (!canManageAny && comment.UserId != currentUserId)
+            if (!canManageAny && comment.WorkspaceMember.UserId != currentUserId)
             {
                 _logger.LogWarning("UpdateComment forbidden. UserId: {UserId} tried to edit CommentId: {CommentId}", currentUserId, id);
                 throw new ForbiddenException("You can only edit your own comments.");
@@ -186,13 +195,13 @@ namespace TaskManager.API.Services
                 throw new ForbiddenException("You are not a member of this task's project.");
             }
 
-            if (!canManageAny && comment.UserId != currentUserId)
+            if (!canManageAny && comment.WorkspaceMember.UserId != currentUserId)
             {
                 _logger.LogWarning("DeleteComment forbidden. UserId: {UserId} tried to delete CommentId: {CommentId}", currentUserId, id);
                 throw new ForbiddenException("You can only delete your own comments.");
             }
 
-            var oldValues = JsonSerializer.Serialize(new { comment.Content, comment.TaskItemId, comment.UserId });
+            var oldValues = JsonSerializer.Serialize(new { comment.Content, comment.TaskItemId, comment.WorkspaceMemberId });
 
             _unitOfWork.Comments.Delete(comment);
 

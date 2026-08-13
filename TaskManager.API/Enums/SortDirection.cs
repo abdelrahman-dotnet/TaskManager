@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.Enums
+namespace TaskManager.API.Enums
 {
     public enum SortDirection
     {

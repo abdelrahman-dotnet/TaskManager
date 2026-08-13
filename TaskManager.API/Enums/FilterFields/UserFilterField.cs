@@ -4,7 +4,6 @@ namespace TaskManager.API.Enums.FilterFields
     {
         UserName,
         IsActive,
-        TeamId,
         LastLoginAt,
         CreatedAt
     }

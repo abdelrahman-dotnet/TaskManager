@@ -1,4 +1,4 @@
-﻿namespace TaskManager.Bussiness.Services
+namespace TaskManager.Bussiness.Services
 {
     public interface ICacheService
     {

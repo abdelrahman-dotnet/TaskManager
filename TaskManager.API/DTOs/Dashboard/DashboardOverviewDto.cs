@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.DTOs.Dashboard
+namespace TaskManager.API.DTOs.Dashboard
 {
     public class DashboardOverviewDto
     {

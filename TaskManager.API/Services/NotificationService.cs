@@ -52,14 +52,24 @@ namespace TaskManager.API.Services
 
         public async Task<NotificationReadDto> CreateAsync(NotificationCreateDto dto)
         {
+            // WORKSPACE PIVOT: Notification.WorkspaceMemberId (long) replaces the old string UserId.
+            // Resolve the recipient's workspace membership via ProjectMember (notifications are
+            // raised in a project/task context by callers), matching Option 1 approved by the user.
+            var recipientMember = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.WorkspaceMember.UserId == dto.UserId)
+                .Include(pm => pm.WorkspaceMember)
+                .OrderBy(pm => pm.Id)
+                .FirstOrDefaultAsync();
+            if (recipientMember == null)
+                throw new BadRequestException("The notification recipient is not a member of any project.");
             var notification = _mapper.Map<Notification>(dto);
-            notification.IsRead = false;
+            notification.WorkspaceMemberId = recipientMember.WorkspaceMemberId;
 
             await _unitOfWork.Notifications.AddAsync(notification);
             await _unitOfWork.CompleteAsync();
 
             _logger.LogInformation("Notification created successfully. NotificationId: {NotificationId}, UserId: {UserId}",
-                notification.Id, notification.UserId);
+                notification.Id, notification.WorkspaceMemberId);
 
             return _mapper.Map<NotificationReadDto>(notification);
         }
@@ -73,7 +83,7 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Notification not found.");
             }
 
-            if (notification.UserId != currentUserId)
+            if (notification.WorkspaceMember.UserId != currentUserId)
             {
                 _logger.LogWarning("MarkAsRead forbidden. UserId: {UserId} tried to read NotificationId: {NotificationId}", currentUserId, id);
                 throw new ForbiddenException("You can only read your own notifications.");
@@ -97,7 +107,7 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Notification not found.");
             }
 
-            if (notification.UserId != currentUserId)
+            if (notification.WorkspaceMember.UserId != currentUserId)
             {
                 _logger.LogWarning("DeleteNotification forbidden. UserId: {UserId} tried to delete NotificationId: {NotificationId}", currentUserId, id);
                 throw new ForbiddenException("You can only delete your own notifications.");

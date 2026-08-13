@@ -12,12 +12,14 @@ namespace TaskManager.Bussiness.Repositories
         {
         }
 
-        public async Task<IEnumerable<Comment>> GetByTaskIdAsync(long taskId)
+        public async Task<IEnumerable<Comment>> GetByTaskIdAsync(long taskId, CancellationToken cancellationToken = default)
         {
-            return await _context.Comments
+            return await _dbSet
+                .Include(c => c.WorkspaceMember)
+                    .ThenInclude(wm => wm.User)
                 .Where(c => c.TaskItemId == taskId)
                 .OrderByDescending(c => c.CreatedAt)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
     }
 }

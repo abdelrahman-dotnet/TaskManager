@@ -4,6 +4,5 @@ namespace TaskManager.API.DTOs.Team
     {
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
-        public string ManagerId { get; set; } = null!;
     }
 }

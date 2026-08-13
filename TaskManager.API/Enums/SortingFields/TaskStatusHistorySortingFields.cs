@@ -1,6 +1,6 @@
-﻿namespace TaskManager.API.Enums.SortingFields
+namespace TaskManager.API.Enums.SortingFields
 {
-    public enum TaskStatusHistorySortingFields
+    public enum TaskItemStatusHistorySortingFields
     {
         Id,
         TaskItemId,

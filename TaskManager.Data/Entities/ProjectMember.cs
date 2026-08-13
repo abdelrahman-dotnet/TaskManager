@@ -5,9 +5,7 @@ namespace TaskManager.Data.Entities
         public long ProjectId { get; set; }
         public Project Project { get; set; } = null!;
 
-        public string UserId { get; set; } = null!;
-        public ApplicationUser User { get; set; } = null!;
-
-        public MembershipRole Role { get; set; }
+        public long WorkspaceMemberId { get; set; }
+        public WorkspaceMember WorkspaceMember { get; set; } = null!;
     }
 }

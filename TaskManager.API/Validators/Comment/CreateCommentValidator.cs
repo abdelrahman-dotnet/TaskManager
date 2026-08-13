@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using TaskManager.API.DTOs.Comment;
 
 namespace TaskManager.API.Validators.Comment

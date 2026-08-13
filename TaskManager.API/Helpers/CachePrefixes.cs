@@ -56,8 +56,8 @@ namespace TaskManager.Bussiness.Caching
         public const string TaskAssignmentsList = "TaskAssignments:List";
         #endregion
 
-        #region TaskStatusHistories
-        public const string TaskStatusHistoriesList = "TaskStatusHistories:List";
+        #region TaskItemStatusHistories
+        public const string TaskItemStatusHistoriesList = "TaskItemStatusHistories:List";
         #endregion
     }
 }

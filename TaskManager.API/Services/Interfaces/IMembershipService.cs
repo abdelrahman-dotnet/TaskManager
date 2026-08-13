@@ -20,8 +20,8 @@ namespace TaskManager.Business.Services.Interfaces
         Task<bool> CanAccessTaskAsync(long taskId, string userId, CancellationToken cancellationToken = default);
 
         // ── Role Checks ──────────────────────────────────────────────────────────
-        Task<MembershipRole?> GetUserTeamRoleAsync(long teamId, string userId, CancellationToken cancellationToken = default);
-        Task<MembershipRole?> GetUserProjectRoleAsync(long projectId, string userId, CancellationToken cancellationToken = default);
+        Task<WorkspaceRole?> GetUserTeamRoleAsync(long teamId, string userId, CancellationToken cancellationToken = default);
+        Task<WorkspaceRole?> GetUserProjectRoleAsync(long projectId, string userId, CancellationToken cancellationToken = default);
 
         Task<bool> IsTeamOwnerAsync(long teamId, string userId, CancellationToken cancellationToken = default);
         Task<bool> IsProjectOwnerAsync(long projectId, string userId, CancellationToken cancellationToken = default);
@@ -33,18 +33,25 @@ namespace TaskManager.Business.Services.Interfaces
         Task EnsureCanManageProjectAsync(long projectId, string userId, CancellationToken cancellationToken = default);
 
         // ── Listings ─────────────────────────────────────────────────────────────
-        Task<IEnumerable<TeamMember>> GetTeamMembersAsync(long teamId, CancellationToken cancellationToken = default);
-        Task<IEnumerable<ProjectMember>> GetProjectMembersAsync(long projectId, CancellationToken cancellationToken = default);
+        // FIX: currentUserId added - these now own the "is the caller even allowed to see this
+        // team/project's member list" check internally (throws ForbiddenException), instead of
+        // Controllers calling CanAccessTeamAsync/CanAccessProjectAsync themselves first. Keeps
+        // every Membership Business Rule inside this Service - Controllers stay thin.
+        Task<IEnumerable<TeamMember>> GetTeamMembersAsync(long teamId, string currentUserId, CancellationToken cancellationToken = default);
+        Task<IEnumerable<ProjectMember>> GetProjectMembersAsync(long projectId, string currentUserId, CancellationToken cancellationToken = default);
         Task<IEnumerable<TeamMember>> GetUserTeamMembershipsAsync(string userId, CancellationToken cancellationToken = default);
         Task<IEnumerable<ProjectMember>> GetUserProjectMembershipsAsync(string userId, CancellationToken cancellationToken = default);
 
         // ── Mutations (backing the future Management APIs) ──────────────────────
-        Task AddTeamMemberAsync(long teamId, string userId, MembershipRole role, string currentUserId, CancellationToken cancellationToken = default);
+        Task AddTeamMemberAsync(long teamId, string userId, WorkspaceRole role, string currentUserId, CancellationToken cancellationToken = default);
         Task RemoveTeamMemberAsync(long teamId, string userId, string currentUserId, CancellationToken cancellationToken = default);
-        Task ChangeTeamMemberRoleAsync(long teamId, string userId, MembershipRole newRole, string currentUserId, CancellationToken cancellationToken = default);
 
-        Task AddProjectMemberAsync(long projectId, string userId, MembershipRole role, string currentUserId, CancellationToken cancellationToken = default);
+        Task AddProjectMemberAsync(long projectId, string userId, WorkspaceRole role, string currentUserId, CancellationToken cancellationToken = default);
         Task RemoveProjectMemberAsync(long projectId, string userId, string currentUserId, CancellationToken cancellationToken = default);
-        Task ChangeProjectMemberRoleAsync(long projectId, string userId, MembershipRole newRole, string currentUserId, CancellationToken cancellationToken = default);
+
+        // The ONLY role-change endpoint in the API - roles are workspace-scoped
+        // (Owner/Admin/Member). Throws ForbiddenException unless the caller is
+        // Owner/Admin of the workspace.
+        Task ChangeWorkspaceMemberRoleAsync(long workspaceId, string userId, WorkspaceRole newRole, string currentUserId, CancellationToken cancellationToken = default);
     }
 }

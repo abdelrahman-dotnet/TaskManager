@@ -1,4 +1,4 @@
-﻿
+
 namespace TaskManager.API.DTOs.Account
 {
     public class RegisterDto

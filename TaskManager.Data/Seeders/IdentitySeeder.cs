@@ -92,7 +92,7 @@ public static class PermissionAndRoleSeeder
 
         // Reporting / oversight (read-only)
         "TaskAssignments.View",
-        "TaskStatusHistory.View",
+        "TaskItemStatusHistory.View",
         "AuditLogs.View",
     };
 
@@ -168,7 +168,7 @@ public static class PermissionAndRoleSeeder
             "Users.View",
 
             "TaskAssignments.View",
-            "TaskStatusHistory.View",
+            "TaskItemStatusHistory.View",
         };
         await SyncRolePermissions(context, manager!.Id, permissions, managerPerms);
 

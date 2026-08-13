@@ -10,6 +10,8 @@ using TaskManager.API.DTOs.Task;
 using TaskManager.API.Exceptions;
 using TaskManager.API.Extentions;
 using TaskManager.API.Helpers;
+using TaskManager.Bussiness.Authorization;
+using TaskManager.Bussiness.Authorization.ResourceConditions;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Data.Entities;
@@ -24,6 +26,7 @@ namespace TaskManager.API.Services
         private readonly IAuditLogService _auditLogService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMembershipService _membershipService;
+        private readonly IWorkspaceAuthorizationService _authService;
 
         public TaskService(
             IUnitOfWork unitOfWork,
@@ -31,7 +34,8 @@ namespace TaskManager.API.Services
             ILogger<TaskService> logger,
             IAuditLogService auditLogService,
             UserManager<ApplicationUser> userManager,
-            IMembershipService membershipService)
+            IMembershipService membershipService,
+            IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -39,6 +43,7 @@ namespace TaskManager.API.Services
             _auditLogService = auditLogService;
             _userManager = userManager;
             _membershipService = membershipService;
+            _authService = authService;
         }
 
         // MEMBERSHIP: filters to tasks in projects the user belongs to, done as part of the
@@ -51,7 +56,7 @@ namespace TaskManager.API.Services
             if (!canManageAny)
             {
                 var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()
-                    .Where(pm => pm.UserId == currentUserId)
+                    .Where(pm => pm.WorkspaceMember.UserId == currentUserId)
                     .Select(pm => pm.ProjectId);
 
                 query = query.Where(t => memberProjectIds.Contains(t.ProjectId));
@@ -172,7 +177,9 @@ namespace TaskManager.API.Services
             return _mapper.Map<TaskReadDto>(task);
         }
 
-        public async Task DeleteAsync(long id, string currentUserId, bool canManageAny, CancellationToken cancellationToken = default)
+        // PIPELINE (Auth Pipeline — Pilot on Tasks.Delete):
+        // Visibility → Permission → Resource Condition (TaskDeleteCondition) → Operation.
+        public async Task DeleteAsync(long id, long workspaceId, string currentUserId, CancellationToken cancellationToken = default)
         {
             var task = await _unitOfWork.Tasks.GetByIdAsync(id, cancellationToken);
             if (task == null)
@@ -181,20 +188,27 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Task not found.");
             }
 
-            // MEMBERSHIP: same reasoning as UpdateAsync above.
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(id, currentUserId, cancellationToken);
-            if (!canAccessTask)
+            // === Authorization Pipeline (المراحل 1+2+3) ===
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksDelete,
+                new TaskDeleteCondition(task));
+
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("DeleteTask forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, id);
-                throw new ForbiddenException("You are not a member of this task's project.");
+                _logger.LogWarning(
+                    "DeleteTask pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, id);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
             }
 
-            if (!canManageAny && task.CreatedByUserId != currentUserId)
-            {
-                _logger.LogWarning("DeleteTask forbidden. UserId: {UserId} tried to delete TaskId: {TaskId}", currentUserId, id);
-                throw new ForbiddenException("You can only delete tasks you created.");
-            }
+            // === المرحلة 4: Business Rules (لو اتضافت لاحقًا — Dependencies مثلاً) ===
 
+            // === المرحلة 5: Operation (Soft Delete) ===
             _unitOfWork.Tasks.Delete(task);
             await _auditLogService.LogAsync(currentUserId, "Delete Task", nameof(TaskItem), id.ToString());
             await _unitOfWork.CompleteAsync(cancellationToken);
@@ -219,7 +233,7 @@ namespace TaskManager.API.Services
             if (task.Status == TaskItemStatus.Done)
                 throw new BadRequestException("you cannot Assign Completed tasks.");
             var alreadyAssigned = await _unitOfWork.TaskAssignments.ExistsAsync(
-                a => a.TaskItemId == taskId && a.UserId == dto.UserId, cancellationToken);
+                a => a.TaskItemId == taskId && a.WorkspaceMember.UserId == dto.UserId, cancellationToken);
 
             var user = await _userManager.FindByIdAsync(dto.UserId);
             if (user == null)
@@ -229,6 +243,21 @@ namespace TaskManager.API.Services
             }
             if (alreadyAssigned)
                 throw new ConflictException("User is already assigned to this task.");
+
+            // WORKSPACE PIVOT: TaskAssignment now points at WorkspaceMember (long FK).
+            // Resolve both members within the task's project.
+            var assigneeMemberId = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.ProjectId == task.ProjectId && pm.WorkspaceMember.UserId == dto.UserId)
+                .Select(pm => pm.WorkspaceMemberId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (assigneeMemberId == 0)
+                throw new BadRequestException("The user being assigned must be a member of this task's project.");
+            var assignerMemberId = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.ProjectId == task.ProjectId && pm.WorkspaceMember.UserId == currentUserId)
+                .Select(pm => pm.WorkspaceMemberId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (assignerMemberId == 0)
+                throw new ForbiddenException("You are not a member of this task's project.");
 
             // MEMBERSHIP: the person being assigned should also be a member of the project -
             // assigning work to someone who can't even see the project would be a dead end.
@@ -242,8 +271,8 @@ namespace TaskManager.API.Services
             var assignment = new TaskAssignment
             {
                 TaskItemId = taskId,
-                UserId = dto.UserId,
-                AssignedByUserId = currentUserId,
+                WorkspaceMemberId = assigneeMemberId,
+                AssignedByWorkspaceMemberId = assignerMemberId,
                 AssignedAt = DateTime.UtcNow
             };
 
@@ -271,7 +300,7 @@ namespace TaskManager.API.Services
                 throw new ForbiddenException("You are not a member of this task's project.");
             }
 
-            var assignment = await _unitOfWork.TaskAssignments.FirstOrDefaultAsync(a => a.TaskItemId == taskId && a.UserId == userId, cancellationToken);
+            var assignment = await _unitOfWork.TaskAssignments.FirstOrDefaultAsync(a => a.TaskItemId == taskId && a.WorkspaceMember.UserId == userId, cancellationToken);
             if (assignment == null)
                 throw new NotFoundException("Assignment not found.");
             _unitOfWork.TaskAssignments.Delete(assignment);
@@ -285,11 +314,19 @@ namespace TaskManager.API.Services
             return _mapper.Map<TaskReadDto>(task);
         }
 
-        public async Task<TaskReadDto> ChangeStatusAsync(long taskId, ChangeTaskStatusDto dto, string currentUserId, CancellationToken cancellationToken = default)
+        public async Task<TaskReadDto> ChangeStatusAsync(long taskId, ChangeTaskItemStatusDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
             var task = await _unitOfWork.Tasks.GetByIdAsync(taskId, cancellationToken);
             if (task == null)
                 throw new NotFoundException("Task not found.");
+
+            // WORKSPACE PIVOT: the status-change actor is now a member id, not a user id.
+            var changerMemberId = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.ProjectId == task.ProjectId && pm.WorkspaceMember.UserId == currentUserId)
+                .Select(pm => pm.WorkspaceMemberId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (changerMemberId == 0)
+                throw new ForbiddenException("You are not a member of this task's project.");
 
             // MEMBERSHIP: must belong to the task's project to change its status.
             var canAccessTask = await _membershipService.CanAccessTaskAsync(taskId, currentUserId, cancellationToken);
@@ -312,15 +349,15 @@ namespace TaskManager.API.Services
 
             _unitOfWork.Tasks.Update(task);
 
-            var history = new TaskStatusHistory
+            var history = new TaskItemStatusHistory
             {
                 TaskItemId = taskId,
                 OldStatus = oldStatus,
                 NewStatus = dto.NewStatus,
-                ChangedByUserId = currentUserId,
+                ChangedByWorkspaceMemberId = changerMemberId,
                 ChangedAt = DateTime.UtcNow
             };
-            await _unitOfWork.TaskStatusHistories.AddAsync(history, cancellationToken);
+            await _unitOfWork.TaskItemStatusHistories.AddAsync(history, cancellationToken);
             await _auditLogService.LogAsync(currentUserId, "Change Task Status", nameof(TaskItem), taskId.ToString());
             await _unitOfWork.CompleteAsync(cancellationToken);
 

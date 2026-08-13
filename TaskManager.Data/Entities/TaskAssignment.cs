@@ -1,19 +1,17 @@
-﻿namespace TaskManager.Data.Entities
+namespace TaskManager.Data.Entities
 {
     public class TaskAssignment : BaseEntity
     {
         public long TaskItemId { get; set; }
-
         public TaskItem TaskItem { get; set; } = null!;
 
-        public string UserId { get; set; } = null!;
+        public long WorkspaceMemberId { get; set; }
+        public WorkspaceMember WorkspaceMember { get; set; } = null!;
 
-        public ApplicationUser User { get; set; } = null!;
+        public long AssignedByWorkspaceMemberId { get; set; }
+        public WorkspaceMember AssignedByWorkspaceMember { get; set; } = null!;
 
-        public string AssignedByUserId { get; set; } = null!;
-
-        public ApplicationUser AssignedByUser { get; set; } = null!;
-
-        public DateTime AssignedAt { get; set; }
+        // RESTORED (user-approved): audit timestamp for the assignment event.
+        public DateTime AssignedAt { get; set; } = DateTime.UtcNow;
     }
 }

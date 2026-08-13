@@ -4,7 +4,6 @@ namespace TaskManager.API.Enums.FilterFields
     {
         Name,
         Description,
-        ManagerId,
         CreatedAt
     }
 }

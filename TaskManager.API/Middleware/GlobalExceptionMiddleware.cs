@@ -1,4 +1,4 @@
-﻿using TaskManager.API.Exceptions;
+using TaskManager.API.Exceptions;
 using TaskManager.API.Responses;
 namespace TaskManager.API.Middleware
 {

@@ -1561,3 +1561,22 @@ StackExchange.Redis.RedisConnectionException: It was not possible to connect to 
 [2026-07-20 04:07:48 INF] [CorrelationId: ] Received HTTP response headers after 12232.4124ms - 503
 [2026-07-20 04:07:48 INF] [CorrelationId: ] End processing HTTP request after 12247.385ms - 503
 [2026-07-20 04:07:48 INF] [CorrelationId: ] Notification is sent on same window time.
+[2026-07-20 04:28:30 INF] [CorrelationId: ] Initializing UI Database
+[2026-07-20 04:28:31 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-07-20 04:28:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:28:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-07-20 04:28:31 WRN] [CorrelationId: 2c7a6e2a-bece-4ef5-a3b9-607321dff4df] Failed to determine the https port for redirect.
+[2026-07-20 04:28:39 ERR] [CorrelationId: 2c7a6e2a-bece-4ef5-a3b9-607321dff4df] Health check redis with status "Unhealthy" completed after 8220.2198ms with message 'null'
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /_/src/HealthChecks.Redis/RedisHealthCheck.cs:line 23
+[2026-07-20 04:28:39 ERR] [CorrelationId: 2c7a6e2a-bece-4ef5-a3b9-607321dff4df] HTTP GET /health responded 503 in 8300.4891 ms
+[2026-07-20 04:28:39 INF] [CorrelationId: ] Received HTTP response headers after 8404.9729ms - 503
+[2026-07-20 04:28:39 INF] [CorrelationId: ] End processing HTTP request after 8432.2485ms - 503
+[2026-07-20 04:28:50 INF] [CorrelationId: 143f8753-745f-4b88-b413-24cb283fd9cf] HTTP GET /health-ui responded 200 in 2.4374 ms
+[2026-07-20 04:28:50 INF] [CorrelationId: 5397237f-2096-46c4-8dc5-e80be958cdce] HTTP GET /ui/resources/healthchecksui-min.css responded 200 in 3.1812 ms
+[2026-07-20 04:28:50 INF] [CorrelationId: 9c9922c0-9214-4033-a5c8-86dd91929938] HTTP GET /ui/resources/healthchecks-bundle.js responded 200 in 2.2791 ms
+[2026-07-20 04:28:50 INF] [CorrelationId: c4af600c-a72e-496f-9475-fdee2824bea7] HTTP GET /ui/resources/vendors-dll.js responded 200 in 2.6479 ms
+[2026-07-20 04:28:50 INF] [CorrelationId: 70ee8ca4-07a8-4220-957b-f22b6028a9df] HTTP GET /health-ui-api/ui-settings responded 200 in 102.0247 ms
+[2026-07-20 04:28:50 INF] [CorrelationId: c3402a29-e648-4f82-9cb3-a84e552e82bb] HTTP GET /health-ui-api responded 200 in 89.2231 ms
+[2026-07-20 04:28:50 INF] [CorrelationId: 3f2c5a2a-4744-4f5d-869e-15c6e12a9054] HTTP GET /favicon.ico responded 404 in 0.1738 ms

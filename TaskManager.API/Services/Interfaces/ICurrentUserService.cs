@@ -1,4 +1,4 @@
-﻿using TaskManager.Data.Entities;
+using TaskManager.Data.Entities;
 
 namespace TaskManager.Business.Services.Interfaces
 {

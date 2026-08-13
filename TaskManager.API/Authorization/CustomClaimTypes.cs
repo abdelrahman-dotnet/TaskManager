@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.Authorization
+namespace TaskManager.API.Authorization
 {
     public static class CustomClaimTypes
     {

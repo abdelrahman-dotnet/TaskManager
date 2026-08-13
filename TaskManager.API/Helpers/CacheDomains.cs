@@ -12,6 +12,6 @@ namespace TaskManager.Bussiness.Caching
         public const string Notifications = "Notifications";
         public const string AuditLogs = "AuditLogs";
         public const string TaskAssignments = "TaskAssignments";
-        public const string TaskStatusHistories = "TaskStatusHistories";
+        public const string TaskItemStatusHistories = "TaskItemStatusHistories";
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using TaskManager.API.Authorization;
 using TaskManager.Business.Services.Interfaces;
 

@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.DTOs.Account
+namespace TaskManager.API.DTOs.Account
 {
     public class AuthResponseDto
     {

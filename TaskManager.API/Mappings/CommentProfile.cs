@@ -9,7 +9,7 @@ namespace TaskManager.API.Mapping
         public CommentProfile()
         {
             CreateMap<Comment, CommentReadDto>()
-                .ForMember(d => d.UserFullName, o => o.MapFrom(s => s.User != null ? s.User.UserName : null));
+                .ForMember(d => d.UserFullName, o => o.MapFrom(s => s.WorkspaceMember != null && s.WorkspaceMember.User != null ? s.WorkspaceMember.User.UserName : null));
 
             CreateMap<CommentCreateDto, Comment>();
             CreateMap<CommentUpdateDto, Comment>();

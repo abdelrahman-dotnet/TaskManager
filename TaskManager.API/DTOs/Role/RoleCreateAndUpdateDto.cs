@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.DTOs.Role
+namespace TaskManager.API.DTOs.Role
 {
     public class RoleCreateAndUpdateDto
     {

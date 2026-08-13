@@ -19,11 +19,6 @@ namespace TaskManager.API.Config.FiltersConfigs
                     var val = (bool)value;
                     return x => x.IsActive == val;
                 },
-                [UserFilterField.TeamId] = value =>
-                {
-                    var val = (long)value;
-                    return x => x.TeamId == val;
-                },
                 [UserFilterField.LastLoginAt] = value =>
                 {
                     var val = (DateTime)value;

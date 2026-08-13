@@ -1,11 +1,11 @@
-﻿using FluentValidation;
+using FluentValidation;
 using TaskManager.API.DTOs.Task;
 
 namespace TaskManager.API.Validators.Task
 {
-    public class ChangeTaskStatusDtoValidator : AbstractValidator<ChangeTaskStatusDto>
+    public class ChangeTaskItemStatusDtoValidator : AbstractValidator<ChangeTaskItemStatusDto>
     {
-        public ChangeTaskStatusDtoValidator()
+        public ChangeTaskItemStatusDtoValidator()
         {
             RuleFor(x => x.NewStatus)
                 .IsInEnum();

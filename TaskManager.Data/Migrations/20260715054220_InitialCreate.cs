@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -436,7 +436,7 @@ namespace TaskManager.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TaskStatusHistories",
+                name: "TaskItemStatusHistories",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -453,15 +453,15 @@ namespace TaskManager.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TaskStatusHistories", x => x.Id);
+                    table.PrimaryKey("PK_TaskItemStatusHistories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TaskStatusHistories_AspNetUsers_ChangedByUserId",
+                        name: "FK_TaskItemStatusHistories_AspNetUsers_ChangedByUserId",
                         column: x => x.ChangedByUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_TaskStatusHistories_TaskItems_TaskItemId",
+                        name: "FK_TaskItemStatusHistories_TaskItems_TaskItemId",
                         column: x => x.TaskItemId,
                         principalTable: "TaskItems",
                         principalColumn: "Id",
@@ -614,18 +614,18 @@ namespace TaskManager.Data.Migrations
                 column: "Status");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TaskStatusHistories_ChangedAt",
-                table: "TaskStatusHistories",
+                name: "IX_TaskItemStatusHistories_ChangedAt",
+                table: "TaskItemStatusHistories",
                 column: "ChangedAt");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TaskStatusHistories_ChangedByUserId",
-                table: "TaskStatusHistories",
+                name: "IX_TaskItemStatusHistories_ChangedByUserId",
+                table: "TaskItemStatusHistories",
                 column: "ChangedByUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TaskStatusHistories_TaskItemId",
-                table: "TaskStatusHistories",
+                name: "IX_TaskItemStatusHistories_TaskItemId",
+                table: "TaskItemStatusHistories",
                 column: "TaskItemId");
 
             migrationBuilder.CreateIndex(
@@ -706,7 +706,7 @@ namespace TaskManager.Data.Migrations
                 name: "TaskAssignments");
 
             migrationBuilder.DropTable(
-                name: "TaskStatusHistories");
+                name: "TaskItemStatusHistories");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

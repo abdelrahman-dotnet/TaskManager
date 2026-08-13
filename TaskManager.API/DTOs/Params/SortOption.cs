@@ -1,4 +1,4 @@
-﻿using TaskManager.API.Enums;
+using TaskManager.API.Enums;
 
 namespace TaskManager.API.DTOs.Params
 {

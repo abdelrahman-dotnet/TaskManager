@@ -18,7 +18,7 @@ namespace TaskManager.API.Mapping
                 .ForMember(d => d.Assignments, o => o.MapFrom(s => s.Assignments));
 
             CreateMap<TaskAssignment, TaskAssignmentMiniDto>()
-                .ForMember(d => d.UserFullName, o => o.MapFrom(s => s.User != null ? s.User.UserName : null));
+                .ForMember(d => d.UserFullName, o => o.MapFrom(s => s.WorkspaceMember != null && s.WorkspaceMember.User != null ? s.WorkspaceMember.User.UserName : null));
 
             CreateMap<TaskCreateDto, TaskItem>();
             CreateMap<TaskUpdateDto, TaskItem>();

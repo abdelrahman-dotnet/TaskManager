@@ -5,7 +5,6 @@ namespace TaskManager.API.Enums.FilterFields
         Name,
         Description,
         IsArchived,
-        TeamId,
         CreatedByUserId,
         StartDate,
         EndDate,

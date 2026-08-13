@@ -94,11 +94,12 @@ namespace TaskManager.API.Controllers
             return Ok(updated);
         }
 
-        [HttpDelete("{id}")]
-        [Authorize(Policy = Permissions.TasksDelete)]
-        public async Task<IActionResult> Delete(long id, CancellationToken cancellationToken)
+        // PIPELINE (Auth Pipeline — Pilot): الـ Authorization اتنقل للـ Pipeline جوه الـ Service.
+        // الـ route بقى /api/tasks/{workspaceId}/{id} عشان الـ Pipeline يحتاج workspaceId للمرحلة 1 (Visibility).
+        [HttpDelete("{workspaceId}/{id}")]
+        public async Task<IActionResult> Delete(long workspaceId, long id, CancellationToken cancellationToken)
         {
-            await _taskService.DeleteAsync(id, CurrentUserId, CanManageAny, cancellationToken);
+            await _taskService.DeleteAsync(id, workspaceId, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
 
             return NoContent();
@@ -128,11 +129,11 @@ namespace TaskManager.API.Controllers
 
         [HttpPatch("{id}/status")]
         [Authorize(Policy = Permissions.TasksUpdate)]
-        public async Task<IActionResult> ChangeStatus(long id, [FromBody] ChangeTaskStatusDto dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> ChangeStatus(long id, [FromBody] ChangeTaskItemStatusDto dto, CancellationToken cancellationToken)
         {
             var result = await _taskService.ChangeStatusAsync(id, dto, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
-            await _cacheService.IncrementVersionAsync(CacheDomains.TaskStatusHistories);
+            await _cacheService.IncrementVersionAsync(CacheDomains.TaskItemStatusHistories);
 
             return Ok(result);
         }

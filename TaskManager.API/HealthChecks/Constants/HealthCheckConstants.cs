@@ -1,4 +1,4 @@
-﻿public static class HealthCheckNames
+public static class HealthCheckNames
 {
     public const string Self = "self";
     public const string SqlServer = "sql-server";

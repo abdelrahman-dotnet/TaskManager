@@ -1,4 +1,4 @@
-﻿using TaskManager.Bussiness.Interfaces;
+using TaskManager.Bussiness.Interfaces;
 using TaskManager.Data.Context;
 using TaskManager.Data.Entities;
 using TaskManager.Data.Repositories;

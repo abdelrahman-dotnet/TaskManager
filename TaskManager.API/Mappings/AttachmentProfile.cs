@@ -9,7 +9,7 @@ namespace TaskManager.API.Mapping
         public AttachmentProfile()
         {
             CreateMap<Attachment, AttachmentReadDto>()
-                .ForMember(d => d.UploadedByUserName, o => o.MapFrom(s => s.UploadedByUser != null ? s.UploadedByUser.UserName : null));
+                .ForMember(d => d.UploadedByUserName, o => o.MapFrom(s => s.UploadedByWorkspaceMember != null && s.UploadedByWorkspaceMember.User != null ? s.UploadedByWorkspaceMember.User.UserName : null));
 
             CreateMap<AttachmentCreateDto, Attachment>();
         }

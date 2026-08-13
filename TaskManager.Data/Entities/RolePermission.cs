@@ -1,4 +1,4 @@
-﻿namespace TaskManager.Data.Entities
+namespace TaskManager.Data.Entities
 {
     public class RolePermission
     {

@@ -25,17 +25,23 @@ public class Repository<T> : IGenericRepository<T>
 
     public virtual async Task<T?> GetByIdAsync<TKey>(TKey id, CancellationToken cancellationToken = default)
     {
-        return await _dbSet.FindAsync(id,cancellationToken);
+        // FindAsync in EF Core 6+ respects Global Query Filters for entities not already
+        // tracked. NOTE: if the same entity is already tracked in this DbContext instance
+        // (e.g. Delete() was just called on it earlier in the same request), FindAsync
+        // returns the tracked instance from memory without re-applying the filter - a narrow
+        // edge case, not a blanket guarantee.
+        return await _dbSet.FindAsync(new object?[] { id }, cancellationToken);
     }
 
     public virtual IQueryable<T> GetAllQuery()
     {
-        return _dbSet; // already iqueryable
+        return _dbSet;
     }
 
     public virtual async Task<T?> FirstOrDefaultAsync(
-        Expression<Func<T, bool>> predicate
-        ,CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includes)
+        Expression<Func<T, bool>> predicate,
+        CancellationToken cancellationToken = default,
+        params Expression<Func<T, object>>[] includes)
     {
         IQueryable<T> query = _dbSet;
 
@@ -44,48 +50,52 @@ public class Repository<T> : IGenericRepository<T>
             query = query.Include(include);
         }
 
-        return await query.FirstOrDefaultAsync(predicate,cancellationToken);
+        return await query.FirstOrDefaultAsync(predicate, cancellationToken);
     }
 
     public virtual async Task<bool> ExistsAsync(
-        Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
+        Expression<Func<T, bool>> predicate,
+        CancellationToken cancellationToken = default)
     {
-        return await _dbSet.AnyAsync(predicate);
+        return await _dbSet.AnyAsync(predicate, cancellationToken);
     }
 
     public virtual async Task<int> CountAsync(
-        Expression<Func<T, bool>>? predicate = null, CancellationToken cancellationToken = default)
+        Expression<Func<T, bool>>? predicate = null,
+        CancellationToken cancellationToken = default)
     {
         if (predicate == null)
             return await _dbSet.CountAsync(cancellationToken);
 
-        return await _dbSet.CountAsync(predicate,cancellationToken);
+        return await _dbSet.CountAsync(predicate, cancellationToken);
     }
 
     public virtual async Task AddAsync(T entity, CancellationToken cancellationToken = default)
     {
-        await _dbSet.AddAsync(entity,cancellationToken);
+        if (entity is BaseEntity baseEntity)
+        {
+            baseEntity.CreatedAt = DateTime.UtcNow;
+            baseEntity.IsDeleted = false;
+        }
+        await _dbSet.AddAsync(entity, cancellationToken);
     }
 
-    public virtual void Update(T entity, CancellationToken cancellationToken = default)
+    public virtual void Update(T entity)
     {
+        if (entity is BaseEntity baseEntity)
+        {
+            baseEntity.UpdatedAt = DateTime.UtcNow;
+        }
         _dbSet.Update(entity);
     }
 
-    // FIX: previously this called _dbSet.Remove(entity) unconditionally,
-    // which is a hard delete — completely inconsistent with BaseEntity's
-    // IsDeleted flag and the global query filter configured in AppDbContext.
-    // Now: entities that inherit BaseEntity are soft-deleted (flag set,
-    // filtered out by the global query filter going forward). Anything else
-    // (e.g. RolePermission, a pure join entity with no BaseEntity) still gets
-    // physically removed since there's no IsDeleted flag to set.
     public virtual void Delete(T entity)
     {
         if (entity is BaseEntity baseEntity)
         {
             baseEntity.IsDeleted = true;
-            baseEntity.UpdatedAt = DateTime.UtcNow;
             baseEntity.DeletedAt = DateTime.UtcNow;
+            baseEntity.UpdatedAt = DateTime.UtcNow;
             _context.Entry(entity).State = EntityState.Modified;
         }
         else

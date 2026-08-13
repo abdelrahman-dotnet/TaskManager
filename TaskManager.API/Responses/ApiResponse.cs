@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.Responses
+namespace TaskManager.API.Responses
 {
     public class ApiResponse<T>
     {

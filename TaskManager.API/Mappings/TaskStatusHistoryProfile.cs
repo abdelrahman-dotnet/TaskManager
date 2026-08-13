@@ -1,14 +1,14 @@
 using AutoMapper;
-using TaskManager.API.DTOs.TaskStatusHistory;
+using TaskManager.API.DTOs.TaskItemStatusHistory;
 using TaskManager.Data.Entities;
 
 namespace TaskManager.API.Mapping
 {
-    public class TaskStatusHistoryProfile : Profile
+    public class TaskItemStatusHistoryProfile : Profile
     {
-        public TaskStatusHistoryProfile()
+        public TaskItemStatusHistoryProfile()
         {
-            CreateMap<TaskStatusHistory, TaskStatusHistoryReadDto>();
+            CreateMap<TaskItemStatusHistory, TaskItemStatusHistoryReadDto>();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using TaskManager.API.Enums.SortingFields;
@@ -30,19 +30,18 @@ namespace TaskManager.API.Config
             [UserSortingFields.Id] = x => x.Id,
             [UserSortingFields.UserName] = x => x.UserName,
             [UserSortingFields.IsActive] = x => x.IsActive,
-            [UserSortingFields.TeamId] = x => x.TeamId!,
             [UserSortingFields.LastLoginAt] = x => x.LastLoginAt!,
             [UserSortingFields.CreatedAt] = x => x.CreatedAt
         };
 
-        // Comment (زي ما هي، مفيش تغيير)
+        // Comment (?? ?? ??? ???? ?????)
         public static readonly Dictionary<CommentSortingFields, Expression<Func<Comment, object>>> Comments = new()
         {
             [CommentSortingFields.Id] = x => x.Id,
             [CommentSortingFields.Content] = x => x.Content,
             [CommentSortingFields.CreatedAt] = x => x.CreatedAt,
             [CommentSortingFields.TaskItemId] = x => x.TaskItemId,
-            [CommentSortingFields.UserId] = x => x.UserId
+            [CommentSortingFields.UserId] = x => x.WorkspaceMemberId
         };
 
         // Role
@@ -60,7 +59,6 @@ namespace TaskManager.API.Config
             [ProjectSortingFields.IsArchived] = x => x.IsArchived,
             [ProjectSortingFields.StartDate] = x => x.StartDate!,
             [ProjectSortingFields.EndDate] = x => x.EndDate!,
-            [ProjectSortingFields.TeamId] = x => x.TeamId,
             [ProjectSortingFields.CreatedByUserId] = x => x.CreatedByUserId,
             [ProjectSortingFields.CreatedAt] = x => x.CreatedAt
         };
@@ -70,7 +68,6 @@ namespace TaskManager.API.Config
         {
             [TeamSortingFields.Id] = x => x.Id,
             [TeamSortingFields.Name] = x => x.Name,
-            [TeamSortingFields.ManagerId] = x => x.ManagerId,
             [TeamSortingFields.CreatedAt] = x => x.CreatedAt
         };
 
@@ -80,7 +77,7 @@ namespace TaskManager.API.Config
             [NotificationSortingFields.Id] = x => x.Id,
             [NotificationSortingFields.Title] = x => x.Title,
             [NotificationSortingFields.IsRead] = x => x.IsRead,
-            [NotificationSortingFields.UserId] = x => x.UserId,
+            [NotificationSortingFields.UserId] = x => x.WorkspaceMemberId,
             [NotificationSortingFields.CreatedAt] = x => x.CreatedAt
         };
 
@@ -91,19 +88,19 @@ namespace TaskManager.API.Config
             [AttachmentSortingFields.FileName] = x => x.FileName,
             [AttachmentSortingFields.FileSize] = x => x.FileSize,
             [AttachmentSortingFields.ContentType] = x => x.ContentType,
-            [AttachmentSortingFields.UploadedByUserId] = x => x.UploadedByUserId,
+            [AttachmentSortingFields.UploadedByUserId] = x => x.UploadedByWorkspaceMemberId,
             [AttachmentSortingFields.CreatedAt] = x => x.CreatedAt
         };
 
-        // TaskStatusHistory
-        public static readonly Dictionary<TaskStatusHistorySortingFields, Expression<Func<TaskStatusHistory, object>>> TaskStatusHistories = new()
+        // TaskItemStatusHistory
+        public static readonly Dictionary<TaskItemStatusHistorySortingFields, Expression<Func<TaskItemStatusHistory, object>>> TaskItemStatusHistories = new()
         {
-            [TaskStatusHistorySortingFields.Id] = x => x.Id,
-            [TaskStatusHistorySortingFields.TaskItemId] = x => x.TaskItemId,
-            [TaskStatusHistorySortingFields.OldStatus] = x => x.OldStatus,
-            [TaskStatusHistorySortingFields.NewStatus] = x => x.NewStatus,
-            [TaskStatusHistorySortingFields.ChangedByUserId] = x => x.ChangedByUserId,
-            [TaskStatusHistorySortingFields.ChangedAt] = x => x.ChangedAt
+            [TaskItemStatusHistorySortingFields.Id] = x => x.Id,
+            [TaskItemStatusHistorySortingFields.TaskItemId] = x => x.TaskItemId,
+            [TaskItemStatusHistorySortingFields.OldStatus] = x => x.OldStatus,
+            [TaskItemStatusHistorySortingFields.NewStatus] = x => x.NewStatus,
+            [TaskItemStatusHistorySortingFields.ChangedByUserId] = x => x.ChangedByWorkspaceMemberId,
+            [TaskItemStatusHistorySortingFields.ChangedAt] = x => x.ChangedAt
         };
 
         // AuditLog
@@ -112,7 +109,7 @@ namespace TaskManager.API.Config
             [AuditLogSortingFields.Id] = x => x.Id,
             [AuditLogSortingFields.Action] = x => x.Action,
             [AuditLogSortingFields.EntityName] = x => x.EntityName,
-            [AuditLogSortingFields.UserId] = x => x.UserId!,
+            [AuditLogSortingFields.UserId] = x => x.WorkspaceMemberId!,
             [AuditLogSortingFields.CreatedAt] = x => x.CreatedAt
         };
 
@@ -121,8 +118,8 @@ namespace TaskManager.API.Config
         {
             [TaskAssignmentSortingFields.Id] = x => x.Id,
             [TaskAssignmentSortingFields.TaskItemId] = x => x.TaskItemId,
-            [TaskAssignmentSortingFields.UserId] = x => x.UserId,
-            [TaskAssignmentSortingFields.AssignedByUserId] = x => x.AssignedByUserId,
+            [TaskAssignmentSortingFields.UserId] = x => x.WorkspaceMemberId,
+            [TaskAssignmentSortingFields.AssignedByUserId] = x => x.AssignedByWorkspaceMemberId,
             [TaskAssignmentSortingFields.AssignedAt] = x => x.AssignedAt
         };
     }

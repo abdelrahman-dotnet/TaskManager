@@ -32,10 +32,11 @@ namespace TaskManager.Business.Services.Interfaces
             bool canManageAny,
             CancellationToken cancellationToken = default);
 
+        // PIPELINE (Auth Pipeline — Pilot): الـ Pipeline بيحل محل canManageAny نهائيًا في الحذف
         Task DeleteAsync(
             long id,
+            long workspaceId,
             string currentUserId,
-            bool canManageAny,
             CancellationToken cancellationToken = default);
 
         Task<TaskReadDto> AssignAsync(
@@ -52,7 +53,7 @@ namespace TaskManager.Business.Services.Interfaces
 
         Task<TaskReadDto> ChangeStatusAsync(
             long taskId,
-            ChangeTaskStatusDto dto,
+            ChangeTaskItemStatusDto dto,
             string currentUserId,
             CancellationToken cancellationToken = default);
 

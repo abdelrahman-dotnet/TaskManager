@@ -16,13 +16,13 @@ namespace TaskManager.API.Config.FiltersConfigs
                 },
                 [TaskAssignmentFilterFields.UserId] = value =>
                 {
-                    var val = value.ToString();
-                    return x => x.UserId == val;
+                    var val = Convert.ToInt64(value);
+                    return x => x.WorkspaceMemberId == val;
                 },
                 [TaskAssignmentFilterFields.AssignedByUserId] = value =>
                 {
-                    var val = value.ToString();
-                    return x => x.AssignedByUserId == val;
+                    var val = Convert.ToInt64(value);
+                    return x => x.AssignedByWorkspaceMemberId == val;
                 },
                 [TaskAssignmentFilterFields.AssignedAt] = value =>
                 {

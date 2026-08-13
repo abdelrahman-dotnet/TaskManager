@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.Enums.SortingFields
+namespace TaskManager.API.Enums.SortingFields
 {
     public enum ProjectSortingFields
     {
@@ -7,7 +7,6 @@
         IsArchived,
         StartDate,
         EndDate,
-        TeamId,
         CreatedByUserId,
         CreatedAt
     }

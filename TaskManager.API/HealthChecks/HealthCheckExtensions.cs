@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
@@ -11,10 +11,11 @@ namespace TaskManager.API.HealthChecks;
 public static class HealthCheckExtensions
 {
     public static IServiceCollection AddApplicationHealthChecks(
-        this IServiceCollection services,
-        IConfiguration configuration)
+    this IServiceCollection services,
+    IConfiguration configuration)
     {
         services.AddHealthChecks()
+
             .AddCheck(
                 HealthCheckNames.Self,
                 () => HealthCheckResult.Healthy("Application is running"),
@@ -27,49 +28,56 @@ public static class HealthCheckExtensions
                 configuration.GetConnectionString("Redis")!,
                 name: HealthCheckNames.Redis);
 
-        // ui
+        var endpoint =
+            configuration["APP_URL"] is { Length: > 0 } appUrl
+                ? $"{appUrl.TrimEnd('/')}/health"
+                : "/health";
 
         services.AddHealthChecksUI(options =>
         {
-            options.SetEvaluationTimeInSeconds(30);
+            options.SetEvaluationTimeInSeconds(
+                configuration.GetValue<int>("HealthChecksUI:EvaluationTimeInSeconds"));
 
-            options.MaximumHistoryEntriesPerEndpoint(50);
+            options.MaximumHistoryEntriesPerEndpoint(
+                configuration.GetValue<int>("HealthChecksUI:MaximumHistoryEntriesPerEndpoint"));
 
             options.AddHealthCheckEndpoint(
                 "TaskManager API",
-                "/health");
-        }).AddInMemoryStorage();
+                endpoint);
+        })
+        .AddInMemoryStorage();
+
         return services;
     }
 
-    public static IEndpointRouteBuilder MapApplicationHealthChecks(
+    public static IEndpointRouteBuilder MapHealthCheckEndpoints(
     this IEndpointRouteBuilder endpoints)
     {
-        // Endpoint الخاص بالـ HealthChecks UI
         endpoints.MapHealthChecks("/health", new HealthCheckOptions
         {
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
 
-        // Liveness Probe
         endpoints.MapHealthChecks("/health/live", new HealthCheckOptions
         {
             Predicate = check => check.Tags.Contains(HealthCheckTags.Live),
             ResponseWriter = WriteResponse
         });
 
-
-        // development not for ui
         endpoints.MapHealthChecks("/health/details", new HealthCheckOptions
         {
             ResponseWriter = WriteResponse
         });
 
-        // HealthChecks Dashboard
+        return endpoints;
+    }
+    public static IEndpointRouteBuilder MapHealthCheckDashboard(
+    this IEndpointRouteBuilder endpoints)
+    {
         endpoints.MapHealthChecksUI(options =>
         {
-            options.UIPath = "/health-ui"; // path
-            options.ApiPath = "/health-ui-api"; //api path
+            options.UIPath = "/health-ui";
+            options.ApiPath = "/health-ui-api";
         });
 
         return endpoints;

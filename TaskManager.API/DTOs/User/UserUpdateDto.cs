@@ -6,8 +6,6 @@ namespace TaskManager.API.DTOs.User
     {
         //public string FirstName { get; set; } = null!;
         public string UserName { get; set; } = null!;
-
-        public long? TeamId { get; set; }
         public bool ShouldNotify { get; set; } = true;
         public int NotifyPeriod { get; set; }
     }

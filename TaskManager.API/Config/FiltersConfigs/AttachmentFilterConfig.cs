@@ -26,8 +26,8 @@ namespace TaskManager.API.Config.FiltersConfigs
                 },
                 [AttachmentFilterFields.UploadedByUserId] = value =>
                 {
-                    var val = value.ToString();
-                    return x => x.UploadedByUserId == val;
+                    var val = Convert.ToInt64(value);
+                    return x => x.UploadedByWorkspaceMemberId == val;
                 },
                 [AttachmentFilterFields.CreatedAt] = value =>
                 {

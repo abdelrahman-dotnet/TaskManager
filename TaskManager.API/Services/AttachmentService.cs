@@ -49,7 +49,7 @@ namespace TaskManager.API.Services
             if (!canManageAny)
             {
                 var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()
-                    .Where(pm => pm.UserId == currentUserId)
+                    .Where(pm => pm.WorkspaceMember.UserId == currentUserId)
                     .Select(pm => pm.ProjectId);
 
                 var accessibleTaskIds = _unitOfWork.Tasks.GetAllQuery()
@@ -78,12 +78,21 @@ namespace TaskManager.API.Services
 
         public async Task<AttachmentReadDto> CreateAsync(AttachmentCreateDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var taskExists = await _unitOfWork.Tasks.ExistsAsync(t => t.Id == dto.TaskItemId, cancellationToken);
-            if (!taskExists)
+            var task = await _unitOfWork.Tasks.GetByIdAsync(dto.TaskItemId, cancellationToken);
+            if (task == null)
             {
                 _logger.LogWarning("CreateAttachment failed. Task not found. TaskId: {TaskId}", dto.TaskItemId);
                 throw new NotFoundException("Task not found.");
             }
+
+            // WORKSPACE PIVOT: the FK is now a member id; resolve the caller's membership
+            // within the task's project (same workspace scope used by the Authorization pipeline).
+            var uploaderMemberId = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.ProjectId == task.ProjectId && pm.WorkspaceMember.UserId == currentUserId)
+                .Select(pm => pm.WorkspaceMemberId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (uploaderMemberId == 0)
+                throw new ForbiddenException("You are not a member of this task's project.");
 
             // MEMBERSHIP: dto.TaskItemId is already the value we need - no entity to load yet,
             // so this is straight from the incoming DTO, not a fresh Task query.
@@ -95,7 +104,7 @@ namespace TaskManager.API.Services
             }
 
             var attachment = _mapper.Map<Attachment>(dto);
-            attachment.UploadedByUserId = currentUserId;
+            attachment.UploadedByWorkspaceMemberId = uploaderMemberId;
 
             await _unitOfWork.Attachments.AddAsync(attachment, cancellationToken);
             var newValues = JsonSerializer.Serialize(new
@@ -103,7 +112,7 @@ namespace TaskManager.API.Services
                 attachment.FileName,
                 attachment.FilePath,
                 attachment.TaskItemId,
-                attachment.UploadedByUserId
+                attachment.UploadedByWorkspaceMemberId
             });
             await _unitOfWork.CompleteAsync(cancellationToken);
             await _auditLogService.LogAsync(
@@ -143,7 +152,15 @@ namespace TaskManager.API.Services
             }
 
             // 4. Ownership / ManageAny.
-            if (!canManageAny && attachment.UploadedByUserId != currentUserId)
+            // WORKSPACE PIVOT: attachment.UploadedByWorkspaceMemberId is a member id (long); resolve the
+            // uploader's member record in the attachment's task's project, then compare user ids.
+            var uploaderTask = await _unitOfWork.Tasks.GetByIdAsync(attachment.TaskItemId, cancellationToken);
+            var uploaderMember = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.ProjectId == uploaderTask.ProjectId && pm.WorkspaceMemberId == attachment.UploadedByWorkspaceMemberId)
+                .Include(pm => pm.WorkspaceMember)
+                .FirstOrDefaultAsync(cancellationToken);
+            var isUploader = uploaderMember != null && uploaderMember.WorkspaceMember.UserId == currentUserId;
+            if (!canManageAny && !isUploader)
             {
                 _logger.LogWarning("DeleteAttachment forbidden. UserId: {UserId} tried to delete AttachmentId: {AttachmentId}", currentUserId, id);
                 throw new ForbiddenException("You can only delete your own attachments.");
@@ -157,7 +174,7 @@ namespace TaskManager.API.Services
                 attachment.FileName,
                 attachment.FilePath,
                 attachment.TaskItemId,
-                attachment.UploadedByUserId
+                attachment.UploadedByWorkspaceMemberId
             });
 
             _unitOfWork.Attachments.Delete(attachment);

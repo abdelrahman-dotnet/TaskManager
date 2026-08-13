@@ -1,11 +1,11 @@
-namespace TaskManager.API.DTOs.TaskStatusHistory
+namespace TaskManager.API.DTOs.TaskItemStatusHistory
 {
-    public class TaskStatusHistoryReadDto
+    public class TaskItemStatusHistoryReadDto
     {
         public long Id { get; set; }
         public long TaskItemId { get; set; }
-        public TaskStatus OldStatus { get; set; }
-        public TaskStatus NewStatus { get; set; }
+        public TaskItemStatus OldStatus { get; set; }
+        public TaskItemStatus NewStatus { get; set; }
         public string ChangedByUserId { get; set; } = null!;
         public DateTime ChangedAt { get; set; }
     }

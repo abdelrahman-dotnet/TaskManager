@@ -45,7 +45,7 @@ namespace TaskManager.API.Services
             var query = _unitOfWork.Projects.GetAllQuery().AsNoTracking();
 
             var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()
-                .Where(pm => pm.UserId == currentUserId)
+                .Where(pm => pm.WorkspaceMember.UserId == currentUserId)
                 .Select(pm => pm.ProjectId);
 
             query = query.Where(p => memberProjectIds.Contains(p.Id));
@@ -90,10 +90,13 @@ namespace TaskManager.API.Services
 
         public async Task<ProjectReadDto> CreateAsync(ProjectCreateDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
-            // FK validation before save (Validation step).
-            var teamExists = await _unitOfWork.Teams.ExistsAsync(t => t.Id == dto.TeamId, cancellationToken);
-            if (!teamExists)
-                throw new NotFoundException("Team not found.");
+            // FK validation before save (Validation step) - every requested Team must exist.
+            foreach (var teamId in dto.TeamIds)
+            {
+                var teamExists = await _unitOfWork.Teams.ExistsAsync(t => t.Id == teamId, cancellationToken);
+                if (!teamExists)
+                    throw new NotFoundException("One of the specified teams was not found.");
+            }
 
             // Business Validation.
             if (dto.StartDate.HasValue && dto.EndDate.HasValue && dto.EndDate < dto.StartDate)
@@ -103,17 +106,35 @@ namespace TaskManager.API.Services
             var project = _mapper.Map<Project>(dto);
             project.CreatedByUserId = currentUserId;
 
+            // RESOLVE + attach the requested Team links (M:N junction) BEFORE the first save
+            // so EF assigns ProjectTeams.ProjectId automatically.
+            if (dto.TeamIds != null && dto.TeamIds.Count > 0)
+            {
+                foreach (var teamId in dto.TeamIds)
+                {
+                    project.ProjectTeams.Add(new ProjectTeam { TeamId = teamId });
+                }
+            }
+
             // Repository.
             await _unitOfWork.Projects.AddAsync(project, cancellationToken);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             // MEMBERSHIP: same pattern as TeamService.CreateAsync - creating the first Owner
             // is this method's job, not IMembershipService.AddProjectMemberAsync's.
+            var ownerWm = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .Where(wm => wm.UserId == currentUserId && wm.WorkspaceId == project.WorkspaceId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (ownerWm is null)
+            {
+                _logger.LogWarning("CreateProject failed. Caller is not a member of the workspace. UserId: {UserId}, WorkspaceId: {WorkspaceId}", currentUserId, project.WorkspaceId);
+                throw new NotFoundException("You must be a member of this workspace to create a project.");
+            }
+
             var ownerMembership = new ProjectMember
             {
                 ProjectId = project.Id,
-                UserId = currentUserId,
-                Role = MembershipRole.Owner
+                WorkspaceMemberId = ownerWm.Id
             };
             await _unitOfWork.ProjectMembers.AddAsync(ownerMembership, cancellationToken);
 
@@ -122,7 +143,6 @@ namespace TaskManager.API.Services
             {
                 project.Name,
                 project.Description,
-                project.TeamId,
                 project.StartDate,
                 project.EndDate
             });
@@ -145,7 +165,7 @@ namespace TaskManager.API.Services
             }
 
             // MEMBERSHIP: Permission (ProjectsUpdate, checked at the Controller) && Membership
-            // (must be Owner/Manager of THIS project) - both have to succeed. This replaces the
+            // (must be Owner/Admin of THIS project) - both have to succeed. This replaces the
             // old "Projects have no Ownership concept" note - that was true before the
             // Membership System existed; Membership is a distinct, additional check from
             // Identity Permissions, not the old ownership-by-CreatedByUserId pattern.
@@ -209,7 +229,6 @@ namespace TaskManager.API.Services
             {
                 project.Name,
                 project.Description,
-                project.TeamId,
                 project.StartDate,
                 project.EndDate,
                 project.IsArchived

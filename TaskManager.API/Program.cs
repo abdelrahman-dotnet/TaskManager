@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using TaskManager.API.Authorization;
+using ApiPermissions = TaskManager.API.Authorization.Permissions;
 using TaskManager.API.Filters;
 using TaskManager.API.HealthChecks;
 using TaskManager.API.Middleware;
@@ -21,10 +22,14 @@ using TaskManager.API.Services;
 using TaskManager.API.Validators.Task;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
+using TaskManager.Bussiness.Authorization;
 using TaskManager.Bussiness.Config;
+using TaskManager.Bussiness.Interfaces;
+using TaskManager.Bussiness.Repositories;
 using TaskManager.Bussiness.Services;
 using TaskManager.Data.Context;
 using TaskManager.Data.Entities;
+using TaskManager.Data.Repositories;
 using TaskManager.Data.UnitOfWork;
 
 namespace TaskManager.API
@@ -80,7 +85,7 @@ namespace TaskManager.API
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
-                    Description = "ضع الـ JWT هنا بدون كلمة Bearer",
+                    Description = "?? ??? JWT ??? ???? ???? Bearer",
                     Name = "Authorization",
                     Type = SecuritySchemeType.ApiKey
                 });
@@ -106,9 +111,6 @@ namespace TaskManager.API
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-                //options.UseNpgsql(
-                //      builder.Configuration.GetConnectionString("DefaultConnection"));
-
             });
             // current user
             builder.Services.AddHttpContextAccessor();
@@ -131,11 +133,14 @@ namespace TaskManager.API
             builder.Services.AddScoped<IAttachmentService, AttachmentService>();
             builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<ITaskAssignmentService, TaskAssignmentService>();
-            builder.Services.AddScoped<ITaskStatusHistoryService, TaskStatusHistoryService>();
+            builder.Services.AddScoped<ITaskItemStatusHistoryService, TaskItemStatusHistoryService>();
             builder.Services.AddScoped<IAuditLogService, AuditLogService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<IMembershipService, MembershipService>();
+
+            // AUTH PIPELINE (13 أغسطس 2026) — الـ Authorization Pipeline الجديد
+            builder.Services.AddScoped<IWorkspaceAuthorizationService, WorkspaceAuthorizationService>();
 
             //Jwt Settings
             var jwtSettings = builder.Configuration.GetSection("JWT").Get<JwtSettings>();
@@ -165,7 +170,7 @@ namespace TaskManager.API
             // Authorization
             builder.Services.AddAuthorization(options =>
             {
-                foreach (var permission in Permissions.All)
+                foreach (var permission in ApiPermissions.All)
                 {
                     options.AddPolicy(permission,
                         policy =>
@@ -188,7 +193,14 @@ namespace TaskManager.API
                 });
             });
 
-            // Repositories & Services
+            // Repositories & UnitOfWork
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(Repository<>));
+            builder.Services.AddScoped<IWorkspaceRepository, WorkspaceRepository>();
+            builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+            builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+            builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+            builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+            builder.Services.AddScoped<IAttachmentRepository, AttachmentRepository>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
@@ -196,7 +208,7 @@ namespace TaskManager.API
             builder.Services.AddFluentValidationAutoValidation();
             builder.Services.AddValidatorsFromAssemblyContaining<CreateTaskValidator>();
 
-            // ApiBehaviorOptions (لمنع الرد الافتراضي للأخطاء)
+            // ApiBehaviorOptions
             builder.Services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
@@ -205,41 +217,30 @@ namespace TaskManager.API
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            //if (app.Environment.IsDevelopment())
-            //{
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            //}
+            app.UseSwagger();
+            app.UseSwaggerUI();
+            
             // CorrelationIdMiddleware
             app.UseMiddleware<CorrelationIdMiddleware>();
             // Middleware
             app.UseMiddleware<GlobalExceptionMiddleware>();
             //serilog
             app.UseSerilogRequestLogging();
-            //app.UseMiddleware<ResponseWrapperMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // Identity Seeder
-            //using var scope = app.Services.CreateScope();
-
-            //var services = scope.ServiceProvider;
-
-            //var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            //var roleManager =
-            //    services.GetRequiredService<RoleManager<ApplicationRole>>();
-
-            //var dbContext =
-            //    services.GetRequiredService<AppDbContext>();
-
-            //await PermissionAndRoleSeeder.SeedAsync(userManager, roleManager, dbContext);
-
             app.MapControllers();
             // health check
-            app.MapApplicationHealthChecks(); // Register All Checks
+            app.MapHealthCheckEndpoints();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.MapHealthCheckDashboard();
+            } 
+
             app.Run();
         }
     }

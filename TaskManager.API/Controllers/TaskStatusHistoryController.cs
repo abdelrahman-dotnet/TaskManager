@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.API.Authorization;
 using TaskManager.API.DTOs.FilterQueryParams;
-using TaskManager.API.DTOs.TaskStatusHistory;
+using TaskManager.API.DTOs.TaskItemStatusHistory;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Bussiness.Caching;
@@ -13,27 +13,27 @@ namespace TaskManager.API.Controllers
     // Read-only. Entries are created internally by TaskController's ChangeStatus action -> TaskService.ChangeStatusAsync.
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = Permissions.TaskStatusHistoryView)]
-    public class TaskStatusHistoryController : ControllerBase
+    [Authorize(Policy = Permissions.TaskItemStatusHistoryView)]
+    public class TaskItemStatusHistoryController : ControllerBase
     {
-        private readonly ITaskStatusHistoryService _taskStatusHistoryService;
+        private readonly ITaskItemStatusHistoryService _TaskItemStatusHistoryService;
         private readonly ICacheService _cacheService;
-        private readonly ILogger<TaskStatusHistoryController> _logger;
+        private readonly ILogger<TaskItemStatusHistoryController> _logger;
 
-        public TaskStatusHistoryController(ITaskStatusHistoryService taskStatusHistoryService, ICacheService cacheService, ILogger<TaskStatusHistoryController> logger)
+        public TaskItemStatusHistoryController(ITaskItemStatusHistoryService TaskItemStatusHistoryService, ICacheService cacheService, ILogger<TaskItemStatusHistoryController> logger)
         {
-            _taskStatusHistoryService = taskStatusHistoryService;
+            _TaskItemStatusHistoryService = TaskItemStatusHistoryService;
             _cacheService = cacheService;
             _logger = logger;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] TaskStatusHistoryQueryParams q, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAll([FromQuery] TaskItemStatusHistoryQueryParams q, CancellationToken cancellationToken)
         {
-            var version = await _cacheService.GetVersionAsync(CacheDomains.TaskStatusHistories);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TaskStatusHistoriesList, version, q);
+            var version = await _cacheService.GetVersionAsync(CacheDomains.TaskItemStatusHistories);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TaskItemStatusHistoriesList, version, q);
 
-            var cached = await _cacheService.GetAsync<PagedResult<TaskStatusHistoryReadDto>>(cacheKey);
+            var cached = await _cacheService.GetAsync<PagedResult<TaskItemStatusHistoryReadDto>>(cacheKey);
             if (cached != null)
             {
                 _logger.LogInformation("Task status histories cache hit. CacheKey: {CacheKey}", cacheKey);
@@ -41,7 +41,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Task status histories cache miss. CacheKey: {CacheKey}", cacheKey);
-            var result = await _taskStatusHistoryService.GetAllAsync(q, cancellationToken);
+            var result = await _TaskItemStatusHistoryService.GetAllAsync(q, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);

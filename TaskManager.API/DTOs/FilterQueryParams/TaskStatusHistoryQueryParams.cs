@@ -3,14 +3,14 @@ using TaskManager.API.Enums.SortingFields;
 
 namespace TaskManager.API.DTOs.FilterQueryParams
 {
-    public class TaskStatusHistoryQueryParams : CommonQueryParams
+    public class TaskItemStatusHistoryQueryParams : CommonQueryParams
     {
         public long? TaskItemId { get; set; }
-        public TaskStatus? OldStatus { get; set; }
-        public TaskStatus? NewStatus { get; set; }
+        public TaskItemStatus? OldStatus { get; set; }
+        public TaskItemStatus? NewStatus { get; set; }
         public string? ChangedByUserId { get; set; }
         public DateTime? ChangedAt { get; set; }
 
-        public List<SortOption<TaskStatusHistorySortingFields>> Sorts { get; set; } = new();
+        public List<SortOption<TaskItemStatusHistorySortingFields>> Sorts { get; set; } = new();
     }
 }

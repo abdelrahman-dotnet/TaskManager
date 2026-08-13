@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.HealthChecks.Models;
+namespace TaskManager.API.HealthChecks.Models;
 
 public class HealthCheckEntryResponse
 {

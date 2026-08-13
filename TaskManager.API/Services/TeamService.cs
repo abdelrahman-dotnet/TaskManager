@@ -48,7 +48,7 @@ namespace TaskManager.API.Services
             var query = _unitOfWork.Teams.GetAllQuery().AsNoTracking();
 
             var memberTeamIds = _unitOfWork.TeamMembers.GetAllQuery()
-                .Where(tm => tm.UserId == currentUserId)
+                .Where(tm => tm.WorkspaceMember.UserId == currentUserId)
                 .Select(tm => tm.TeamId);
 
             query = query.Where(t => memberTeamIds.Contains(t.Id));
@@ -76,9 +76,9 @@ namespace TaskManager.API.Services
             var team = await _unitOfWork.Teams.FirstOrDefaultAsync(
                 t => t.Id == id,
                 cancellationToken,
-                t => t.Manager,
-                t => t.Members,
-                t => t.Projects);
+                t => t.TeamMembers,
+                t => t.ProjectTeams,
+                t => t.ProjectTeams.Select(pt => pt.Team));
 
             if (team == null)
             {
@@ -99,25 +99,32 @@ namespace TaskManager.API.Services
         public async Task<TeamReadDto> CreateAsync(TeamCreateDto dto, string managerId, CancellationToken cancellationToken = default)
         {
             var team = _mapper.Map<Team>(dto);
-            team.ManagerId = managerId;
 
             await _unitOfWork.Teams.AddAsync(team, cancellationToken);
             // Save first - Team.Id is DB-generated, so it isn't known until after this completes.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
-            // MEMBERSHIP: creating the first Owner is this method's job, not
+            // RESOLVE workspace membership for the user who will be the team's Owner.
             // IMembershipService.AddTeamMemberAsync's - it goes in directly, bypassing that
             // method entirely (which requires an existing Owner/Manager to authorize the add -
             // there isn't one yet for a brand-new team). See MembershipService's comments.
+            var ownerWm = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .Where(wm => wm.UserId == managerId && wm.WorkspaceId == team.WorkspaceId)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (ownerWm is null)
+            {
+                _logger.LogWarning("CreateTeam failed. Caller is not a member of the workspace. UserId: {UserId}, WorkspaceId: {WorkspaceId}", managerId, team.WorkspaceId);
+                throw new NotFoundException("You must be a member of this workspace to create a team.");
+            }
+
             var ownerMembership = new TeamMember
             {
                 TeamId = team.Id,
-                UserId = managerId,
-                Role = MembershipRole.Owner
+                WorkspaceMemberId = ownerWm.Id
             };
             await _unitOfWork.TeamMembers.AddAsync(ownerMembership, cancellationToken);
 
-            var newValues = JsonSerializer.Serialize(new { team.Name, team.Description, team.ManagerId });
+            var newValues = JsonSerializer.Serialize(new { team.Name, team.Description });
             await _auditLogService.LogAsync(managerId, "Create Team", nameof(Team), team.Id.ToString(), newValues: newValues);
             // Second save - persists the TeamMember(Owner) and the audit row together.
             await _unitOfWork.CompleteAsync(cancellationToken);
@@ -136,22 +143,15 @@ namespace TaskManager.API.Services
             }
 
             // MEMBERSHIP: Permission (TeamsUpdate, checked at the Controller) && Membership
-            // (must be Owner/Manager of THIS team) - both have to succeed.
+            // (must be Owner/Admin of THIS team) - both have to succeed.
             await _membershipService.EnsureCanManageTeamAsync(id, currentUserId, cancellationToken);
 
-            if (!string.Equals(dto.ManagerId, team.ManagerId, StringComparison.Ordinal))
-            {
-                var manager = await _userManager.FindByIdAsync(dto.ManagerId);
-                if (manager is null)
-                    throw new NotFoundException("Manager not found.");
-            }
-
-            var oldValues = JsonSerializer.Serialize(new { team.Name, team.Description, team.ManagerId });
+            var oldValues = JsonSerializer.Serialize(new { team.Name, team.Description });
 
             _mapper.Map(dto, team);
             team.UpdatedAt = DateTime.UtcNow;
 
-            var newValues = JsonSerializer.Serialize(new { team.Name, team.Description, team.ManagerId });
+            var newValues = JsonSerializer.Serialize(new { team.Name, team.Description });
 
             _unitOfWork.Teams.Update(team);
 
@@ -176,7 +176,7 @@ namespace TaskManager.API.Services
             // MEMBERSHIP: same as UpdateAsync above - Permission && Membership.
             await _membershipService.EnsureCanManageTeamAsync(id, currentUserId, cancellationToken);
 
-            var oldValues = JsonSerializer.Serialize(new { team.Name, team.Description, team.ManagerId });
+            var oldValues = JsonSerializer.Serialize(new { team.Name, team.Description });
 
             _unitOfWork.Teams.Delete(team);
 

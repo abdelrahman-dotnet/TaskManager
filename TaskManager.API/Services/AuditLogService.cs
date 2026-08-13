@@ -64,7 +64,7 @@ namespace TaskManager.API.Services
             }
             var log = new AuditLog
             {
-                UserId = userId,
+                WorkspaceMemberId = (long?)null,
                 Action = action,
                 EntityName = entityName,
                 EntityId = entityId,

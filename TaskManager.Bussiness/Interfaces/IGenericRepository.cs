@@ -22,7 +22,9 @@ namespace TaskManager.Bussiness.Interfaces
 
         Task AddAsync(T entity, CancellationToken cancellationToken = default);
 
-        void Update(T entity, CancellationToken cancellationToken = default);
+        // Synchronous, in-memory change-tracker operation - no I/O, so no CancellationToken
+        // (there's nothing to actually cancel).
+        void Update(T entity);
 
         // Soft-deletes when T inherits BaseEntity (sets IsDeleted = true),
         // otherwise falls back to a real removal.

@@ -85,7 +85,6 @@ namespace TaskManager.API.Services
             // Read-only - AsNoTracking added (this was missing before).
             var user = await _userManager.Users
                 .AsNoTracking()
-                .Include(u => u.Team)
                 .FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
 
             if (user == null)
@@ -119,18 +118,9 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("User not found.");
             }
 
-            // Business Validation - FK check: TeamId must exist before saving, don't rely on a SQL exception.
-            if (dto.TeamId != null && dto.TeamId != user.TeamId)
-            {
-                var teamExists = await _unitOfWork.Teams.ExistsAsync(t => t.Id == dto.TeamId, cancellationToken);
-                if (!teamExists)
-                    throw new NotFoundException("Team not found.");
-            }
-
             var oldValues = JsonSerializer.Serialize(new
             {
                 user.UserName,
-                user.TeamId,
                 user.ShouldNotify,
                 user.NotifyPeriod
             });
@@ -141,7 +131,6 @@ namespace TaskManager.API.Services
             var newValues = JsonSerializer.Serialize(new
             {
                 user.UserName,
-                user.TeamId,
                 user.ShouldNotify,
                 user.NotifyPeriod
             });

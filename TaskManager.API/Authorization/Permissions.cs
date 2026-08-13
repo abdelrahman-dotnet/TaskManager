@@ -67,7 +67,7 @@ namespace TaskManager.API.Authorization
 
         // ── Reporting / oversight (read-only) ────────────────────────────────
         public const string TaskAssignmentsView = "TaskAssignments.View";
-        public const string TaskStatusHistoryView = "TaskStatusHistory.View";
+        public const string TaskItemStatusHistoryView = "TaskItemStatusHistory.View";
         public const string AuditLogsView = "AuditLogs.View";
 
         public static readonly string[] All =
@@ -86,7 +86,7 @@ namespace TaskManager.API.Authorization
 
             RolesManage,
 
-            TaskAssignmentsView, TaskStatusHistoryView, AuditLogsView
+            TaskAssignmentsView, TaskItemStatusHistoryView, AuditLogsView
         };
     }
 }

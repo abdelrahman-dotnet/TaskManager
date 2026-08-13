@@ -859,6 +859,148 @@
         }
       }
     },
+    "/api/projects/{projectId}/members": {
+      "get": {
+        "tags": [
+          "ProjectMembers"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ProjectMembers"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddProjectMemberDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddProjectMemberDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddProjectMemberDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/projects/{projectId}/members/{userId}": {
+      "put": {
+        "tags": [
+          "ProjectMembers"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeProjectMemberRoleDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeProjectMemberRoleDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeProjectMemberRoleDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ProjectMembers"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Role": {
       "get": {
         "tags": [
@@ -1242,12 +1384,23 @@
             "description": "Success"
           }
         }
-      },
+      }
+    },
+    "/api/Task/{workspaceId}/{id}": {
       "delete": {
         "tags": [
           "Task"
         ],
         "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -1358,17 +1511,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChangeTaskStatusDto"
+                "$ref": "#/components/schemas/ChangeTaskItemStatusDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChangeTaskStatusDto"
+                "$ref": "#/components/schemas/ChangeTaskItemStatusDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ChangeTaskStatusDto"
+                "$ref": "#/components/schemas/ChangeTaskItemStatusDto"
               }
             }
           }
@@ -1503,10 +1656,10 @@
         }
       }
     },
-    "/api/TaskStatusHistory": {
+    "/api/TaskItemStatusHistory": {
       "get": {
         "tags": [
-          "TaskStatusHistory"
+          "TaskItemStatusHistory"
         ],
         "parameters": [
           {
@@ -1521,14 +1674,14 @@
             "name": "OldStatus",
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/TaskStatus"
+              "$ref": "#/components/schemas/TaskItemStatus"
             }
           },
           {
             "name": "NewStatus",
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/TaskStatus"
+              "$ref": "#/components/schemas/TaskItemStatus"
             }
           },
           {
@@ -1552,7 +1705,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/TaskStatusHistorySortingFieldsSortOption"
+                "$ref": "#/components/schemas/TaskItemStatusHistorySortingFieldsSortOption"
               }
             }
           },
@@ -1774,6 +1927,148 @@
             "schema": {
               "type": "integer",
               "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/teams/{teamId}/members": {
+      "get": {
+        "tags": [
+          "TeamMembers"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TeamMembers"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTeamMemberDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTeamMemberDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTeamMemberDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/teams/{teamId}/members/{userId}": {
+      "put": {
+        "tags": [
+          "TeamMembers"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeTeamMemberRoleDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeTeamMemberRoleDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeTeamMemberRoleDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TeamMembers"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -2069,6 +2364,32 @@
   },
   "components": {
     "schemas": {
+      "AddProjectMemberDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "$ref": "#/components/schemas/WorkspaceRole"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddTeamMemberDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "$ref": "#/components/schemas/WorkspaceRole"
+          }
+        },
+        "additionalProperties": false
+      },
       "AssignRoleDto": {
         "type": "object",
         "properties": {
@@ -2168,6 +2489,24 @@
         },
         "additionalProperties": false
       },
+      "ChangeProjectMemberRoleDto": {
+        "type": "object",
+        "properties": {
+          "newRole": {
+            "$ref": "#/components/schemas/WorkspaceRole"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChangeTaskItemStatusDto": {
+        "type": "object",
+        "properties": {
+          "newStatus": {
+            "$ref": "#/components/schemas/TaskItemStatus"
+          }
+        },
+        "additionalProperties": false
+      },
       "ChangeTaskPriorityDto": {
         "type": "object",
         "properties": {
@@ -2177,11 +2516,11 @@
         },
         "additionalProperties": false
       },
-      "ChangeTaskStatusDto": {
+      "ChangeTeamMemberRoleDto": {
         "type": "object",
         "properties": {
-          "newStatus": {
-            "$ref": "#/components/schemas/TaskItemStatus"
+          "newRole": {
+            "$ref": "#/components/schemas/WorkspaceRole"
           }
         },
         "additionalProperties": false
@@ -2289,9 +2628,13 @@
             "format": "date-time",
             "nullable": true
           },
-          "teamId": {
-            "type": "integer",
-            "format": "int64"
+          "teamIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2303,7 +2646,6 @@
           "IsArchived",
           "StartDate",
           "EndDate",
-          "TeamId",
           "CreatedByUserId",
           "CreatedAt"
         ],
@@ -2459,11 +2801,32 @@
         "enum": [
           "Todo",
           "InProgress",
-          "InReview",
-          "Done",
-          "Cancelled"
+          "Done"
         ],
         "type": "string"
+      },
+      "TaskItemStatusHistorySortingFields": {
+        "enum": [
+          "Id",
+          "TaskItemId",
+          "OldStatus",
+          "NewStatus",
+          "ChangedByUserId",
+          "ChangedAt"
+        ],
+        "type": "string"
+      },
+      "TaskItemStatusHistorySortingFieldsSortOption": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/TaskItemStatusHistorySortingFields"
+          },
+          "direction": {
+            "$ref": "#/components/schemas/SortDirection"
+          }
+        },
+        "additionalProperties": false
       },
       "TaskPriority": {
         "enum": [
@@ -2495,42 +2858,6 @@
         "properties": {
           "field": {
             "$ref": "#/components/schemas/TaskSortingFields"
-          },
-          "direction": {
-            "$ref": "#/components/schemas/SortDirection"
-          }
-        },
-        "additionalProperties": false
-      },
-      "TaskStatus": {
-        "enum": [
-          "Created",
-          "WaitingForActivation",
-          "WaitingToRun",
-          "Running",
-          "WaitingForChildrenToComplete",
-          "RanToCompletion",
-          "Canceled",
-          "Faulted"
-        ],
-        "type": "string"
-      },
-      "TaskStatusHistorySortingFields": {
-        "enum": [
-          "Id",
-          "TaskItemId",
-          "OldStatus",
-          "NewStatus",
-          "ChangedByUserId",
-          "ChangedAt"
-        ],
-        "type": "string"
-      },
-      "TaskStatusHistorySortingFieldsSortOption": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "$ref": "#/components/schemas/TaskStatusHistorySortingFields"
           },
           "direction": {
             "$ref": "#/components/schemas/SortDirection"
@@ -2579,7 +2906,6 @@
         "enum": [
           "Id",
           "Name",
-          "ManagerId",
           "CreatedAt"
         ],
         "type": "string"
@@ -2606,10 +2932,6 @@
           "description": {
             "type": "string",
             "nullable": true
-          },
-          "managerId": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2619,7 +2941,6 @@
           "Id",
           "UserName",
           "IsActive",
-          "TeamId",
           "LastLoginAt",
           "CreatedAt"
         ],
@@ -2653,11 +2974,6 @@
             "type": "string",
             "nullable": true
           },
-          "teamId": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true
-          },
           "shouldNotify": {
             "type": "boolean"
           },
@@ -2667,12 +2983,20 @@
           }
         },
         "additionalProperties": false
+      },
+      "WorkspaceRole": {
+        "enum": [
+          "Owner",
+          "Admin",
+          "Member"
+        ],
+        "type": "string"
       }
     },
     "securitySchemes": {
       "Bearer": {
         "type": "apiKey",
-        "description": "ضع الـ JWT هنا بدون كلمة Bearer",
+        "description": "?? ??? JWT ??? ???? ???? Bearer",
         "name": "Authorization",
         "in": "header"
       }

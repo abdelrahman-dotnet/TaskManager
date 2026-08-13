@@ -19,11 +19,6 @@ namespace TaskManager.API.Config.FiltersConfigs
                     var val = value.ToString()!;
                     return x => x.Description != null && x.Description.Contains(val);
                 },
-                [TeamFilterFields.ManagerId] = value =>
-                {
-                    var val = value.ToString();
-                    return x => x.ManagerId == val;
-                },
                 [TeamFilterFields.CreatedAt] = value =>
                 {
                     var val = (DateTime)value;

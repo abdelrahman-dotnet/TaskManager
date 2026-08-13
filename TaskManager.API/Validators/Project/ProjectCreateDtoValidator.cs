@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using TaskManager.API.DTOs.Project;
 
 namespace TaskManager.API.Validators.Project
@@ -14,7 +14,7 @@ namespace TaskManager.API.Validators.Project
             RuleFor(x => x.Description)
                 .MaximumLength(2000).WithMessage("Maximum Length Is 2000 Characters");
 
-            RuleFor(x => x.TeamId)
+            RuleForEach(x => x.TeamIds)
                 .GreaterThan(0).WithMessage("Invalid Team Id");
         }
     }

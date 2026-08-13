@@ -1,11 +1,11 @@
 using TaskManager.API.DTOs.FilterQueryParams;
-using TaskManager.API.DTOs.TaskStatusHistory;
+using TaskManager.API.DTOs.TaskItemStatusHistory;
 using TaskManager.API.Helpers;
 
 namespace TaskManager.Business.Services.Interfaces
 {
-    public interface ITaskStatusHistoryService
+    public interface ITaskItemStatusHistoryService
     {
-        Task<PagedResult<TaskStatusHistoryReadDto>> GetAllAsync(TaskStatusHistoryQueryParams queryParams, CancellationToken cancellationToken = default);
+        Task<PagedResult<TaskItemStatusHistoryReadDto>> GetAllAsync(TaskItemStatusHistoryQueryParams queryParams, CancellationToken cancellationToken = default);
     }
 }

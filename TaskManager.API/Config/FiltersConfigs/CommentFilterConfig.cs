@@ -31,8 +31,8 @@ namespace TaskManager.API.Config.FiltersConfigs
                 },
                 [CommentFilterField.UserId] = value =>
                 {
-                    var val = value.ToString();
-                    return x => x.UserId == val;
+                    var val = Convert.ToInt64(value);
+                    return x => x.WorkspaceMemberId == val;
                 }
             };
     }

@@ -1,6 +1,6 @@
 namespace TaskManager.API.Enums.FilterFields
 {
-    public enum TaskStatusHistoryFilterFields
+    public enum TaskItemStatusHistoryFilterFields
     {
         TaskItemId,
         OldStatus,

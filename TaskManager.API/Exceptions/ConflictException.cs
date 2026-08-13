@@ -1,4 +1,4 @@
-﻿namespace TaskManager.API.Exceptions
+namespace TaskManager.API.Exceptions
 {
     public class ConflictException : Exception
     {

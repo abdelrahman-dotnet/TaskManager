@@ -24,11 +24,6 @@ namespace TaskManager.API.Config.FiltersConfigs
                     var val = (bool)value;
                     return x => x.IsArchived == val;
                 },
-                [ProjectFilterFields.TeamId] = value =>
-                {
-                    var val = (long)value;
-                    return x => x.TeamId == val;
-                },
                 [ProjectFilterFields.CreatedByUserId] = value =>
                 {
                     var val = value.ToString();

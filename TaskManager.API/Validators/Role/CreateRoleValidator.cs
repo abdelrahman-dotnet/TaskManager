@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using TaskManager.API.DTOs.Role;
 
 namespace TaskManager.API.Validators.Role
