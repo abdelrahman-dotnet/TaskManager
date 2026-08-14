@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.API.Authorization;
+using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.DTOs.Task;
 using TaskManager.API.Helpers;
@@ -147,6 +148,54 @@ namespace TaskManager.API.Controllers
             await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
 
             return Ok(result);
+        }
+
+        // VIEW TRASH (D-22 / BR-TSK-05): lists archived tasks visible to the caller.
+        // Same team-based visibility as the normal list (GetAllAsync already filters to
+        // the caller's project/team membership), plus an IsArchived=true filter so only
+        // trash is returned. Gated by TasksViewTrash at the controller level.
+        [HttpGet("trash")]
+        [Authorize(Policy = BizPermissions.TasksViewTrash)]
+        public async Task<IActionResult> ViewTrash(CancellationToken cancellationToken)
+        {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Tasks);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TasksList, version, new { IsArchived = true, CurrentUserId });
+
+            var cached = await _cacheService.GetAsync<PagedResult<TaskReadDto>>(cacheKey);
+            if (cached != null)
+            {
+                _logger.LogInformation("Task trash cache hit. CacheKey: {CacheKey}", cacheKey);
+                return Ok(cached);
+            }
+
+            var result = await _taskService.GetAllAsync(new TaskQueryParam { IsArchived = true }, CurrentUserId, cancellationToken);
+            await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
+
+            return Ok(result);
+        }
+
+        // PIPELINE: Authorization runs in the service (Visibility -> Permission: TasksArchive
+        // -> Condition: TaskArchivedCondition) per the Master Spec (BR-TSK-05).
+        [HttpPut("{id}/archive")]
+        [Authorize(Policy = BizPermissions.TasksArchive)]
+        public async Task<IActionResult> Archive(long id, CancellationToken cancellationToken)
+        {
+            await _taskService.ArchiveAsync(id, CurrentUserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+
+            return NoContent();
+        }
+
+        // PIPELINE: Authorization runs in the service (Visibility -> Permission: TasksRestore)
+        // per the Master Spec (BR-TSK-05).
+        [HttpPut("{id}/restore")]
+        [Authorize(Policy = BizPermissions.TasksRestore)]
+        public async Task<IActionResult> Restore(long id, CancellationToken cancellationToken)
+        {
+            await _taskService.RestoreAsync(id, CurrentUserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
+
+            return NoContent();
         }
     }
 }
