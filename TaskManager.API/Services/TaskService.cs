@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +25,6 @@ namespace TaskManager.API.Services
         private readonly ILogger<TaskService> _logger;
         private readonly IAuditLogService _auditLogService;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IMembershipService _membershipService;
         private readonly IWorkspaceAuthorizationService _authService;
 
         public TaskService(
@@ -34,7 +33,6 @@ namespace TaskManager.API.Services
             ILogger<TaskService> logger,
             IAuditLogService auditLogService,
             UserManager<ApplicationUser> userManager,
-            IMembershipService membershipService,
             IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
@@ -42,25 +40,66 @@ namespace TaskManager.API.Services
             _logger = logger;
             _auditLogService = auditLogService;
             _userManager = userManager;
-            _membershipService = membershipService;
             _authService = authService;
         }
 
-        // MEMBERSHIP: filters to tasks in projects the user belongs to, done as part of the
-        // query itself (an IN subquery against ProjectMembers), not fetched-then-filtered.
-        // canManageAny (Tasks.ManageAny) bypasses the filter entirely.
-        public async Task<PagedResult<TaskReadDto>> GetAllAsync(TaskQueryParam queryParams, string currentUserId, bool canManageAny, CancellationToken cancellationToken = default)
+        // RESOLVE WORKSPACE: Task -> Project -> Workspace. Used by the Authorization
+        // Pipeline (Visibility stage) on every task operation.
+        private async Task<(TaskItem task, long workspaceId)> ResolveTaskWorkspaceAsync(
+            long id,
+            CancellationToken cancellationToken)
+        {
+            var task = await _unitOfWork.Tasks.GetByIdAsync(id, cancellationToken);
+            if (task == null)
+            {
+                _logger.LogWarning("Task not found. TaskId: {TaskId}", id);
+                throw new NotFoundException("Task not found.");
+            }
+
+            var workspaceId = await _unitOfWork.Projects.GetAllQuery()
+                .Where(p => p.Id == task.ProjectId)
+                .Select(p => (long?)p.WorkspaceId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (workspaceId == null)
+            {
+                _logger.LogWarning("Task's project has no workspace. TaskId: {TaskId}, ProjectId: {ProjectId}", id, task.ProjectId);
+                throw new NotFoundException("Task's project not found.");
+            }
+
+            return (task, workspaceId.Value);
+        }
+
+        // RESOLVE PROJECT WORKSPACE: Project -> Workspace. Used for Create and read checks.
+        private async Task<long> ResolveProjectWorkspaceAsync(long projectId, CancellationToken cancellationToken)
+        {
+            var workspaceId = await _unitOfWork.Projects.GetAllQuery()
+                .Where(p => p.Id == projectId)
+                .Select(p => (long?)p.WorkspaceId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (workspaceId == null)
+            {
+                _logger.LogWarning("Project not found or has no workspace. ProjectId: {ProjectId}", projectId);
+                throw new NotFoundException("Project not found.");
+            }
+
+            return workspaceId.Value;
+        }
+
+        // VISIBILITY (read-listing): filters to tasks in projects the user belongs to, done
+        // as part of the query itself (an IN subquery against ProjectMembers). There is no
+        // single workspaceId for a cross-workspace list, so read-listing keeps the
+        // membership-scoped query rather than the per-workspace pipeline.
+        public async Task<PagedResult<TaskReadDto>> GetAllAsync(TaskQueryParam queryParams, string currentUserId, CancellationToken cancellationToken = default)
         {
             var query = _unitOfWork.Tasks.GetAllQuery().AsNoTracking();
 
-            if (!canManageAny)
-            {
-                var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()
-                    .Where(pm => pm.WorkspaceMember.UserId == currentUserId)
-                    .Select(pm => pm.ProjectId);
+            var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()
+                .Where(pm => pm.WorkspaceMember.UserId == currentUserId)
+                .Select(pm => pm.ProjectId);
 
-                query = query.Where(t => memberProjectIds.Contains(t.ProjectId));
-            }
+            query = query.Where(t => memberProjectIds.Contains(t.ProjectId));
 
             query = query.ApplyFiltering(queryParams, TaskFilterConfig.map);
 
@@ -82,11 +121,7 @@ namespace TaskManager.API.Services
             return result;
         }
 
-        // MEMBERSHIP: NotFound if the task truly doesn't exist; Forbidden if it exists but the
-        // caller isn't a member of its project (and doesn't have canManageAny). Kept as two
-        // distinct exceptions rather than always NotFound, consistent with how Forbidden is
-        // used everywhere else in this codebase (e.g. TaskService.UpdateAsync above).
-        public async Task<TaskDetailsReadDto> GetByIdAsync(long id, string currentUserId, bool canManageAny, CancellationToken cancellationToken = default)
+        public async Task<TaskDetailsReadDto> GetByIdAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
         {
             var task = await _unitOfWork.Tasks.GetDetailsAsync(id, cancellationToken);
             if (task == null)
@@ -95,14 +130,23 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Task not found.");
             }
 
-            if (!canManageAny)
+            // TASK PIVOT: Task -> Project -> Workspace for pipeline stage 1 (Visibility).
+            var workspaceId = await ResolveProjectWorkspaceAsync(task.ProjectId, cancellationToken);
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.WorkspaceView);
+
+            if (!authResult.Succeeded)
             {
-                var canAccess = await _membershipService.CanAccessTaskAsync(id, currentUserId, cancellationToken);
-                if (!canAccess)
-                {
-                    _logger.LogWarning("GetTaskById forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, id);
-                    throw new ForbiddenException("You are not a member of this task's project.");
-                }
+                _logger.LogWarning(
+                    "GetTaskById pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, id);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
             }
 
             return _mapper.Map<TaskDetailsReadDto>(task);
@@ -113,16 +157,24 @@ namespace TaskManager.API.Services
             if (dto.DueDate.HasValue && dto.DueDate.Value.Date < DateTime.UtcNow.Date)
                 throw new BadRequestException("Due date cannot be in the past.");
 
-            var projectExists = await _unitOfWork.Projects.ExistsAsync(p => p.Id == dto.ProjectId, cancellationToken);
-            if (!projectExists)
-                throw new NotFoundException("Project not found.");
+            // TASK PIVOT: project lookup + workspace resolution (NotFound if missing), then
+            // the Authorization Pipeline (Visibility -> Permission: Tasks.Create) -> Operation.
+            var workspaceId = await ResolveProjectWorkspaceAsync(dto.ProjectId, cancellationToken);
 
-            // MEMBERSHIP: must belong to the target Project to create tasks in it.
-            var canAccessProject = await _membershipService.CanAccessProjectAsync(dto.ProjectId, currentUserId, cancellationToken);
-            if (!canAccessProject)
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksCreate);
+
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("CreateTask forbidden. UserId: {UserId} is not a member of ProjectId: {ProjectId}", currentUserId, dto.ProjectId);
-                throw new ForbiddenException("You must be a member of the project to create tasks in it.");
+                _logger.LogWarning(
+                    "CreateTask pipeline failed. Reason: {Reason}, UserId: {UserId}, ProjectId: {ProjectId}",
+                    authResult.FailureReason, currentUserId, dto.ProjectId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
             }
 
             var task = _mapper.Map<TaskItem>(dto);
@@ -139,28 +191,27 @@ namespace TaskManager.API.Services
             return _mapper.Map<TaskReadDto>(task);
         }
 
-        public async Task<TaskReadDto> UpdateAsync(long id, TaskUpdateDto dto, string currentUserId, bool canManageAny, CancellationToken cancellationToken = default)
+        public async Task<TaskReadDto> UpdateAsync(long id, TaskUpdateDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var task = await _unitOfWork.Tasks.GetByIdAsync(id, cancellationToken);
-            if (task == null)
-            {
-                _logger.LogWarning("UpdateTask failed. Task not found. TaskId: {TaskId}", id);
-                throw new NotFoundException("Task not found.");
-            }
+            // TASK PIVOT: Task -> Project -> Workspace, then the full pipeline replaces the
+            // legacy membership + creator checks (WorkspaceMember.Role is the sole authority
+            // per the Master Spec - no creator-only or ManageAny semantics).
+            var (task, workspaceId) = await ResolveTaskWorkspaceAsync(id, cancellationToken);
 
-            // MEMBERSHIP: must belong to the task's Project, regardless of ownership/ManageAny -
-            // ManageAny bypasses the "did I create this task" check below, but not Membership.
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(id, currentUserId, cancellationToken);
-            if (!canAccessTask)
-            {
-                _logger.LogWarning("UpdateTask forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, id);
-                throw new ForbiddenException("You are not a member of this task's project.");
-            }
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksUpdate);
 
-            if (!canManageAny && task.CreatedByUserId != currentUserId)
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("UpdateTask forbidden. UserId: {UserId} tried to edit TaskId: {TaskId}", currentUserId, id);
-                throw new ForbiddenException("You can only edit tasks you created.");
+                _logger.LogWarning(
+                    "UpdateTask pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, id);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
             }
 
             if (dto.DueDate.HasValue && dto.DueDate.Value.Date < DateTime.UtcNow.Date)
@@ -177,8 +228,8 @@ namespace TaskManager.API.Services
             return _mapper.Map<TaskReadDto>(task);
         }
 
-        // PIPELINE (Auth Pipeline — Pilot on Tasks.Delete):
-        // Visibility → Permission → Resource Condition (TaskDeleteCondition) → Operation.
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Tasks.Delete) -> Resource
+        // Condition (TaskDeleteCondition) -> Operation (Soft Delete).
         public async Task DeleteAsync(long id, long workspaceId, string currentUserId, CancellationToken cancellationToken = default)
         {
             var task = await _unitOfWork.Tasks.GetByIdAsync(id, cancellationToken);
@@ -188,7 +239,7 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Task not found.");
             }
 
-            // === Authorization Pipeline (المراحل 1+2+3) ===
+            // === Authorization Pipeline (Ø§Ù„Ù…Ø±Ø§Ø­Ù„ 1+2+3) ===
             var authResult = await _authService.AuthorizeAsync(
                 workspaceId,
                 currentUserId,
@@ -206,9 +257,9 @@ namespace TaskManager.API.Services
                     : new ForbiddenException(authResult.Message);
             }
 
-            // === المرحلة 4: Business Rules (لو اتضافت لاحقًا — Dependencies مثلاً) ===
+            // === Ø§Ù„Ù…Ø±Ø­Ù„Ø© 4: Business Rules (Dependencies - future) ===
 
-            // === المرحلة 5: Operation (Soft Delete) ===
+            // === Ø§Ù„Ù…Ø±Ø­Ù„Ø© 5: Operation (Soft Delete) ===
             _unitOfWork.Tasks.Delete(task);
             await _auditLogService.LogAsync(currentUserId, "Delete Task", nameof(TaskItem), id.ToString());
             await _unitOfWork.CompleteAsync(cancellationToken);
@@ -222,14 +273,29 @@ namespace TaskManager.API.Services
             if (task == null)
                 throw new NotFoundException("Task not found.");
 
-            // MEMBERSHIP: the person doing the assigning must belong to the task's project.
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(taskId, currentUserId, cancellationToken);
-            if (!canAccessTask)
+            // TASK PIVOT: Task -> Project -> Workspace, then pipeline replaces the legacy
+            // membership checks. The assignee still needs a ProjectMember record in the same
+            // project (data lookup for the FK) but no separate membership check - the
+            // permission stage covers workspace membership.
+            var workspaceId = await ResolveProjectWorkspaceAsync(task.ProjectId, cancellationToken);
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksAssign);
+
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("AssignTask forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, taskId);
-                throw new ForbiddenException("You are not a member of this task's project.");
+                _logger.LogWarning(
+                    "AssignTask pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, taskId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
             }
 
+            // === Ø§Ù„Ù…Ø±Ø­Ù„Ø© 4: Business Rules ===
             if (task.Status == TaskItemStatus.Done)
                 throw new BadRequestException("you cannot Assign Completed tasks.");
             var alreadyAssigned = await _unitOfWork.TaskAssignments.ExistsAsync(
@@ -257,11 +323,14 @@ namespace TaskManager.API.Services
                 .Select(pm => pm.WorkspaceMemberId)
                 .FirstOrDefaultAsync(cancellationToken);
             if (assignerMemberId == 0)
-                throw new ForbiddenException("You are not a member of this task's project.");
+                throw new BadRequestException("You are not a member of this task's project.");
 
             // MEMBERSHIP: the person being assigned should also be a member of the project -
             // assigning work to someone who can't even see the project would be a dead end.
-            var assigneeCanAccess = await _membershipService.CanAccessTaskAsync(taskId, dto.UserId, cancellationToken);
+            // Covered by the WorkspaceMemberId lookup above (assigneeMemberId == 0 check),
+            // kept explicit for clarity.
+            var assigneeCanAccess = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .AnyAsync(pm => pm.ProjectId == task.ProjectId && pm.WorkspaceMember.UserId == dto.UserId, cancellationToken);
             if (!assigneeCanAccess)
             {
                 _logger.LogWarning("AssignTask failed. Assignee UserId: {AssigneeId} is not a member of TaskId: {TaskId}'s project", dto.UserId, taskId);
@@ -292,12 +361,24 @@ namespace TaskManager.API.Services
             if (task == null)
                 throw new NotFoundException("Task not found.");
 
-            // MEMBERSHIP: same reasoning as AssignAsync.
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(taskId, currentUserId, cancellationToken);
-            if (!canAccessTask)
+            // TASK PIVOT: Task -> Project -> Workspace, then pipeline replaces the legacy
+            // membership check (same permission as Assign - Tasks.Assign covers both).
+            var workspaceId = await ResolveProjectWorkspaceAsync(task.ProjectId, cancellationToken);
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksAssign);
+
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("UnassignTask forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, taskId);
-                throw new ForbiddenException("You are not a member of this task's project.");
+                _logger.LogWarning(
+                    "UnassignTask pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, taskId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
             }
 
             var assignment = await _unitOfWork.TaskAssignments.FirstOrDefaultAsync(a => a.TaskItemId == taskId && a.WorkspaceMember.UserId == userId, cancellationToken);
@@ -320,22 +401,35 @@ namespace TaskManager.API.Services
             if (task == null)
                 throw new NotFoundException("Task not found.");
 
-            // WORKSPACE PIVOT: the status-change actor is now a member id, not a user id.
+            // TASK PIVOT: Task -> Project -> Workspace, then pipeline replaces the legacy
+            // membership check. The actor's member id (for the history FK) is still resolved
+            // from the ProjectMember pivot - this is a data lookup, not an authorization.
+            var workspaceId = await ResolveProjectWorkspaceAsync(task.ProjectId, cancellationToken);
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksChangeStatus);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning(
+                    "ChangeStatus pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, taskId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
+            }
+
             var changerMemberId = await _unitOfWork.ProjectMembers.GetAllQuery()
                 .Where(pm => pm.ProjectId == task.ProjectId && pm.WorkspaceMember.UserId == currentUserId)
                 .Select(pm => pm.WorkspaceMemberId)
                 .FirstOrDefaultAsync(cancellationToken);
             if (changerMemberId == 0)
-                throw new ForbiddenException("You are not a member of this task's project.");
+                throw new BadRequestException("You are not a member of this task's project.");
 
-            // MEMBERSHIP: must belong to the task's project to change its status.
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(taskId, currentUserId, cancellationToken);
-            if (!canAccessTask)
-            {
-                _logger.LogWarning("ChangeStatus forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, taskId);
-                throw new ForbiddenException("You are not a member of this task's project.");
-            }
-
+            // === Ø§Ù„Ù…Ø±Ø­Ù„Ø© 4: Business Rules (BR-TSK-03 state machine) ===
             if (task.Status == TaskItemStatus.Done && dto.NewStatus != TaskItemStatus.Done)
                 throw new BadRequestException("Completed tasks cannot move back to a previous status.");
             if (task.Status == dto.NewStatus)
@@ -369,20 +463,24 @@ namespace TaskManager.API.Services
 
         public async Task<TaskReadDto> ChangePriorityAsync(long taskId, ChangeTaskPriorityDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var task = await _unitOfWork.Tasks.GetByIdAsync(taskId, cancellationToken);
+            // TASK PIVOT: Task -> Project -> Workspace, then pipeline replaces the legacy
+            // membership check.
+            var (task, workspaceId) = await ResolveTaskWorkspaceAsync(taskId, cancellationToken);
 
-            if (task is null)
-            {
-                _logger.LogWarning("ChangePriority failed. Task not found. TaskId: {TaskId}", taskId);
-                throw new NotFoundException("Task not found.");
-            }
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksChangePriority);
 
-            // MEMBERSHIP: must belong to the task's project to change its priority.
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(taskId, currentUserId, cancellationToken);
-            if (!canAccessTask)
+            if (!authResult.Succeeded)
             {
-                _logger.LogWarning("ChangePriority forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, taskId);
-                throw new ForbiddenException("You are not a member of this task's project.");
+                _logger.LogWarning(
+                    "ChangePriority pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, taskId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
             }
 
             if (task.Priority == dto.NewPriority)

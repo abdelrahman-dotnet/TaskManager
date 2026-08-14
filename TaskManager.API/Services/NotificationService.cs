@@ -1,4 +1,4 @@
-using TaskManager.API.Exceptions;
+﻿using TaskManager.API.Exceptions;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -54,8 +54,29 @@ namespace TaskManager.API.Services
             return result;
         }
 
-        public async Task<NotificationReadDto> CreateAsync(NotificationCreateDto dto)
+        public async Task<NotificationReadDto> CreateAsync(NotificationCreateDto dto, string currentUserId)
         {
+            // TASK PIVOT: the notification creator must be an active workspace member; the
+            // pipeline (Visibility -> Permission: Workspace.View) gates who may create
+            // notifications inside the workspace. There is no resource condition - the
+            // recipient/trigger data inside the DTO is validated below.
+            var authResult = await _authService.AuthorizeAsync(
+                dto.WorkspaceId,
+                currentUserId,
+                Permissions.WorkspaceView);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning(
+                    "CreateNotification pipeline failed. Reason: {Reason}, UserId: {UserId}, WorkspaceId: {WorkspaceId}",
+                    authResult.FailureReason, currentUserId, dto.WorkspaceId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
+            }
+
+
             // WORKSPACE PIVOT: Notification.WorkspaceMemberId (long) replaces the old string UserId.
             // The recipient's WorkspaceMember is resolved WITHIN the target workspace (dto.WorkspaceId)
             // instead of scanning for membership in any project.

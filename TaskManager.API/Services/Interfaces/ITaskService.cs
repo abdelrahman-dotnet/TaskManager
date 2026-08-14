@@ -6,33 +6,27 @@ namespace TaskManager.Business.Services.Interfaces
 {
     public interface ITaskService
     {
-        // MEMBERSHIP: currentUserId/canManageAny added - results are filtered to tasks whose
-        // Project the user is a member of, unless canManageAny (Tasks.ManageAny) bypasses it.
         Task<PagedResult<TaskReadDto>> GetAllAsync(
             TaskQueryParam queryParams,
             string currentUserId,
-            bool canManageAny,
             CancellationToken cancellationToken = default);
 
         Task<TaskDetailsReadDto> GetByIdAsync(
             long id,
             string currentUserId,
-            bool canManageAny,
             CancellationToken cancellationToken = default);
 
         Task<TaskReadDto> CreateAsync(
             TaskCreateDto dto,
             string currentUserId,
             CancellationToken cancellationToken = default);
-
         Task<TaskReadDto> UpdateAsync(
             long id,
             TaskUpdateDto dto,
             string currentUserId,
-            bool canManageAny,
             CancellationToken cancellationToken = default);
 
-        // PIPELINE (Auth Pipeline — Pilot): الـ Pipeline بيحل محل canManageAny نهائيًا في الحذف
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Tasks.Delete) -> Resource Condition -> Operation.
         Task DeleteAsync(
             long id,
             long workspaceId,

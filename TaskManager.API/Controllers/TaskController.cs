@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.API.Authorization;
 using TaskManager.API.DTOs.FilterQueryParams;
@@ -29,16 +29,15 @@ namespace TaskManager.API.Controllers
         }
 
         private string CurrentUserId => _currentUser.UserId!;
-        private bool CanManageAny => _currentUser.HasPermission(Permissions.TasksManageAny);
 
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] TaskQueryParam q, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Tasks);
-            // MEMBERSHIP: results now depend on who's asking (visible projects differ per
-            // user), so CurrentUserId/CanManageAny must be part of the cache key - otherwise
-            // User A's cached page could be served to User B for the same query params.
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TasksList, version, new { q, CurrentUserId, CanManageAny });
+            // MEMBERSHIP: results depend on who's asking (visible projects differ per user),
+            // so CurrentUserId must be part of the cache key - otherwise User A's cached page
+            // could be served to User B for the same query params.
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TasksList, version, new { q, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<PagedResult<TaskReadDto>>(cacheKey);
             if (cached != null)
@@ -48,7 +47,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Tasks cache miss. CacheKey: {CacheKey}", cacheKey);
-            var result = await _taskService.GetAllAsync(q, CurrentUserId, CanManageAny, cancellationToken);
+            var result = await _taskService.GetAllAsync(q, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);
@@ -58,7 +57,7 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> GetById(long id, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Tasks);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TaskByIdWithIncludes, version, new { id, CurrentUserId, CanManageAny });
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TaskByIdWithIncludes, version, new { id, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<TaskDetailsReadDto>(cacheKey);
             if (cached != null)
@@ -68,7 +67,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Task cache miss. TaskId: {TaskId}", id);
-            var task = await _taskService.GetByIdAsync(id, CurrentUserId, CanManageAny, cancellationToken);
+            var task = await _taskService.GetByIdAsync(id, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, task, TimeSpan.FromMinutes(5));
 
             return Ok(task);
@@ -88,14 +87,14 @@ namespace TaskManager.API.Controllers
         [Authorize(Policy = Permissions.TasksUpdate)]
         public async Task<IActionResult> Update(long id, [FromBody] TaskUpdateDto dto, CancellationToken cancellationToken)
         {
-            var updated = await _taskService.UpdateAsync(id, dto, CurrentUserId, CanManageAny, cancellationToken);
+            var updated = await _taskService.UpdateAsync(id, dto, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Tasks);
 
             return Ok(updated);
         }
 
-        // PIPELINE (Auth Pipeline — Pilot): الـ Authorization اتنقل للـ Pipeline جوه الـ Service.
-        // الـ route بقى /api/tasks/{workspaceId}/{id} عشان الـ Pipeline يحتاج workspaceId للمرحلة 1 (Visibility).
+        // PIPELINE (Auth Pipeline â€” Pilot): Ø§Ù„Ù€ Authorization Ø§ØªÙ†Ù‚Ù„ Ù„Ù„Ù€ Pipeline Ø¬ÙˆÙ‡ Ø§Ù„Ù€ Service.
+        // Ø§Ù„Ù€ route Ø¨Ù‚Ù‰ /api/tasks/{workspaceId}/{id} Ø¹Ø´Ø§Ù† Ø§Ù„Ù€ Pipeline ÙŠØ­ØªØ§Ø¬ workspaceId Ù„Ù„Ù…Ø±Ø­Ù„Ø© 1 (Visibility).
         [HttpDelete("{workspaceId}/{id}")]
         public async Task<IActionResult> Delete(long workspaceId, long id, CancellationToken cancellationToken)
         {
