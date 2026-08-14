@@ -13,7 +13,8 @@ namespace TaskManager.Business.Services.Interfaces
 
         Task<IEnumerable<CommentReadDto>> GetByTaskIdAsync(long taskId, string currentUserId, CancellationToken cancellationToken = default);
         Task<CommentReadDto> CreateAsync(long taskId, CommentCreateDto dto, string currentUserId, CancellationToken cancellationToken = default);
-        Task<CommentReadDto> UpdateAsync(long id, CommentUpdateDto dto, bool canManageAny, string currentUserId, CancellationToken cancellationToken = default);
-        Task DeleteAsync(long id, string currentUserId, bool isAdmin, CancellationToken cancellationToken = default);
+        // Authorization Pipeline (Comments.Update / Comments.Delete + CommentAuthorOnlyCondition) — no bypass.
+        Task<CommentReadDto> UpdateAsync(long id, CommentUpdateDto dto, string currentUserId, CancellationToken cancellationToken = default);
+        Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default);
     }
 }

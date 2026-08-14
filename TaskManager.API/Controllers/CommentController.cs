@@ -90,7 +90,7 @@ namespace TaskManager.API.Controllers
         [Authorize(Policy = Permissions.CommentsUpdate)]
         public async Task<IActionResult> UpdateComment(long id, [FromBody] CommentUpdateDto dto, CancellationToken cancellationToken)
         {
-            var updated = await _commentService.UpdateAsync(id, dto, CanManageAny, CurrentUserId, cancellationToken);
+            var updated = await _commentService.UpdateAsync(id, dto, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Comments);
 
             return Ok(updated);
@@ -100,7 +100,7 @@ namespace TaskManager.API.Controllers
         [Authorize(Policy = Permissions.CommentsDelete)]
         public async Task<IActionResult> Delete(long id, CancellationToken cancellationToken)
         {
-            await _commentService.DeleteAsync(id, CurrentUserId, CanManageAny, cancellationToken);
+            await _commentService.DeleteAsync(id, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Comments);
 
             return NoContent();

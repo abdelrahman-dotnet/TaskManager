@@ -11,6 +11,7 @@ namespace TaskManager.Business.Services.Interfaces
         // (Attachments.ManageAny) bypasses it.
         Task<PagedResult<AttachmentReadDto>> GetAllAsync(AttachmentQueryParams queryParams, string currentUserId, bool canManageAny, CancellationToken cancellationToken = default);
         Task<AttachmentReadDto> CreateAsync(AttachmentCreateDto dto, string currentUserId, CancellationToken cancellationToken = default);
-        Task DeleteAsync(long id, string currentUserId, bool isAdmin, CancellationToken cancellationToken = default);
+        // Authorization Pipeline (Attachments.Delete + AttachmentUploaderOnlyCondition) — no bypass.
+        Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default);
     }
 }

@@ -9,6 +9,8 @@ using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.Exceptions;
 using TaskManager.API.Extentions;
 using TaskManager.API.Helpers;
+using TaskManager.Bussiness.Authorization;
+using TaskManager.Bussiness.Authorization.ResourceConditions;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Data.Entities;
@@ -22,19 +24,22 @@ namespace TaskManager.API.Services
         private readonly ILogger<AttachmentService> _logger;
         private readonly IAuditLogService _auditLogService;
         private readonly IMembershipService _membershipService;
+        private readonly IWorkspaceAuthorizationService _authService;
 
         public AttachmentService(
             IUnitOfWork unitOfWork,
             IMapper mapper,
             ILogger<AttachmentService> logger,
             IAuditLogService auditLogService,
-            IMembershipService membershipService)
+            IMembershipService membershipService,
+            IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _auditLogService = auditLogService;
             _membershipService = membershipService;
+            _authService = authService;
         }
 
         // MEMBERSHIP: Attachment has no ProjectId of its own (only TaskItemId), so the filter
@@ -131,7 +136,10 @@ namespace TaskManager.API.Services
             return _mapper.Map<AttachmentReadDto>(attachment);
         }
 
-        public async Task DeleteAsync(long id, string currentUserId, bool canManageAny, CancellationToken cancellationToken = default)
+        // Authorization Pipeline: Visibility → Permission (Attachments.Delete) → Resource Condition
+        // (AttachmentUploaderOnlyCondition — uploader-only, all roles, no Owner/Admin bypass per
+        // S-14) → Operation (soft delete). BR-AUD-01 excludes attachment operations from the audit log.
+        public async Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
         {
             // 1. Load Entity.
             var attachment = await _unitOfWork.Attachments.GetByIdAsync(id, cancellationToken);
@@ -142,51 +150,44 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Attachment not found.");
             }
 
-            // 3. CanAccessTaskAsync - reuses attachment.TaskItemId from the entity already
-            // loaded above, no extra query against Tasks.
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(attachment.TaskItemId, currentUserId, cancellationToken);
-            if (!canAccessTask)
+            // 3. WORKSPACE PIVOT: resolve the workspace through attachment → task → project, the
+            // same scope used by the Authorization pipeline.
+            var task = await _unitOfWork.Tasks.GetByIdAsync(attachment.TaskItemId, cancellationToken);
+            if (task == null)
             {
-                _logger.LogWarning("DeleteAttachment forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, attachment.TaskItemId);
-                throw new ForbiddenException("You are not a member of this task's project.");
+                _logger.LogWarning("DeleteAttachment failed. Parent task not found. TaskId: {TaskId}", attachment.TaskItemId);
+                throw new NotFoundException("Attachment's task not found.");
             }
 
-            // 4. Ownership / ManageAny.
-            // WORKSPACE PIVOT: attachment.UploadedByWorkspaceMemberId is a member id (long); resolve the
-            // uploader's member record in the attachment's task's project, then compare user ids.
-            var uploaderTask = await _unitOfWork.Tasks.GetByIdAsync(attachment.TaskItemId, cancellationToken);
-            var uploaderMember = await _unitOfWork.ProjectMembers.GetAllQuery()
-                .Where(pm => pm.ProjectId == uploaderTask.ProjectId && pm.WorkspaceMemberId == attachment.UploadedByWorkspaceMemberId)
-                .Include(pm => pm.WorkspaceMember)
-                .FirstOrDefaultAsync(cancellationToken);
-            var isUploader = uploaderMember != null && uploaderMember.WorkspaceMember.UserId == currentUserId;
-            if (!canManageAny && !isUploader)
+            var project = await _unitOfWork.Projects.GetByIdAsync(task.ProjectId, cancellationToken);
+            if (project == null)
             {
-                _logger.LogWarning("DeleteAttachment forbidden. UserId: {UserId} tried to delete AttachmentId: {AttachmentId}", currentUserId, id);
-                throw new ForbiddenException("You can only delete your own attachments.");
+                _logger.LogWarning("DeleteAttachment failed. Parent project not found. ProjectId: {ProjectId}", task.ProjectId);
+                throw new NotFoundException("Attachment's project not found.");
             }
 
-            // 5. Execute.
+            // === Authorization Pipeline (المراحل 1+2+3) ===
+            var authResult = await _authService.AuthorizeAsync(
+                project.WorkspaceId,
+                currentUserId,
+                Permissions.AttachmentsDelete,
+                new AttachmentUploaderOnlyCondition(attachment));
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning(
+                    "DeleteAttachment pipeline failed. Reason: {Reason}, UserId: {UserId}, AttachmentId: {AttachmentId}",
+                    authResult.FailureReason, currentUserId, id);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
+            }
+
+            // 5. Execute (soft delete).
             // Deleting the physical file from disk/blob storage should happen in the controller/infrastructure
             // layer, since this Service only owns the DB record.
-            var oldValues = JsonSerializer.Serialize(new
-            {
-                attachment.FileName,
-                attachment.FilePath,
-                attachment.TaskItemId,
-                attachment.UploadedByWorkspaceMemberId
-            });
-
             _unitOfWork.Attachments.Delete(attachment);
-
-            await _auditLogService.LogAsync(
-                currentUserId,
-                "Delete Attachment",
-                nameof(Attachment),
-                id.ToString(),
-                oldValues,
-                null,
-                cancellationToken);
 
             await _unitOfWork.CompleteAsync(cancellationToken);
             _logger.LogInformation("Attachment deleted successfully. AttachmentId: {AttachmentId}", id);

@@ -9,6 +9,8 @@ using TaskManager.API.DTOs.Comment;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.Extentions;
 using TaskManager.API.Helpers;
+using TaskManager.Bussiness.Authorization;
+using TaskManager.Bussiness.Authorization.ResourceConditions;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Data.Entities;
@@ -22,19 +24,22 @@ namespace TaskManager.API.Services
         private readonly ILogger<CommentService> _logger;
         private readonly IMembershipService _membershipService;
         private readonly IAuditLogService _auditLogService;
+        private readonly IWorkspaceAuthorizationService _authService;
 
         public CommentService(
             IUnitOfWork unitOfWork,
             IMapper mapper,
             ILogger<CommentService> logger,
             IMembershipService membershipService,
-            IAuditLogService auditLogService)
+            IAuditLogService auditLogService,
+            IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _membershipService = membershipService;
             _auditLogService = auditLogService;
+            _authService = authService;
         }
 
         // MEMBERSHIP: Comment has no ProjectId of its own (only TaskItemId), so this is the
@@ -141,7 +146,10 @@ namespace TaskManager.API.Services
             return _mapper.Map<CommentReadDto>(comment);
         }
 
-        public async Task<CommentReadDto> UpdateAsync(long id, CommentUpdateDto dto, bool canManageAny, string currentUserId, CancellationToken cancellationToken = default)
+        // Authorization Pipeline: Visibility → Permission (Comments.Update) → Resource Condition
+        // (CommentAuthorOnlyCondition — author-only, all roles, no Owner/Admin bypass per S-13) →
+        // Operation. BR-AUD-01 excludes comment operations from the audit log.
+        public async Task<CommentReadDto> UpdateAsync(long id, CommentUpdateDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
             var comment = await _unitOfWork.Comments.GetByIdAsync(id, cancellationToken);
             if (comment == null)
@@ -150,36 +158,54 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Comment not found.");
             }
 
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(comment.TaskItemId, currentUserId, cancellationToken);
-            if (!canAccessTask)
+            // WORKSPACE PIVOT: resolve the workspace through comment → task → project, the same
+            // scope used by the Authorization pipeline.
+            var task = await _unitOfWork.Tasks.GetByIdAsync(comment.TaskItemId, cancellationToken);
+            if (task == null)
             {
-                _logger.LogWarning("UpdateComment forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, comment.TaskItemId);
-                throw new ForbiddenException("You are not a member of this task's project.");
+                _logger.LogWarning("UpdateComment failed. Parent task not found. TaskId: {TaskId}", comment.TaskItemId);
+                throw new NotFoundException("Comment's task not found.");
             }
 
-            if (!canManageAny && comment.WorkspaceMember.UserId != currentUserId)
+            var project = await _unitOfWork.Projects.GetByIdAsync(task.ProjectId, cancellationToken);
+            if (project == null)
             {
-                _logger.LogWarning("UpdateComment forbidden. UserId: {UserId} tried to edit CommentId: {CommentId}", currentUserId, id);
-                throw new ForbiddenException("You can only edit your own comments.");
+                _logger.LogWarning("UpdateComment failed. Parent project not found. ProjectId: {ProjectId}", task.ProjectId);
+                throw new NotFoundException("Comment's project not found.");
             }
 
-            var oldValues = JsonSerializer.Serialize(new { comment.Content });
+            // === Authorization Pipeline (المراحل 1+2+3) ===
+            var authResult = await _authService.AuthorizeAsync(
+                project.WorkspaceId,
+                currentUserId,
+                Permissions.CommentsUpdate,
+                new CommentAuthorOnlyCondition(comment));
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning(
+                    "UpdateComment pipeline failed. Reason: {Reason}, UserId: {UserId}, CommentId: {CommentId}",
+                    authResult.FailureReason, currentUserId, id);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
+            }
 
             _mapper.Map(dto, comment);
             comment.UpdatedAt = DateTime.UtcNow;
 
             _unitOfWork.Comments.Update(comment);
-
-            var newValues = JsonSerializer.Serialize(new { comment.Content });
-            await _auditLogService.LogAsync(currentUserId, "Update Comment", nameof(Comment), id.ToString(), oldValues, newValues, cancellationToken);
-
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Comment updated successfully. CommentId: {CommentId}", id);
             return _mapper.Map<CommentReadDto>(comment);
         }
 
-        public async Task DeleteAsync(long id, string currentUserId, bool canManageAny, CancellationToken cancellationToken = default)
+        // Authorization Pipeline: Visibility → Permission (Comments.Delete) → Resource Condition
+        // (CommentAuthorOnlyCondition — author-only, all roles, no Owner/Admin bypass per S-13) →
+        // Operation (soft delete). BR-AUD-01 excludes comment operations from the audit log.
+        public async Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
         {
             var comment = await _unitOfWork.Comments.GetByIdAsync(id, cancellationToken);
             if (comment == null)
@@ -188,25 +214,42 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Comment not found.");
             }
 
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(comment.TaskItemId, currentUserId, cancellationToken);
-            if (!canAccessTask)
+            // WORKSPACE PIVOT: resolve the workspace through comment → task → project, the same
+            // scope used by the Authorization pipeline.
+            var task = await _unitOfWork.Tasks.GetByIdAsync(comment.TaskItemId, cancellationToken);
+            if (task == null)
             {
-                _logger.LogWarning("DeleteComment forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, comment.TaskItemId);
-                throw new ForbiddenException("You are not a member of this task's project.");
+                _logger.LogWarning("DeleteComment failed. Parent task not found. TaskId: {TaskId}", comment.TaskItemId);
+                throw new NotFoundException("Comment's task not found.");
             }
 
-            if (!canManageAny && comment.WorkspaceMember.UserId != currentUserId)
+            var project = await _unitOfWork.Projects.GetByIdAsync(task.ProjectId, cancellationToken);
+            if (project == null)
             {
-                _logger.LogWarning("DeleteComment forbidden. UserId: {UserId} tried to delete CommentId: {CommentId}", currentUserId, id);
-                throw new ForbiddenException("You can only delete your own comments.");
+                _logger.LogWarning("DeleteComment failed. Parent project not found. ProjectId: {ProjectId}", task.ProjectId);
+                throw new NotFoundException("Comment's project not found.");
             }
 
-            var oldValues = JsonSerializer.Serialize(new { comment.Content, comment.TaskItemId, comment.WorkspaceMemberId });
+            // === Authorization Pipeline (المراحل 1+2+3) ===
+            var authResult = await _authService.AuthorizeAsync(
+                project.WorkspaceId,
+                currentUserId,
+                Permissions.CommentsDelete,
+                new CommentAuthorOnlyCondition(comment));
 
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning(
+                    "DeleteComment pipeline failed. Reason: {Reason}, UserId: {UserId}, CommentId: {CommentId}",
+                    authResult.FailureReason, currentUserId, id);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
+            }
+
+            // === المرحلة 5: Operation (Soft Delete) ===
             _unitOfWork.Comments.Delete(comment);
-
-            await _auditLogService.LogAsync(currentUserId, "Delete Comment", nameof(Comment), id.ToString(), oldValues, null, cancellationToken);
-
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Comment deleted successfully. CommentId: {CommentId}", id);

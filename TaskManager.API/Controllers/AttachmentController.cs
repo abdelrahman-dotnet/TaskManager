@@ -75,7 +75,7 @@ namespace TaskManager.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id, CancellationToken cancellationToken)
         {
-            await _attachmentService.DeleteAsync(id, CurrentUserId, CanManageAny, cancellationToken);
+            await _attachmentService.DeleteAsync(id, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Attachments);
 
             return NoContent();
