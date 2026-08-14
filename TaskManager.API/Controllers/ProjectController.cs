@@ -95,15 +95,7 @@ namespace TaskManager.API.Controllers
             return Ok(updated);
         }
 
-        [HttpDelete("{id}")]
-        [Authorize(Policy = Permissions.ProjectsDelete)]
-        public async Task<IActionResult> Delete(long id, CancellationToken cancellationToken)
-        {
-            await _projectService.DeleteAsync(id, CurrentUserId, cancellationToken);
-            await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
-
-            return NoContent();
-        }
+        // DELETE removed per G-2 (V1 scope reduction): Project lifecycle is Archive/Restore only.
 
         // PIPELINE (in service): Visibility -> Permission (Projects.Archive) -> Condition
         // (ProjectArchived: the project must not already be archived) -> soft archive.

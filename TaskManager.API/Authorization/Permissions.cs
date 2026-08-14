@@ -7,7 +7,8 @@ namespace TaskManager.API.Authorization
         // so these gate the endpoint directly.
         public const string ProjectsCreate = "Projects.Create";
         public const string ProjectsUpdate = "Projects.Update";
-        public const string ProjectsDelete = "Projects.Delete";
+        // Projects.Delete removed per G-2 (V1 scope reduction): Project lifecycle
+        // is Archive / Restore only — ProjectsArchive gates the lifecycle boundary.
         // NEW (Membership System): gates the Management API endpoints
         // (POST/DELETE/PATCH /projects/{id}/members). Deliberately separate from
         // ProjectsUpdate - editing a project's own fields and managing who belongs to it
@@ -97,7 +98,7 @@ namespace TaskManager.API.Authorization
 
         public static readonly string[] All =
         {
-            ProjectsCreate, ProjectsUpdate, ProjectsDelete, ProjectsArchive, ProjectsManageMembers, ProjectsManageTeams,
+            ProjectsCreate, ProjectsUpdate, ProjectsArchive, ProjectsManageMembers, ProjectsManageTeams,
 
             TasksCreate, TasksAssign, TasksUpdate, TasksDelete, TasksManageAny,
 

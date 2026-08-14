@@ -22,8 +22,7 @@ namespace TaskManager.Business.Services.Interfaces
         // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Update) -> Operation.
         Task<ProjectReadDto> UpdateAsync(long id, ProjectUpdateDto dto, string currentUserId, CancellationToken cancellationToken = default);
 
-        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Delete) -> Condition (ProjectArchived) -> Operation.
-        Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default);
+        // DeleteAsync removed per G-2 (V1 scope reduction): Project lifecycle is Archive/Restore only.
 
         // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Archive) -> Operation.
         // Restoring an archived project is a regular Update (Projects.Update) - no separate permission.

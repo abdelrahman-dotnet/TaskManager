@@ -36,7 +36,8 @@ namespace TaskManager.Bussiness.Authorization
         // â”€â”€ Projects â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string ProjectsCreate = "Projects.Create";
         public const string ProjectsUpdate = "Projects.Update";
-        public const string ProjectsDelete = "Projects.Delete";
+        // Projects.Delete was removed per G-2 (V1 scope reduction): Project lifecycle
+        // is Archive / Restore only. Project deletion is NOT part of V1.
         public const string ProjectsArchive = "Projects.Archive";
         public const string ProjectsManageMembers = "Projects.ManageMembers";
         public const string ProjectsManageTeams = "Projects.ManageTeams";
@@ -75,7 +76,7 @@ namespace TaskManager.Bussiness.Authorization
 
             TeamsCreate, TeamsUpdate, TeamsDelete, TeamsManageMembers,
 
-            ProjectsCreate, ProjectsUpdate, ProjectsDelete, ProjectsArchive, ProjectsManageMembers, ProjectsManageTeams,
+            ProjectsCreate, ProjectsUpdate, ProjectsArchive, ProjectsManageMembers, ProjectsManageTeams,
 
             TasksCreate, TasksUpdate, TasksAssign, TasksChangeStatus, TasksChangePriority,
             TasksDelete, TasksViewTrash, TasksArchive, TasksRestore,

@@ -269,47 +269,7 @@ namespace TaskManager.API.Services
             return _mapper.Map<ProjectReadDto>(project);
         }
 
-        public async Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
-        {
-            // Load Entity + PROJECT PIVOT: Project -> Workspace.
-            var project = await _unitOfWork.Projects.GetByIdAsync(id, cancellationToken);
-            if (project == null)
-            {
-                _logger.LogWarning("DeleteProject failed. Project not found. ProjectId: {ProjectId}", id);
-                throw new NotFoundException("Project not found.");
-            }
-
-            var workspaceId = project.WorkspaceId;
-
-            // Authorization Pipeline: Visibility -> Permission (Projects.Delete) ->
-            // Condition: archived projects cannot be deleted (restore first).
-            var authResult = await _authService.AuthorizeAsync(
-                workspaceId,
-                currentUserId,
-                Permissions.ProjectsDelete,
-                new ProjectArchivedCondition(project));
-
-            if (!authResult.Succeeded)
-                ThrowIfFailed(authResult, id, currentUserId, "DeleteProject");
-
-            // Repository.
-            _unitOfWork.Projects.Delete(project);
-
-            // Audit: Delete is Audit -> Save, since the Id is already known.
-            var oldValues = JsonSerializer.Serialize(new
-            {
-                project.Name,
-                project.Description,
-                project.StartDate,
-                project.EndDate,
-                project.IsArchived
-            });
-            await _auditLogService.LogAsync(currentUserId, "Delete Project", nameof(Project), id.ToString(), workspaceId, oldValues, null);
-
-            await _unitOfWork.CompleteAsync(cancellationToken);
-
-            _logger.LogInformation("Project deleted successfully. ProjectId: {ProjectId},CurrentUserId: {UserId}", id, currentUserId);
-        }
+        // DeleteAsync removed per G-2 (V1 scope reduction): Project lifecycle is Archive/Restore only.
 
         // PIPELINE: Visibility -> Permission (Projects.Archive) -> Operation.
         // Soft archive (IsArchived=true) rather than deletion - tasks/comments keep history.

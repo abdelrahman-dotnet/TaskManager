@@ -38,7 +38,7 @@ namespace TaskManager.Bussiness.Authorization
                     Permissions.TeamsManageMembers,
                     Permissions.ProjectsCreate,
                     Permissions.ProjectsUpdate,
-                    Permissions.ProjectsDelete,
+                    // Projects.Delete removed per G-2 (V1: Project lifecycle = Archive/Restore only).
                     Permissions.ProjectsArchive,
                     Permissions.ProjectsManageMembers,
                     Permissions.ProjectsManageTeams,
@@ -85,7 +85,7 @@ namespace TaskManager.Bussiness.Authorization
                     Permissions.TeamsManageMembers,
                     Permissions.ProjectsCreate,
                     Permissions.ProjectsUpdate,
-                    Permissions.ProjectsDelete,
+                    // Projects.Delete removed per G-2 (V1: Project lifecycle = Archive/Restore only).
                     Permissions.ProjectsArchive,
                     Permissions.ProjectsManageMembers,
                     Permissions.ProjectsManageTeams,
