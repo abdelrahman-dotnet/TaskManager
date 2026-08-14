@@ -229,7 +229,14 @@ namespace TaskManager.API.Services
             // the newly mentioned members (non-blocking). The comment author is the
             // only one who may update (CommentAuthorOnlyCondition), so editing the
             // comment re-derives its mentions from the new content.
-            await HandleMentionsAsync(comment.Id, comment.Content, project.WorkspaceId, comment.WorkspaceMemberId, currentUserId, cancellationToken);
+            // Delta-sync: existing mentions reflect the comment's CURRENT state.
+            var existingMentionedIds = await _unitOfWork.CommentMentions.GetAllQuery()
+                .Where(cm => cm.CommentId == comment.Id)
+                .Select(cm => cm.MentionedWorkspaceMemberId)
+                .Distinct()
+                .ToListAsync(cancellationToken);
+
+            await SyncMentionsAsync(comment.Id, comment.Content, project.WorkspaceId, comment.WorkspaceMemberId, currentUserId, existingMentionedIds, cancellationToken);
 
             return _mapper.Map<CommentReadDto>(comment);
         }
@@ -298,65 +305,99 @@ namespace TaskManager.API.Services
         // propagate — the comment itself is the source of truth.
         private async Task HandleMentionsAsync(long commentId, string content, long workspaceId, long commenterMemberId, string currentUserId, CancellationToken cancellationToken)
         {
+            await SyncMentionsAsync(commentId, content, workspaceId, commenterMemberId, currentUserId, Array.Empty<long>(), cancellationToken);
+        }
+
+        // DELTA-SYNC (user-approved behavior for Update): synchronizes the
+        // CommentMention rows so they always reflect the comment's CURRENT
+        // content — existing mentions stay (no re-notification), removed mentions
+        // are soft-deleted, genuinely new mentions get rows + Mentioned
+        // notification. On Create there are no existing mentions, so it behaves
+        // exactly like the original additive logic.
+        private async Task SyncMentionsAsync(long commentId, string content, long workspaceId, long commenterMemberId, string currentUserId, IReadOnlyList<long> previouslyMentionedIds, CancellationToken cancellationToken)
+        {
             try
             {
                 var usernames = ParseMentions(content);
-                if (usernames.Count == 0)
-                    return;
+                var previousSet = new HashSet<long>(previouslyMentionedIds);
 
-                var mentionedMemberIds = await _unitOfWork.WorkspaceMembers.GetAllQuery()
-                    .Where(wm => wm.WorkspaceId == workspaceId
-                                 && wm.Status == WorkspaceMemberStatus.Active
-                                 && usernames.Contains(wm.User.UserName))
-                    .Select(wm => wm.Id)
-                    .Distinct()
-                    .ToListAsync(cancellationToken);
+                // Resolved valid (active) member ids for the usernames.
+                var resolvedMemberIds = usernames.Count == 0
+                    ? new List<long>()
+                    : await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                        .Where(wm => wm.WorkspaceId == workspaceId
+                                     && wm.Status == WorkspaceMemberStatus.Active
+                                     && usernames.Contains(wm.User.UserName))
+                        .Select(wm => wm.Id)
+                        .Distinct()
+                        .ToListAsync(cancellationToken);
 
-                foreach (var mentionedMemberId in mentionedMemberIds)
+                // New mentions = resolved, not previously stored, not self.
+                var newMentionIds = resolvedMemberIds
+                    .Where(mid => !previousSet.Contains(mid) && mid != commenterMemberId)
+                    .ToList();
+
+                // Removed mentions = previously stored but no longer in content.
+                var removedIds = previousSet
+                    .Except(resolvedMemberIds)
+                    .Where(mid => mid != commenterMemberId)
+                    .ToList();
+
+                foreach (var newId in newMentionIds)
                 {
-                    // Skip self-mentions silently (mentioning yourself is a no-op).
-                    if (mentionedMemberId == commenterMemberId)
-                        continue;
-
                     var mention = new CommentMention
                     {
                         CommentId = commentId,
-                        MentionedWorkspaceMemberId = mentionedMemberId,
+                        MentionedWorkspaceMemberId = newId,
                         MentionedAt = DateTime.UtcNow
                     };
                     await _unitOfWork.CommentMentions.AddAsync(mention, cancellationToken);
                 }
+
+                // Soft-delete removed mentions (they stay in the audit trail).
+                foreach (var removedId in removedIds)
+                {
+                    var mention = await _unitOfWork.CommentMentions.GetAllQuery()
+                        .Where(cm => cm.CommentId == commentId && cm.MentionedWorkspaceMemberId == removedId && !cm.IsDeleted)
+                        .FirstOrDefaultAsync(cancellationToken);
+                    if (mention != null)
+                        _unitOfWork.CommentMentions.Delete(mention);
+                }
+
                 await _unitOfWork.CompleteAsync(cancellationToken);
 
-                // Notify each newly mentioned member (D-29: NotificationType.Mentioned).
-                var notified = await _unitOfWork.WorkspaceMembers.GetAllQuery()
-                    .Where(wm => mentionedMemberIds.Contains(wm.Id))
-                    .Select(wm => new { wm.Id, wm.UserId })
-                    .ToListAsync(cancellationToken);
-
-                foreach (var target in notified)
+                // Notify ONLY the genuinely new members (D-29: NotificationType.Mentioned).
+                if (newMentionIds.Count > 0)
                 {
-                    try
+                    var notified = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                        .Where(wm => newMentionIds.Contains(wm.Id))
+                        .Select(wm => new { wm.Id, wm.UserId })
+                        .ToListAsync(cancellationToken);
+
+                    foreach (var target in notified)
                     {
-                        await _notificationService.CreateAsync(
-                            new NotificationCreateDto
-                            {
-                                WorkspaceId = workspaceId,
-                                UserId = target.UserId,
-                                Title = "You were mentioned",
-                                Message = $"You were mentioned in a comment."
-                            },
-                            currentUserId,
-                            NotificationType.Mentioned,
-                            commentId);
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogWarning(ex, "@Mention notification failed (non-blocking). CommentId: {CommentId}, TargetId: {TargetId}", commentId, target.Id);
+                        try
+                        {
+                            await _notificationService.CreateAsync(
+                                new NotificationCreateDto
+                                {
+                                    WorkspaceId = workspaceId,
+                                    UserId = target.UserId,
+                                    Title = "You were mentioned",
+                                    Message = $"You were mentioned in a comment."
+                                },
+                                currentUserId,
+                                NotificationType.Mentioned,
+                                commentId);
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogWarning(ex, "@Mention notification failed (non-blocking). CommentId: {CommentId}, TargetId: {TargetId}", commentId, target.Id);
+                        }
                     }
                 }
 
-                _logger.LogInformation("@Mentions stored for CommentId: {CommentId}. MentionCount: {Count}", commentId, mentionedMemberIds.Count);
+                _logger.LogInformation("@Mentions synced for CommentId: {CommentId}. Added: {Added}, Removed: {Removed}", commentId, newMentionIds.Count, removedIds.Count);
             }
             catch (Exception ex)
             {
