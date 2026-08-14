@@ -3,10 +3,10 @@ using TaskManager.Data.Enums;
 namespace TaskManager.Bussiness.Authorization
 {
     /// <summary>
-    /// Role → Permission Matrix (الثابت الوحيد — Static in code, مش DB).
-    /// أي تعديل على الـ Matrix يتم هنا فقط + توثيقه في وثيقة Authorization المعتمدة.
-    /// Resource Conditions (*) تتطبق من الـ Pipeline على مستواها — الماتركس ده بيحدد
-    /// صلاحية الـ Role الأساسية بس (بدون القيود المشروطة).
+    /// Role â†’ Permission Matrix (Ø§Ù„Ø«Ø§Ø¨Øª Ø§Ù„ÙˆØ­ÙŠØ¯ â€” Static in code, Ù…Ø´ DB).
+    /// Ø£ÙŠ ØªØ¹Ø¯ÙŠÙ„ Ø¹Ù„Ù‰ Ø§Ù„Ù€ Matrix ÙŠØªÙ… Ù‡Ù†Ø§ ÙÙ‚Ø· + ØªÙˆØ«ÙŠÙ‚Ù‡ ÙÙŠ ÙˆØ«ÙŠÙ‚Ø© Authorization Ø§Ù„Ù…Ø¹ØªÙ…Ø¯Ø©.
+    /// Resource Conditions (*) ØªØªØ·Ø¨Ù‚ Ù…Ù† Ø§Ù„Ù€ Pipeline Ø¹Ù„Ù‰ Ù…Ø³ØªÙˆØ§Ù‡Ø§ â€” Ø§Ù„Ù…Ø§ØªØ±ÙƒØ³ Ø¯Ù‡ Ø¨ÙŠØ­Ø¯Ø¯
+    /// ØµÙ„Ø§Ø­ÙŠØ© Ø§Ù„Ù€ Role Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ© Ø¨Ø³ (Ø¨Ø¯ÙˆÙ† Ø§Ù„Ù‚ÙŠÙˆØ¯ Ø§Ù„Ù…Ø´Ø±ÙˆØ·Ø©).
     /// </summary>
     public static class RolePermissionCatalog
     {
@@ -38,6 +38,7 @@ namespace TaskManager.Bussiness.Authorization
                     Permissions.TeamsManageMembers,
                     Permissions.ProjectsCreate,
                     Permissions.ProjectsUpdate,
+                    Permissions.ProjectsDelete,
                     Permissions.ProjectsArchive,
                     Permissions.ProjectsManageMembers,
                     Permissions.ProjectsManageTeams,
@@ -62,7 +63,7 @@ namespace TaskManager.Bussiness.Authorization
 
                 [WorkspaceRole.Admin] = new HashSet<string>(StringComparer.Ordinal)
                 {
-                    // Workspace (بدون امتيازات الملكية)
+                    // Workspace (Ø¨Ø¯ÙˆÙ† Ø§Ù…ØªÙŠØ§Ø²Ø§Øª Ø§Ù„Ù…Ù„ÙƒÙŠØ©)
                     Permissions.WorkspaceView,
                     Permissions.WorkspaceUpdate,
 
@@ -83,6 +84,7 @@ namespace TaskManager.Bussiness.Authorization
                     Permissions.TeamsManageMembers,
                     Permissions.ProjectsCreate,
                     Permissions.ProjectsUpdate,
+                    Permissions.ProjectsDelete,
                     Permissions.ProjectsArchive,
                     Permissions.ProjectsManageMembers,
                     Permissions.ProjectsManageTeams,
@@ -107,7 +109,7 @@ namespace TaskManager.Bussiness.Authorization
 
                 [WorkspaceRole.Member] = new HashSet<string>(StringComparer.Ordinal)
                 {
-                    // Tasks / Comments / Attachments فقط (معظمها مقيدة بشروط الـ Resource نفسه)
+                    // Tasks / Comments / Attachments ÙÙ‚Ø· (Ù…Ø¹Ø¸Ù…Ù‡Ø§ Ù…Ù‚ÙŠØ¯Ø© Ø¨Ø´Ø±ÙˆØ· Ø§Ù„Ù€ Resource Ù†ÙØ³Ù‡)
                     Permissions.TasksCreate,
                     Permissions.TasksUpdate,
                     Permissions.TasksAssign,
@@ -122,11 +124,11 @@ namespace TaskManager.Bussiness.Authorization
                 },
             };
 
-        /// <summary>هل الـ Role عنده الـ Permission المطلوبة في الـ Catalog؟</summary>
+        /// <summary>Ù‡Ù„ Ø§Ù„Ù€ Role Ø¹Ù†Ø¯Ù‡ Ø§Ù„Ù€ Permission Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø© ÙÙŠ Ø§Ù„Ù€ CatalogØŸ</summary>
         public static bool HasPermission(WorkspaceRole role, string permission) =>
             Mapping.TryGetValue(role, out var permissions) && permissions.Contains(permission);
 
-        /// <summary>كل الصلاحيات بتاعة الـ Role ده (للتقارير/الـ UI).</summary>
+        /// <summary>ÙƒÙ„ Ø§Ù„ØµÙ„Ø§Ø­ÙŠØ§Øª Ø¨ØªØ§Ø¹Ø© Ø§Ù„Ù€ Role Ø¯Ù‡ (Ù„Ù„ØªÙ‚Ø§Ø±ÙŠØ±/Ø§Ù„Ù€ UI).</summary>
         public static IReadOnlySet<string> GetPermissions(WorkspaceRole role) =>
             Mapping.TryGetValue(role, out var permissions)
                 ? permissions

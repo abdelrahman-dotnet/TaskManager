@@ -151,13 +151,25 @@ namespace TaskManager.API.Services
         // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• Listings â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
         // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• Listings â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (WorkspaceView for reads).
         public async Task<IEnumerable<TeamMember>> GetTeamMembersAsync(long teamId, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var canAccess = await CanAccessTeamAsync(teamId, currentUserId, cancellationToken);
-            if (!canAccess)
+            var team = await _unitOfWork.Teams.GetByIdAsync(teamId, cancellationToken);
+            if (team is null)
             {
-                _logger.LogWarning("GetTeamMembers forbidden. UserId: {UserId}, TeamId: {TeamId}", currentUserId, teamId);
-                throw new ForbiddenException("You are not a member of this team.");
+                _logger.LogWarning("GetTeamMembers failed. Team not found. TeamId: {TeamId}", teamId);
+                throw new NotFoundException("Team not found.");
+            }
+
+            var authResult = await _authService.AuthorizeAsync(
+                team.WorkspaceId,
+                currentUserId,
+                Permissions.WorkspaceView);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("GetTeamMembers pipeline failed. Reason: {Reason}, UserId: {UserId}, TeamId: {TeamId}", authResult.FailureReason, currentUserId, teamId);
+                throw authResult.ToAuthorizationException();
             }
 
             return await _unitOfWork.TeamMembers.GetAllQuery()
@@ -168,13 +180,25 @@ namespace TaskManager.API.Services
                 .ToListAsync(cancellationToken);
         }
 
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (WorkspaceView for reads).
         public async Task<IEnumerable<ProjectMember>> GetProjectMembersAsync(long projectId, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var canAccess = await CanAccessProjectAsync(projectId, currentUserId, cancellationToken);
-            if (!canAccess)
+            var project = await _unitOfWork.Projects.GetByIdAsync(projectId, cancellationToken);
+            if (project is null)
             {
-                _logger.LogWarning("GetProjectMembers forbidden. UserId: {UserId}, ProjectId: {ProjectId}", currentUserId, projectId);
-                throw new ForbiddenException("You are not a member of this project.");
+                _logger.LogWarning("GetProjectMembers failed. Project not found. ProjectId: {ProjectId}", projectId);
+                throw new NotFoundException("Project not found.");
+            }
+
+            var authResult = await _authService.AuthorizeAsync(
+                project.WorkspaceId,
+                currentUserId,
+                Permissions.WorkspaceView);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("GetProjectMembers pipeline failed. Reason: {Reason}, UserId: {UserId}, ProjectId: {ProjectId}", authResult.FailureReason, currentUserId, projectId);
+                throw authResult.ToAuthorizationException();
             }
 
             return await _unitOfWork.ProjectMembers.GetAllQuery()

@@ -9,6 +9,8 @@ using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.DTOs.Project;
 using TaskManager.API.Extentions;
 using TaskManager.API.Helpers;
+using TaskManager.Bussiness.Authorization;
+using TaskManager.Bussiness.Authorization.ResourceConditions;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Data.Entities;
@@ -22,24 +24,58 @@ namespace TaskManager.API.Services
         private readonly ILogger<ProjectService> _logger;
         private readonly IAuditLogService _auditLogService;
         private readonly IMembershipService _membershipService;
+        private readonly IWorkspaceAuthorizationService _authService;
 
         public ProjectService(
             IUnitOfWork unitOfWork,
             IMapper mapper,
             ILogger<ProjectService> logger,
             IAuditLogService auditLogService,
-            IMembershipService membershipService)
+            IMembershipService membershipService,
+            IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _auditLogService = auditLogService;
             _membershipService = membershipService;
+            _authService = authService;
         }
 
-        // MEMBERSHIP: filters to projects the user belongs to, as an IN subquery against
-        // ProjectMembers. No bypass - see IProjectService.cs's comment (no Projects.ManageAny
-        // exists yet).
+        // RESOLVE: Project -> Workspace for the Authorization Pipeline (Visibility).
+        private async Task<long> ResolveProjectWorkspaceAsync(long projectId, CancellationToken cancellationToken)
+        {
+            var workspaceId = await _unitOfWork.Projects.GetAllQuery()
+                .Where(p => p.Id == projectId)
+                .Select(p => (long?)p.WorkspaceId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (workspaceId == null)
+            {
+                _logger.LogWarning("Project not found or has no workspace. ProjectId: {ProjectId}", projectId);
+                throw new NotFoundException("Project not found.");
+            }
+
+            return workspaceId.Value;
+        }
+
+        // PIPELINE FAILURE HANDLING: Visibility (NotFound) -> 404, everything else -> 403.
+        // Same shape used by TaskService/CommentService/AttachmentService/NotificationService.
+        private void ThrowIfFailed(AuthorizationResult authResult, long resourceId, string userId, string op)
+        {
+            _logger.LogWarning(
+                "{Op} pipeline failed. Reason: {Reason}, UserId: {UserId}, ProjectId: {ProjectId}",
+                op, authResult.FailureReason, userId, resourceId);
+
+            throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                ? new NotFoundException(authResult.Message)
+                : new ForbiddenException(authResult.Message);
+        }
+
+        // VISIBILITY (read-listing): filters to projects the user belongs to, as an IN
+        // subquery against ProjectMembers. No single workspaceId for a cross-workspace
+        // list, so read-listing keeps the membership-scoped query rather than the
+        // per-workspace pipeline.
         public async Task<PagedResult<ProjectReadDto>> GetAllAsync(ProjectQueryParams queryParams, string currentUserId, CancellationToken cancellationToken = default)
         {
             var query = _unitOfWork.Projects.GetAllQuery().AsNoTracking();
@@ -78,17 +114,24 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Project not found.");
             }
 
-            var canAccess = await _membershipService.CanAccessProjectAsync(id, currentUserId, cancellationToken);
-            if (!canAccess)
-            {
-                _logger.LogWarning("GetProjectById forbidden (Membership). UserId: {UserId}, ProjectId: {ProjectId}", currentUserId, id);
-                throw new ForbiddenException("You are not a member of this project.");
-            }
+            // PROJECT PIVOT: Project -> Workspace for pipeline stage 1 (Visibility).
+            var workspaceId = await ResolveProjectWorkspaceAsync(id, cancellationToken);
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.WorkspaceView);
+
+            if (!authResult.Succeeded)
+                ThrowIfFailed(authResult, id, currentUserId, "GetProjectById");
 
             return _mapper.Map<ProjectDetailsReadDto>(project);
         }
 
-        public async Task<ProjectReadDto> CreateAsync(ProjectCreateDto dto, string currentUserId, CancellationToken cancellationToken = default)
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Create) ->
+        // Operation. The controller passes the target WorkspaceId (create DTOs carry
+        // none - the route is POST /api/projects/{workspaceId}).
+        public async Task<ProjectReadDto> CreateAsync(ProjectCreateDto dto, long workspaceId, string currentUserId, CancellationToken cancellationToken = default)
         {
             // FK validation before save (Validation step) - every requested Team must exist.
             foreach (var teamId in dto.TeamIds)
@@ -102,8 +145,20 @@ namespace TaskManager.API.Services
             if (dto.StartDate.HasValue && dto.EndDate.HasValue && dto.EndDate < dto.StartDate)
                 throw new BadRequestException("End date cannot be before start date.");
 
-            // Mapping.
+            // Authorization Pipeline (Visibility -> Permission: Projects.Create) - BEFORE
+            // any persistence. Workspace is already validated by the pipeline itself.
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.ProjectsCreate);
+
+            if (!authResult.Succeeded)
+                ThrowIfFailed(authResult, workspaceId, currentUserId, "CreateProject");
+
+            // Mapping + explicit WorkspaceId (DTOs carry none; setting it here also fixes
+            // the legacy WorkspaceId=0 FK bug).
             var project = _mapper.Map<Project>(dto);
+            project.WorkspaceId = workspaceId;
             project.CreatedByUserId = currentUserId;
 
             // RESOLVE + attach the requested Team links (M:N junction) BEFORE the first save
@@ -156,7 +211,7 @@ namespace TaskManager.API.Services
 
         public async Task<ProjectReadDto> UpdateAsync(long id, ProjectUpdateDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
-            // Load Entity.
+            // Load Entity + PROJECT PIVOT: Project -> Workspace.
             var project = await _unitOfWork.Projects.GetByIdAsync(id, cancellationToken);
             if (project == null)
             {
@@ -164,12 +219,16 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Project not found.");
             }
 
-            // MEMBERSHIP: Permission (ProjectsUpdate, checked at the Controller) && Membership
-            // (must be Owner/Admin of THIS project) - both have to succeed. This replaces the
-            // old "Projects have no Ownership concept" note - that was true before the
-            // Membership System existed; Membership is a distinct, additional check from
-            // Identity Permissions, not the old ownership-by-CreatedByUserId pattern.
-            await _membershipService.EnsureCanManageProjectAsync(id, currentUserId, cancellationToken);
+            var workspaceId = project.WorkspaceId;
+
+            // Authorization Pipeline: Visibility -> Permission (Projects.Update).
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.ProjectsUpdate);
+
+            if (!authResult.Succeeded)
+                ThrowIfFailed(authResult, id, currentUserId, "UpdateProject");
 
             // Business Validation.
             if (dto.StartDate.HasValue && dto.EndDate.HasValue && dto.EndDate < dto.StartDate)
@@ -210,7 +269,7 @@ namespace TaskManager.API.Services
 
         public async Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
         {
-            // Load Entity.
+            // Load Entity + PROJECT PIVOT: Project -> Workspace.
             var project = await _unitOfWork.Projects.GetByIdAsync(id, cancellationToken);
             if (project == null)
             {
@@ -218,8 +277,16 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Project not found.");
             }
 
-            // MEMBERSHIP: same as UpdateAsync above - Permission && Membership.
-            await _membershipService.EnsureCanManageProjectAsync(id, currentUserId, cancellationToken);
+            var workspaceId = project.WorkspaceId;
+
+            // Authorization Pipeline: Visibility -> Permission (Projects.Delete).
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.ProjectsDelete);
+
+            if (!authResult.Succeeded)
+                ThrowIfFailed(authResult, id, currentUserId, "DeleteProject");
 
             // Repository.
             _unitOfWork.Projects.Delete(project);

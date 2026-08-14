@@ -6,16 +6,23 @@ namespace TaskManager.Business.Services.Interfaces
 {
     public interface IProjectService
     {
-        // MEMBERSHIP: currentUserId added - results are filtered to projects the user is a
-        // member of.
-        // TODO: no bypass flag here (unlike Task's canManageAny) because Permissions.cs has no
-        // Projects.ManageAny yet. If Admins/Managers should see every project regardless of
-        // membership, add Projects.ManageAny (Permissions.cs + Seeder) as a separate decision,
-        // then thread it through here the same way canManageAny works for Tasks.
+        // VISIBILITY (read-listing): results are filtered to projects the user is a member
+        // of (IN subquery against ProjectMembers). There is no cross-workspace bypass:
+        // the business permission catalog has no Projects.ManageAny.
         Task<PagedResult<ProjectReadDto>> GetAllAsync(ProjectQueryParams queryParams, string currentUserId, CancellationToken cancellationToken = default);
+
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (WorkspaceView for reads).
         Task<ProjectDetailsReadDto> GetByIdAsync(long id, string currentUserId, CancellationToken cancellationToken = default);
-        Task<ProjectReadDto> CreateAsync(ProjectCreateDto dto, string currentUserId, CancellationToken cancellationToken = default);
+
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Create) -> Operation.
+        // workspaceId comes from the route (POST /api/projects/{workspaceId}) - create DTOs
+        // carry no workspace context.
+        Task<ProjectReadDto> CreateAsync(ProjectCreateDto dto, long workspaceId, string currentUserId, CancellationToken cancellationToken = default);
+
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Update) -> Operation.
         Task<ProjectReadDto> UpdateAsync(long id, ProjectUpdateDto dto, string currentUserId, CancellationToken cancellationToken = default);
+
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Delete) -> Operation.
         Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default);
     }
 }

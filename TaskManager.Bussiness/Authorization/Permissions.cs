@@ -1,46 +1,47 @@
 namespace TaskManager.Bussiness.Authorization
 {
     /// <summary>
-    /// Workspace Permission Catalog (Static — V1).
-    /// المصدر الوحيد للصلاحيات بجانب WorkspaceMember.Role + RolePermissionCatalog.
-    /// لا يخلط مع Legacy catalog (TaskManager.API.Authorization.Permissions) —
-    /// الاتنين منفصلين لغاية ما التعميم يكمل.
-    /// إجمالي: 35 Permission موزعة على 9 Resources.
+    /// Workspace Permission Catalog (Static â€” V1).
+    /// Ø§Ù„Ù…ØµØ¯Ø± Ø§Ù„ÙˆØ­ÙŠØ¯ Ù„Ù„ØµÙ„Ø§Ø­ÙŠØ§Øª Ø¨Ø¬Ø§Ù†Ø¨ WorkspaceMember.Role + RolePermissionCatalog.
+    /// Ù„Ø§ ÙŠØ®Ù„Ø· Ù…Ø¹ Legacy catalog (TaskManager.API.Authorization.Permissions) â€”
+    /// Ø§Ù„Ø§ØªÙ†ÙŠÙ† Ù…Ù†ÙØµÙ„ÙŠÙ† Ù„ØºØ§ÙŠØ© Ù…Ø§ Ø§Ù„ØªØ¹Ù…ÙŠÙ… ÙŠÙƒÙ…Ù„.
+    /// Ø¥Ø¬Ù…Ø§Ù„ÙŠ: 35 Permission Ù…ÙˆØ²Ø¹Ø© Ø¹Ù„Ù‰ 9 Resources.
     /// </summary>
     public static class Permissions
     {
-        // ── Workspace ───────────────────────────────────────────────────────
+        // â”€â”€ Workspace â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string WorkspaceView = "Workspace.View";
         public const string WorkspaceUpdate = "Workspace.Update";
         public const string WorkspaceArchive = "Workspace.Archive";
         public const string WorkspaceTransferOwnership = "Workspace.TransferOwnership";
 
-        // ── Members ─────────────────────────────────────────────────────────
+        // â”€â”€ Members â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string MembersView = "Members.View";
         public const string MembersInvite = "Members.Invite";
         public const string MembersRemove = "Members.Remove";
         public const string MembersChangeRole = "Members.ChangeRole";
         public const string MembersSuspend = "Members.Suspend";
 
-        // ── Invitations ─────────────────────────────────────────────────────
+        // â”€â”€ Invitations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string InvitationsView = "Invitations.View";
         public const string InvitationsCancel = "Invitations.Cancel";
         public const string InvitationsResend = "Invitations.Resend";
 
-        // ── Teams ───────────────────────────────────────────────────────────
+        // â”€â”€ Teams â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string TeamsCreate = "Teams.Create";
         public const string TeamsUpdate = "Teams.Update";
         public const string TeamsDelete = "Teams.Delete";
         public const string TeamsManageMembers = "Teams.ManageMembers";
 
-        // ── Projects ────────────────────────────────────────────────────────
+        // â”€â”€ Projects â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string ProjectsCreate = "Projects.Create";
         public const string ProjectsUpdate = "Projects.Update";
+        public const string ProjectsDelete = "Projects.Delete";
         public const string ProjectsArchive = "Projects.Archive";
         public const string ProjectsManageMembers = "Projects.ManageMembers";
         public const string ProjectsManageTeams = "Projects.ManageTeams";
 
-        // ── Tasks ───────────────────────────────────────────────────────────
+        // â”€â”€ Tasks â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string TasksCreate = "Tasks.Create";
         public const string TasksUpdate = "Tasks.Update";
         public const string TasksAssign = "Tasks.Assign";
@@ -50,17 +51,17 @@ namespace TaskManager.Bussiness.Authorization
         public const string TasksViewTrash = "Tasks.ViewTrash";
         public const string TasksRestore = "Tasks.Restore";
 
-        // ── Comments ────────────────────────────────────────────────────────
+        // â”€â”€ Comments â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string CommentsCreate = "Comments.Create";
         public const string CommentsUpdate = "Comments.Update";
         public const string CommentsDelete = "Comments.Delete";
 
-        // ── Attachments ─────────────────────────────────────────────────────
+        // â”€â”€ Attachments â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string AttachmentsUpload = "Attachments.Upload";
         public const string AttachmentsView = "Attachments.View";
         public const string AttachmentsDelete = "Attachments.Delete";
 
-        // ── AuditLog ────────────────────────────────────────────────────────
+        // â”€â”€ AuditLog â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public const string AuditLogView = "AuditLog.View";
 
         public static readonly string[] All =

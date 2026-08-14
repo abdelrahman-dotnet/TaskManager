@@ -72,11 +72,14 @@ namespace TaskManager.API.Controllers
             return Ok(project);
         }
 
-        [HttpPost]
+        // CREATE: the target workspace is part of the route (POST /api/projects/{workspaceId})
+        // because create DTOs carry no workspace context. The service runs the Authorization
+        // Pipeline (Visibility -> Permission: Projects.Create) before any persistence.
+        [HttpPost("{workspaceId}")]
         [Authorize(Policy = Permissions.ProjectsCreate)]
-        public async Task<IActionResult> Create([FromBody] ProjectCreateDto dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create(long workspaceId, [FromBody] ProjectCreateDto dto, CancellationToken cancellationToken)
         {
-            var created = await _projectService.CreateAsync(dto, CurrentUserId, cancellationToken);
+            var created = await _projectService.CreateAsync(dto, workspaceId, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
 
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);

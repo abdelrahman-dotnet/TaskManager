@@ -72,11 +72,14 @@ namespace TaskManager.API.Controllers
             return Ok(team);
         }
 
-        [HttpPost]
+        // CREATE: the target workspace is part of the route (POST /api/teams/{workspaceId})
+        // because create DTOs carry no workspace context. The service runs the Authorization
+        // Pipeline (Visibility -> Permission: Teams.Create) before any persistence.
+        [HttpPost("{workspaceId}")]
         [Authorize(Policy = Permissions.TeamsCreate)]
-        public async Task<IActionResult> Create([FromBody] TeamCreateDto dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create(long workspaceId, [FromBody] TeamCreateDto dto, CancellationToken cancellationToken)
         {
-            var created = await _teamService.CreateAsync(dto, CurrentUserId, cancellationToken);
+            var created = await _teamService.CreateAsync(dto, workspaceId, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Teams);
 
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
