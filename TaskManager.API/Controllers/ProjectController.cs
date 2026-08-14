@@ -104,5 +104,62 @@ namespace TaskManager.API.Controllers
 
             return NoContent();
         }
+
+        // PIPELINE (in service): Visibility -> Permission (Projects.Archive) -> Condition
+        // (ProjectArchived: the project must not already be archived) -> soft archive.
+        [HttpPut("{id}/archive")]
+        [Authorize(Policy = Permissions.ProjectsArchive)]
+        [ProducesResponseType(typeof(ProjectReadDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> Archive(long id, CancellationToken cancellationToken)
+        {
+            var archived = await _projectService.ArchiveAsync(id, CurrentUserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
+
+            return Ok(archived);
+        }
+
+        // PIPELINE (in service): Visibility -> Permission (Projects.Update) -> Operation.
+        // Restoring an archived project is treated as an Update - the Spec has no dedicated
+        // restore permission.
+        [HttpPut("{id}/restore")]
+        [Authorize(Policy = Permissions.ProjectsUpdate)]
+        [ProducesResponseType(typeof(ProjectReadDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> Restore(long id, CancellationToken cancellationToken)
+        {
+            var restored = await _projectService.RestoreAsync(id, CurrentUserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
+
+            return Ok(restored);
+        }
+
+        // M:N Project <-> Team management. PIPELINE (in service): Visibility -> Permission
+        // (Projects.ManageTeams) -> BR (the team must belong to the same workspace).
+        [HttpPut("{id}/teams/{teamId}")]
+        [Authorize(Policy = Permissions.ProjectsManageTeams)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        public async Task<IActionResult> AttachTeam(long id, long teamId, CancellationToken cancellationToken)
+        {
+            await _projectService.AttachTeamAsync(id, teamId, CurrentUserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Teams);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}/teams/{teamId}")]
+        [Authorize(Policy = Permissions.ProjectsManageTeams)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DetachTeam(long id, long teamId, CancellationToken cancellationToken)
+        {
+            await _projectService.DetachTeamAsync(id, teamId, CurrentUserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Teams);
+
+            return NoContent();
+        }
     }
 }

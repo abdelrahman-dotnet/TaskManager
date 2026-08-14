@@ -221,11 +221,13 @@ namespace TaskManager.API.Services
 
             var workspaceId = project.WorkspaceId;
 
-            // Authorization Pipeline: Visibility -> Permission (Projects.Update).
+            // Authorization Pipeline: Visibility -> Permission (Projects.Update) ->
+            // Condition: archived projects cannot be edited.
             var authResult = await _authService.AuthorizeAsync(
                 workspaceId,
                 currentUserId,
-                Permissions.ProjectsUpdate);
+                Permissions.ProjectsUpdate,
+                new ProjectArchivedCondition(project));
 
             if (!authResult.Succeeded)
                 ThrowIfFailed(authResult, id, currentUserId, "UpdateProject");
@@ -279,11 +281,13 @@ namespace TaskManager.API.Services
 
             var workspaceId = project.WorkspaceId;
 
-            // Authorization Pipeline: Visibility -> Permission (Projects.Delete).
+            // Authorization Pipeline: Visibility -> Permission (Projects.Delete) ->
+            // Condition: archived projects cannot be deleted (restore first).
             var authResult = await _authService.AuthorizeAsync(
                 workspaceId,
                 currentUserId,
-                Permissions.ProjectsDelete);
+                Permissions.ProjectsDelete,
+                new ProjectArchivedCondition(project));
 
             if (!authResult.Succeeded)
                 ThrowIfFailed(authResult, id, currentUserId, "DeleteProject");
@@ -305,6 +309,162 @@ namespace TaskManager.API.Services
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Project deleted successfully. ProjectId: {ProjectId},CurrentUserId: {UserId}", id, currentUserId);
+        }
+
+        // PIPELINE: Visibility -> Permission (Projects.Archive) -> Operation.
+        // Soft archive (IsArchived=true) rather than deletion - tasks/comments keep history.
+        public async Task<ProjectReadDto> ArchiveAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            var project = await _unitOfWork.Projects.GetByIdAsync(id, cancellationToken);
+            if (project == null)
+            {
+                _logger.LogWarning("ArchiveProject failed. Project not found. ProjectId: {ProjectId}", id);
+                throw new NotFoundException("Project not found.");
+            }
+
+            var workspaceId = project.WorkspaceId;
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.ProjectsArchive,
+                new ProjectArchivedCondition(project));
+
+            if (!authResult.Succeeded)
+                ThrowIfFailed(authResult, id, currentUserId, "ArchiveProject");
+
+            if (project.IsArchived)
+            {
+                _logger.LogWarning("ArchiveProject called on an already archived project. ProjectId: {ProjectId}", id);
+                throw new BadRequestException("This project is already archived.");
+            }
+
+            var oldValues = JsonSerializer.Serialize(new { IsArchived = project.IsArchived });
+
+            project.IsArchived = true;
+            project.UpdatedAt = DateTime.UtcNow;
+            _unitOfWork.Projects.Update(project);
+
+            var newValues = JsonSerializer.Serialize(new { IsArchived = project.IsArchived });
+            await _auditLogService.LogAsync(currentUserId, "Archive Project", nameof(Project), id.ToString(), oldValues, newValues);
+
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Project archived. ProjectId: {ProjectId}, CurrentUserId: {UserId}", id, currentUserId);
+            return _mapper.Map<ProjectReadDto>(project);
+        }
+
+        // PIPELINE: Visibility -> Permission (Projects.Update) -> Operation.
+        // Restoring an archived project is an update - no separate permission exists in the Spec.
+        public async Task<ProjectReadDto> RestoreAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            var project = await _unitOfWork.Projects.GetByIdAsync(id, cancellationToken);
+            if (project == null)
+            {
+                _logger.LogWarning("RestoreProject failed. Project not found. ProjectId: {ProjectId}", id);
+                throw new NotFoundException("Project not found.");
+            }
+
+            var workspaceId = project.WorkspaceId;
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.ProjectsUpdate);
+
+            if (!authResult.Succeeded)
+                ThrowIfFailed(authResult, id, currentUserId, "RestoreProject");
+
+            if (!project.IsArchived)
+            {
+                _logger.LogWarning("RestoreProject called on a non-archived project. ProjectId: {ProjectId}", id);
+                throw new BadRequestException("This project is not archived.");
+            }
+
+            var oldValues = JsonSerializer.Serialize(new { IsArchived = project.IsArchived });
+
+            project.IsArchived = false;
+            project.UpdatedAt = DateTime.UtcNow;
+            _unitOfWork.Projects.Update(project);
+
+            var newValues = JsonSerializer.Serialize(new { IsArchived = project.IsArchived });
+            await _auditLogService.LogAsync(currentUserId, "Restore Project", nameof(Project), id.ToString(), oldValues, newValues);
+
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Project restored. ProjectId: {ProjectId}, CurrentUserId: {UserId}", id, currentUserId);
+            return _mapper.Map<ProjectReadDto>(project);
+        }
+
+        // PIPELINE: Visibility -> Permission (Projects.ManageTeams) -> BR (same workspace).
+        public async Task AttachTeamAsync(long projectId, long teamId, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            var project = await _unitOfWork.Projects.GetByIdAsync(projectId, cancellationToken);
+            if (project == null)
+                throw new NotFoundException("Project not found.");
+
+            var team = await _unitOfWork.Teams.GetByIdAsync(teamId, cancellationToken);
+            if (team == null)
+                throw new NotFoundException("Team not found.");
+
+            if (team.WorkspaceId != project.WorkspaceId)
+                throw new BadRequestException("The team belongs to a different workspace.");
+
+            var authResult = await _authService.AuthorizeAsync(
+                project.WorkspaceId,
+                currentUserId,
+                Permissions.ProjectsManageTeams);
+
+            if (!authResult.Succeeded)
+                ThrowIfFailed(authResult, projectId, currentUserId, "AttachTeam");
+
+            var alreadyAttached = await _unitOfWork.ProjectTeams.ExistsAsync(
+                pt => pt.ProjectId == projectId && pt.TeamId == teamId, cancellationToken);
+
+            if (alreadyAttached)
+                throw new ConflictException("This team is already attached to the project.");
+
+            await _unitOfWork.ProjectTeams.AddAsync(new ProjectTeam { ProjectId = projectId, TeamId = teamId }, cancellationToken);
+            await _auditLogService.LogAsync(currentUserId, "Attach Team to Project", nameof(ProjectTeam), $"P{projectId}-T{teamId}", null,
+                JsonSerializer.Serialize(new { ProjectId = projectId, TeamId = teamId }));
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Team attached to project. ProjectId: {ProjectId}, TeamId: {TeamId}, CurrentUserId: {UserId}", projectId, teamId, currentUserId);
+        }
+
+        // PIPELINE: Visibility -> Permission (Projects.ManageTeams) -> BR (same workspace).
+        public async Task DetachTeamAsync(long projectId, long teamId, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            var project = await _unitOfWork.Projects.GetByIdAsync(projectId, cancellationToken);
+            if (project == null)
+                throw new NotFoundException("Project not found.");
+
+            var team = await _unitOfWork.Teams.GetByIdAsync(teamId, cancellationToken);
+            if (team == null)
+                throw new NotFoundException("Team not found.");
+
+            var link = await _unitOfWork.ProjectTeams.GetAllQuery()
+                .Where(pt => pt.ProjectId == projectId && pt.TeamId == teamId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (link == null)
+                throw new NotFoundException("This team is not attached to the project.");
+
+            var authResult = await _authService.AuthorizeAsync(
+                project.WorkspaceId,
+                currentUserId,
+                Permissions.ProjectsManageTeams);
+
+            if (!authResult.Succeeded)
+                ThrowIfFailed(authResult, projectId, currentUserId, "DetachTeam");
+
+            var oldValues = JsonSerializer.Serialize(new { ProjectId = projectId, TeamId = teamId });
+
+            _unitOfWork.ProjectTeams.Delete(link);
+            await _auditLogService.LogAsync(currentUserId, "Detach Team from Project", nameof(ProjectTeam), $"P{projectId}-T{teamId}", oldValues, null);
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Team detached from project. ProjectId: {ProjectId}, TeamId: {TeamId}, CurrentUserId: {UserId}", projectId, teamId, currentUserId);
         }
     }
 }

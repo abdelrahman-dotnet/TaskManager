@@ -22,7 +22,16 @@ namespace TaskManager.Business.Services.Interfaces
         // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Update) -> Operation.
         Task<ProjectReadDto> UpdateAsync(long id, ProjectUpdateDto dto, string currentUserId, CancellationToken cancellationToken = default);
 
-        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Delete) -> Operation.
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Delete) -> Condition (ProjectArchived) -> Operation.
         Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default);
+
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.Archive) -> Operation.
+        // Restoring an archived project is a regular Update (Projects.Update) - no separate permission.
+        Task<ProjectReadDto> ArchiveAsync(long id, string currentUserId, CancellationToken cancellationToken = default);
+        Task<ProjectReadDto> RestoreAsync(long id, string currentUserId, CancellationToken cancellationToken = default);
+
+        // PIPELINE (Auth Pipeline): Visibility -> Permission (Projects.ManageTeams) -> BR (same workspace).
+        Task AttachTeamAsync(long projectId, long teamId, string currentUserId, CancellationToken cancellationToken = default);
+        Task DetachTeamAsync(long projectId, long teamId, string currentUserId, CancellationToken cancellationToken = default);
     }
 }

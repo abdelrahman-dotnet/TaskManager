@@ -14,6 +14,8 @@ namespace TaskManager.API.Authorization
         // are different responsibilities. The Service still enforces
         // EnsureCanManageProjectAsync (Membership) on top of this (Permission && Membership).
         public const string ProjectsManageMembers = "Projects.ManageMembers";
+        public const string ProjectsArchive = "Projects.Archive";
+        public const string ProjectsManageTeams = "Projects.ManageTeams";
 
         // ── Tasks ─────────────────────────────────────────────────────────────
         // Create/Assign have no ownership concept (you're acting on someone
@@ -95,7 +97,7 @@ namespace TaskManager.API.Authorization
 
         public static readonly string[] All =
         {
-            ProjectsCreate, ProjectsUpdate, ProjectsDelete, ProjectsManageMembers,
+            ProjectsCreate, ProjectsUpdate, ProjectsDelete, ProjectsArchive, ProjectsManageMembers, ProjectsManageTeams,
 
             TasksCreate, TasksAssign, TasksUpdate, TasksDelete, TasksManageAny,
 
