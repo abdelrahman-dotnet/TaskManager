@@ -6,6 +6,7 @@ using System.Threading;
 using TaskManager.API.Config;
 using TaskManager.API.Config.FiltersConfigs;
 using TaskManager.API.DTOs.FilterQueryParams;
+using TaskManager.API.DTOs.Notification;
 using TaskManager.API.DTOs.Task;
 using TaskManager.API.Exceptions;
 using TaskManager.API.Extentions;
@@ -13,6 +14,7 @@ using TaskManager.API.Helpers;
 using TaskManager.Bussiness.Authorization;
 using TaskManager.Bussiness.Authorization.ResourceConditions;
 using TaskManager.Business.Services.Interfaces;
+using TaskManager.Data.Enums;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Data.Entities;
 
@@ -26,6 +28,8 @@ namespace TaskManager.API.Services
         private readonly IAuditLogService _auditLogService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IWorkspaceAuthorizationService _authService;
+        // D-29 trigger: Task.Assign -> TaskAssigned notification for the assignee.
+        private readonly INotificationService _notificationService;
 
         public TaskService(
             IUnitOfWork unitOfWork,
@@ -33,7 +37,8 @@ namespace TaskManager.API.Services
             ILogger<TaskService> logger,
             IAuditLogService auditLogService,
             UserManager<ApplicationUser> userManager,
-            IWorkspaceAuthorizationService authService)
+            IWorkspaceAuthorizationService authService,
+            INotificationService notificationService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -41,6 +46,7 @@ namespace TaskManager.API.Services
             _auditLogService = auditLogService;
             _userManager = userManager;
             _authService = authService;
+            _notificationService = notificationService;
         }
 
         // RESOLVE WORKSPACE: Task -> Project -> Workspace. Used by the Authorization
@@ -370,6 +376,24 @@ namespace TaskManager.API.Services
 
             _logger.LogInformation("Task assigned successfully. TaskId: {TaskId}, UserId: {UserId}, AssignedBy: {AssignedByUserId}",
                 taskId, dto.UserId, currentUserId);
+
+            // D-29 NOTIFICATION TRIGGER: Task.Assign -> TaskAssigned for the assignee.
+            try
+            {
+                await _notificationService.CreateAsync(
+                    new NotificationCreateDto
+                    {
+                        WorkspaceId = workspaceId,
+                        UserId = dto.UserId,
+                        Title = "Task Assigned",
+                        Message = $"You have been assigned to task \"{task.Title}\"."
+                    },
+                    currentUserId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Task.Assign notification failed (non-blocking). TaskId: {TaskId}, AssigneeId: {AssigneeId}", taskId, dto.UserId);
+            }
 
             return _mapper.Map<TaskReadDto>(task);
         }

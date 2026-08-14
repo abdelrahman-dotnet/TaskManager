@@ -54,7 +54,7 @@ namespace TaskManager.API.Services
             return result;
         }
 
-        public async Task<NotificationReadDto> CreateAsync(NotificationCreateDto dto, string currentUserId)
+        public async Task<NotificationReadDto> CreateAsync(NotificationCreateDto dto, string currentUserId, NotificationType type = NotificationType.TaskAssigned, long? referenceId = null)
         {
             // TASK PIVOT: the notification creator must be an active workspace member; the
             // pipeline (Visibility -> Permission: Workspace.View) gates who may create
@@ -88,6 +88,8 @@ namespace TaskManager.API.Services
                 throw new BadRequestException("The notification recipient is not a member of the target workspace.");
             var notification = _mapper.Map<Notification>(dto);
             notification.WorkspaceMemberId = recipientMember.Id;
+            notification.Type = type;
+            notification.ReferenceId = referenceId;
 
             await _unitOfWork.Notifications.AddAsync(notification);
             await _unitOfWork.CompleteAsync();

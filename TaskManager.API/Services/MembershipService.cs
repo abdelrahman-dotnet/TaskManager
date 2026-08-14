@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskManager.API.Exceptions;
 using TaskManager.API.Extentions;
+using TaskManager.API.DTOs.Notification;
+using TaskManager.Data.Enums;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Bussiness.Authorization;
@@ -18,19 +20,23 @@ namespace TaskManager.API.Services
         private readonly IAuditLogService _auditLogService;
         private readonly ILogger<MembershipService> _logger;
         private readonly IWorkspaceAuthorizationService _authService;
+        // D-29 trigger: ChangeRole -> WorkspaceRoleChanged notification for the affected member.
+        private readonly INotificationService _notificationService;
 
         public MembershipService(
             IUnitOfWork unitOfWork,
             UserManager<ApplicationUser> userManager,
             IAuditLogService auditLogService,
             ILogger<MembershipService> logger,
-            IWorkspaceAuthorizationService authService)
+            IWorkspaceAuthorizationService authService,
+            INotificationService notificationService)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _auditLogService = auditLogService;
             _logger = logger;
             _authService = authService;
+            _notificationService = notificationService;
         }
 
         // ══════════════════════════════ Access Checks ══════════════════════════════
@@ -413,6 +419,25 @@ namespace TaskManager.API.Services
 
             _logger.LogInformation("Workspace member role changed. WorkspaceId: {WorkspaceId}, UserId: {UserId}, NewRole: {NewRole}, By: {CurrentUserId}",
                 workspaceId, userId, newRole, currentUserId);
+
+            // D-29 NOTIFICATION TRIGGER: ChangeRole -> WorkspaceRoleChanged for the affected member.
+            try
+            {
+                await _notificationService.CreateAsync(
+                    new NotificationCreateDto
+                    {
+                        WorkspaceId = workspaceId,
+                        UserId = userId,
+                        Title = "Role Changed",
+                        Message = $"Your workspace role has been changed to {newRole}."
+                    },
+                    currentUserId,
+                    NotificationType.WorkspaceRoleChanged);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "ChangeRole notification failed (non-blocking). WorkspaceId: {WorkspaceId}, UserId: {UserId}", workspaceId, userId);
+            }
         }
 
         // Throws ForbiddenException if the user isn't Owner/Admin of the Workspace.
