@@ -150,16 +150,17 @@ namespace TaskManager.API.Controllers
             return Ok(result);
         }
 
-        // VIEW TRASH (D-22 / BR-TSK-05): lists archived tasks visible to the caller.
-        // Same team-based visibility as the normal list (GetAllAsync already filters to
-        // the caller's project/team membership), plus an IsArchived=true filter so only
-        // trash is returned. Gated by TasksViewTrash at the controller level.
+        // VIEW TRASH (D-22 / G-5): lists SOFT-DELETED tasks (IsDeleted=true) visible to
+        // the caller — archived tasks are NOT trash. Same membership-based visibility as
+        // the normal list, plus an IsDeleted=true filter (GetAllAsync drops the global
+        // IsDeleted filter and applies the requested value). Gated by TasksViewTrash
+        // (Owner/Admin only in the permission catalog).
         [HttpGet("trash")]
         [Authorize(Policy = BizPermissions.TasksViewTrash)]
         public async Task<IActionResult> ViewTrash(CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Tasks);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TasksList, version, new { IsArchived = true, CurrentUserId });
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.TasksList, version, new { IsDeleted = true, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<PagedResult<TaskReadDto>>(cacheKey);
             if (cached != null)
@@ -168,7 +169,7 @@ namespace TaskManager.API.Controllers
                 return Ok(cached);
             }
 
-            var result = await _taskService.GetAllAsync(new TaskQueryParam { IsArchived = true }, CurrentUserId, cancellationToken);
+            var result = await _taskService.GetAllAsync(new TaskQueryParam { IsDeleted = true }, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);

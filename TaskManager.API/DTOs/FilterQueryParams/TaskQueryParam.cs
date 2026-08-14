@@ -16,6 +16,8 @@ namespace TaskManager.API.DTOs.FilterQueryParams
         public DateTime? CompletedAt { get; set; }
         public DateTime? CreatedAt { get; set; }
         public bool? IsArchived { get; set; }
+        // G-5: Trash = soft-deleted (IsDeleted), not Archived.
+        public bool? IsDeleted { get; set; }
 
         public List<SortOption<TaskSortingFields>> Sorts { get; set; } = new();
     }

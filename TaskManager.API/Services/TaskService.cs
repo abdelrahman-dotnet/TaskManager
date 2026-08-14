@@ -95,6 +95,14 @@ namespace TaskManager.API.Services
         {
             var query = _unitOfWork.Tasks.GetAllQuery().AsNoTracking();
 
+            // G-5: Trash = soft-deleted tasks (IsDeleted), not archived. The global query
+            // filter hides soft-deleted rows, so include them explicitly only when the
+            // deleted filter is requested (ViewTrash / deleted-list consumers).
+            if (queryParams.IsDeleted.HasValue)
+            {
+                query = query.IgnoreQueryFilters().Where(t => t.IsDeleted == queryParams.IsDeleted.Value);
+            }
+
             // VISIBILITY: tasks in projects the user is directly a member of OR projects
             // attached to teams the user belongs to (Project ↔ Team M:N — D-06/D-20).
             var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()

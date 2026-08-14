@@ -11,6 +11,7 @@ namespace TaskManager.API.Enums.FilterFields
         DueDate,
         CompletedAt,
         CreatedAt,
-        Archived
+        Archived,
+        Deleted
     }
 }

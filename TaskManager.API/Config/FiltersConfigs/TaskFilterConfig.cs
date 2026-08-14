@@ -58,6 +58,11 @@ namespace TaskManager.API.Config.FiltersConfigs
                 {
                     var val = bool.Parse(value.ToString());
                     return x => x.IsArchived == val;
+                },
+                [TaskFilterFields.Deleted] = value =>
+                {
+                    var val = bool.Parse(value.ToString());
+                    return x => x.IsDeleted == val;
                 }
             };
     }
