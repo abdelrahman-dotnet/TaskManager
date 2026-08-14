@@ -32,6 +32,7 @@ public class UnitOfWork : IUnitOfWork
     private IGenericRepository<ProjectMember>? _projectMembers;
     private IGenericRepository<ProjectTeam>? _projectTeams;
     private IGenericRepository<Invitation>? _invitations;
+    private IGenericRepository<CommentMention>? _commentMentions;
 
     public UnitOfWork(AppDbContext context)
     {
@@ -56,6 +57,7 @@ public class UnitOfWork : IUnitOfWork
     public IGenericRepository<ProjectMember> ProjectMembers => _projectMembers ??= new Repository<ProjectMember>(_context);
     public IGenericRepository<ProjectTeam> ProjectTeams => _projectTeams ??= new Repository<ProjectTeam>(_context);
     public IGenericRepository<Invitation> Invitations => _invitations ??= new Repository<Invitation>(_context);
+    public IGenericRepository<CommentMention> CommentMentions => _commentMentions ??= new Repository<CommentMention>(_context);
 
     public async Task<int> CompleteAsync(CancellationToken cancellationToken = default)
     {

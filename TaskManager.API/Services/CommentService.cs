@@ -7,6 +7,7 @@ using TaskManager.API.Config;
 using TaskManager.API.Config.FiltersConfigs;
 using TaskManager.API.DTOs.Comment;
 using TaskManager.API.DTOs.FilterQueryParams;
+using TaskManager.API.DTOs.Notification;
 using TaskManager.API.Extentions;
 using TaskManager.API.Helpers;
 using TaskManager.Bussiness.Authorization;
@@ -14,6 +15,7 @@ using TaskManager.Bussiness.Authorization.ResourceConditions;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Data.Entities;
+using TaskManager.Data.Enums;
 
 namespace TaskManager.API.Services
 {
@@ -25,6 +27,8 @@ namespace TaskManager.API.Services
         private readonly IMembershipService _membershipService;
         private readonly IAuditLogService _auditLogService;
         private readonly IWorkspaceAuthorizationService _authService;
+        // G-7 / D-29: @Mention trigger — notification for mentioned members.
+        private readonly INotificationService _notificationService;
 
         public CommentService(
             IUnitOfWork unitOfWork,
@@ -32,7 +36,8 @@ namespace TaskManager.API.Services
             ILogger<CommentService> logger,
             IMembershipService membershipService,
             IAuditLogService auditLogService,
-            IWorkspaceAuthorizationService authService)
+            IWorkspaceAuthorizationService authService,
+            INotificationService notificationService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -40,6 +45,7 @@ namespace TaskManager.API.Services
             _membershipService = membershipService;
             _auditLogService = auditLogService;
             _authService = authService;
+            _notificationService = notificationService;
         }
 
         // MEMBERSHIP: Comment has no ProjectId of its own (only TaskItemId), so this is the
@@ -153,6 +159,10 @@ namespace TaskManager.API.Services
             _logger.LogInformation("Comment created successfully. CommentId: {CommentId}, TaskId: {TaskId}, UserId: {UserId}",
                 comment.Id, taskId, currentUserId);
 
+            // G-7 / D-29: store @Mention entities and notify the mentioned members
+            // (non-blocking — a mention failure must not roll back the comment).
+            await HandleMentionsAsync(comment.Id, dto.Content, project.WorkspaceId, comment.WorkspaceMemberId, currentUserId, cancellationToken);
+
             return _mapper.Map<CommentReadDto>(comment);
         }
 
@@ -214,6 +224,13 @@ namespace TaskManager.API.Services
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Comment updated successfully. CommentId: {CommentId}, UserId: {UserId}", id, currentUserId);
+
+            // G-7 / D-29: store @Mention entities for the updated content and notify
+            // the newly mentioned members (non-blocking). The comment author is the
+            // only one who may update (CommentAuthorOnlyCondition), so editing the
+            // comment re-derives its mentions from the new content.
+            await HandleMentionsAsync(comment.Id, comment.Content, project.WorkspaceId, comment.WorkspaceMemberId, currentUserId, cancellationToken);
+
             return _mapper.Map<CommentReadDto>(comment);
         }
 
@@ -272,6 +289,110 @@ namespace TaskManager.API.Services
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Comment deleted successfully. CommentId: {CommentId}, UserId: {UserId}", id, currentUserId);
+        }
+
+        // G-7 / D-29 @MENTION HANDLING: parses @username mentions from the comment
+        // content, validates each mentioned user is an ACTIVE member of the
+        // workspace (same scope as the comment), stores CommentMention rows, and
+        // raises a Mentioned notification for each. Failures are logged but never
+        // propagate — the comment itself is the source of truth.
+        private async Task HandleMentionsAsync(long commentId, string content, long workspaceId, long commenterMemberId, string currentUserId, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var usernames = ParseMentions(content);
+                if (usernames.Count == 0)
+                    return;
+
+                var mentionedMemberIds = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                    .Where(wm => wm.WorkspaceId == workspaceId
+                                 && wm.Status == WorkspaceMemberStatus.Active
+                                 && usernames.Contains(wm.User.UserName))
+                    .Select(wm => wm.Id)
+                    .Distinct()
+                    .ToListAsync(cancellationToken);
+
+                foreach (var mentionedMemberId in mentionedMemberIds)
+                {
+                    // Skip self-mentions silently (mentioning yourself is a no-op).
+                    if (mentionedMemberId == commenterMemberId)
+                        continue;
+
+                    var mention = new CommentMention
+                    {
+                        CommentId = commentId,
+                        MentionedWorkspaceMemberId = mentionedMemberId,
+                        MentionedAt = DateTime.UtcNow
+                    };
+                    await _unitOfWork.CommentMentions.AddAsync(mention, cancellationToken);
+                }
+                await _unitOfWork.CompleteAsync(cancellationToken);
+
+                // Notify each newly mentioned member (D-29: NotificationType.Mentioned).
+                var notified = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                    .Where(wm => mentionedMemberIds.Contains(wm.Id))
+                    .Select(wm => new { wm.Id, wm.UserId })
+                    .ToListAsync(cancellationToken);
+
+                foreach (var target in notified)
+                {
+                    try
+                    {
+                        await _notificationService.CreateAsync(
+                            new NotificationCreateDto
+                            {
+                                WorkspaceId = workspaceId,
+                                UserId = target.UserId,
+                                Title = "You were mentioned",
+                                Message = $"You were mentioned in a comment."
+                            },
+                            currentUserId,
+                            NotificationType.Mentioned,
+                            commentId);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogWarning(ex, "@Mention notification failed (non-blocking). CommentId: {CommentId}, TargetId: {TargetId}", commentId, target.Id);
+                    }
+                }
+
+                _logger.LogInformation("@Mentions stored for CommentId: {CommentId}. MentionCount: {Count}", commentId, mentionedMemberIds.Count);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "@Mention handling failed (non-blocking). CommentId: {CommentId}", commentId);
+            }
+        }
+
+        // Extracts distinct usernames from "@username" patterns in the content.
+        // Usernames are limited to 3..64 word characters (letters/digits/underscore).
+        private static HashSet<string> ParseMentions(string content)
+        {
+            var mentions = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            if (string.IsNullOrWhiteSpace(content))
+                return mentions;
+
+            for (var i = 0; i < content.Length; i++)
+            {
+                if (content[i] != '@')
+                    continue;
+
+                var start = i + 1;
+                if (start >= content.Length)
+                    continue;
+
+                var end = start;
+                while (end < content.Length && (char.IsLetterOrDigit(content[end]) || content[end] == '_'))
+                    end++;
+
+                var username = content[start..end];
+                if (username.Length >= 3 && username.Length <= 64)
+                    mentions.Add(username);
+
+                i = end;
+            }
+
+            return mentions;
         }
     }
 }

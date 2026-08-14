@@ -24,6 +24,7 @@ public interface IUnitOfWork : IDisposable
     IGenericRepository<ProjectMember> ProjectMembers { get; }
     IGenericRepository<ProjectTeam> ProjectTeams { get; }
     IGenericRepository<Invitation> Invitations { get; }
+    IGenericRepository<CommentMention> CommentMentions { get; }
 
     Task<int> CompleteAsync(CancellationToken cancellationToken = default);
 }

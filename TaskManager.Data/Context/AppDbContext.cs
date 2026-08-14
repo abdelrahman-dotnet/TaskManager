@@ -27,6 +27,7 @@ namespace TaskManager.Data.Context
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
+        public DbSet<CommentMention> CommentMentions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
