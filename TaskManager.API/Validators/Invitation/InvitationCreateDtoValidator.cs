@@ -8,13 +8,14 @@ namespace TaskManager.API.Validators.Invitation
         public InvitationCreateDtoValidator()
         {
             RuleFor(x => x.WorkspaceId)
-                .GreaterThan(0).WithMessage("WorkspaceId Is Required");
+                .GreaterThan(0).WithMessage("WorkspaceId must be a positive identifier.");
 
             RuleFor(x => x.InvitedUserId)
-                .NotEmpty().WithMessage("InvitedUserId Is Required");
+                .NotEmpty().WithMessage("InvitedUserId is required.");
 
             RuleFor(x => x.ExpiresAt)
-                .NotEmpty().WithMessage("ExpiresAt Is Required");
+                .NotEmpty().WithMessage("ExpiresAt is required.")
+                .GreaterThan(DateTime.UtcNow.AddMinutes(-1)).WithMessage("The invitation expiry must be in the future.");
         }
     }
 
@@ -23,13 +24,14 @@ namespace TaskManager.API.Validators.Invitation
         public InvitationResendDtoValidator()
         {
             RuleFor(x => x.WorkspaceId)
-                .GreaterThan(0).WithMessage("WorkspaceId Is Required");
+                .GreaterThan(0).WithMessage("WorkspaceId must be a positive identifier.");
 
             RuleFor(x => x.InvitedUserId)
-                .NotEmpty().WithMessage("InvitedUserId Is Required");
+                .NotEmpty().WithMessage("InvitedUserId is required.");
 
             RuleFor(x => x.ExpiresAt)
-                .NotEmpty().WithMessage("ExpiresAt Is Required");
+                .NotEmpty().WithMessage("ExpiresAt is required.")
+                .GreaterThan(DateTime.UtcNow.AddMinutes(-1)).WithMessage("The invitation expiry must be in the future.");
         }
     }
 }
