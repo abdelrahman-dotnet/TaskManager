@@ -1,5 +1,6 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using TaskManager.API.Config;
@@ -56,7 +57,8 @@ namespace TaskManager.API.Services
 
             query = query.ApplySorting(queryParams.Sorts, AllowedSortingFields.AuditLogs, x => x.Id);
 
-            var projected = query.ProjectTo<AuditLogReadDto>(_mapper.ConfigurationProvider);
+            var projected = query.Include(a => a.WorkspaceMember).ThenInclude(wm => wm.User)
+                .ProjectTo<AuditLogReadDto>(_mapper.ConfigurationProvider);
             var result = await projected.ToPagedResultAsync(queryParams.Page, queryParams.PageSize, cancellationToken);
 
             _logger.LogInformation("Audit logs retrieved successfully. Count: {Count}", result.Data.Count);
@@ -66,7 +68,7 @@ namespace TaskManager.API.Services
         // Call this from other services (TaskService, ProjectService, ...) to record an action.
         // Does NOT call CompleteAsync() itself - it participates in the caller's unit-of-work,
         // so the log is only persisted if the surrounding operation succeeds.
-        public async Task LogAsync(string? userId, string action, string entityName, string entityId, string? oldValues = null, string? newValues = null, CancellationToken cancellationToken = default)
+        public async Task LogAsync(string? userId, string action, string entityName, string entityId, long? workspaceId = null, string? oldValues = null, string? newValues = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(action) ||
                 string.IsNullOrWhiteSpace(entityName) ||
@@ -74,20 +76,37 @@ namespace TaskManager.API.Services
             {
                 return;
             }
+
+            // BR-AUD-01: recover the actor's WorkspaceMember identity whenever possible.
+            // A workspace-scoped action with a known actor resolves to their current member row
+            // (even after role changes). Removed members leave WorkspaceMemberId null so the
+            // row still exists but is not falsely attributed to a later re-invited account.
+            long? actorMemberId = null;
+            if (workspaceId.HasValue && !string.IsNullOrWhiteSpace(userId))
+            {
+                actorMemberId = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                    .Where(wm => wm.WorkspaceId == workspaceId.Value && wm.UserId == userId)
+                    .Select(wm => (long?)wm.Id)
+                    .FirstOrDefaultAsync(cancellationToken);
+            }
+
             var log = new AuditLog
             {
-                WorkspaceMemberId = (long?)null,
+                WorkspaceId = workspaceId ?? 0,
+                WorkspaceMemberId = actorMemberId,
                 Action = action,
                 EntityName = entityName,
                 EntityId = entityId,
                 OldValues = oldValues,
                 NewValues = newValues
             };
-                
-            _logger.LogInformation("Audit log created. Action: {Action}, Entity: {Entity}, EntityId: {EntityId}",
+
+            _logger.LogInformation("Audit log created. Action: {Action}, Entity: {Entity}, EntityId: {EntityId}, WorkspaceId: {WorkspaceId}, ActorMemberId: {ActorMemberId}",
                     action,
                     entityName,
-                    entityId);
+                    entityId,
+                    workspaceId,
+                    actorMemberId);
             await _unitOfWork.AuditLogs.AddAsync(log, cancellationToken);
         }
     }

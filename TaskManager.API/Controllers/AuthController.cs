@@ -11,10 +11,12 @@ namespace TaskManager.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AuthService _authService;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(AuthService authService)
+        public AuthController(AuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
+            _logger = logger;
         }
 
         // ValidationFilter already rejects an invalid ModelState before the action runs,
@@ -33,8 +35,12 @@ namespace TaskManager.API.Controllers
             var result = await _authService.RegisterAsync(user, dto.Password);
 
             if (!result.Succeeded)
+            {
+                _logger.LogWarning("Register failed. UserName: {UserName}, Email: {Email}", dto.UserName, dto.Email);
                 return BadRequest(result.Errors.Select(e => e.Description));
+            }
 
+            _logger.LogInformation("User registered successfully. UserName: {UserName}, UserId: {UserId}", dto.UserName, user.Id);
             return Ok("User Registered");
         }
 
@@ -45,8 +51,12 @@ namespace TaskManager.API.Controllers
             var (token, expiry, error) = await _authService.LoginAsync(dto.Email, dto.Password);
 
             if (token == null)
+            {
+                _logger.LogWarning("Login failed. Email: {Email}", dto.Email);
                 return Unauthorized(error);
+            }
 
+            _logger.LogInformation("Login successful. Email: {Email}", dto.Email);
             return Ok(new AuthResponseDto { AccessToken = token, ExpiresAt = expiry });
         }
 

@@ -8,7 +8,9 @@ namespace TaskManager.API.Mapping
     {
         public AuditLogProfile()
         {
-            CreateMap<AuditLog, AuditLogReadDto>();
+            CreateMap<AuditLog, AuditLogReadDto>()
+                .ForMember(d => d.WorkspaceMemberId, o => o.MapFrom(s => s.WorkspaceMemberId))
+                .ForMember(d => d.ActorUserName, o => o.MapFrom(s => s.WorkspaceMember != null ? s.WorkspaceMember.User!.UserName : null));
         }
     }
 }

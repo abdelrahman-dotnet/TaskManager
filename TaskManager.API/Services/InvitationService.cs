@@ -166,15 +166,15 @@ namespace TaskManager.API.Services
                 isResend ? "Resend Invitation" : "Send Invitation",
                 nameof(Invitation),
                 invitation.Id.ToString(),
-                null,
-                System.Text.Json.JsonSerializer.Serialize(new
+                workspaceId: workspaceId,
+                newValues: System.Text.Json.JsonSerializer.Serialize(new
                 {
                     WorkspaceId = workspaceId,
                     InvitedUserId = invitedUserId,
                     Role = role,
                     ExpiresAt = invitation.ExpiresAt
                 }),
-                cancellationToken);
+                cancellationToken: cancellationToken);
 
             _logger.LogInformation("Invitation sent. Id: {Id}, WorkspaceId: {WorkspaceId}, InvitedUserId: {UserId}, Role: {Role}",
                 invitation.Id, workspaceId, invitedUserId, role);
@@ -218,9 +218,10 @@ namespace TaskManager.API.Services
                 "Revoke Invitation",
                 nameof(Invitation),
                 invitation.Id.ToString(),
-                System.Text.Json.JsonSerializer.Serialize(new { invitation.Status }),
-                System.Text.Json.JsonSerializer.Serialize(new { Status = InvitationStatus.Cancelled }),
-                cancellationToken);
+                workspaceId: invitation.WorkspaceId,
+                oldValues: System.Text.Json.JsonSerializer.Serialize(new { invitation.Status }),
+                newValues: System.Text.Json.JsonSerializer.Serialize(new { Status = InvitationStatus.Cancelled }),
+                cancellationToken: cancellationToken);
 
             _logger.LogInformation("Invitation revoked. Id: {Id}, UserId: {UserId}", invitationId, currentUserId);
         }
@@ -285,18 +286,19 @@ namespace TaskManager.API.Services
                 "Accept Invitation",
                 nameof(Invitation),
                 invitation.Id.ToString(),
-                System.Text.Json.JsonSerializer.Serialize(new { invitation.Status }),
-                System.Text.Json.JsonSerializer.Serialize(new { Status = InvitationStatus.Accepted, MemberStatus = WorkspaceMemberStatus.Active, Role = invitation.Role }),
-                cancellationToken);
+                workspaceId: invitation.WorkspaceId,
+                oldValues: System.Text.Json.JsonSerializer.Serialize(new { invitation.Status }),
+                newValues: System.Text.Json.JsonSerializer.Serialize(new { Status = InvitationStatus.Accepted, MemberStatus = WorkspaceMemberStatus.Active, Role = invitation.Role }),
+                cancellationToken: cancellationToken);
 
             await _auditLogService.LogAsync(
                 currentUserId,
                 isNewMember ? "Join Workspace as Member" : "Reactivate Workspace Membership",
                 nameof(WorkspaceMember),
                 member.Id.ToString(),
-                null,
-                System.Text.Json.JsonSerializer.Serialize(new { WorkspaceId = invitation.WorkspaceId, Role = invitation.Role, Status = WorkspaceMemberStatus.Active }),
-                cancellationToken);
+                workspaceId: invitation.WorkspaceId,
+                newValues: System.Text.Json.JsonSerializer.Serialize(new { WorkspaceId = invitation.WorkspaceId, Role = invitation.Role, Status = WorkspaceMemberStatus.Active }),
+                cancellationToken: cancellationToken);
 
             _logger.LogInformation("Invitation accepted. Id: {Id}, WorkspaceId: {WorkspaceId}, UserId: {UserId}, Role: {Role}",
                 invitation.Id, invitation.WorkspaceId, currentUserId, invitation.Role);
@@ -326,9 +328,10 @@ namespace TaskManager.API.Services
                 "Reject Invitation",
                 nameof(Invitation),
                 invitation.Id.ToString(),
-                System.Text.Json.JsonSerializer.Serialize(new { invitation.Status }),
-                System.Text.Json.JsonSerializer.Serialize(new { Status = InvitationStatus.Rejected }),
-                cancellationToken);
+                workspaceId: invitation.WorkspaceId,
+                oldValues: System.Text.Json.JsonSerializer.Serialize(new { invitation.Status }),
+                newValues: System.Text.Json.JsonSerializer.Serialize(new { Status = InvitationStatus.Rejected }),
+                cancellationToken: cancellationToken);
 
             _logger.LogInformation("Invitation rejected. Id: {Id}, WorkspaceId: {WorkspaceId}, UserId: {UserId}",
                 invitation.Id, invitation.WorkspaceId, currentUserId);

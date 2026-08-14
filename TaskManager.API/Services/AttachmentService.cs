@@ -111,6 +111,15 @@ namespace TaskManager.API.Services
             var attachment = _mapper.Map<Attachment>(dto);
             attachment.UploadedByWorkspaceMemberId = uploaderMemberId;
 
+            // WORKSPACE PIVOT: resolve the parent project for the audit trail (same
+            // scope used by the Authorization pipeline).
+            var project = await _unitOfWork.Projects.GetByIdAsync(task.ProjectId, cancellationToken);
+            if (project == null)
+            {
+                _logger.LogWarning("CreateAttachment failed. Parent project not found. ProjectId: {ProjectId}", task.ProjectId);
+                throw new NotFoundException("Attachment's project not found.");
+            }
+
             await _unitOfWork.Attachments.AddAsync(attachment, cancellationToken);
             var newValues = JsonSerializer.Serialize(new
             {
@@ -125,9 +134,9 @@ namespace TaskManager.API.Services
                 "Create Attachment",
                 nameof(Attachment),
                 attachment.Id.ToString(),
-                null,
-                newValues,
-                cancellationToken);
+                workspaceId: project.WorkspaceId,
+                newValues: newValues,
+                cancellationToken: cancellationToken);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Attachment uploaded successfully. AttachmentId: {AttachmentId}, TaskId: {TaskId}, UserId: {UserId}",

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using TaskManager.API.Authorization;
+using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Bussiness.Caching;
 using TaskManager.Bussiness.Services;
@@ -18,15 +20,18 @@ namespace TaskManager.API.Controllers
         private readonly IMembershipService _membershipService;
         private readonly ICacheService _cacheService;
         private readonly ICurrentUserService _currentUser;
+        private readonly ILogger<MembershipController> _logger;
 
         public MembershipController(
             IMembershipService membershipService,
             ICacheService cacheService,
-            ICurrentUserService currentUser)
+            ICurrentUserService currentUser,
+            ILogger<MembershipController> logger)
         {
             _membershipService = membershipService;
             _cacheService = cacheService;
             _currentUser = currentUser;
+            _logger = logger;
         }
 
         // PIPELINE (in service): Visibility -> Permission (WorkspaceView).
@@ -35,9 +40,17 @@ namespace TaskManager.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<WorkspaceMemberDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> List(long workspaceId, CancellationToken cancellationToken)
         {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Members);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.MembersList, version, new { workspaceId, CurrentUserId = _currentUser.UserId });
+            var cached = await _cacheService.GetAsync<IEnumerable<WorkspaceMemberDto>>(cacheKey);
+            if (cached != null)
+            {
+                _logger?.LogInformation("Members cache hit. CacheKey: {CacheKey}", cacheKey);
+                return Ok(cached);
+            }
+            _logger?.LogInformation("Members cache miss. CacheKey: {CacheKey}", cacheKey);
             var members = await _membershipService.GetWorkspaceMembersAsync(workspaceId, _currentUser.UserId!, cancellationToken);
-
-            return Ok(members.Select(m => new WorkspaceMemberDto
+            var mapped = members.Select(m => new WorkspaceMemberDto
             {
                 Id = m.Id,
                 UserId = m.UserId,
@@ -45,7 +58,9 @@ namespace TaskManager.API.Controllers
                 Role = m.Role,
                 Status = m.Status,
                 JoinedAt = m.CreatedAt
-            }));
+            });
+            await _cacheService.SetAsync(cacheKey, mapped, TimeSpan.FromMinutes(5));
+            return Ok(mapped);
         }
 
         // PIPELINE (in service): Visibility -> Permission (Members.Remove) ->
@@ -59,6 +74,7 @@ namespace TaskManager.API.Controllers
             await _membershipService.RemoveWorkspaceMemberAsync(workspaceId, userId, _currentUser.UserId!, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
             await _cacheService.IncrementVersionAsync(CacheDomains.Teams);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
 
             return NoContent();
         }
@@ -73,6 +89,7 @@ namespace TaskManager.API.Controllers
             await _membershipService.SuspendWorkspaceMemberAsync(workspaceId, userId, _currentUser.UserId!, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
             await _cacheService.IncrementVersionAsync(CacheDomains.Teams);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
 
             return NoContent();
         }
@@ -87,6 +104,7 @@ namespace TaskManager.API.Controllers
             await _membershipService.UnsuspendWorkspaceMemberAsync(workspaceId, userId, _currentUser.UserId!, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
             await _cacheService.IncrementVersionAsync(CacheDomains.Teams);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
 
             return NoContent();
         }

@@ -53,6 +53,11 @@ namespace TaskManager.API.Config.FiltersConfigs
                 {
                     var val = (DateTime)value;
                     return x => x.CreatedAt.Date == val.Date;
+                },
+                [TaskFilterFields.Archived] = value =>
+                {
+                    var val = bool.Parse(value.ToString());
+                    return x => x.IsArchived == val;
                 }
             };
     }

@@ -15,6 +15,7 @@ namespace TaskManager.API.DTOs.FilterQueryParams
         public DateTime? DueDate { get; set; }
         public DateTime? CompletedAt { get; set; }
         public DateTime? CreatedAt { get; set; }
+        public bool? IsArchived { get; set; }
 
         public List<SortOption<TaskSortingFields>> Sorts { get; set; } = new();
     }

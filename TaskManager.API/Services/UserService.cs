@@ -137,7 +137,7 @@ namespace TaskManager.API.Services
 
             // Audit - staged before the Identity save call, since the Id is already known
             // (matches "Update/Delete: Audit then Save" from the standard).
-            await _auditLogService.LogAsync(currentUserId, "Update", "User", id, oldValues, newValues);
+            await _auditLogService.LogAsync(currentUserId, "Update", "User", id, workspaceId: null, oldValues: oldValues, newValues: newValues);
 
             // Repository / persistence - UserManager.UpdateAsync is Identity's equivalent of
             // CompleteAsync here. NOTE (open item, not resolved here): this only actually

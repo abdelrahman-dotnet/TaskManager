@@ -267,7 +267,7 @@ namespace TaskManager.API.Services
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             var newValues = JsonSerializer.Serialize(new { TeamId = teamId, UserId = userId, Role = role });
-            await _auditLogService.LogAsync(currentUserId, "Add Team Member", nameof(TeamMember), member.Id.ToString(), null, newValues, cancellationToken);
+            await _auditLogService.LogAsync(currentUserId, "Add Team Member", nameof(TeamMember), member.Id.ToString(), workspaceId: team.WorkspaceId, oldValues: null, newValues: newValues, cancellationToken: cancellationToken);
 
             _logger.LogInformation("Team member added. TeamId: {TeamId}, UserId: {UserId}, Role: {Role}, By: {CurrentUserId}",
                 teamId, userId, role, currentUserId);
@@ -311,7 +311,7 @@ namespace TaskManager.API.Services
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             var newValues = JsonSerializer.Serialize(new { ProjectId = projectId, UserId = userId, Role = role });
-            await _auditLogService.LogAsync(currentUserId, "Add Project Member", nameof(ProjectMember), member.Id.ToString(), null, newValues, cancellationToken);
+            await _auditLogService.LogAsync(currentUserId, "Add Project Member", nameof(ProjectMember), member.Id.ToString(), workspaceId: project.WorkspaceId, oldValues: null, newValues: newValues, cancellationToken: cancellationToken);
 
             _logger.LogInformation("Project member added. ProjectId: {ProjectId}, UserId: {UserId}, Role: {Role}, By: {CurrentUserId}",
                 projectId, userId, role, currentUserId);
@@ -331,7 +331,7 @@ namespace TaskManager.API.Services
             _unitOfWork.TeamMembers.Delete(member);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
-            await _auditLogService.LogAsync(currentUserId, "Remove Team Member", nameof(TeamMember), member.Id.ToString(), oldValues, null, cancellationToken);
+            await _auditLogService.LogAsync(currentUserId, "Remove Team Member", nameof(TeamMember), member.Id.ToString(), workspaceId: teamId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
 
             _logger.LogInformation("Team member removed. TeamId: {TeamId}, UserId: {UserId}, By: {CurrentUserId}",
                 teamId, userId, currentUserId);
@@ -351,7 +351,7 @@ namespace TaskManager.API.Services
             _unitOfWork.ProjectMembers.Delete(member);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
-            await _auditLogService.LogAsync(currentUserId, "Remove Project Member", nameof(ProjectMember), member.Id.ToString(), oldValues, null, cancellationToken);
+            await _auditLogService.LogAsync(currentUserId, "Remove Project Member", nameof(ProjectMember), member.Id.ToString(), workspaceId: projectId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
 
             _logger.LogInformation("Project member removed. ProjectId: {ProjectId}, UserId: {UserId}, By: {CurrentUserId}",
                 projectId, userId, currentUserId);
@@ -409,7 +409,7 @@ namespace TaskManager.API.Services
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             var newValues = JsonSerializer.Serialize(new { WorkspaceRole = newRole });
-            await _auditLogService.LogAsync(currentUserId, "Change Workspace Member Role", nameof(WorkspaceMember), wm.Id.ToString(), oldValues, newValues, cancellationToken);
+            await _auditLogService.LogAsync(currentUserId, "Change Workspace Member Role", nameof(WorkspaceMember), wm.Id.ToString(), workspaceId: workspaceId, oldValues: oldValues, newValues: newValues, cancellationToken: cancellationToken);
 
             _logger.LogInformation("Workspace member role changed. WorkspaceId: {WorkspaceId}, UserId: {UserId}, NewRole: {NewRole}, By: {CurrentUserId}",
                 workspaceId, userId, newRole, currentUserId);
@@ -425,12 +425,190 @@ namespace TaskManager.API.Services
                 Permissions.WorkspaceUpdate,
                 null);
 
-            if (!authResult.Succeeded)
+                        if (!authResult.Succeeded)
             {
                 _logger.LogWarning("EnsureCanManageWorkspace pipeline failed. Reason: {Reason}, UserId: {UserId}, WorkspaceId: {WorkspaceId}",
                     authResult.FailureReason, userId, workspaceId);
                 throw authResult.ToAuthorizationException();
             }
+        }
+
+        // ══════════════════ Workspace Member Lifecycle ══════════════════
+
+        // PIPELINE: Visibility -> Permission (Members.Remove) -> Condition
+        // (MemberNotOwnerCondition) -> BR-MEM-03 (cleanup TaskAssignments).
+        public async Task RemoveWorkspaceMemberAsync(long workspaceId, string targetUserId, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            if (string.Equals(targetUserId, currentUserId, StringComparison.OrdinalIgnoreCase))
+                throw new BadRequestException("You cannot remove yourself from the workspace. Use Suspend or transfer ownership instead.");
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.MembersRemove,
+                null);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("RemoveWorkspaceMember pipeline failed. Reason: {Reason}, WorkspaceId: {WorkspaceId}, CurrentUserId: {CurrentUserId}",
+                    authResult.FailureReason, workspaceId, currentUserId);
+                throw authResult.ToAuthorizationException();
+            }
+
+            var target = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .Where(wm => wm.WorkspaceId == workspaceId && wm.UserId == targetUserId && !wm.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (target is null)
+                throw new NotFoundException("This user is not a member of this workspace.");
+
+            if (target.Status == WorkspaceMemberStatus.Removed)
+                throw new BadRequestException("This user has already been removed from the workspace.");
+
+            // Resource Condition (S-13): cannot remove the workspace Owner.
+            var protectedCheck = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.MembersRemove,
+                new MemberNotOwnerCondition(target));
+
+            if (!protectedCheck.Succeeded)
+            {
+                _logger.LogWarning("RemoveWorkspaceMember owner-protection failed. WorkspaceId: {WorkspaceId}, TargetUserId: {TargetUserId}", workspaceId, targetUserId);
+                throw protectedCheck.ToAuthorizationException();
+            }
+
+            // BR-MEM-03: clean up task assignments held by the removed member.
+            var assignments = await _unitOfWork.TaskAssignments.GetAllQuery()
+                .Where(a => a.WorkspaceMemberId == target.Id)
+                .ToListAsync(cancellationToken);
+
+            foreach (var a in assignments)
+            {
+                _unitOfWork.TaskAssignments.Delete(a);
+            }
+
+            var oldValues = JsonSerializer.Serialize(new { WorkspaceId = workspaceId, UserId = targetUserId, Role = target.Role, Status = target.Status });
+
+            // Soft-remove: marks the member Removed so history rows keep referential integrity.
+            target.Status = WorkspaceMemberStatus.Removed;
+            target.UpdatedAt = DateTime.UtcNow;
+            _unitOfWork.WorkspaceMembers.Update(target);
+
+            await _auditLogService.LogAsync(currentUserId, "Remove Workspace Member", nameof(WorkspaceMember), target.Id.ToString(), workspaceId: workspaceId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Workspace member removed. WorkspaceId: {WorkspaceId}, TargetUserId: {TargetUserId}, By: {CurrentUserId}",
+                workspaceId, targetUserId, currentUserId);
+        }
+
+        // PIPELINE: Visibility -> Permission (Members.Suspend) -> BR (Owner cannot be suspended; target must be Active).
+        public async Task SuspendWorkspaceMemberAsync(long workspaceId, string targetUserId, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            if (string.Equals(targetUserId, currentUserId, StringComparison.OrdinalIgnoreCase))
+                throw new BadRequestException("You cannot suspend yourself.");
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.MembersSuspend,
+                null);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("SuspendWorkspaceMember pipeline failed. Reason: {Reason}, WorkspaceId: {WorkspaceId}, CurrentUserId: {CurrentUserId}",
+                    authResult.FailureReason, workspaceId, currentUserId);
+                throw authResult.ToAuthorizationException();
+            }
+
+            var target = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .Where(wm => wm.WorkspaceId == workspaceId && wm.UserId == targetUserId && !wm.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (target is null)
+                throw new NotFoundException("This user is not a member of this workspace.");
+
+            if (target.Status == WorkspaceMemberStatus.Removed)
+                throw new BadRequestException("This user has already been removed from the workspace.");
+
+            if (target.Role == WorkspaceRole.Owner)
+                throw new ForbiddenException("The workspace Owner cannot be suspended.");
+
+            if (target.Status == WorkspaceMemberStatus.Suspended)
+                throw new BadRequestException("This member is already suspended.");
+
+            var oldValues = JsonSerializer.Serialize(new { UserId = targetUserId, Status = target.Status });
+
+            target.Status = WorkspaceMemberStatus.Suspended;
+            target.UpdatedAt = DateTime.UtcNow;
+            _unitOfWork.WorkspaceMembers.Update(target);
+
+            await _auditLogService.LogAsync(currentUserId, "Suspend Workspace Member", nameof(WorkspaceMember), target.Id.ToString(), workspaceId: workspaceId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Workspace member suspended. WorkspaceId: {WorkspaceId}, TargetUserId: {TargetUserId}, By: {CurrentUserId}",
+                workspaceId, targetUserId, currentUserId);
+        }
+
+        // PIPELINE: Visibility -> Permission (Members.Suspend) -> BR (target must be Suspended).
+        public async Task UnsuspendWorkspaceMemberAsync(long workspaceId, string targetUserId, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.MembersSuspend,
+                null);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("UnsuspendWorkspaceMember pipeline failed. Reason: {Reason}, WorkspaceId: {WorkspaceId}, CurrentUserId: {CurrentUserId}",
+                    authResult.FailureReason, workspaceId, currentUserId);
+                throw authResult.ToAuthorizationException();
+            }
+
+            var target = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .Where(wm => wm.WorkspaceId == workspaceId && wm.UserId == targetUserId && !wm.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (target is null)
+                throw new NotFoundException("This user is not a member of this workspace.");
+
+            if (target.Status != WorkspaceMemberStatus.Suspended)
+                throw new BadRequestException("This member is not suspended.");
+
+            var oldValues = JsonSerializer.Serialize(new { UserId = targetUserId, Status = target.Status });
+
+            target.Status = WorkspaceMemberStatus.Active;
+            target.UpdatedAt = DateTime.UtcNow;
+            _unitOfWork.WorkspaceMembers.Update(target);
+
+            await _auditLogService.LogAsync(currentUserId, "Unsuspend Workspace Member", nameof(WorkspaceMember), target.Id.ToString(), workspaceId: workspaceId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Workspace member unsuspended. WorkspaceId: {WorkspaceId}, TargetUserId: {TargetUserId}, By: {CurrentUserId}",
+                workspaceId, targetUserId, currentUserId);
+        }
+
+        // PIPELINE: Visibility -> Permission (WorkspaceView) only.
+        public async Task<IEnumerable<WorkspaceMember>> GetWorkspaceMembersAsync(long workspaceId, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.WorkspaceView,
+                null);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("GetWorkspaceMembers pipeline failed. Reason: {Reason}, UserId: {CurrentUserId}, WorkspaceId: {WorkspaceId}", authResult.FailureReason, currentUserId, workspaceId);
+                throw authResult.ToAuthorizationException();
+            }
+
+            return await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .AsNoTracking()
+                .Where(wm => wm.WorkspaceId == workspaceId && wm.Status != WorkspaceMemberStatus.Removed)
+                .Include(wm => wm.User)
+                .ToListAsync(cancellationToken);
         }
     }
 }

@@ -56,5 +56,17 @@ namespace TaskManager.Business.Services.Interfaces
             ChangeTaskPriorityDto dto,
             string currentUserId,
             CancellationToken cancellationToken = default);
+
+        // PIPELINE: Visibility -> Permission (TasksArchive) -> Condition (TaskArchivedCondition) -> Operation (BR-TSK-05).
+        Task ArchiveAsync(
+            long taskId,
+            string currentUserId,
+            CancellationToken cancellationToken = default);
+
+        // PIPELINE: Visibility -> Permission (TasksRestore) -> Operation (BR-TSK-05).
+        Task RestoreAsync(
+            long taskId,
+            string currentUserId,
+            CancellationToken cancellationToken = default);
     }
 }

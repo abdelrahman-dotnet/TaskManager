@@ -10,5 +10,8 @@ namespace TaskManager.API.DTOs.AuditLog
         public string? OldValues { get; set; }
         public string? NewValues { get; set; }
         public DateTime CreatedAt { get; set; }
+        public long? WorkspaceId { get; set; }
+        public long? WorkspaceMemberId { get; set; }
+        public string? ActorUserName { get; set; }
     }
 }

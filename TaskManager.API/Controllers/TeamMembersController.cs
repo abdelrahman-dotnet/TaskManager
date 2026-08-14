@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.API.Authorization;
 using TaskManager.API.DTOs.TeamMember;
+using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Bussiness.Caching;
 using TaskManager.Bussiness.Services;
@@ -44,8 +45,18 @@ namespace TaskManager.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMembers(long teamId, CancellationToken cancellationToken)
         {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Members);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.MembersByTeam, version, new { teamId, CurrentUserId });
+            var cached = await _cacheService.GetAsync<IEnumerable<TeamMemberReadDto>>(cacheKey);
+            if (cached != null)
+            {
+                _logger.LogInformation("TeamMembers cache hit. CacheKey: {CacheKey}", cacheKey);
+                return Ok(cached);
+            }
+            _logger.LogInformation("TeamMembers cache miss. CacheKey: {CacheKey}", cacheKey);
             var members = await _membershipService.GetTeamMembersAsync(teamId, CurrentUserId, cancellationToken);
             var result = _mapper.Map<IEnumerable<TeamMemberReadDto>>(members);
+            await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);
         }
@@ -58,6 +69,7 @@ namespace TaskManager.API.Controllers
         {
             await _membershipService.AddTeamMemberAsync(teamId, dto.UserId, dto.Role, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Teams);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
 
             _logger.LogInformation("Team member added via API. TeamId: {TeamId}, UserId: {UserId}, By: {CurrentUserId}", teamId, dto.UserId, CurrentUserId);
             return NoContent();
@@ -69,6 +81,7 @@ namespace TaskManager.API.Controllers
         {
             await _membershipService.RemoveTeamMemberAsync(teamId, userId, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Teams);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
 
             _logger.LogInformation("Team member removed via API. TeamId: {TeamId}, UserId: {UserId}, By: {CurrentUserId}", teamId, userId, CurrentUserId);
             return NoContent();

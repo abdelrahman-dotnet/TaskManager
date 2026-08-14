@@ -95,11 +95,18 @@ namespace TaskManager.API.Services
         {
             var query = _unitOfWork.Tasks.GetAllQuery().AsNoTracking();
 
+            // VISIBILITY: tasks in projects the user is directly a member of OR projects
+            // attached to teams the user belongs to (Project ↔ Team M:N — D-06/D-20).
             var memberProjectIds = _unitOfWork.ProjectMembers.GetAllQuery()
                 .Where(pm => pm.WorkspaceMember.UserId == currentUserId)
                 .Select(pm => pm.ProjectId);
 
-            query = query.Where(t => memberProjectIds.Contains(t.ProjectId));
+            var teamProjectIds = _unitOfWork.ProjectTeams.GetAllQuery()
+                .Where(pt => pt.Team.TeamMembers.Any(tm => tm.WorkspaceMember.UserId == currentUserId))
+                .Select(pt => pt.ProjectId);
+
+            query = query.Where(t => memberProjectIds.Contains(t.ProjectId)
+                || teamProjectIds.Contains(t.ProjectId));
 
             query = query.ApplyFiltering(queryParams, TaskFilterConfig.map);
 
@@ -185,7 +192,7 @@ namespace TaskManager.API.Services
             await _unitOfWork.Tasks.AddAsync(task, cancellationToken);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
-            await _auditLogService.LogAsync(currentUserId, "Create Task", nameof(TaskItem), task.Id.ToString());
+            await _auditLogService.LogAsync(currentUserId, "Create Task", nameof(TaskItem), task.Id.ToString(), workspaceId);
             await _unitOfWork.CompleteAsync(cancellationToken);
             _logger.LogInformation("Task created successfully. TaskId: {TaskId}, UserId: {UserId}", task.Id, currentUserId);
             return _mapper.Map<TaskReadDto>(task);
@@ -201,7 +208,8 @@ namespace TaskManager.API.Services
             var authResult = await _authService.AuthorizeAsync(
                 workspaceId,
                 currentUserId,
-                Permissions.TasksUpdate);
+                Permissions.TasksUpdate,
+                new TaskArchivedCondition(task));
 
             if (!authResult.Succeeded)
             {
@@ -221,7 +229,7 @@ namespace TaskManager.API.Services
             task.UpdatedAt = DateTime.UtcNow;
 
             _unitOfWork.Tasks.Update(task);
-            await _auditLogService.LogAsync(currentUserId, "Update Task", nameof(TaskItem), task.Id.ToString());
+            await _auditLogService.LogAsync(currentUserId, "Update Task", nameof(TaskItem), task.Id.ToString(), workspaceId);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Task updated successfully. TaskId: {TaskId}, UserId: {UserId}", id, currentUserId);
@@ -260,8 +268,10 @@ namespace TaskManager.API.Services
             // === Ø§Ù„Ù…Ø±Ø­Ù„Ø© 4: Business Rules (Dependencies - future) ===
 
             // === Ø§Ù„Ù…Ø±Ø­Ù„Ø© 5: Operation (Soft Delete) ===
+            if (task.IsArchived)
+                throw new BadRequestException("This task is archived. Restore it first before deleting.");
             _unitOfWork.Tasks.Delete(task);
-            await _auditLogService.LogAsync(currentUserId, "Delete Task", nameof(TaskItem), id.ToString());
+            await _auditLogService.LogAsync(currentUserId, "Delete Task", nameof(TaskItem), id.ToString(), workspaceId);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Task deleted successfully. TaskId: {TaskId}, UserId: {UserId}", id, currentUserId);
@@ -282,7 +292,8 @@ namespace TaskManager.API.Services
             var authResult = await _authService.AuthorizeAsync(
                 workspaceId,
                 currentUserId,
-                Permissions.TasksAssign);
+                Permissions.TasksAssign,
+                new TaskArchivedCondition(task));
 
             if (!authResult.Succeeded)
             {
@@ -346,7 +357,7 @@ namespace TaskManager.API.Services
             };
 
             await _unitOfWork.TaskAssignments.AddAsync(assignment, cancellationToken);
-            await _auditLogService.LogAsync(currentUserId, "Assign Task", nameof(TaskAssignment), taskId.ToString());
+            await _auditLogService.LogAsync(currentUserId, "Assign Task", nameof(TaskAssignment), taskId.ToString(), workspaceId);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Task assigned successfully. TaskId: {TaskId}, UserId: {UserId}, AssignedBy: {AssignedByUserId}",
@@ -386,7 +397,7 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Assignment not found.");
             _unitOfWork.TaskAssignments.Delete(assignment);
 
-            await _auditLogService.LogAsync(currentUserId, "Unassign Task", nameof(TaskItem), taskId.ToString(), oldValues: $"AssignedUser:{userId}", newValues: null);
+            await _auditLogService.LogAsync(currentUserId, "Unassign Task", nameof(TaskItem), taskId.ToString(), workspaceId: workspaceId, oldValues: $"AssignedUser:{userId}", newValues: null, cancellationToken: cancellationToken);
 
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -409,7 +420,8 @@ namespace TaskManager.API.Services
             var authResult = await _authService.AuthorizeAsync(
                 workspaceId,
                 currentUserId,
-                Permissions.TasksChangeStatus);
+                Permissions.TasksChangeStatus,
+                new TaskArchivedCondition(task));
 
             if (!authResult.Succeeded)
             {
@@ -452,7 +464,7 @@ namespace TaskManager.API.Services
                 ChangedAt = DateTime.UtcNow
             };
             await _unitOfWork.TaskItemStatusHistories.AddAsync(history, cancellationToken);
-            await _auditLogService.LogAsync(currentUserId, "Change Task Status", nameof(TaskItem), taskId.ToString());
+            await _auditLogService.LogAsync(currentUserId, "Change Task Status", nameof(TaskItem), taskId.ToString(), workspaceId);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Task status changed. TaskId: {TaskId}, {OldStatus} -> {NewStatus}, By: {UserId}",
@@ -470,7 +482,8 @@ namespace TaskManager.API.Services
             var authResult = await _authService.AuthorizeAsync(
                 workspaceId,
                 currentUserId,
-                Permissions.TasksChangePriority);
+                Permissions.TasksChangePriority,
+                new TaskArchivedCondition(task));
 
             if (!authResult.Succeeded)
             {
@@ -503,6 +516,7 @@ namespace TaskManager.API.Services
                 nameof(TaskItem),
                 task.Id.ToString(),
                 oldValues: task.Priority.ToString(),
+                workspaceId: workspaceId,
                 newValues: dto.NewPriority.ToString());
 
             await _unitOfWork.CompleteAsync(cancellationToken);
@@ -514,6 +528,80 @@ namespace TaskManager.API.Services
                 currentUserId);
 
             return _mapper.Map<TaskReadDto>(task);
+        }
+
+        // PIPELINE: Visibility -> Permission (Tasks.Archive) -> Resource Condition
+        // (TaskArchivedCondition - cannot archive twice) -> Operation (BR-TSK-05 soft archive).
+        public async Task ArchiveAsync(long taskId, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            var task = await _unitOfWork.Tasks.GetByIdAsync(taskId, cancellationToken);
+            if (task == null)
+                throw new NotFoundException("Task not found.");
+
+            var workspaceId = await ResolveProjectWorkspaceAsync(task.ProjectId, cancellationToken);
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksArchive,
+                new TaskArchivedCondition(task));
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("ArchiveTask pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, taskId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
+            }
+
+            if (task.IsArchived)
+                throw new BadRequestException("Task is already archived.");
+
+            task.IsArchived = true;
+            task.UpdatedAt = DateTime.UtcNow;
+            _unitOfWork.Tasks.Update(task);
+            await _auditLogService.LogAsync(currentUserId, "Archive Task", nameof(TaskItem), taskId.ToString(), workspaceId);
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Task archived. TaskId: {TaskId}, By: {UserId}", taskId, currentUserId);
+        }
+
+        // PIPELINE: Visibility -> Permission (Tasks.Restore) -> Operation (BR-TSK-05).
+        public async Task RestoreAsync(long taskId, string currentUserId, CancellationToken cancellationToken = default)
+        {
+            var task = await _unitOfWork.Tasks.GetByIdAsync(taskId, cancellationToken);
+            if (task == null)
+                throw new NotFoundException("Task not found.");
+
+            var workspaceId = await ResolveProjectWorkspaceAsync(task.ProjectId, cancellationToken);
+
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksRestore);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("RestoreTask pipeline failed. Reason: {Reason}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, currentUserId, taskId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message)
+                    : new ForbiddenException(authResult.Message);
+            }
+
+            if (!task.IsArchived)
+                throw new BadRequestException("Task is not archived.");
+
+            task.IsArchived = false;
+            task.UpdatedAt = DateTime.UtcNow;
+            _unitOfWork.Tasks.Update(task);
+            await _auditLogService.LogAsync(currentUserId, "Restore Task", nameof(TaskItem), taskId.ToString(), workspaceId);
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Task restored. TaskId: {TaskId}, By: {UserId}", taskId, currentUserId);
         }
     }
 }

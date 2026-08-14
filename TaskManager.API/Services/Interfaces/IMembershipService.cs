@@ -53,5 +53,14 @@ namespace TaskManager.Business.Services.Interfaces
         // (Owner/Admin/Member). Throws ForbiddenException unless the caller is
         // Owner/Admin of the workspace.
         Task ChangeWorkspaceMemberRoleAsync(long workspaceId, string userId, WorkspaceRole newRole, string currentUserId, CancellationToken cancellationToken = default);
+
+        // ── Workspace Member Lifecycle ─────────────────────────────────────────
+        // PIPELINE: Visibility -> Permission -> Conditions -> BRs (Owner protected).
+        Task RemoveWorkspaceMemberAsync(long workspaceId, string targetUserId, string currentUserId, CancellationToken cancellationToken = default);
+        Task SuspendWorkspaceMemberAsync(long workspaceId, string targetUserId, string currentUserId, CancellationToken cancellationToken = default);
+        Task UnsuspendWorkspaceMemberAsync(long workspaceId, string targetUserId, string currentUserId, CancellationToken cancellationToken = default);
+
+        // Listings scoped by the caller's membership (Visibility stage).
+        Task<IEnumerable<WorkspaceMember>> GetWorkspaceMembersAsync(long workspaceId, string currentUserId, CancellationToken cancellationToken = default);
     }
 }

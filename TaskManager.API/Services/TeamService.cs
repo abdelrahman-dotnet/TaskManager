@@ -173,7 +173,7 @@ namespace TaskManager.API.Services
             await _unitOfWork.TeamMembers.AddAsync(ownerMembership, cancellationToken);
 
             var newValues = JsonSerializer.Serialize(new { team.Name, team.Description });
-            await _auditLogService.LogAsync(currentUserId, "Create Team", nameof(Team), team.Id.ToString(), newValues: newValues);
+            await _auditLogService.LogAsync(currentUserId, "Create Team", nameof(Team), team.Id.ToString(), workspaceId: workspaceId, newValues: newValues);
             // Second save - persists the TeamMember(Owner) and the audit row together.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -211,7 +211,7 @@ namespace TaskManager.API.Services
             _unitOfWork.Teams.Update(team);
 
             // Id already known - Audit is staged before the single save.
-            await _auditLogService.LogAsync(currentUserId, "Update", "Team", id.ToString(), oldValues, newValues);
+            await _auditLogService.LogAsync(currentUserId, "Update", "Team", id.ToString(), workspaceId: workspaceId, oldValues: oldValues, newValues: newValues);
 
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -243,7 +243,7 @@ namespace TaskManager.API.Services
 
             _unitOfWork.Teams.Delete(team);
 
-            await _auditLogService.LogAsync(currentUserId, "Delete", "Team", id.ToString(), oldValues: oldValues);
+            await _auditLogService.LogAsync(currentUserId, "Delete", "Team", id.ToString(), workspaceId: workspaceId, oldValues: oldValues);
 
             await _unitOfWork.CompleteAsync(cancellationToken);
 

@@ -49,6 +49,7 @@ namespace TaskManager.Bussiness.Authorization
         public const string TasksChangePriority = "Tasks.ChangePriority";
         public const string TasksDelete = "Tasks.Delete";
         public const string TasksViewTrash = "Tasks.ViewTrash";
+        public const string TasksArchive = "Tasks.Archive";
         public const string TasksRestore = "Tasks.Restore";
 
         // â”€â”€ Comments â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -74,10 +75,10 @@ namespace TaskManager.Bussiness.Authorization
 
             TeamsCreate, TeamsUpdate, TeamsDelete, TeamsManageMembers,
 
-            ProjectsCreate, ProjectsUpdate, ProjectsArchive, ProjectsManageMembers, ProjectsManageTeams,
+            ProjectsCreate, ProjectsUpdate, ProjectsDelete, ProjectsArchive, ProjectsManageMembers, ProjectsManageTeams,
 
             TasksCreate, TasksUpdate, TasksAssign, TasksChangeStatus, TasksChangePriority,
-            TasksDelete, TasksViewTrash, TasksRestore,
+            TasksDelete, TasksViewTrash, TasksArchive, TasksRestore,
 
             CommentsCreate, CommentsUpdate, CommentsDelete,
 

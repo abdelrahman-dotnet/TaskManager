@@ -131,12 +131,22 @@ namespace TaskManager.API.Services
             comment.TaskItemId = taskId;
             comment.WorkspaceMemberId = callerMemberId;
 
+            // WORKSPACE PIVOT: resolve the parent project for the audit trail (same
+            // scope used by the Authorization pipeline).
+            var project = await _unitOfWork.Projects.GetByIdAsync(task.ProjectId, cancellationToken);
+            if (project == null)
+            {
+                _logger.LogWarning("CreateComment failed. Parent project not found. ProjectId: {ProjectId}", task.ProjectId);
+                throw new NotFoundException("Comment's project not found.");
+            }
+
             await _unitOfWork.Comments.AddAsync(comment, cancellationToken);
             var newValues = JsonSerializer.Serialize(new { comment.Content, comment.TaskItemId, comment.WorkspaceMemberId });
             // Save first - comment.Id is DB-generated, so it isn't known until after this completes.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
-            await _auditLogService.LogAsync(currentUserId, "Create Comment", nameof(Comment), comment.Id.ToString(), null, newValues, cancellationToken);
+            var workspaceId = project.WorkspaceId;
+            await _auditLogService.LogAsync(currentUserId, "Create Comment", nameof(Comment), comment.Id.ToString(), workspaceId: workspaceId, oldValues: null, newValues: newValues, cancellationToken: cancellationToken);
             // Second save - persists the audit row now that comment.Id exists.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -148,7 +158,7 @@ namespace TaskManager.API.Services
 
         // Authorization Pipeline: Visibility → Permission (Comments.Update) → Resource Condition
         // (CommentAuthorOnlyCondition — author-only, all roles, no Owner/Admin bypass per S-13) →
-        // Operation. BR-AUD-01 excludes comment operations from the audit log.
+        // Operation. Audit trail per BR-AUD-01 (security-relevant mutation).
         public async Task<CommentReadDto> UpdateAsync(long id, CommentUpdateDto dto, string currentUserId, CancellationToken cancellationToken = default)
         {
             var comment = await _unitOfWork.Comments.GetByIdAsync(id, cancellationToken);
@@ -192,19 +202,24 @@ namespace TaskManager.API.Services
                     : new ForbiddenException(authResult.Message);
             }
 
+            var oldValues = JsonSerializer.Serialize(new { comment.Content });
             _mapper.Map(dto, comment);
             comment.UpdatedAt = DateTime.UtcNow;
 
             _unitOfWork.Comments.Update(comment);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
-            _logger.LogInformation("Comment updated successfully. CommentId: {CommentId}", id);
+            var newValues = JsonSerializer.Serialize(new { comment.Content });
+            await _auditLogService.LogAsync(currentUserId, "Update Comment", nameof(Comment), comment.Id.ToString(), workspaceId: project.WorkspaceId, oldValues: oldValues, newValues: newValues, cancellationToken: cancellationToken);
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Comment updated successfully. CommentId: {CommentId}, UserId: {UserId}", id, currentUserId);
             return _mapper.Map<CommentReadDto>(comment);
         }
 
         // Authorization Pipeline: Visibility → Permission (Comments.Delete) → Resource Condition
         // (CommentAuthorOnlyCondition — author-only, all roles, no Owner/Admin bypass per S-13) →
-        // Operation (soft delete). BR-AUD-01 excludes comment operations from the audit log.
+        // Operation (soft delete). Audit trail per BR-AUD-01 (security-relevant mutation).
         public async Task DeleteAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
         {
             var comment = await _unitOfWork.Comments.GetByIdAsync(id, cancellationToken);
@@ -249,10 +264,14 @@ namespace TaskManager.API.Services
             }
 
             // === المرحلة 5: Operation (Soft Delete) ===
+            var oldValues = JsonSerializer.Serialize(new { comment.Content, comment.TaskItemId, comment.WorkspaceMemberId });
             _unitOfWork.Comments.Delete(comment);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
-            _logger.LogInformation("Comment deleted successfully. CommentId: {CommentId}", id);
+            await _auditLogService.LogAsync(currentUserId, "Delete Comment", nameof(Comment), comment.Id.ToString(), workspaceId: project.WorkspaceId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
+            _logger.LogInformation("Comment deleted successfully. CommentId: {CommentId}, UserId: {UserId}", id, currentUserId);
         }
     }
 }

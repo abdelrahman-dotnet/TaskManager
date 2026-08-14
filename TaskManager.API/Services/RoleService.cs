@@ -133,7 +133,7 @@ namespace TaskManager.API.Services
 
             // Audit: Update is Audit -> Save, since the Id is already known.
             var newValues = JsonSerializer.Serialize(new { role.Name, role.Description });
-            await _auditLogService.LogAsync(currentUserId, "Update Role", "Role", id, oldValues, newValues);
+            await _auditLogService.LogAsync(currentUserId, "Update Role", "Role", id, workspaceId: null, oldValues: oldValues, newValues: newValues);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Role updated successfully. RoleId: {RoleId}, UserId: {UserId}", id, currentUserId);
@@ -156,7 +156,7 @@ namespace TaskManager.API.Services
                 throw new BadRequestException(string.Join("; ", result.Errors.Select(e => e.Description)));
 
             // Audit: Delete is Audit -> Save, since the Id is already known.
-            await _auditLogService.LogAsync(currentUserId, "Delete Role", "Role", id, oldValues, null);
+            await _auditLogService.LogAsync(currentUserId, "Delete Role", "Role", id, workspaceId: null, oldValues: oldValues, newValues: null);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Role deleted successfully. RoleId: {RoleId}, UserId: {UserId}", id, currentUserId);

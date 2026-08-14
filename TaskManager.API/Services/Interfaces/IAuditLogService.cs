@@ -10,6 +10,8 @@ namespace TaskManager.Business.Services.Interfaces
 
         // cancellationToken is optional with a default value, so every existing call site
         // (ProjectService, RoleService, ...) that doesn't pass it still compiles unchanged.
-        Task LogAsync(string? userId, string action, string entityName, string entityId, string? oldValues = null, string? newValues = null, CancellationToken cancellationToken = default);
+        // workspaceId is required so every audit row belongs to the correct workspace scope;
+        // if null, the row is written but remains un-scoped (platform-level actions).
+        Task LogAsync(string? userId, string action, string entityName, string entityId, long? workspaceId = null, string? oldValues = null, string? newValues = null, CancellationToken cancellationToken = default);
     }
 }

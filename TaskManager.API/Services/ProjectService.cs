@@ -201,7 +201,7 @@ namespace TaskManager.API.Services
                 project.StartDate,
                 project.EndDate
             });
-            await _auditLogService.LogAsync(currentUserId, "Create Project", nameof(Project), project.Id.ToString(), null, newValues);
+            await _auditLogService.LogAsync(currentUserId, "Create Project", nameof(Project), project.Id.ToString(), project.WorkspaceId, null, newValues);
             // Second save - persists the ProjectMember(Owner) and the audit row together.
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -261,7 +261,7 @@ namespace TaskManager.API.Services
                 project.EndDate,
                 project.IsArchived
             });
-            await _auditLogService.LogAsync(currentUserId, "Update Project", nameof(Project), id.ToString(), oldValues, newValues);
+            await _auditLogService.LogAsync(currentUserId, "Update Project", nameof(Project), id.ToString(), workspaceId, oldValues, newValues);
 
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -304,7 +304,7 @@ namespace TaskManager.API.Services
                 project.EndDate,
                 project.IsArchived
             });
-            await _auditLogService.LogAsync(currentUserId, "Delete Project", nameof(Project), id.ToString(), oldValues, null);
+            await _auditLogService.LogAsync(currentUserId, "Delete Project", nameof(Project), id.ToString(), workspaceId, oldValues, null);
 
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -346,7 +346,7 @@ namespace TaskManager.API.Services
             _unitOfWork.Projects.Update(project);
 
             var newValues = JsonSerializer.Serialize(new { IsArchived = project.IsArchived });
-            await _auditLogService.LogAsync(currentUserId, "Archive Project", nameof(Project), id.ToString(), oldValues, newValues);
+            await _auditLogService.LogAsync(currentUserId, "Archive Project", nameof(Project), id.ToString(), workspaceId, oldValues, newValues);
 
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -388,7 +388,7 @@ namespace TaskManager.API.Services
             _unitOfWork.Projects.Update(project);
 
             var newValues = JsonSerializer.Serialize(new { IsArchived = project.IsArchived });
-            await _auditLogService.LogAsync(currentUserId, "Restore Project", nameof(Project), id.ToString(), oldValues, newValues);
+            await _auditLogService.LogAsync(currentUserId, "Restore Project", nameof(Project), id.ToString(), workspaceId, oldValues, newValues);
 
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -425,7 +425,7 @@ namespace TaskManager.API.Services
                 throw new ConflictException("This team is already attached to the project.");
 
             await _unitOfWork.ProjectTeams.AddAsync(new ProjectTeam { ProjectId = projectId, TeamId = teamId }, cancellationToken);
-            await _auditLogService.LogAsync(currentUserId, "Attach Team to Project", nameof(ProjectTeam), $"P{projectId}-T{teamId}", null,
+            await _auditLogService.LogAsync(currentUserId, "Attach Team to Project", nameof(ProjectTeam), $"P{projectId}-T{teamId}", project.WorkspaceId, null,
                 JsonSerializer.Serialize(new { ProjectId = projectId, TeamId = teamId }));
             await _unitOfWork.CompleteAsync(cancellationToken);
 
@@ -461,7 +461,7 @@ namespace TaskManager.API.Services
             var oldValues = JsonSerializer.Serialize(new { ProjectId = projectId, TeamId = teamId });
 
             _unitOfWork.ProjectTeams.Delete(link);
-            await _auditLogService.LogAsync(currentUserId, "Detach Team from Project", nameof(ProjectTeam), $"P{projectId}-T{teamId}", oldValues, null);
+            await _auditLogService.LogAsync(currentUserId, "Detach Team from Project", nameof(ProjectTeam), $"P{projectId}-T{teamId}", project.WorkspaceId, oldValues, null);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Team detached from project. ProjectId: {ProjectId}, TeamId: {TeamId}, CurrentUserId: {UserId}", projectId, teamId, currentUserId);

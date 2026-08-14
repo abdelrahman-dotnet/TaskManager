@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using TaskManager.API.Authorization;
 using TaskManager.API.DTOs.Invitation;
+using TaskManager.API.Helpers;
+using TaskManager.Bussiness.Caching;
+using TaskManager.Bussiness.Services;
 using TaskManager.Business.Services.Interfaces;
 
 namespace TaskManager.API.Controllers
@@ -13,15 +16,18 @@ namespace TaskManager.API.Controllers
     public class InvitationController : ControllerBase
     {
         private readonly IInvitationService _invitationService;
+        private readonly ICacheService _cacheService;
         private readonly ICurrentUserService _currentUser;
         private readonly ILogger<InvitationController> _logger;
 
         public InvitationController(
             IInvitationService invitationService,
+            ICacheService cacheService,
             ICurrentUserService currentUser,
             ILogger<InvitationController> logger)
         {
             _invitationService = invitationService;
+            _cacheService = cacheService;
             _currentUser = currentUser;
             _logger = logger;
         }
@@ -38,6 +44,8 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> Create([FromBody] InvitationCreateDto dto, CancellationToken cancellationToken)
         {
             var id = await _invitationService.SendInvitationAsync(dto, _currentUser.UserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Invitations);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
             return CreatedAtAction(nameof(Get), new { id }, new { id });
         }
 
@@ -52,6 +60,8 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> Resend([FromBody] InvitationResendDto dto, CancellationToken cancellationToken)
         {
             var id = await _invitationService.ResendInvitationAsync(dto, _currentUser.UserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Invitations);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
             return CreatedAtAction(nameof(Get), new { id }, new { id });
         }
 
@@ -65,6 +75,7 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> Revoke(long id, CancellationToken cancellationToken)
         {
             await _invitationService.RevokeInvitationAsync(id, _currentUser.UserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Invitations);
             return NoContent();
         }
 
@@ -75,7 +86,17 @@ namespace TaskManager.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<InvitationReadDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> List([FromQuery] long workspaceId, CancellationToken cancellationToken)
         {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Invitations);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.InvitationsList, version, new { workspaceId, CurrentUserId = _currentUser.UserId });
+            var cached = await _cacheService.GetAsync<IEnumerable<InvitationReadDto>>(cacheKey);
+            if (cached != null)
+            {
+                _logger.LogInformation("Invitations cache hit. CacheKey: {CacheKey}", cacheKey);
+                return Ok(cached);
+            }
+            _logger.LogInformation("Invitations cache miss. CacheKey: {CacheKey}", cacheKey);
             var result = await _invitationService.GetInvitationsAsync(workspaceId, _currentUser.UserId, cancellationToken);
+            await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
             return Ok(result);
         }
 
@@ -88,7 +109,17 @@ namespace TaskManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Get(long id, [FromQuery] long workspaceId, CancellationToken cancellationToken)
         {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Invitations);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.InvitationsList, version, new { id, workspaceId, CurrentUserId = _currentUser.UserId });
+            var cached = await _cacheService.GetAsync<InvitationReadDto>(cacheKey);
+            if (cached != null)
+            {
+                _logger.LogInformation("Invitation cache hit. CacheKey: {CacheKey}", cacheKey);
+                return Ok(cached);
+            }
+            _logger.LogInformation("Invitation cache miss. CacheKey: {CacheKey}", cacheKey);
             var invitation = await _invitationService.GetInvitationByIdAsync(id, workspaceId, _currentUser.UserId, cancellationToken);
+            await _cacheService.SetAsync(cacheKey, invitation, TimeSpan.FromMinutes(5));
             return Ok(invitation);
         }
 
@@ -102,6 +133,8 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> Accept(long id, CancellationToken cancellationToken)
         {
             await _invitationService.AcceptInvitationAsync(id, _currentUser.UserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Invitations);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
             return NoContent();
         }
 
@@ -114,6 +147,7 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> Reject(long id, CancellationToken cancellationToken)
         {
             await _invitationService.RejectInvitationAsync(id, _currentUser.UserId, cancellationToken);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Invitations);
             return NoContent();
         }
     }

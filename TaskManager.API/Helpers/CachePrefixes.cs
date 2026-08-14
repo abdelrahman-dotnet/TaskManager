@@ -59,5 +59,19 @@ namespace TaskManager.Bussiness.Caching
         #region TaskItemStatusHistories
         public const string TaskItemStatusHistoriesList = "TaskItemStatusHistories:List";
         #endregion
+
+        #region Workspaces
+        public const string WorkspacesList = "Workspaces:List";
+        #endregion
+
+        #region Invitations
+        public const string InvitationsList = "Invitations:List";
+        #endregion
+
+        #region Members
+        public const string MembersList = "Members:List";
+        public const string MembersByProject = "Members:ByProject";
+        public const string MembersByTeam = "Members:ByTeam";
+        #endregion
     }
 }

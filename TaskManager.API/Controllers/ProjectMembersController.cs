@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.API.Authorization;
 using TaskManager.API.DTOs.ProjectMember;
+using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Bussiness.Caching;
 using TaskManager.Bussiness.Services;
@@ -43,8 +44,18 @@ namespace TaskManager.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMembers(long projectId, CancellationToken cancellationToken)
         {
+            var version = await _cacheService.GetVersionAsync(CacheDomains.Members);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.MembersByProject, version, new { projectId, CurrentUserId });
+            var cached = await _cacheService.GetAsync<IEnumerable<ProjectMemberReadDto>>(cacheKey);
+            if (cached != null)
+            {
+                _logger.LogInformation("ProjectMembers cache hit. CacheKey: {CacheKey}", cacheKey);
+                return Ok(cached);
+            }
+            _logger.LogInformation("ProjectMembers cache miss. CacheKey: {CacheKey}", cacheKey);
             var members = await _membershipService.GetProjectMembersAsync(projectId, CurrentUserId, cancellationToken);
             var result = _mapper.Map<IEnumerable<ProjectMemberReadDto>>(members);
+            await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);
         }
@@ -57,6 +68,7 @@ namespace TaskManager.API.Controllers
         {
             await _membershipService.AddProjectMemberAsync(projectId, dto.UserId, dto.Role, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
 
             _logger.LogInformation("Project member added via API. ProjectId: {ProjectId}, UserId: {UserId}, By: {CurrentUserId}", projectId, dto.UserId, CurrentUserId);
             return NoContent();
@@ -68,6 +80,7 @@ namespace TaskManager.API.Controllers
         {
             await _membershipService.RemoveProjectMemberAsync(projectId, userId, CurrentUserId, cancellationToken);
             await _cacheService.IncrementVersionAsync(CacheDomains.Projects);
+            await _cacheService.IncrementVersionAsync(CacheDomains.Members);
 
             _logger.LogInformation("Project member removed via API. ProjectId: {ProjectId}, UserId: {UserId}, By: {CurrentUserId}", projectId, userId, CurrentUserId);
             return NoContent();
