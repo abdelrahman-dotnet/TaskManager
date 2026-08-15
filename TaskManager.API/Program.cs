@@ -15,6 +15,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using TaskManager.API.Authorization;
 using ApiPermissions = TaskManager.API.Authorization.Permissions;
+using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
 using TaskManager.API.Filters;
 using TaskManager.API.HealthChecks;
 using TaskManager.API.Middleware;
@@ -172,6 +173,8 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             // Authorization
             builder.Services.AddAuthorization(options =>
             {
+                // ApiPermissions: platform/API-level permissions (legacy catalog).
+                // JWT claims granted via AspNetRoles → RolePermissions (PermissionAndRoleSeeder).
                 foreach (var permission in ApiPermissions.All)
                 {
                     options.AddPolicy(permission,
@@ -181,6 +184,24 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
                                 CustomClaimTypes.Permission,
                                 permission);
                         });
+                }
+
+                // BizPermissions: workspace-level permissions used by
+                // WorkspaceController/TaskController policies (X2 — user-approved):
+                // endpoint gate is AUTHENTICATED-ONLY, no permission claim
+                // requirement — platform Identity roles must NOT govern workspace
+                // permissions. The real decision happens inside the services via
+                // WorkspaceMember.Role -> RolePermissionCatalog -> Pipeline.
+                foreach (var permission in BizPermissions.All)
+                {
+                    if (options.GetPolicy(permission) == null)
+                    {
+                        options.AddPolicy(permission,
+                            policy =>
+                            {
+                                policy.RequireAuthenticatedUser();
+                            });
+                    }
                 }
             });
 
@@ -217,6 +238,17 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             });
 
             var app = builder.Build();
+
+            // Permission/Role seed (existing IdentitySeeder pattern).
+            // Required: the JWT permission claims come from AspNetRoles → RolePermissions,
+            // so without this seed no [Authorize(Policy=...)] endpoint is reachable.
+            using (var seedScope = app.Services.CreateScope())
+            {
+                var userManager = seedScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                var roleManager = seedScope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
+                var context = seedScope.ServiceProvider.GetRequiredService<AppDbContext>();
+                await PermissionAndRoleSeeder.SeedAsync(userManager, roleManager, context);
+            }
 
             // Configure the HTTP request pipeline.
             app.UseSwagger();
