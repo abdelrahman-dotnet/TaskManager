@@ -12,6 +12,7 @@ using TaskManager.API.Extentions;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Business.UnitOfWork;
+using TaskManager.Data.Context;
 using TaskManager.Data.Entities;
 
 namespace TaskManager.API.Services
@@ -24,21 +25,27 @@ namespace TaskManager.API.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IAuditLogService _auditLogService;
+                private readonly IAuditLogService _auditLogService;
+        private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
+
         private readonly ILogger<UserService> _logger;
 
         public UserService(
             UserManager<ApplicationUser> userManager,
-            IUnitOfWork unitOfWork,
+                        IUnitOfWork unitOfWork,
             IAuditLogService auditLogService,
+            AppDbContext dbContext,
             IMapper mapper,
+
             ILogger<UserService> logger)
         {
             _userManager = userManager;
-            _unitOfWork = unitOfWork;
+                        _unitOfWork = unitOfWork;
             _auditLogService = auditLogService;
+            _dbContext = dbContext;
             _mapper = mapper;
+
             _logger = logger;
         }
 
@@ -64,16 +71,28 @@ namespace TaskManager.API.Services
             var result = await projected.ToPagedResultAsync(queryParams.Page, queryParams.PageSize, cancellationToken);
 
             // Roles aren't stored on ApplicationUser itself (they live in AspNetUserRoles),
-            // so AutoMapper can't project them directly - fill them in per row after paging.
-            // NOTE (gap, not fixed here): UserManager.FindByIdAsync/GetRolesAsync don't accept a
-            // CancellationToken - that's a limitation of Identity's UserManager API itself, not
-            // something this Service can pass through. Flagging per your "no unresolved item
-            // left unmentioned" instruction rather than silently leaving it half-done.
-            foreach (var userDto in result.Data)
+            // so AutoMapper can't project them directly. Load every role for the paged user set
+            // in one query, rather than issuing FindByIdAsync/GetRolesAsync for each row.
+            var userIds = result.Data.Select(userDto => userDto.Id).ToList();
+            if (userIds.Count > 0)
             {
-                var user = await _userManager.FindByIdAsync(userDto.Id);
-                if (user != null)
-                    userDto.Roles = (await _userManager.GetRolesAsync(user)).ToList();
+                var userRoleRows = await (
+                    from userRole in _dbContext.UserRoles.AsNoTracking()
+                    join role in _dbContext.Roles.AsNoTracking() on userRole.RoleId equals role.Id
+                    where userIds.Contains(userRole.UserId) && role.Name != null
+                    select new { userRole.UserId, RoleName = role.Name! })
+                    .ToListAsync(cancellationToken);
+
+                var rolesByUserId = userRoleRows
+                    .GroupBy(row => row.UserId)
+                    .ToDictionary(group => group.Key, group => group.Select(row => row.RoleName).ToList());
+
+                foreach (var userDto in result.Data)
+                {
+                    userDto.Roles = rolesByUserId.TryGetValue(userDto.Id, out var roles)
+                        ? roles
+                        : new List<string>();
+                }
             }
 
             _logger.LogInformation("Users retrieved successfully. Count: {Count}", result.Data.Count);

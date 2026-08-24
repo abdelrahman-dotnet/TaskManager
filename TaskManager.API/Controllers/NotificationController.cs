@@ -33,7 +33,7 @@ namespace TaskManager.API.Controllers
         public async Task<IActionResult> GetAll([FromQuery] NotificationQueryParams q, CancellationToken cancellationToken)
         {
             var version = await _cacheService.GetVersionAsync(CacheDomains.Notifications);
-            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.NotificationsList, version, q);
+            var cacheKey = CachKeyHelper.GenerateKey(CachePrefixes.NotificationsList, version, new { q, CurrentUserId });
 
             var cached = await _cacheService.GetAsync<PagedResult<NotificationReadDto>>(cacheKey);
             if (cached != null)
@@ -43,7 +43,7 @@ namespace TaskManager.API.Controllers
             }
 
             _logger.LogInformation("Notifications cache miss. CacheKey: {CacheKey}", cacheKey);
-            var result = await _notificationService.GetAllAsync(q, cancellationToken);
+            var result = await _notificationService.GetAllAsync(q, CurrentUserId, cancellationToken);
             await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
 
             return Ok(result);

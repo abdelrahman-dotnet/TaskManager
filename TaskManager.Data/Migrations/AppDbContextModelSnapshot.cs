@@ -338,7 +338,7 @@ namespace TaskManager.Data.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("WorkspaceId")
+                    b.Property<long?>("WorkspaceId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("WorkspaceMemberId")
@@ -1113,8 +1113,7 @@ namespace TaskManager.Data.Migrations
                     b.HasOne("TaskManager.Data.Entities.Workspace", "Workspace")
                         .WithMany()
                         .HasForeignKey("WorkspaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TaskManager.Data.Entities.WorkspaceMember", "WorkspaceMember")
                         .WithMany("AuditLogs")

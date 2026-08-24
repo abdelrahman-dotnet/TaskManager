@@ -16,6 +16,7 @@ namespace TaskManager.Bussiness.Repositories
         public async Task<Project?> GetDetailsAsync(long id, CancellationToken cancellationToken = default)
         {
             return await _dbSet
+                .AsSplitQuery()
                 .Include(p => p.ProjectTeams)
                     .ThenInclude(pt => pt.Team)
                 .Include(p => p.ProjectMembers)

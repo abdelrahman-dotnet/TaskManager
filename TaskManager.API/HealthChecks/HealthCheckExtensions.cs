@@ -50,8 +50,10 @@ public static class HealthCheckExtensions
         return services;
     }
 
-    public static IEndpointRouteBuilder MapHealthCheckEndpoints(
-    this IEndpointRouteBuilder endpoints)
+        public static IEndpointRouteBuilder MapHealthCheckEndpoints(
+        this IEndpointRouteBuilder endpoints,
+        bool includeDetails = false)
+
     {
         endpoints.MapHealthChecks("/health", new HealthCheckOptions
         {
@@ -64,12 +66,16 @@ public static class HealthCheckExtensions
             ResponseWriter = WriteResponse
         });
 
-        endpoints.MapHealthChecks("/health/details", new HealthCheckOptions
+                if (includeDetails)
         {
-            ResponseWriter = WriteResponse
-        });
+            endpoints.MapHealthChecks("/health/details", new HealthCheckOptions
+            {
+                ResponseWriter = WriteResponse
+            });
+        }
 
         return endpoints;
+
     }
     public static IEndpointRouteBuilder MapHealthCheckDashboard(
     this IEndpointRouteBuilder endpoints)

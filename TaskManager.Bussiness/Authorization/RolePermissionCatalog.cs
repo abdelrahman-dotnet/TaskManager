@@ -123,6 +123,7 @@ namespace TaskManager.Bussiness.Authorization
                     Permissions.CommentsDelete,
                     Permissions.AttachmentsUpload,
                     Permissions.AttachmentsView,
+                    Permissions.AttachmentsDelete,
                 },
             };
 

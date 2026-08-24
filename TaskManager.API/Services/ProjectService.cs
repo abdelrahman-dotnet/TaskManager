@@ -133,12 +133,22 @@ namespace TaskManager.API.Services
         // none - the route is POST /api/projects/{workspaceId}).
         public async Task<ProjectReadDto> CreateAsync(ProjectCreateDto dto, long workspaceId, string currentUserId, CancellationToken cancellationToken = default)
         {
-            // FK validation before save (Validation step) - every requested Team must exist.
-            foreach (var teamId in dto.TeamIds)
+            // FK + workspace validation before save (Validation step). Materialize the distinct
+            // active Teams for this Workspace in one set-based query. The tracked entities are also
+            // assigned below so the existing ProjectReadDto.TeamNames mapping has the data it needs.
+            // dto.TeamIds itself remains unchanged, preserving existing duplicate link behavior.
+            var distinctTeamIds = dto.TeamIds.Distinct().ToList();
+            var validTeamsById = new Dictionary<long, Team>();
+            if (distinctTeamIds.Count > 0)
             {
-                var teamExists = await _unitOfWork.Teams.ExistsAsync(t => t.Id == teamId, cancellationToken);
-                if (!teamExists)
+                var validTeams = await _unitOfWork.Teams.GetAllQuery()
+                    .Where(t => t.WorkspaceId == workspaceId && distinctTeamIds.Contains(t.Id))
+                    .ToListAsync(cancellationToken);
+
+                if (validTeams.Count != distinctTeamIds.Count)
                     throw new NotFoundException("One of the specified teams was not found.");
+
+                validTeamsById = validTeams.ToDictionary(t => t.Id);
             }
 
             // Business Validation.
@@ -167,7 +177,11 @@ namespace TaskManager.API.Services
             {
                 foreach (var teamId in dto.TeamIds)
                 {
-                    project.ProjectTeams.Add(new ProjectTeam { TeamId = teamId });
+                    project.ProjectTeams.Add(new ProjectTeam
+                    {
+                        TeamId = teamId,
+                        Team = validTeamsById[teamId]
+                    });
                 }
             }
 

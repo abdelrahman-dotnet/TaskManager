@@ -2,8 +2,8 @@ namespace TaskManager.Data.Entities
 {
     public class AuditLog : BaseEntity
     {
-        public long WorkspaceId { get; set; }
-        public Workspace Workspace { get; set; } = null!;
+        public long? WorkspaceId { get; set; }
+        public Workspace? Workspace { get; set; }
 
         public long? WorkspaceMemberId { get; set; }
         public WorkspaceMember? WorkspaceMember { get; set; }

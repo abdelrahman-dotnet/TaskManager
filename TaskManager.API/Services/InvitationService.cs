@@ -176,6 +176,8 @@ namespace TaskManager.API.Services
                 }),
                 cancellationToken: cancellationToken);
 
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
             _logger.LogInformation("Invitation sent. Id: {Id}, WorkspaceId: {WorkspaceId}, InvitedUserId: {UserId}, Role: {Role}",
                 invitation.Id, workspaceId, invitedUserId, role);
 
@@ -211,8 +213,6 @@ namespace TaskManager.API.Services
 
             invitation.Status = InvitationStatus.Cancelled;
 
-            await _unitOfWork.CompleteAsync(cancellationToken);
-
             await _auditLogService.LogAsync(
                 currentUserId,
                 "Revoke Invitation",
@@ -222,6 +222,8 @@ namespace TaskManager.API.Services
                 oldValues: System.Text.Json.JsonSerializer.Serialize(new { invitation.Status }),
                 newValues: System.Text.Json.JsonSerializer.Serialize(new { Status = InvitationStatus.Cancelled }),
                 cancellationToken: cancellationToken);
+
+            await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Invitation revoked. Id: {Id}, UserId: {UserId}", invitationId, currentUserId);
         }
@@ -270,6 +272,10 @@ namespace TaskManager.API.Services
                     Status = WorkspaceMemberStatus.Active
                 };
                 await _unitOfWork.WorkspaceMembers.AddAsync(member, cancellationToken);
+
+                // Persist the new member before audit logging so the membership audit
+                // references the real database identity rather than EF's temporary key.
+                await _unitOfWork.CompleteAsync(cancellationToken);
             }
             else
             {
@@ -278,8 +284,6 @@ namespace TaskManager.API.Services
                 member.Role = invitation.Role;
                 member.Status = WorkspaceMemberStatus.Active;
             }
-
-            await _unitOfWork.CompleteAsync(cancellationToken);
 
             await _auditLogService.LogAsync(
                 currentUserId,
@@ -299,6 +303,8 @@ namespace TaskManager.API.Services
                 workspaceId: invitation.WorkspaceId,
                 newValues: System.Text.Json.JsonSerializer.Serialize(new { WorkspaceId = invitation.WorkspaceId, Role = invitation.Role, Status = WorkspaceMemberStatus.Active }),
                 cancellationToken: cancellationToken);
+
+            await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Invitation accepted. Id: {Id}, WorkspaceId: {WorkspaceId}, UserId: {UserId}, Role: {Role}",
                 invitation.Id, invitation.WorkspaceId, currentUserId, invitation.Role);
@@ -321,8 +327,6 @@ namespace TaskManager.API.Services
             invitation.Status = InvitationStatus.Rejected;
             invitation.RejectedAt = DateTime.UtcNow;
 
-            await _unitOfWork.CompleteAsync(cancellationToken);
-
             await _auditLogService.LogAsync(
                 currentUserId,
                 "Reject Invitation",
@@ -333,6 +337,8 @@ namespace TaskManager.API.Services
                 newValues: System.Text.Json.JsonSerializer.Serialize(new { Status = InvitationStatus.Rejected }),
                 cancellationToken: cancellationToken);
 
+            await _unitOfWork.CompleteAsync(cancellationToken);
+
             _logger.LogInformation("Invitation rejected. Id: {Id}, WorkspaceId: {WorkspaceId}, UserId: {UserId}",
                 invitation.Id, invitation.WorkspaceId, currentUserId);
         }
@@ -341,9 +347,34 @@ namespace TaskManager.API.Services
 
         public async Task<InvitationReadDto> GetInvitationByIdAsync(long invitationId, long workspaceId, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var invitations = await GetInvitationsAsync(workspaceId, currentUserId, cancellationToken);
+            var authResult = await _authService.AuthorizeAsync(workspaceId, currentUserId, Permissions.InvitationsView, null);
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("List invitations pipeline failed. Reason: {Reason}, WorkspaceId: {WorkspaceId}, UserId: {UserId}",
+                    authResult.FailureReason, workspaceId, currentUserId);
+                throw authResult.ToAuthorizationException();
+            }
 
-            var invitation = invitations.FirstOrDefault(i => i.Id == invitationId);
+            var invitation = await _unitOfWork.Invitations.GetAllQuery()
+                .AsNoTracking()
+                .Where(i => i.WorkspaceId == workspaceId && i.Id == invitationId)
+                .Select(i => new InvitationReadDto
+                {
+                    Id = i.Id,
+                    WorkspaceId = i.WorkspaceId,
+                    WorkspaceName = i.Workspace.Name,
+                    InvitedUserId = i.InvitedUserId,
+                    InvitedUserName = i.InvitedUser.UserName ?? string.Empty,
+                    Role = i.Role,
+                    InvitedByWorkspaceMemberId = i.InvitedByWorkspaceMemberId,
+                    InvitedByUserId = i.InvitedByWorkspaceMember.UserId,
+                    Status = i.Status,
+                    ExpiresAt = i.ExpiresAt,
+                    AcceptedAt = i.AcceptedAt,
+                    RejectedAt = i.RejectedAt
+                })
+                .FirstOrDefaultAsync(cancellationToken);
+
             if (invitation is null)
             {
                 _logger.LogWarning("Invitation not found or caller lacks access. InvitationId: {Id}, WorkspaceId: {WorkspaceId}, UserId: {UserId}",

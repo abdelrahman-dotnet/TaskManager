@@ -17,6 +17,7 @@ namespace TaskManager.Bussiness.Repositories
         {
             return await _dbSet
                 .AsNoTracking()
+                .AsSplitQuery()
                 .Include(t => t.Project)
                 .Include(t => t.CreatedByUser)
                 .Include(t => t.Assignments)

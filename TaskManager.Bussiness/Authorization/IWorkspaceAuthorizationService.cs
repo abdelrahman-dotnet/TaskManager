@@ -1,3 +1,5 @@
+using TaskManager.Data.Entities;
+
 namespace TaskManager.Bussiness.Authorization
 {
     public interface IWorkspaceAuthorizationService
@@ -15,5 +17,17 @@ namespace TaskManager.Bussiness.Authorization
             string currentUserId,
             string permission,
             IResourceCondition? resourceCondition = null);
+
+        /// <summary>
+        /// Evaluates the existing visibility, permission, and resource-condition stages
+        /// for all of a caller's workspace memberships using one set-based eligibility read.
+        /// Intended for recipient-scoped list composition where individual failures are
+        /// filtered out rather than surfaced as a single endpoint-level result.
+        /// </summary>
+        Task<List<long>> GetAuthorizedWorkspaceMemberIdsAsync(
+            string currentUserId,
+            string permission,
+            Func<WorkspaceMember, IResourceCondition?> resourceConditionFactory,
+            CancellationToken cancellationToken = default);
     }
 }

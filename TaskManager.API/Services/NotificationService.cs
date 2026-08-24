@@ -31,9 +31,24 @@ namespace TaskManager.API.Services
             _authService = authService;
         }
 
-        public async Task<PagedResult<NotificationReadDto>> GetAllAsync(NotificationQueryParams queryParams, CancellationToken cancellationToken = default)
+        public async Task<PagedResult<NotificationReadDto>> GetAllAsync(NotificationQueryParams queryParams, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var query = _unitOfWork.Notifications.GetAllQuery().AsNoTracking();
+            // Notification lists are recipient-scoped. Resolve all of the caller's
+            // workspace memberships through the existing pipeline stages in one set-based
+            // eligibility read, including the recipient-only condition, before composing
+            // the single paged notification query.
+            var authorizedRecipientMembershipIds = await _authService.GetAuthorizedWorkspaceMemberIdsAsync(
+                currentUserId,
+                Permissions.WorkspaceView,
+                membership => new NotificationRecipientOnlyCondition(new Notification
+                {
+                    WorkspaceMemberId = membership.Id
+                }),
+                cancellationToken);
+
+            var query = _unitOfWork.Notifications.GetAllQuery()
+                .AsNoTracking()
+                .Where(n => authorizedRecipientMembershipIds.Contains(n.WorkspaceMemberId));
 
             query = query.ApplyFiltering(queryParams, NotificationFilterConfig.map);
 
@@ -54,16 +69,16 @@ namespace TaskManager.API.Services
             return result;
         }
 
-        public async Task<NotificationReadDto> CreateAsync(NotificationCreateDto dto, string currentUserId, NotificationType type = NotificationType.TaskAssigned, long? referenceId = null)
+        public async Task<NotificationReadDto> CreateAsync(NotificationCreateDto dto, string currentUserId, NotificationType type = NotificationType.TaskAssigned, long? referenceId = null, string? triggeringPermission = null)
         {
-            // TASK PIVOT: the notification creator must be an active workspace member; the
-            // pipeline (Visibility -> Permission: Workspace.View) gates who may create
-            // notifications inside the workspace. There is no resource condition - the
-            // recipient/trigger data inside the DTO is validated below.
+            // Notification creation is an internal side effect. When the caller supplies
+            // its already-authorized source operation, re-check that exact permission;
+            // otherwise retain the legacy Workspace.View gate.
+            var requiredPermission = triggeringPermission ?? Permissions.WorkspaceView;
             var authResult = await _authService.AuthorizeAsync(
                 dto.WorkspaceId,
                 currentUserId,
-                Permissions.WorkspaceView);
+                requiredPermission);
 
             if (!authResult.Succeeded)
             {

@@ -23,7 +23,6 @@ namespace TaskManager.API.Services
         private readonly IMapper _mapper;
         private readonly ILogger<AttachmentService> _logger;
         private readonly IAuditLogService _auditLogService;
-        private readonly IMembershipService _membershipService;
         private readonly IWorkspaceAuthorizationService _authService;
 
         public AttachmentService(
@@ -31,14 +30,12 @@ namespace TaskManager.API.Services
             IMapper mapper,
             ILogger<AttachmentService> logger,
             IAuditLogService auditLogService,
-            IMembershipService membershipService,
             IWorkspaceAuthorizationService authService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _auditLogService = auditLogService;
-            _membershipService = membershipService;
             _authService = authService;
         }
 
@@ -98,15 +95,6 @@ namespace TaskManager.API.Services
                 .FirstOrDefaultAsync(cancellationToken);
             if (uploaderMemberId == 0)
                 throw new ForbiddenException("You are not a member of this task's project.");
-
-            // MEMBERSHIP: dto.TaskItemId is already the value we need - no entity to load yet,
-            // so this is straight from the incoming DTO, not a fresh Task query.
-            var canAccessTask = await _membershipService.CanAccessTaskAsync(dto.TaskItemId, currentUserId, cancellationToken);
-            if (!canAccessTask)
-            {
-                _logger.LogWarning("CreateAttachment forbidden (Membership). UserId: {UserId}, TaskId: {TaskId}", currentUserId, dto.TaskItemId);
-                throw new ForbiddenException("You are not a member of this task's project.");
-            }
 
             var attachment = _mapper.Map<Attachment>(dto);
             attachment.UploadedByWorkspaceMemberId = uploaderMemberId;

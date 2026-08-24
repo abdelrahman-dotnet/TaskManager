@@ -50,47 +50,64 @@ public static class PermissionAndRoleSeeder
     // =========================
     private static readonly string[] AllPermissions =
     {
-        // Projects - no ownership concept, gates the endpoint directly
+        // ── Projects ──
+        // Projects.Delete removed per G-2 (V1 lifecycle = Archive/Restore only).
         "Projects.Create",
         "Projects.Update",
-        "Projects.Delete",
         "Projects.ManageMembers",
+        "Projects.Archive",
+        "Projects.ManageTeams",
 
-        // Tasks - Create/Assign have no ownership concept; Update/Delete are
-        // "base" (you can touch your own); ManageAny bypasses ownership
+        // ── Tasks ──
         "Tasks.Create",
         "Tasks.Assign",
         "Tasks.Update",
         "Tasks.Delete",
         "Tasks.ManageAny",
 
-        // Comments - same base/ManageAny split as Tasks
+        // ── Comments ──
         "Comments.Create",
         "Comments.Update",
         "Comments.Delete",
         "Comments.ManageAny",
 
-        // Attachments - same base/ManageAny split
+        // ── Attachments ──
         "Attachments.Create",
         "Attachments.ManageAny",
 
-        // Teams
+        // ── Teams ──
         "Teams.Create",
         "Teams.Update",
         "Teams.Delete",
         "Teams.ManageMembers",
 
-        // Users
+        // ── Users ──
         "Users.View",
         "Users.Create",
         "Users.ManageStatus",
         "Users.Delete",
         "Users.ManageRoles",
+        "Users.ManageAny",
 
-        // Roles
+        // ── Roles ──
         "Roles.Manage",
 
-        // Reporting / oversight (read-only)
+        // ── Members / Invitations ──
+        "Members.View",
+        "Members.Invite",
+        "Members.Remove",
+        "Members.ChangeRole",
+        "Members.Suspend",
+
+        "Invitations.View",
+        "Invitations.Cancel",
+        "Invitations.Resend",
+
+        // ── Workspaces ──
+        "Workspaces.Create",
+        "Workspaces.View",
+
+        // ── Reporting / oversight (read-only) ──
         "TaskAssignments.View",
         "TaskItemStatusHistory.View",
         "AuditLogs.View",
@@ -144,9 +161,14 @@ public static class PermissionAndRoleSeeder
         // existence/roles, or touch user/role administration.
         string[] managerPerms =
         {
+            "Workspaces.Create",
+            "Workspaces.View",
+
             "Projects.Create",
             "Projects.Update",
             "Projects.ManageMembers",
+            "Projects.Archive",
+            "Projects.ManageTeams",
 
             "Tasks.Create",
             "Tasks.Assign",
@@ -162,10 +184,22 @@ public static class PermissionAndRoleSeeder
             "Attachments.Create",
             "Attachments.ManageAny",
 
+            "Teams.Create",
             "Teams.Update",
+            "Teams.Delete",
             "Teams.ManageMembers",
 
             "Users.View",
+
+            "Members.View",
+            "Members.Invite",
+            "Members.Remove",
+            "Members.ChangeRole",
+            "Members.Suspend",
+
+            "Invitations.View",
+            "Invitations.Cancel",
+            "Invitations.Resend",
 
             "TaskAssignments.View",
             "TaskItemStatusHistory.View",
@@ -175,8 +209,18 @@ public static class PermissionAndRoleSeeder
         // User: can work on tasks/comments/attachments they own or are
         // assigned to (ownership enforced in the Service layer) - no
         // ManageAny, no project/team/user/role administration.
+        //
+        // FIX (BUG-4): Workspaces.Create / Workspaces.View added here so a
+        // newly registered user can pass the API endpoint gate for
+        // creating/viewing workspaces. These are ApiPermission-level gates
+        // only; the actual workspace authority is still governed exclusively
+        // by WorkspaceMember.Role + RolePermissionCatalog + the
+        // Authorization Pipeline (X2 — user-approved, unchanged).
         string[] userPerms =
         {
+            "Workspaces.Create",
+            "Workspaces.View",
+
             "Tasks.Update",
             "Tasks.Delete",
 

@@ -1,0 +1,1276 @@
+[2026-08-16 11:52:59 WRN] [CorrelationId: ] Entity 'Comment' has a global query filter defined and is the required end of a relationship with the entity 'CommentMention'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[2026-08-16 11:53:00 INF] [CorrelationId: ] Initializing UI Database
+[2026-08-16 11:53:00 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-08-16 11:53:00 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:53:00 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:53:01 WRN] [CorrelationId: 5ad65f70-94fc-443a-93d3-3135d33139ff] Failed to determine the https port for redirect.
+[2026-08-16 11:53:01 INF] [CorrelationId: 5ad65f70-94fc-443a-93d3-3135d33139ff] HTTP GET /health responded 200 in 220.3891 ms
+[2026-08-16 11:53:01 INF] [CorrelationId: ] Received HTTP response headers after 353.2745ms - 200
+[2026-08-16 11:53:01 INF] [CorrelationId: ] End processing HTTP request after 371.624ms - 200
+[2026-08-16 11:53:04 INF] [CorrelationId: 8d3b4edd-92fd-46cf-920a-3d8c8f74c33e] HTTP GET /health responded 200 in 11.3497 ms
+[2026-08-16 11:53:09 INF] [CorrelationId: f72b007c-4a1d-4d26-bb8e-116e5e38c3b7] HTTP GET /health responded 200 in 7.8949 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: 7ee9459f-0237-4ab3-8acd-894c31760664] User registered successfully. UserName: OwnerA-f0f4bd0aa361, UserId: 85e1a662-053a-419e-b999-d21994e03623
+[2026-08-16 11:53:10 INF] [CorrelationId: 7ee9459f-0237-4ab3-8acd-894c31760664] HTTP POST /api/Auth/Register responded 200 in 230.9808 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: 49c05b6a-c878-4aa9-bfe4-1efdad96c6f8] Login successful. Email: ownera-f0f4bd0aa361@example.test
+[2026-08-16 11:53:10 INF] [CorrelationId: 49c05b6a-c878-4aa9-bfe4-1efdad96c6f8] HTTP POST /api/Auth/Login responded 200 in 246.7607 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: fe76cc72-fd21-4608-b0cc-581c37705ee3] User registered successfully. UserName: AdminA-f0f4bd0aa361, UserId: 83cd36be-2baf-4e4e-a601-b4a770d3d89b
+[2026-08-16 11:53:10 INF] [CorrelationId: fe76cc72-fd21-4608-b0cc-581c37705ee3] HTTP POST /api/Auth/Register responded 200 in 28.1645 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: 5b0d315f-4137-456d-89b5-a6445124c392] Login successful. Email: admina-f0f4bd0aa361@example.test
+[2026-08-16 11:53:10 INF] [CorrelationId: 5b0d315f-4137-456d-89b5-a6445124c392] HTTP POST /api/Auth/Login responded 200 in 10.8510 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: 5fabeb99-a6f4-4e03-8a3f-fbac7f2fc61f] User registered successfully. UserName: MemberA-f0f4bd0aa361, UserId: 6a93e8fa-3a8c-4a5b-80a3-fb3384646ca5
+[2026-08-16 11:53:10 INF] [CorrelationId: 5fabeb99-a6f4-4e03-8a3f-fbac7f2fc61f] HTTP POST /api/Auth/Register responded 200 in 12.0186 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: 2c5f0125-8952-4107-a806-725b1ad576bd] Login successful. Email: membera-f0f4bd0aa361@example.test
+[2026-08-16 11:53:10 INF] [CorrelationId: 2c5f0125-8952-4107-a806-725b1ad576bd] HTTP POST /api/Auth/Login responded 200 in 10.9152 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: d5204918-31ba-458a-b219-24da8a738516] User registered successfully. UserName: TargetA-f0f4bd0aa361, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00
+[2026-08-16 11:53:10 INF] [CorrelationId: d5204918-31ba-458a-b219-24da8a738516] HTTP POST /api/Auth/Register responded 200 in 10.9282 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: 6dba7661-79b6-4173-b010-f4c54b1c7163] Login successful. Email: targeta-f0f4bd0aa361@example.test
+[2026-08-16 11:53:10 INF] [CorrelationId: 6dba7661-79b6-4173-b010-f4c54b1c7163] HTTP POST /api/Auth/Login responded 200 in 11.7253 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: 911eea89-f7f0-4fee-b27a-33188b1c8e45] User registered successfully. UserName: OutsiderB-f0f4bd0aa361, UserId: c1b9f461-08e1-4d70-90e5-33bc50cd12eb
+[2026-08-16 11:53:10 INF] [CorrelationId: 911eea89-f7f0-4fee-b27a-33188b1c8e45] HTTP POST /api/Auth/Register responded 200 in 10.7445 ms
+[2026-08-16 11:53:10 INF] [CorrelationId: 3973af7b-18e7-4853-b7d5-5810fa4371ce] Login successful. Email: outsiderb-f0f4bd0aa361@example.test
+[2026-08-16 11:53:10 INF] [CorrelationId: 3973af7b-18e7-4853-b7d5-5810fa4371ce] HTTP POST /api/Auth/Login responded 200 in 10.2373 ms
+[2026-08-16 11:53:11 INF] [CorrelationId: 66742c10-fa78-48b8-abbc-06928e83485a] Audit log created. Action: Add Team Member, Entity: TeamMember, EntityId: 2, WorkspaceId: 20, ActorMemberId: 29
+[2026-08-16 11:53:11 INF] [CorrelationId: 66742c10-fa78-48b8-abbc-06928e83485a] Team member added. TeamId: 3, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00, Role: "Member", By: 85e1a662-053a-419e-b999-d21994e03623
+[2026-08-16 11:53:11 INF] [CorrelationId: 66742c10-fa78-48b8-abbc-06928e83485a] Team member added via API. TeamId: 3, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00, By: 85e1a662-053a-419e-b999-d21994e03623
+[2026-08-16 11:53:11 INF] [CorrelationId: 66742c10-fa78-48b8-abbc-06928e83485a] HTTP POST /api/teams/3/members responded 204 in 428.6546 ms
+[2026-08-16 11:53:11 INF] [CorrelationId: 7c3f12b0-5275-42aa-ad3a-627725a64085] Audit log created. Action: Remove Team Member, Entity: TeamMember, EntityId: 2, WorkspaceId: 20, ActorMemberId: 30
+[2026-08-16 11:53:11 INF] [CorrelationId: 7c3f12b0-5275-42aa-ad3a-627725a64085] Team member removed. TeamId: 3, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00, By: 83cd36be-2baf-4e4e-a601-b4a770d3d89b
+[2026-08-16 11:53:11 INF] [CorrelationId: 7c3f12b0-5275-42aa-ad3a-627725a64085] Team member removed via API. TeamId: 3, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00, By: 83cd36be-2baf-4e4e-a601-b4a770d3d89b
+[2026-08-16 11:53:11 INF] [CorrelationId: 7c3f12b0-5275-42aa-ad3a-627725a64085] HTTP DELETE /api/teams/3/members/d70ee1c0-6fef-49fd-9b67-d64c8f962c00 responded 204 in 37.6605 ms
+[2026-08-16 11:53:11 INF] [CorrelationId: 89d441b9-4526-47d2-ba19-1bebffc7fabf] Audit log created. Action: Add Project Member, Entity: ProjectMember, EntityId: 6, WorkspaceId: 20, ActorMemberId: 30
+[2026-08-16 11:53:11 INF] [CorrelationId: 89d441b9-4526-47d2-ba19-1bebffc7fabf] Project member added. ProjectId: 11, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00, Role: "Member", By: 83cd36be-2baf-4e4e-a601-b4a770d3d89b
+[2026-08-16 11:53:11 INF] [CorrelationId: 89d441b9-4526-47d2-ba19-1bebffc7fabf] Project member added via API. ProjectId: 11, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00, By: 83cd36be-2baf-4e4e-a601-b4a770d3d89b
+[2026-08-16 11:53:11 INF] [CorrelationId: 89d441b9-4526-47d2-ba19-1bebffc7fabf] HTTP POST /api/projects/11/members responded 204 in 78.3268 ms
+[2026-08-16 11:53:11 INF] [CorrelationId: 0fbb4fac-5f3e-42aa-b8b7-ed8302df35e4] Audit log created. Action: Remove Project Member, Entity: ProjectMember, EntityId: 6, WorkspaceId: 20, ActorMemberId: 29
+[2026-08-16 11:53:11 INF] [CorrelationId: 0fbb4fac-5f3e-42aa-b8b7-ed8302df35e4] Project member removed. ProjectId: 11, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00, By: 85e1a662-053a-419e-b999-d21994e03623
+[2026-08-16 11:53:11 INF] [CorrelationId: 0fbb4fac-5f3e-42aa-b8b7-ed8302df35e4] Project member removed via API. ProjectId: 11, UserId: d70ee1c0-6fef-49fd-9b67-d64c8f962c00, By: 85e1a662-053a-419e-b999-d21994e03623
+[2026-08-16 11:53:11 INF] [CorrelationId: 0fbb4fac-5f3e-42aa-b8b7-ed8302df35e4] HTTP DELETE /api/projects/11/members/d70ee1c0-6fef-49fd-9b67-d64c8f962c00 responded 204 in 26.1888 ms
+[2026-08-16 11:53:11 WRN] [CorrelationId: 4fdb514c-c3da-4073-b97e-3748587210ef] EnsureCanManageTeam pipeline failed. Reason: "Forbidden", TeamId: 3, UserId: 6a93e8fa-3a8c-4a5b-80a3-fb3384646ca5
+[2026-08-16 11:53:11 ERR] [CorrelationId: 4fdb514c-c3da-4073-b97e-3748587210ef] HTTP POST /api/teams/3/members responded 500 in 5.9000 ms
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Teams.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 11:53:11 ERR] [CorrelationId: 4fdb514c-c3da-4073-b97e-3748587210ef] Unhandled exception. CorrelationId: 4fdb514c-c3da-4073-b97e-3748587210ef, Path: /api/teams/3/members, Method: POST
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Teams.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 11:53:11 WRN] [CorrelationId: 708e1599-78f8-419e-b579-9cbd2f914af5] EnsureCanManageProject pipeline failed. Reason: "Forbidden", ProjectId: 11, UserId: 6a93e8fa-3a8c-4a5b-80a3-fb3384646ca5
+[2026-08-16 11:53:11 ERR] [CorrelationId: 708e1599-78f8-419e-b579-9cbd2f914af5] HTTP DELETE /api/projects/11/members/d70ee1c0-6fef-49fd-9b67-d64c8f962c00 responded 500 in 4.8361 ms
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Projects.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 359
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 11:53:11 ERR] [CorrelationId: 708e1599-78f8-419e-b579-9cbd2f914af5] Unhandled exception. CorrelationId: 708e1599-78f8-419e-b579-9cbd2f914af5, Path: /api/projects/11/members/d70ee1c0-6fef-49fd-9b67-d64c8f962c00, Method: DELETE
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Projects.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 359
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 11:53:11 WRN] [CorrelationId: 63532e24-6b6f-43cd-bd3e-011e02693abe] EnsureCanManageTeam pipeline failed. Reason: "NotFound", TeamId: 3, UserId: c1b9f461-08e1-4d70-90e5-33bc50cd12eb
+[2026-08-16 11:53:11 ERR] [CorrelationId: 63532e24-6b6f-43cd-bd3e-011e02693abe] HTTP POST /api/teams/3/members responded 500 in 3.5363 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 11:53:11 ERR] [CorrelationId: 63532e24-6b6f-43cd-bd3e-011e02693abe] Unhandled exception. CorrelationId: 63532e24-6b6f-43cd-bd3e-011e02693abe, Path: /api/teams/3/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 11:53:11 WRN] [CorrelationId: aa5980a8-86e6-4509-ac36-82a07703d4b1] EnsureCanManageProject pipeline failed. Reason: "NotFound", ProjectId: 11, UserId: c1b9f461-08e1-4d70-90e5-33bc50cd12eb
+[2026-08-16 11:53:11 ERR] [CorrelationId: aa5980a8-86e6-4509-ac36-82a07703d4b1] HTTP DELETE /api/projects/11/members/d70ee1c0-6fef-49fd-9b67-d64c8f962c00 responded 500 in 4.9751 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 359
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 11:53:11 ERR] [CorrelationId: aa5980a8-86e6-4509-ac36-82a07703d4b1] Unhandled exception. CorrelationId: aa5980a8-86e6-4509-ac36-82a07703d4b1, Path: /api/projects/11/members/d70ee1c0-6fef-49fd-9b67-d64c8f962c00, Method: DELETE
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 359
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 11:53:11 WRN] [CorrelationId: 71f59294-1b4e-4499-9039-ce81c747ed0b] EnsureCanManageTeam pipeline failed. Reason: "NotFound", TeamId: 4, UserId: 85e1a662-053a-419e-b999-d21994e03623
+[2026-08-16 11:53:11 ERR] [CorrelationId: 71f59294-1b4e-4499-9039-ce81c747ed0b] HTTP POST /api/teams/4/members responded 500 in 3.9504 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 11:53:11 ERR] [CorrelationId: 71f59294-1b4e-4499-9039-ce81c747ed0b] Unhandled exception. CorrelationId: 71f59294-1b4e-4499-9039-ce81c747ed0b, Path: /api/teams/4/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 11:53:11 WRN] [CorrelationId: 3086845e-685a-401e-8b7a-f1342a58d357] EnsureCanManageProject pipeline failed. Reason: "NotFound", ProjectId: 12, UserId: 85e1a662-053a-419e-b999-d21994e03623
+[2026-08-16 11:53:11 ERR] [CorrelationId: 3086845e-685a-401e-8b7a-f1342a58d357] HTTP POST /api/projects/12/members responded 500 in 3.6923 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.AddProjectMemberAsync(Int64 projectId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 286
+   at TaskManager.API.Controllers.ProjectMembersController.AddMember(Int64 projectId, AddProjectMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 69
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 11:53:11 ERR] [CorrelationId: 3086845e-685a-401e-8b7a-f1342a58d357] Unhandled exception. CorrelationId: 3086845e-685a-401e-8b7a-f1342a58d357, Path: /api/projects/12/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.AddProjectMemberAsync(Int64 projectId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 286
+   at TaskManager.API.Controllers.ProjectMembersController.AddMember(Int64 projectId, AddProjectMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 69
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 11:53:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:53:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:53:31 INF] [CorrelationId: 5c02ddf1-6c05-4548-a76d-e3ee8ab61d14] HTTP GET /health responded 200 in 2.2196 ms
+[2026-08-16 11:53:31 INF] [CorrelationId: ] Received HTTP response headers after 3.6829ms - 200
+[2026-08-16 11:53:31 INF] [CorrelationId: ] End processing HTTP request after 17.1316ms - 200
+[2026-08-16 11:54:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:54:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:54:01 INF] [CorrelationId: 4e9c6bf2-ba80-49ab-925c-058c5410255b] HTTP GET /health responded 200 in 1.9592 ms
+[2026-08-16 11:54:01 INF] [CorrelationId: ] Received HTTP response headers after 2.5318ms - 200
+[2026-08-16 11:54:01 INF] [CorrelationId: ] End processing HTTP request after 4.2049ms - 200
+[2026-08-16 11:54:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:54:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:54:31 INF] [CorrelationId: bbd6f359-38f6-449c-8dbe-427627668973] HTTP GET /health responded 200 in 2.1623 ms
+[2026-08-16 11:54:31 INF] [CorrelationId: ] Received HTTP response headers after 2.6796ms - 200
+[2026-08-16 11:54:31 INF] [CorrelationId: ] End processing HTTP request after 4.5659ms - 200
+[2026-08-16 11:55:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:55:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:55:01 INF] [CorrelationId: 5b0020ae-3d7f-4076-9d94-69f2a2ea8c53] HTTP GET /health responded 200 in 1.9530 ms
+[2026-08-16 11:55:01 INF] [CorrelationId: ] Received HTTP response headers after 5.3063ms - 200
+[2026-08-16 11:55:01 INF] [CorrelationId: ] End processing HTTP request after 6.6757ms - 200
+[2026-08-16 11:55:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:55:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:55:31 INF] [CorrelationId: 6cd0d9be-4fd9-4757-b5f7-80e1824374d4] HTTP GET /health responded 200 in 2.0167 ms
+[2026-08-16 11:55:31 INF] [CorrelationId: ] Received HTTP response headers after 2.5504ms - 200
+[2026-08-16 11:55:31 INF] [CorrelationId: ] End processing HTTP request after 4.5293ms - 200
+[2026-08-16 11:56:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:56:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:56:01 INF] [CorrelationId: 7f009880-6a75-4e6f-84fc-ac6f9e513b3c] HTTP GET /health responded 200 in 1.9687 ms
+[2026-08-16 11:56:01 INF] [CorrelationId: ] Received HTTP response headers after 2.438ms - 200
+[2026-08-16 11:56:01 INF] [CorrelationId: ] End processing HTTP request after 4.4377ms - 200
+[2026-08-16 11:56:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:56:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:56:31 INF] [CorrelationId: 0c76aadf-e272-4501-946a-7865f64f9f6a] HTTP GET /health responded 200 in 2.0732 ms
+[2026-08-16 11:56:31 INF] [CorrelationId: ] Received HTTP response headers after 2.8837ms - 200
+[2026-08-16 11:56:31 INF] [CorrelationId: ] End processing HTTP request after 4.746ms - 200
+[2026-08-16 11:57:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:57:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:57:01 INF] [CorrelationId: 66a178e7-8c4f-4628-9812-6461fce1c3be] HTTP GET /health responded 200 in 2.2708 ms
+[2026-08-16 11:57:01 INF] [CorrelationId: ] Received HTTP response headers after 5.0246ms - 200
+[2026-08-16 11:57:01 INF] [CorrelationId: ] End processing HTTP request after 6.6267ms - 200
+[2026-08-16 11:57:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:57:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:57:31 INF] [CorrelationId: a3ee95b1-6b2d-45ca-9f64-655cf971808b] HTTP GET /health responded 200 in 4.0237 ms
+[2026-08-16 11:57:31 INF] [CorrelationId: ] Received HTTP response headers after 5.1337ms - 200
+[2026-08-16 11:57:31 INF] [CorrelationId: ] End processing HTTP request after 8.7826ms - 200
+[2026-08-16 11:58:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:58:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:58:01 INF] [CorrelationId: d4b3a2cc-f745-4e73-a393-ca166cc61b5f] HTTP GET /health responded 200 in 1.9690 ms
+[2026-08-16 11:58:01 INF] [CorrelationId: ] Received HTTP response headers after 2.4051ms - 200
+[2026-08-16 11:58:01 INF] [CorrelationId: ] End processing HTTP request after 4.0667ms - 200
+[2026-08-16 11:58:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:58:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:58:31 INF] [CorrelationId: ] Received HTTP response headers after 2.588ms - 200
+[2026-08-16 11:58:31 INF] [CorrelationId: ] End processing HTTP request after 14.8309ms - 200
+[2026-08-16 11:58:31 INF] [CorrelationId: f0cf0f63-3913-4b20-bea0-0c1f87be7271] HTTP GET /health responded 200 in 2.0000 ms
+[2026-08-16 11:59:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:59:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:59:01 INF] [CorrelationId: 9fc050cd-ab9d-4a50-86c0-32aedf5e639c] HTTP GET /health responded 200 in 2.3058 ms
+[2026-08-16 11:59:01 INF] [CorrelationId: ] Received HTTP response headers after 4.5256ms - 200
+[2026-08-16 11:59:01 INF] [CorrelationId: ] End processing HTTP request after 17.0707ms - 200
+[2026-08-16 11:59:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:59:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 11:59:31 INF] [CorrelationId: ] Received HTTP response headers after 3.6081ms - 200
+[2026-08-16 11:59:31 INF] [CorrelationId: d294313f-0c7a-4fce-9974-7f90b61a6698] HTTP GET /health responded 200 in 2.9273 ms
+[2026-08-16 11:59:31 INF] [CorrelationId: ] End processing HTTP request after 16.7594ms - 200
+[2026-08-16 12:00:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:00:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:00:01 INF] [CorrelationId: 578ceece-8228-4b7f-9089-35c06d145e92] HTTP GET /health responded 200 in 3.0227 ms
+[2026-08-16 12:00:01 INF] [CorrelationId: ] Received HTTP response headers after 3.4966ms - 200
+[2026-08-16 12:00:01 INF] [CorrelationId: ] End processing HTTP request after 5.4701ms - 200
+[2026-08-16 12:00:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:00:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:00:31 INF] [CorrelationId: c82c8eaa-1a70-4805-bd68-5a8b2d5c2020] HTTP GET /health responded 200 in 2.4028 ms
+[2026-08-16 12:00:31 INF] [CorrelationId: ] Received HTTP response headers after 3.1154ms - 200
+[2026-08-16 12:00:31 INF] [CorrelationId: ] End processing HTTP request after 15.4482ms - 200
+[2026-08-16 12:01:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:01:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:01:01 INF] [CorrelationId: ec5172c2-198d-4507-881e-a0090af3fc82] HTTP GET /health responded 200 in 1.8323 ms
+[2026-08-16 12:01:01 INF] [CorrelationId: ] Received HTTP response headers after 4.5871ms - 200
+[2026-08-16 12:01:01 INF] [CorrelationId: ] End processing HTTP request after 6.0457ms - 200
+[2026-08-16 12:01:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:01:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:01:31 INF] [CorrelationId: 0c4a33c8-e46f-4f67-8b8b-802c94396700] HTTP GET /health responded 200 in 1.6540 ms
+[2026-08-16 12:01:31 INF] [CorrelationId: ] Received HTTP response headers after 2.1812ms - 200
+[2026-08-16 12:01:31 INF] [CorrelationId: ] End processing HTTP request after 4.6993ms - 200
+[2026-08-16 12:02:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:02:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:02:01 INF] [CorrelationId: 0fce5c0c-f0f8-45ec-8ea7-3647e9bf6ded] HTTP GET /health responded 200 in 2.6917 ms
+[2026-08-16 12:02:01 INF] [CorrelationId: ] Received HTTP response headers after 3.3513ms - 200
+[2026-08-16 12:02:01 INF] [CorrelationId: ] End processing HTTP request after 15.7274ms - 200
+[2026-08-16 12:02:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:02:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:02:31 INF] [CorrelationId: 5f8aac78-2e3b-4d52-8ea4-254b917ff1b5] HTTP GET /health responded 200 in 4.4815 ms
+[2026-08-16 12:02:31 INF] [CorrelationId: ] Received HTTP response headers after 5.9019ms - 200
+[2026-08-16 12:02:31 INF] [CorrelationId: ] End processing HTTP request after 19.3825ms - 200
+[2026-08-16 12:03:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:03:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:03:01 INF] [CorrelationId: 45c92a26-c18c-4dba-9987-273f3da63f55] HTTP GET /health responded 200 in 2.3907 ms
+[2026-08-16 12:03:01 INF] [CorrelationId: ] Received HTTP response headers after 6.7534ms - 200
+[2026-08-16 12:03:01 INF] [CorrelationId: ] End processing HTTP request after 19.9235ms - 200
+[2026-08-16 12:03:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:03:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:03:31 INF] [CorrelationId: 675c19c0-d740-416d-826f-5ed9d7ea674c] HTTP GET /health responded 200 in 2.4731 ms
+[2026-08-16 12:03:31 INF] [CorrelationId: ] Received HTTP response headers after 2.9765ms - 200
+[2026-08-16 12:03:31 INF] [CorrelationId: ] End processing HTTP request after 15.5236ms - 200
+[2026-08-16 12:04:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:04:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:04:01 INF] [CorrelationId: 8fc49c56-a437-4d60-bad2-3bf1580544da] HTTP GET /health responded 200 in 6.0346 ms
+[2026-08-16 12:04:01 INF] [CorrelationId: ] Received HTTP response headers after 6.7464ms - 200
+[2026-08-16 12:04:01 INF] [CorrelationId: ] End processing HTTP request after 20.1168ms - 200
+[2026-08-16 12:04:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:04:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:04:31 INF] [CorrelationId: 0dec4591-93c9-4d27-b236-f72dd2da0353] HTTP GET /health responded 200 in 4.1055 ms
+[2026-08-16 12:04:31 INF] [CorrelationId: ] Received HTTP response headers after 5.2013ms - 200
+[2026-08-16 12:04:31 INF] [CorrelationId: ] End processing HTTP request after 18.921ms - 200
+[2026-08-16 12:05:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:05:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:05:01 INF] [CorrelationId: 4dfcf03b-4f04-4b3d-9ade-85ca79ce8b1d] HTTP GET /health responded 200 in 2.8133 ms
+[2026-08-16 12:05:01 INF] [CorrelationId: ] Received HTTP response headers after 5.4183ms - 200
+[2026-08-16 12:05:01 INF] [CorrelationId: ] End processing HTTP request after 18.272ms - 200
+[2026-08-16 12:05:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:05:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:05:31 INF] [CorrelationId: c1f11de3-0a7c-474a-a647-ba8c018fb5f8] HTTP GET /health responded 200 in 2.2320 ms
+[2026-08-16 12:05:31 INF] [CorrelationId: ] Received HTTP response headers after 2.7068ms - 200
+[2026-08-16 12:05:31 INF] [CorrelationId: ] End processing HTTP request after 16.859ms - 200
+[2026-08-16 12:06:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:06:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:06:01 INF] [CorrelationId: d857dc10-e4ee-455b-bb3c-356cca1820fb] HTTP GET /health responded 200 in 2.7164 ms
+[2026-08-16 12:06:01 INF] [CorrelationId: ] Received HTTP response headers after 4.1269ms - 200
+[2026-08-16 12:06:01 INF] [CorrelationId: ] End processing HTTP request after 18.6869ms - 200
+[2026-08-16 12:06:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:06:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:06:31 INF] [CorrelationId: 4dec1933-dd88-4633-9e85-32e5adcc1f45] HTTP GET /health responded 200 in 1.8409 ms
+[2026-08-16 12:06:31 INF] [CorrelationId: ] Received HTTP response headers after 2.6002ms - 200
+[2026-08-16 12:06:31 INF] [CorrelationId: ] End processing HTTP request after 15.0587ms - 200
+[2026-08-16 12:07:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:07:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:07:01 INF] [CorrelationId: 52736024-3f60-4092-be46-44a2e19e1f33] HTTP GET /health responded 200 in 1.8773 ms
+[2026-08-16 12:07:01 INF] [CorrelationId: ] Received HTTP response headers after 4.204ms - 200
+[2026-08-16 12:07:01 INF] [CorrelationId: ] End processing HTTP request after 6.1004ms - 200
+[2026-08-16 12:07:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:07:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:07:31 INF] [CorrelationId: 92044a79-20ee-454e-b483-90b56d889842] HTTP GET /health responded 200 in 3.5289 ms
+[2026-08-16 12:07:31 INF] [CorrelationId: ] Received HTTP response headers after 4.5985ms - 200
+[2026-08-16 12:07:31 INF] [CorrelationId: ] End processing HTTP request after 17.3873ms - 200
+[2026-08-16 12:08:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:08:01 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:08:01 INF] [CorrelationId: fe7ada5b-00d9-4562-ba1d-d2373fd60b11] HTTP GET /health responded 200 in 3.3659 ms
+[2026-08-16 12:08:01 INF] [CorrelationId: ] Received HTTP response headers after 4.0532ms - 200
+[2026-08-16 12:08:01 INF] [CorrelationId: ] End processing HTTP request after 17.7522ms - 200
+[2026-08-16 12:08:31 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:08:31 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:08:31 INF] [CorrelationId: b19191c1-7318-4f63-9efd-5059127ccddf] HTTP GET /health responded 200 in 3.4690 ms
+[2026-08-16 12:08:31 INF] [CorrelationId: ] Received HTTP response headers after 5.1372ms - 200
+[2026-08-16 12:08:31 INF] [CorrelationId: ] End processing HTTP request after 8.5318ms - 200
+[2026-08-16 12:09:01 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:09:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:09:02 INF] [CorrelationId: 64456566-4184-4834-a50f-47e565dd39b7] HTTP GET /health responded 200 in 4.5468 ms
+[2026-08-16 12:09:02 INF] [CorrelationId: ] Received HTTP response headers after 11.1743ms - 200
+[2026-08-16 12:09:02 INF] [CorrelationId: ] End processing HTTP request after 25.0605ms - 200
+[2026-08-16 12:09:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:09:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:09:32 INF] [CorrelationId: f94f2571-c1ea-445a-a3f9-2b978af7fa25] HTTP GET /health responded 200 in 4.6739 ms
+[2026-08-16 12:09:32 INF] [CorrelationId: ] Received HTTP response headers after 5.4618ms - 200
+[2026-08-16 12:09:32 INF] [CorrelationId: ] End processing HTTP request after 21.9096ms - 200
+[2026-08-16 12:10:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:10:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:10:02 INF] [CorrelationId: 33a1e586-38bc-48f0-9517-a62275cb4a31] HTTP GET /health responded 200 in 3.8465 ms
+[2026-08-16 12:10:02 INF] [CorrelationId: ] Received HTTP response headers after 5.012ms - 200
+[2026-08-16 12:10:02 INF] [CorrelationId: ] End processing HTTP request after 9.0468ms - 200
+[2026-08-16 12:10:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:10:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:10:32 INF] [CorrelationId: 2538e684-fe2d-448f-bee7-816df551b55b] HTTP GET /health responded 200 in 1.8293 ms
+[2026-08-16 12:10:32 INF] [CorrelationId: ] Received HTTP response headers after 2.245ms - 200
+[2026-08-16 12:10:32 INF] [CorrelationId: ] End processing HTTP request after 16.9648ms - 200
+[2026-08-16 12:11:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:11:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:11:02 INF] [CorrelationId: 7e3bf6c4-bc0e-4f14-af2f-207c6857a482] HTTP GET /health responded 200 in 3.0904 ms
+[2026-08-16 12:11:02 INF] [CorrelationId: ] Received HTTP response headers after 10.8465ms - 200
+[2026-08-16 12:11:02 INF] [CorrelationId: ] End processing HTTP request after 25.0537ms - 200
+[2026-08-16 12:11:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:11:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:11:32 INF] [CorrelationId: b218cfb9-8b49-4f00-b76f-e4a9db1882b3] HTTP GET /health responded 200 in 3.4729 ms
+[2026-08-16 12:11:32 INF] [CorrelationId: ] Received HTTP response headers after 4.3037ms - 200
+[2026-08-16 12:11:32 INF] [CorrelationId: ] End processing HTTP request after 17.4258ms - 200
+[2026-08-16 12:12:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:12:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:12:02 INF] [CorrelationId: 0c81e0d6-4323-4767-8dee-da2bacfa7911] HTTP GET /health responded 200 in 4.0345 ms
+[2026-08-16 12:12:02 INF] [CorrelationId: ] Received HTTP response headers after 5.2212ms - 200
+[2026-08-16 12:12:02 INF] [CorrelationId: ] End processing HTTP request after 19.4832ms - 200
+[2026-08-16 12:12:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:12:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:12:32 INF] [CorrelationId: 95c60cfe-9157-48c3-8599-e7925ea386da] HTTP GET /health responded 200 in 4.1661 ms
+[2026-08-16 12:12:32 INF] [CorrelationId: ] Received HTTP response headers after 5.1172ms - 200
+[2026-08-16 12:12:32 INF] [CorrelationId: ] End processing HTTP request after 20.25ms - 200
+[2026-08-16 12:13:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:13:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:13:02 INF] [CorrelationId: 300f9465-1f84-4180-9269-c7e4d239a79f] HTTP GET /health responded 200 in 1.6127 ms
+[2026-08-16 12:13:02 INF] [CorrelationId: ] Received HTTP response headers after 3.6896ms - 200
+[2026-08-16 12:13:02 INF] [CorrelationId: ] End processing HTTP request after 6.624ms - 200
+[2026-08-16 12:13:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:13:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:13:32 INF] [CorrelationId: 77aecc9f-131e-4638-b4ab-da4c8675d0b8] HTTP GET /health responded 200 in 3.2037 ms
+[2026-08-16 12:13:32 INF] [CorrelationId: ] Received HTTP response headers after 3.7591ms - 200
+[2026-08-16 12:13:32 INF] [CorrelationId: ] End processing HTTP request after 16.8944ms - 200
+[2026-08-16 12:14:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:14:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:14:02 INF] [CorrelationId: c457576b-d529-49ff-96ce-0ef0e53d8040] HTTP GET /health responded 200 in 1.7498 ms
+[2026-08-16 12:14:02 INF] [CorrelationId: ] Received HTTP response headers after 2.0894ms - 200
+[2026-08-16 12:14:02 INF] [CorrelationId: ] End processing HTTP request after 4.1654ms - 200
+[2026-08-16 12:14:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:14:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:14:32 INF] [CorrelationId: 0222c020-14ce-4c90-b7f5-92d8ce0d10b6] HTTP GET /health responded 200 in 1.8106 ms
+[2026-08-16 12:14:32 INF] [CorrelationId: ] Received HTTP response headers after 2.1381ms - 200
+[2026-08-16 12:14:32 INF] [CorrelationId: ] End processing HTTP request after 13.1993ms - 200
+[2026-08-16 12:15:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:15:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:15:02 INF] [CorrelationId: d2d1262b-c12a-41ff-af38-02e6a1608a49] HTTP GET /health responded 200 in 1.6030 ms
+[2026-08-16 12:15:02 INF] [CorrelationId: ] Received HTTP response headers after 4.1192ms - 200
+[2026-08-16 12:15:02 INF] [CorrelationId: ] End processing HTTP request after 6.1063ms - 200
+[2026-08-16 12:15:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:15:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:15:32 INF] [CorrelationId: 713aeaf1-e86b-433b-bb60-0788902e8ba7] HTTP GET /health responded 200 in 3.7044 ms
+[2026-08-16 12:15:32 INF] [CorrelationId: ] Received HTTP response headers after 4.2468ms - 200
+[2026-08-16 12:15:32 INF] [CorrelationId: ] End processing HTTP request after 6.7261ms - 200
+[2026-08-16 12:16:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:16:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:16:02 INF] [CorrelationId: 0e6664bd-268f-42cd-a5c1-26a9fe874a15] HTTP GET /health responded 200 in 1.7599 ms
+[2026-08-16 12:16:02 INF] [CorrelationId: ] Received HTTP response headers after 2.3407ms - 200
+[2026-08-16 12:16:02 INF] [CorrelationId: ] End processing HTTP request after 4.5546ms - 200
+[2026-08-16 12:16:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:16:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:16:32 INF] [CorrelationId: e971f53d-fbe8-46dd-95c2-dee2a0d69a34] HTTP GET /health responded 200 in 1.7915 ms
+[2026-08-16 12:16:32 INF] [CorrelationId: ] Received HTTP response headers after 2.5325ms - 200
+[2026-08-16 12:16:32 INF] [CorrelationId: ] End processing HTTP request after 6.412ms - 200
+[2026-08-16 12:17:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:17:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:17:02 INF] [CorrelationId: 924e21c7-4b67-4d67-b2ff-905ffa11d6d4] HTTP GET /health responded 200 in 2.9370 ms
+[2026-08-16 12:17:02 INF] [CorrelationId: ] Received HTTP response headers after 8.1973ms - 200
+[2026-08-16 12:17:02 INF] [CorrelationId: ] End processing HTTP request after 10.8132ms - 200
+[2026-08-16 12:17:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:17:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:17:32 INF] [CorrelationId: 8c677e5d-44e1-4586-85fb-722124ab5af8] HTTP GET /health responded 200 in 1.8875 ms
+[2026-08-16 12:17:32 INF] [CorrelationId: ] Received HTTP response headers after 2.218ms - 200
+[2026-08-16 12:17:32 INF] [CorrelationId: ] End processing HTTP request after 4.2751ms - 200
+[2026-08-16 12:18:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:18:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:18:02 INF] [CorrelationId: 4800f195-8fff-4ec1-82e9-deff08aa3278] HTTP GET /health responded 200 in 4.5385 ms
+[2026-08-16 12:18:02 INF] [CorrelationId: ] Received HTTP response headers after 25.8538ms - 200
+[2026-08-16 12:18:02 INF] [CorrelationId: ] End processing HTTP request after 27.9771ms - 200
+[2026-08-16 12:18:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:18:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:18:32 INF] [CorrelationId: c112bf1f-fca7-4832-adeb-0f30e64afc5e] HTTP GET /health responded 200 in 1.9951 ms
+[2026-08-16 12:18:32 INF] [CorrelationId: ] Received HTTP response headers after 2.2952ms - 200
+[2026-08-16 12:18:32 INF] [CorrelationId: ] End processing HTTP request after 5.361ms - 200
+[2026-08-16 12:19:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:19:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:19:02 INF] [CorrelationId: 95045580-dfec-4225-8c02-228a5d180d41] HTTP GET /health responded 200 in 3.5980 ms
+[2026-08-16 12:19:02 INF] [CorrelationId: ] Received HTTP response headers after 8.8394ms - 200
+[2026-08-16 12:19:02 INF] [CorrelationId: ] End processing HTTP request after 12.1893ms - 200
+[2026-08-16 12:19:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:19:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:19:32 INF] [CorrelationId: fbf436dd-d487-48be-89c1-a6456ae477f7] HTTP GET /health responded 200 in 3.2017 ms
+[2026-08-16 12:19:32 INF] [CorrelationId: ] Received HTTP response headers after 3.6451ms - 200
+[2026-08-16 12:19:32 INF] [CorrelationId: ] End processing HTTP request after 17.5355ms - 200
+[2026-08-16 12:20:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:20:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:20:02 INF] [CorrelationId: 94f7c3f8-3450-40aa-a360-282c1eefb944] HTTP GET /health responded 200 in 1.7213 ms
+[2026-08-16 12:20:02 INF] [CorrelationId: ] Received HTTP response headers after 2.1583ms - 200
+[2026-08-16 12:20:02 INF] [CorrelationId: ] End processing HTTP request after 5.0451ms - 200
+[2026-08-16 12:20:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:20:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:20:32 INF] [CorrelationId: f4874746-1314-4ee1-9eaa-c3bafdd27c5c] HTTP GET /health responded 200 in 2.1695 ms
+[2026-08-16 12:20:32 INF] [CorrelationId: ] Received HTTP response headers after 2.604ms - 200
+[2026-08-16 12:20:32 INF] [CorrelationId: ] End processing HTTP request after 15.0661ms - 200
+[2026-08-16 12:21:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:21:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:21:02 INF] [CorrelationId: 178a500a-cb0a-4a65-bab1-b61c9dd09d8d] HTTP GET /health responded 200 in 1.9915 ms
+[2026-08-16 12:21:02 INF] [CorrelationId: ] Received HTTP response headers after 5.4438ms - 200
+[2026-08-16 12:21:02 INF] [CorrelationId: ] End processing HTTP request after 17.8669ms - 200
+[2026-08-16 12:21:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:21:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:21:32 INF] [CorrelationId: 5f33c165-e45a-4f85-8195-c5353d2d938a] HTTP GET /health responded 200 in 3.4270 ms
+[2026-08-16 12:21:32 INF] [CorrelationId: ] Received HTTP response headers after 3.8163ms - 200
+[2026-08-16 12:21:32 INF] [CorrelationId: ] End processing HTTP request after 17.4778ms - 200
+[2026-08-16 12:22:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:22:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:22:02 INF] [CorrelationId: b9699cc2-8cfe-4365-9570-c0ec5ee90f83] HTTP GET /health responded 200 in 1.6802 ms
+[2026-08-16 12:22:02 INF] [CorrelationId: ] Received HTTP response headers after 2.0302ms - 200
+[2026-08-16 12:22:02 INF] [CorrelationId: ] End processing HTTP request after 3.6092ms - 200
+[2026-08-16 12:22:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:22:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:22:32 INF] [CorrelationId: 5d8cd600-02c6-45a1-a025-baacb9d6c477] HTTP GET /health responded 200 in 2.0020 ms
+[2026-08-16 12:22:32 INF] [CorrelationId: ] Received HTTP response headers after 2.6217ms - 200
+[2026-08-16 12:22:32 INF] [CorrelationId: ] End processing HTTP request after 4.4187ms - 200
+[2026-08-16 12:23:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:23:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:23:02 INF] [CorrelationId: 25985146-c611-4380-84c8-277d945c41c2] HTTP GET /health responded 200 in 2.3625 ms
+[2026-08-16 12:23:02 INF] [CorrelationId: ] Received HTTP response headers after 5.003ms - 200
+[2026-08-16 12:23:02 INF] [CorrelationId: ] End processing HTTP request after 17.5995ms - 200
+[2026-08-16 12:23:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:23:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:23:32 INF] [CorrelationId: ccaf4a98-c9e7-4ce1-9a89-51df1b3ae8c2] HTTP GET /health responded 200 in 3.0709 ms
+[2026-08-16 12:23:32 INF] [CorrelationId: ] Received HTTP response headers after 3.5938ms - 200
+[2026-08-16 12:23:32 INF] [CorrelationId: ] End processing HTTP request after 16.9789ms - 200
+[2026-08-16 12:24:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:24:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:24:02 INF] [CorrelationId: 380357d2-5f3a-4701-9f4b-672230013857] HTTP GET /health responded 200 in 2.7232 ms
+[2026-08-16 12:24:02 INF] [CorrelationId: ] Received HTTP response headers after 3.2764ms - 200
+[2026-08-16 12:24:02 INF] [CorrelationId: ] End processing HTTP request after 5.3245ms - 200
+[2026-08-16 12:24:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:24:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:24:32 INF] [CorrelationId: 5c08646f-e3bc-44de-83c8-34da8f6fc4b9] HTTP GET /health responded 200 in 2.7477 ms
+[2026-08-16 12:24:32 INF] [CorrelationId: ] Received HTTP response headers after 3.3914ms - 200
+[2026-08-16 12:24:32 INF] [CorrelationId: ] End processing HTTP request after 18.2558ms - 200
+[2026-08-16 12:25:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:25:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:25:02 INF] [CorrelationId: e18060a2-e537-4312-9302-2c7e3e9487d8] HTTP GET /health responded 200 in 1.4579 ms
+[2026-08-16 12:25:02 INF] [CorrelationId: ] Received HTTP response headers after 4.0403ms - 200
+[2026-08-16 12:25:02 INF] [CorrelationId: ] End processing HTTP request after 17.319ms - 200
+[2026-08-16 12:25:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:25:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:25:32 INF] [CorrelationId: 1d30473c-2b07-47a4-b188-bfda371df1ef] HTTP GET /health responded 200 in 3.4901 ms
+[2026-08-16 12:25:32 INF] [CorrelationId: ] Received HTTP response headers after 4.1465ms - 200
+[2026-08-16 12:25:32 INF] [CorrelationId: ] End processing HTTP request after 17.2988ms - 200
+[2026-08-16 12:26:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:26:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:26:02 INF] [CorrelationId: bc1532ad-bf0a-48a9-9402-bff3e9d01380] HTTP GET /health responded 200 in 2.3701 ms
+[2026-08-16 12:26:02 INF] [CorrelationId: ] Received HTTP response headers after 2.9229ms - 200
+[2026-08-16 12:26:02 INF] [CorrelationId: ] End processing HTTP request after 5.4703ms - 200
+[2026-08-16 12:26:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:26:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:26:32 INF] [CorrelationId: 354ce596-4c43-4ba7-96d3-cec61905203c] HTTP GET /health responded 200 in 4.4794 ms
+[2026-08-16 12:26:32 INF] [CorrelationId: ] Received HTTP response headers after 5.1105ms - 200
+[2026-08-16 12:26:32 INF] [CorrelationId: ] End processing HTTP request after 8.8098ms - 200
+[2026-08-16 12:27:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:27:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:27:02 INF] [CorrelationId: 4ce2c1ca-580c-4492-b408-5b810ef2666e] HTTP GET /health responded 200 in 1.7242 ms
+[2026-08-16 12:27:02 INF] [CorrelationId: ] Received HTTP response headers after 4.1481ms - 200
+[2026-08-16 12:27:02 INF] [CorrelationId: ] End processing HTTP request after 16.824ms - 200
+[2026-08-16 12:27:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:27:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:27:32 INF] [CorrelationId: 395aa80a-07fd-405d-8998-1c9da4ab2b86] HTTP GET /health responded 200 in 4.7427 ms
+[2026-08-16 12:27:32 INF] [CorrelationId: ] Received HTTP response headers after 5.5417ms - 200
+[2026-08-16 12:27:32 INF] [CorrelationId: ] End processing HTTP request after 21.2767ms - 200
+[2026-08-16 12:28:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:28:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:28:02 INF] [CorrelationId: 62c079ce-2ee3-489a-aa01-b4998f1da8d5] HTTP GET /health responded 200 in 3.7464 ms
+[2026-08-16 12:28:02 INF] [CorrelationId: ] Received HTTP response headers after 4.6138ms - 200
+[2026-08-16 12:28:02 INF] [CorrelationId: ] End processing HTTP request after 18.2544ms - 200
+[2026-08-16 12:28:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:28:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:28:32 INF] [CorrelationId: 8748a6ef-13bf-48ec-a291-9a8b9d15a896] HTTP GET /health responded 200 in 3.0142 ms
+[2026-08-16 12:28:32 INF] [CorrelationId: ] Received HTTP response headers after 3.5426ms - 200
+[2026-08-16 12:28:32 INF] [CorrelationId: ] End processing HTTP request after 17.2427ms - 200
+[2026-08-16 12:29:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:29:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:29:02 INF] [CorrelationId: 858edf8b-c733-4b5e-a96b-a70d7e7b9846] HTTP GET /health responded 200 in 3.4504 ms
+[2026-08-16 12:29:02 INF] [CorrelationId: ] Received HTTP response headers after 8.2506ms - 200
+[2026-08-16 12:29:02 INF] [CorrelationId: ] End processing HTTP request after 21.2003ms - 200
+[2026-08-16 12:29:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:29:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:29:32 INF] [CorrelationId: 44827ff0-8020-43e6-a8f6-4f262e621d35] HTTP GET /health responded 200 in 2.3920 ms
+[2026-08-16 12:29:32 INF] [CorrelationId: ] Received HTTP response headers after 2.7734ms - 200
+[2026-08-16 12:29:32 INF] [CorrelationId: ] End processing HTTP request after 4.6935ms - 200
+[2026-08-16 12:30:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:30:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:30:02 INF] [CorrelationId: ee380f1b-6463-4e0a-839a-d881b4e43d8e] HTTP GET /health responded 200 in 1.8096 ms
+[2026-08-16 12:30:02 INF] [CorrelationId: ] Received HTTP response headers after 2.2574ms - 200
+[2026-08-16 12:30:02 INF] [CorrelationId: ] End processing HTTP request after 4.5459ms - 200
+[2026-08-16 12:30:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:30:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:30:32 INF] [CorrelationId: a6b9d444-c4a7-46cc-b142-cd3f9f0da6ed] HTTP GET /health responded 200 in 4.1816 ms
+[2026-08-16 12:30:32 INF] [CorrelationId: ] Received HTTP response headers after 4.7648ms - 200
+[2026-08-16 12:30:32 INF] [CorrelationId: ] End processing HTTP request after 19.6535ms - 200
+[2026-08-16 12:31:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:31:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:31:02 INF] [CorrelationId: a992e5fe-56e7-4b3a-8b62-2cc21041280a] HTTP GET /health responded 200 in 1.8318 ms
+[2026-08-16 12:31:02 INF] [CorrelationId: ] Received HTTP response headers after 4.3998ms - 200
+[2026-08-16 12:31:02 INF] [CorrelationId: ] End processing HTTP request after 6.0555ms - 200
+[2026-08-16 12:31:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:31:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:31:32 INF] [CorrelationId: 06baea6b-02e5-464f-b575-a6f7cdf4af0c] HTTP GET /health responded 200 in 1.4848 ms
+[2026-08-16 12:31:32 INF] [CorrelationId: ] Received HTTP response headers after 1.8395ms - 200
+[2026-08-16 12:31:32 INF] [CorrelationId: ] End processing HTTP request after 3.3094ms - 200
+[2026-08-16 12:32:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:32:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:32:02 INF] [CorrelationId: f1eeaa1c-79f8-429c-833b-c48fe02a9c29] HTTP GET /health responded 200 in 1.9737 ms
+[2026-08-16 12:32:02 INF] [CorrelationId: ] Received HTTP response headers after 2.4358ms - 200
+[2026-08-16 12:32:02 INF] [CorrelationId: ] End processing HTTP request after 16.5526ms - 200
+[2026-08-16 12:32:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:32:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:32:32 INF] [CorrelationId: 02608c68-3ba4-4c04-8cab-e85fb59177aa] HTTP GET /health responded 200 in 2.9266 ms
+[2026-08-16 12:32:32 INF] [CorrelationId: ] Received HTTP response headers after 3.3102ms - 200
+[2026-08-16 12:32:32 INF] [CorrelationId: ] End processing HTTP request after 5.6821ms - 200
+[2026-08-16 12:33:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:33:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:33:02 INF] [CorrelationId: e3102f37-a364-4fa7-8e24-6c5da2d3c7e5] HTTP GET /health responded 200 in 2.4725 ms
+[2026-08-16 12:33:02 INF] [CorrelationId: ] Received HTTP response headers after 5.1715ms - 200
+[2026-08-16 12:33:02 INF] [CorrelationId: ] End processing HTTP request after 18.6091ms - 200
+[2026-08-16 12:33:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:33:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:33:32 INF] [CorrelationId: 9f36e584-6746-4b84-95fa-68aef42b8cda] HTTP GET /health responded 200 in 1.5723 ms
+[2026-08-16 12:33:32 INF] [CorrelationId: ] Received HTTP response headers after 1.9005ms - 200
+[2026-08-16 12:33:32 INF] [CorrelationId: ] End processing HTTP request after 15.655ms - 200
+[2026-08-16 12:34:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:34:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:34:02 INF] [CorrelationId: f752634c-fc98-4b31-8159-f1e371357817] HTTP GET /health responded 200 in 2.0956 ms
+[2026-08-16 12:34:02 INF] [CorrelationId: ] Received HTTP response headers after 2.4821ms - 200
+[2026-08-16 12:34:02 INF] [CorrelationId: ] End processing HTTP request after 4.6581ms - 200
+[2026-08-16 12:34:32 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:34:32 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:34:32 INF] [CorrelationId: 9a72969b-108f-4280-8e60-e4c27b26e3a4] HTTP GET /health responded 200 in 1.8094 ms
+[2026-08-16 12:34:32 INF] [CorrelationId: ] Received HTTP response headers after 2.3611ms - 200
+[2026-08-16 12:34:32 INF] [CorrelationId: ] End processing HTTP request after 15.2353ms - 200
+[2026-08-16 12:35:01 WRN] [CorrelationId: ] Entity 'Comment' has a global query filter defined and is the required end of a relationship with the entity 'CommentMention'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[2026-08-16 12:35:02 INF] [CorrelationId: ] Initializing UI Database
+[2026-08-16 12:35:02 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-08-16 12:35:02 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:35:02 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:35:02 WRN] [CorrelationId: 3c555183-a5c8-4d59-9d53-b787a50e838a] Failed to determine the https port for redirect.
+[2026-08-16 12:35:03 INF] [CorrelationId: 3c555183-a5c8-4d59-9d53-b787a50e838a] HTTP GET /health responded 200 in 201.9635 ms
+[2026-08-16 12:35:03 INF] [CorrelationId: ] Received HTTP response headers after 312.5739ms - 200
+[2026-08-16 12:35:03 INF] [CorrelationId: ] End processing HTTP request after 324.747ms - 200
+[2026-08-16 12:35:06 INF] [CorrelationId: ec800cd7-8d46-4758-8d21-682975219419] HTTP GET /health responded 200 in 11.1798 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: 7fc7df30-3ab8-4cfb-8ebf-6c81ea53bb8d] HTTP GET /health responded 200 in 8.6675 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: de12c6fa-77f3-4ed0-a9d4-072860b42786] User registered successfully. UserName: OwnerA-f681f0d6cf69, UserId: d8425c90-2990-42a7-8ae0-16ff89bf2a40
+[2026-08-16 12:35:13 INF] [CorrelationId: de12c6fa-77f3-4ed0-a9d4-072860b42786] HTTP POST /api/Auth/Register responded 200 in 225.8813 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: 3ace392c-ef24-43c4-8531-f8055893cced] Login successful. Email: ownera-f681f0d6cf69@example.test
+[2026-08-16 12:35:13 INF] [CorrelationId: 3ace392c-ef24-43c4-8531-f8055893cced] HTTP POST /api/Auth/Login responded 200 in 205.9024 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: 5bf0aa2b-ccbb-42c8-ad1b-187cafca7d77] User registered successfully. UserName: AdminA-f681f0d6cf69, UserId: bd0122a1-82ab-47eb-bff2-151c37f06a48
+[2026-08-16 12:35:13 INF] [CorrelationId: 5bf0aa2b-ccbb-42c8-ad1b-187cafca7d77] HTTP POST /api/Auth/Register responded 200 in 23.4762 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: c6f3f146-d125-4da5-abce-581cfc80583d] Login successful. Email: admina-f681f0d6cf69@example.test
+[2026-08-16 12:35:13 INF] [CorrelationId: c6f3f146-d125-4da5-abce-581cfc80583d] HTTP POST /api/Auth/Login responded 200 in 12.4466 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: 506f28f4-06ab-4f17-a98a-b895e28f2933] User registered successfully. UserName: MemberA-f681f0d6cf69, UserId: 5c34634d-e912-49f1-9bce-62bec4c0cb53
+[2026-08-16 12:35:13 INF] [CorrelationId: 506f28f4-06ab-4f17-a98a-b895e28f2933] HTTP POST /api/Auth/Register responded 200 in 11.2324 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: c7703e15-14f7-49fd-a8c7-ae76b21c1799] Login successful. Email: membera-f681f0d6cf69@example.test
+[2026-08-16 12:35:13 INF] [CorrelationId: c7703e15-14f7-49fd-a8c7-ae76b21c1799] HTTP POST /api/Auth/Login responded 200 in 11.2665 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: 40b301f1-c0f7-4bf5-af70-3bf70c273f1e] User registered successfully. UserName: TargetA-f681f0d6cf69, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3
+[2026-08-16 12:35:13 INF] [CorrelationId: 40b301f1-c0f7-4bf5-af70-3bf70c273f1e] HTTP POST /api/Auth/Register responded 200 in 11.2859 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: c31555fc-feaf-4255-894c-750c63bb8506] Login successful. Email: targeta-f681f0d6cf69@example.test
+[2026-08-16 12:35:13 INF] [CorrelationId: c31555fc-feaf-4255-894c-750c63bb8506] HTTP POST /api/Auth/Login responded 200 in 10.6321 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: cf18335a-f2b5-4ca9-9352-5b64cfb98b84] User registered successfully. UserName: OutsiderB-f681f0d6cf69, UserId: 6e234652-bef7-4f73-8888-a64fd21aa4cc
+[2026-08-16 12:35:13 INF] [CorrelationId: cf18335a-f2b5-4ca9-9352-5b64cfb98b84] HTTP POST /api/Auth/Register responded 200 in 11.4163 ms
+[2026-08-16 12:35:13 INF] [CorrelationId: c52e0ad1-05b3-4f04-8353-0fab1dce5ffc] Login successful. Email: outsiderb-f681f0d6cf69@example.test
+[2026-08-16 12:35:13 INF] [CorrelationId: c52e0ad1-05b3-4f04-8353-0fab1dce5ffc] HTTP POST /api/Auth/Login responded 200 in 11.3052 ms
+[2026-08-16 12:35:14 INF] [CorrelationId: 86ccd88f-cfda-41de-8e61-45fa7aeec378] Audit log created. Action: Add Team Member, Entity: TeamMember, EntityId: 3, WorkspaceId: 22, ActorMemberId: 34
+[2026-08-16 12:35:14 INF] [CorrelationId: 86ccd88f-cfda-41de-8e61-45fa7aeec378] Team member added. TeamId: 5, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3, Role: "Member", By: d8425c90-2990-42a7-8ae0-16ff89bf2a40
+[2026-08-16 12:35:14 INF] [CorrelationId: 86ccd88f-cfda-41de-8e61-45fa7aeec378] Team member added via API. TeamId: 5, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3, By: d8425c90-2990-42a7-8ae0-16ff89bf2a40
+[2026-08-16 12:35:14 INF] [CorrelationId: 86ccd88f-cfda-41de-8e61-45fa7aeec378] HTTP POST /api/teams/5/members responded 204 in 459.7918 ms
+[2026-08-16 12:35:14 INF] [CorrelationId: bcd00eca-4f67-413b-a591-e9ad6ec2f52f] Audit log created. Action: Remove Team Member, Entity: TeamMember, EntityId: 3, WorkspaceId: 22, ActorMemberId: 35
+[2026-08-16 12:35:14 INF] [CorrelationId: bcd00eca-4f67-413b-a591-e9ad6ec2f52f] Team member removed. TeamId: 5, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3, By: bd0122a1-82ab-47eb-bff2-151c37f06a48
+[2026-08-16 12:35:14 INF] [CorrelationId: bcd00eca-4f67-413b-a591-e9ad6ec2f52f] Team member removed via API. TeamId: 5, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3, By: bd0122a1-82ab-47eb-bff2-151c37f06a48
+[2026-08-16 12:35:14 INF] [CorrelationId: bcd00eca-4f67-413b-a591-e9ad6ec2f52f] HTTP DELETE /api/teams/5/members/3cc8be48-b18b-456b-906b-92b6a32625a3 responded 204 in 51.3351 ms
+[2026-08-16 12:35:14 INF] [CorrelationId: 66ed1df8-0d38-4b3c-8f45-6921b95c96c5] Audit log created. Action: Add Project Member, Entity: ProjectMember, EntityId: 7, WorkspaceId: 22, ActorMemberId: 35
+[2026-08-16 12:35:14 INF] [CorrelationId: 66ed1df8-0d38-4b3c-8f45-6921b95c96c5] Project member added. ProjectId: 13, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3, Role: "Member", By: bd0122a1-82ab-47eb-bff2-151c37f06a48
+[2026-08-16 12:35:14 INF] [CorrelationId: 66ed1df8-0d38-4b3c-8f45-6921b95c96c5] Project member added via API. ProjectId: 13, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3, By: bd0122a1-82ab-47eb-bff2-151c37f06a48
+[2026-08-16 12:35:14 INF] [CorrelationId: 66ed1df8-0d38-4b3c-8f45-6921b95c96c5] HTTP POST /api/projects/13/members responded 204 in 86.5273 ms
+[2026-08-16 12:35:14 INF] [CorrelationId: 50868469-8a9b-4a1b-9f60-f1736458c770] Audit log created. Action: Remove Project Member, Entity: ProjectMember, EntityId: 7, WorkspaceId: 22, ActorMemberId: 34
+[2026-08-16 12:35:14 INF] [CorrelationId: 50868469-8a9b-4a1b-9f60-f1736458c770] Project member removed. ProjectId: 13, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3, By: d8425c90-2990-42a7-8ae0-16ff89bf2a40
+[2026-08-16 12:35:14 INF] [CorrelationId: 50868469-8a9b-4a1b-9f60-f1736458c770] Project member removed via API. ProjectId: 13, UserId: 3cc8be48-b18b-456b-906b-92b6a32625a3, By: d8425c90-2990-42a7-8ae0-16ff89bf2a40
+[2026-08-16 12:35:14 INF] [CorrelationId: 50868469-8a9b-4a1b-9f60-f1736458c770] HTTP DELETE /api/projects/13/members/3cc8be48-b18b-456b-906b-92b6a32625a3 responded 204 in 32.6460 ms
+[2026-08-16 12:35:14 WRN] [CorrelationId: 579afdb6-a803-468f-aa9f-eaa04bce5d1f] EnsureCanManageTeam pipeline failed. Reason: "Forbidden", TeamId: 5, UserId: 5c34634d-e912-49f1-9bce-62bec4c0cb53
+[2026-08-16 12:35:14 ERR] [CorrelationId: 579afdb6-a803-468f-aa9f-eaa04bce5d1f] HTTP POST /api/teams/5/members responded 500 in 5.7704 ms
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Teams.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:35:14 ERR] [CorrelationId: 579afdb6-a803-468f-aa9f-eaa04bce5d1f] Unhandled exception. CorrelationId: 579afdb6-a803-468f-aa9f-eaa04bce5d1f, Path: /api/teams/5/members, Method: POST
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Teams.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:35:14 WRN] [CorrelationId: 2be7e768-bcca-4329-a1e2-4fe9de4664e7] EnsureCanManageProject pipeline failed. Reason: "Forbidden", ProjectId: 13, UserId: 5c34634d-e912-49f1-9bce-62bec4c0cb53
+[2026-08-16 12:35:14 ERR] [CorrelationId: 2be7e768-bcca-4329-a1e2-4fe9de4664e7] HTTP DELETE /api/projects/13/members/3cc8be48-b18b-456b-906b-92b6a32625a3 responded 500 in 5.5515 ms
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Projects.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 358
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:35:14 ERR] [CorrelationId: 2be7e768-bcca-4329-a1e2-4fe9de4664e7] Unhandled exception. CorrelationId: 2be7e768-bcca-4329-a1e2-4fe9de4664e7, Path: /api/projects/13/members/3cc8be48-b18b-456b-906b-92b6a32625a3, Method: DELETE
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Projects.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 358
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:35:14 WRN] [CorrelationId: 1537a898-c058-46c4-a3ef-0313514171ce] EnsureCanManageTeam pipeline failed. Reason: "NotFound", TeamId: 5, UserId: 6e234652-bef7-4f73-8888-a64fd21aa4cc
+[2026-08-16 12:35:14 ERR] [CorrelationId: 1537a898-c058-46c4-a3ef-0313514171ce] HTTP POST /api/teams/5/members responded 500 in 4.3143 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:35:14 ERR] [CorrelationId: 1537a898-c058-46c4-a3ef-0313514171ce] Unhandled exception. CorrelationId: 1537a898-c058-46c4-a3ef-0313514171ce, Path: /api/teams/5/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:35:14 WRN] [CorrelationId: b998237b-ff40-4210-999e-115b15136692] EnsureCanManageProject pipeline failed. Reason: "NotFound", ProjectId: 13, UserId: 6e234652-bef7-4f73-8888-a64fd21aa4cc
+[2026-08-16 12:35:14 ERR] [CorrelationId: b998237b-ff40-4210-999e-115b15136692] HTTP DELETE /api/projects/13/members/3cc8be48-b18b-456b-906b-92b6a32625a3 responded 500 in 5.4194 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 358
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:35:14 ERR] [CorrelationId: b998237b-ff40-4210-999e-115b15136692] Unhandled exception. CorrelationId: b998237b-ff40-4210-999e-115b15136692, Path: /api/projects/13/members/3cc8be48-b18b-456b-906b-92b6a32625a3, Method: DELETE
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 358
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:35:14 WRN] [CorrelationId: 7fd65ca4-c19f-4f5b-8d1d-f0be3a2e7f0a] EnsureCanManageTeam pipeline failed. Reason: "NotFound", TeamId: 6, UserId: d8425c90-2990-42a7-8ae0-16ff89bf2a40
+[2026-08-16 12:35:14 ERR] [CorrelationId: 7fd65ca4-c19f-4f5b-8d1d-f0be3a2e7f0a] HTTP POST /api/teams/6/members responded 500 in 3.6733 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:35:14 ERR] [CorrelationId: 7fd65ca4-c19f-4f5b-8d1d-f0be3a2e7f0a] Unhandled exception. CorrelationId: 7fd65ca4-c19f-4f5b-8d1d-f0be3a2e7f0a, Path: /api/teams/6/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:35:15 WRN] [CorrelationId: bd5ccdad-9121-4f4b-b705-16eb8dc5c2fe] EnsureCanManageProject pipeline failed. Reason: "NotFound", ProjectId: 14, UserId: d8425c90-2990-42a7-8ae0-16ff89bf2a40
+[2026-08-16 12:35:15 ERR] [CorrelationId: bd5ccdad-9121-4f4b-b705-16eb8dc5c2fe] HTTP POST /api/projects/14/members responded 500 in 3.5435 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.AddProjectMemberAsync(Int64 projectId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 286
+   at TaskManager.API.Controllers.ProjectMembersController.AddMember(Int64 projectId, AddProjectMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 69
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:35:15 ERR] [CorrelationId: bd5ccdad-9121-4f4b-b705-16eb8dc5c2fe] Unhandled exception. CorrelationId: bd5ccdad-9121-4f4b-b705-16eb8dc5c2fe, Path: /api/projects/14/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.AddProjectMemberAsync(Int64 projectId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 286
+   at TaskManager.API.Controllers.ProjectMembersController.AddMember(Int64 projectId, AddProjectMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 69
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:35:33 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:35:33 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:35:33 INF] [CorrelationId: 976c8484-4d83-49a3-b384-c49aca314668] HTTP GET /health responded 200 in 2.4682 ms
+[2026-08-16 12:35:33 INF] [CorrelationId: ] Received HTTP response headers after 4.1858ms - 200
+[2026-08-16 12:35:33 INF] [CorrelationId: ] End processing HTTP request after 6.3346ms - 200
+[2026-08-16 12:36:02 INF] [CorrelationId: 159df9cb-bf13-431f-8eef-cd50d333c83d] HTTP GET /health responded 200 in 2.9239 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: 944ddc8a-47ed-4f26-a2af-c8770f013ed3] User registered successfully. UserName: OwnerA-509c5a19fc59, UserId: 01282126-762d-44b6-8393-3a24b50eecd1
+[2026-08-16 12:36:02 INF] [CorrelationId: 944ddc8a-47ed-4f26-a2af-c8770f013ed3] HTTP POST /api/Auth/Register responded 200 in 11.7995 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: f369bd61-a05a-44a4-a071-362d7afc883c] Login successful. Email: ownera-509c5a19fc59@example.test
+[2026-08-16 12:36:02 INF] [CorrelationId: f369bd61-a05a-44a4-a071-362d7afc883c] HTTP POST /api/Auth/Login responded 200 in 12.3283 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: c559f2f3-a888-4994-bcd3-96093a8e5865] User registered successfully. UserName: AdminA-509c5a19fc59, UserId: 61e3b6ae-60c3-4976-9670-b31e297cba5e
+[2026-08-16 12:36:02 INF] [CorrelationId: c559f2f3-a888-4994-bcd3-96093a8e5865] HTTP POST /api/Auth/Register responded 200 in 10.2060 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: 5ed41d26-d096-4152-9849-4d12c180abf2] Login successful. Email: admina-509c5a19fc59@example.test
+[2026-08-16 12:36:02 INF] [CorrelationId: 5ed41d26-d096-4152-9849-4d12c180abf2] HTTP POST /api/Auth/Login responded 200 in 10.2494 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: 7fe04654-ac81-4bb0-8391-c01342c0ae45] User registered successfully. UserName: MemberA-509c5a19fc59, UserId: 7785eb9d-6c1b-446c-95b9-2a8f45b98b44
+[2026-08-16 12:36:02 INF] [CorrelationId: 7fe04654-ac81-4bb0-8391-c01342c0ae45] HTTP POST /api/Auth/Register responded 200 in 10.4567 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: fd5b3be5-f11c-4fea-80a5-4b2b2daa3dd7] Login successful. Email: membera-509c5a19fc59@example.test
+[2026-08-16 12:36:02 INF] [CorrelationId: fd5b3be5-f11c-4fea-80a5-4b2b2daa3dd7] HTTP POST /api/Auth/Login responded 200 in 9.3722 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: c6f7f431-886b-4c14-854c-9c3d4d9f5bdd] User registered successfully. UserName: TargetA-509c5a19fc59, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0
+[2026-08-16 12:36:02 INF] [CorrelationId: c6f7f431-886b-4c14-854c-9c3d4d9f5bdd] HTTP POST /api/Auth/Register responded 200 in 10.3919 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: 5643d032-4b13-4d67-b073-933d608c9d62] Login successful. Email: targeta-509c5a19fc59@example.test
+[2026-08-16 12:36:02 INF] [CorrelationId: 5643d032-4b13-4d67-b073-933d608c9d62] HTTP POST /api/Auth/Login responded 200 in 10.0759 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: 3677dc8e-14c0-4792-ba94-084685e0d62f] User registered successfully. UserName: OutsiderB-509c5a19fc59, UserId: fe0ee1d1-d198-4633-b6f8-6cc429fd3ece
+[2026-08-16 12:36:02 INF] [CorrelationId: 3677dc8e-14c0-4792-ba94-084685e0d62f] HTTP POST /api/Auth/Register responded 200 in 10.1240 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: b7402167-7a2c-4bab-817d-d1496944486d] Login successful. Email: outsiderb-509c5a19fc59@example.test
+[2026-08-16 12:36:02 INF] [CorrelationId: b7402167-7a2c-4bab-817d-d1496944486d] HTTP POST /api/Auth/Login responded 200 in 9.2264 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: e4a35e67-3eac-4396-bdb0-1dce0327b1b5] Audit log created. Action: Add Team Member, Entity: TeamMember, EntityId: 4, WorkspaceId: 24, ActorMemberId: 39
+[2026-08-16 12:36:02 INF] [CorrelationId: e4a35e67-3eac-4396-bdb0-1dce0327b1b5] Team member added. TeamId: 7, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0, Role: "Member", By: 01282126-762d-44b6-8393-3a24b50eecd1
+[2026-08-16 12:36:02 INF] [CorrelationId: e4a35e67-3eac-4396-bdb0-1dce0327b1b5] Team member added via API. TeamId: 7, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0, By: 01282126-762d-44b6-8393-3a24b50eecd1
+[2026-08-16 12:36:02 INF] [CorrelationId: e4a35e67-3eac-4396-bdb0-1dce0327b1b5] HTTP POST /api/teams/7/members responded 204 in 14.5340 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: c24608e5-cdda-439c-825d-ed1b7a1d8774] Audit log created. Action: Remove Team Member, Entity: TeamMember, EntityId: 4, WorkspaceId: 24, ActorMemberId: 40
+[2026-08-16 12:36:02 INF] [CorrelationId: c24608e5-cdda-439c-825d-ed1b7a1d8774] Team member removed. TeamId: 7, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0, By: 61e3b6ae-60c3-4976-9670-b31e297cba5e
+[2026-08-16 12:36:02 INF] [CorrelationId: c24608e5-cdda-439c-825d-ed1b7a1d8774] Team member removed via API. TeamId: 7, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0, By: 61e3b6ae-60c3-4976-9670-b31e297cba5e
+[2026-08-16 12:36:02 INF] [CorrelationId: c24608e5-cdda-439c-825d-ed1b7a1d8774] HTTP DELETE /api/teams/7/members/44d61807-c04e-48cc-9690-abf7768eaec0 responded 204 in 7.8191 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: 11b34c58-38e4-4a9b-93d3-b8896e7a5a9f] Audit log created. Action: Add Project Member, Entity: ProjectMember, EntityId: 8, WorkspaceId: 24, ActorMemberId: 40
+[2026-08-16 12:36:02 INF] [CorrelationId: 11b34c58-38e4-4a9b-93d3-b8896e7a5a9f] Project member added. ProjectId: 15, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0, Role: "Member", By: 61e3b6ae-60c3-4976-9670-b31e297cba5e
+[2026-08-16 12:36:02 INF] [CorrelationId: 11b34c58-38e4-4a9b-93d3-b8896e7a5a9f] Project member added via API. ProjectId: 15, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0, By: 61e3b6ae-60c3-4976-9670-b31e297cba5e
+[2026-08-16 12:36:02 INF] [CorrelationId: 11b34c58-38e4-4a9b-93d3-b8896e7a5a9f] HTTP POST /api/projects/15/members responded 204 in 12.6338 ms
+[2026-08-16 12:36:02 INF] [CorrelationId: 4e4c2b37-c009-4b7e-a5a2-b91f4c7faf2e] Audit log created. Action: Remove Project Member, Entity: ProjectMember, EntityId: 8, WorkspaceId: 24, ActorMemberId: 39
+[2026-08-16 12:36:02 INF] [CorrelationId: 4e4c2b37-c009-4b7e-a5a2-b91f4c7faf2e] Project member removed. ProjectId: 15, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0, By: 01282126-762d-44b6-8393-3a24b50eecd1
+[2026-08-16 12:36:02 INF] [CorrelationId: 4e4c2b37-c009-4b7e-a5a2-b91f4c7faf2e] Project member removed via API. ProjectId: 15, UserId: 44d61807-c04e-48cc-9690-abf7768eaec0, By: 01282126-762d-44b6-8393-3a24b50eecd1
+[2026-08-16 12:36:02 INF] [CorrelationId: 4e4c2b37-c009-4b7e-a5a2-b91f4c7faf2e] HTTP DELETE /api/projects/15/members/44d61807-c04e-48cc-9690-abf7768eaec0 responded 204 in 8.2681 ms
+[2026-08-16 12:36:02 WRN] [CorrelationId: e0055c24-781f-432b-b838-dbc53a73655c] EnsureCanManageTeam pipeline failed. Reason: "Forbidden", TeamId: 7, UserId: 7785eb9d-6c1b-446c-95b9-2a8f45b98b44
+[2026-08-16 12:36:02 ERR] [CorrelationId: e0055c24-781f-432b-b838-dbc53a73655c] HTTP POST /api/teams/7/members responded 500 in 4.6638 ms
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Teams.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:36:02 ERR] [CorrelationId: e0055c24-781f-432b-b838-dbc53a73655c] Unhandled exception. CorrelationId: e0055c24-781f-432b-b838-dbc53a73655c, Path: /api/teams/7/members, Method: POST
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Teams.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:36:02 WRN] [CorrelationId: 31e6c18a-c3a8-4415-82a2-fea175baa5de] EnsureCanManageProject pipeline failed. Reason: "Forbidden", ProjectId: 15, UserId: 7785eb9d-6c1b-446c-95b9-2a8f45b98b44
+[2026-08-16 12:36:02 ERR] [CorrelationId: 31e6c18a-c3a8-4415-82a2-fea175baa5de] HTTP DELETE /api/projects/15/members/44d61807-c04e-48cc-9690-abf7768eaec0 responded 500 in 4.1355 ms
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Projects.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 358
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:36:02 ERR] [CorrelationId: 31e6c18a-c3a8-4415-82a2-fea175baa5de] Unhandled exception. CorrelationId: 31e6c18a-c3a8-4415-82a2-fea175baa5de, Path: /api/projects/15/members/44d61807-c04e-48cc-9690-abf7768eaec0, Method: DELETE
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Projects.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 358
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:36:02 WRN] [CorrelationId: 607e26f2-d800-4ff4-a5f1-a35fb073254d] EnsureCanManageTeam pipeline failed. Reason: "NotFound", TeamId: 7, UserId: fe0ee1d1-d198-4633-b6f8-6cc429fd3ece
+[2026-08-16 12:36:02 ERR] [CorrelationId: 607e26f2-d800-4ff4-a5f1-a35fb073254d] HTTP POST /api/teams/7/members responded 500 in 3.8188 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:36:02 ERR] [CorrelationId: 607e26f2-d800-4ff4-a5f1-a35fb073254d] Unhandled exception. CorrelationId: 607e26f2-d800-4ff4-a5f1-a35fb073254d, Path: /api/teams/7/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:36:02 WRN] [CorrelationId: 825d0b17-e417-4a44-8927-d5a052353d8d] EnsureCanManageProject pipeline failed. Reason: "NotFound", ProjectId: 15, UserId: fe0ee1d1-d198-4633-b6f8-6cc429fd3ece
+[2026-08-16 12:36:02 ERR] [CorrelationId: 825d0b17-e417-4a44-8927-d5a052353d8d] HTTP DELETE /api/projects/15/members/44d61807-c04e-48cc-9690-abf7768eaec0 responded 500 in 4.0127 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 358
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:36:02 ERR] [CorrelationId: 825d0b17-e417-4a44-8927-d5a052353d8d] Unhandled exception. CorrelationId: 825d0b17-e417-4a44-8927-d5a052353d8d, Path: /api/projects/15/members/44d61807-c04e-48cc-9690-abf7768eaec0, Method: DELETE
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 358
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:36:02 WRN] [CorrelationId: a322f454-9a60-4b3a-8b43-0c9c3dc99fe6] EnsureCanManageTeam pipeline failed. Reason: "NotFound", TeamId: 8, UserId: 01282126-762d-44b6-8393-3a24b50eecd1
+[2026-08-16 12:36:02 ERR] [CorrelationId: a322f454-9a60-4b3a-8b43-0c9c3dc99fe6] HTTP POST /api/teams/8/members responded 500 in 3.8317 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:36:02 ERR] [CorrelationId: a322f454-9a60-4b3a-8b43-0c9c3dc99fe6] Unhandled exception. CorrelationId: a322f454-9a60-4b3a-8b43-0c9c3dc99fe6, Path: /api/teams/8/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:36:02 WRN] [CorrelationId: 9f737132-89a2-46c6-93d4-0ede084bbe27] EnsureCanManageProject pipeline failed. Reason: "NotFound", ProjectId: 16, UserId: 01282126-762d-44b6-8393-3a24b50eecd1
+[2026-08-16 12:36:02 ERR] [CorrelationId: 9f737132-89a2-46c6-93d4-0ede084bbe27] HTTP POST /api/projects/16/members responded 500 in 3.3040 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.AddProjectMemberAsync(Int64 projectId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 286
+   at TaskManager.API.Controllers.ProjectMembersController.AddMember(Int64 projectId, AddProjectMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 69
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-16 12:36:02 ERR] [CorrelationId: 9f737132-89a2-46c6-93d4-0ede084bbe27] Unhandled exception. CorrelationId: 9f737132-89a2-46c6-93d4-0ede084bbe27, Path: /api/projects/16/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.AddProjectMemberAsync(Int64 projectId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 286
+   at TaskManager.API.Controllers.ProjectMembersController.AddMember(Int64 projectId, AddProjectMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 69
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-16 12:36:03 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:36:03 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-16 12:36:03 INF] [CorrelationId: 51c36977-2a10-4ad2-bd5c-25998c9db19e] HTTP GET /health responded 200 in 3.1371 ms
+[2026-08-16 12:36:03 INF] [CorrelationId: ] Received HTTP response headers after 3.8976ms - 200
+[2026-08-16 12:36:03 INF] [CorrelationId: ] End processing HTTP request after 5.9742ms - 200

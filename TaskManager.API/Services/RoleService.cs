@@ -100,7 +100,15 @@ namespace TaskManager.API.Services
 
            
             var newValues = JsonSerializer.Serialize(new { role.Name, role.Description });
-            await _auditLogService.LogAsync(currentUserId, "Create Role", nameof(ApplicationRole), role.Id, null, newValues);
+            await _auditLogService.LogAsync(
+                currentUserId,
+                "Create Role",
+                nameof(ApplicationRole),
+                role.Id,
+                workspaceId: null,
+                oldValues: null,
+                newValues: newValues,
+                cancellationToken: cancellationToken);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Role created successfully. RoleId: {RoleId}, Name: {Name}, UserId: {UserId}", role.Id, role.Name, currentUserId);

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TaskManager.API.Authorization;
+using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
+
 using TaskManager.API.DTOs.AuditLog;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.Helpers;
@@ -13,7 +14,7 @@ namespace TaskManager.API.Controllers
     // Read-only. Entries are written internally via IAuditLogService.LogAsync from other services.
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = Permissions.AuditLogsView)]
+    [Authorize(Policy = BizPermissions.AuditLogView)]
     public class AuditLogController : ControllerBase
     {
         private readonly IAuditLogService _auditLogService;

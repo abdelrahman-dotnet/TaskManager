@@ -145,8 +145,15 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             // AUTH PIPELINE (13 أغسطس 2026) — الـ Authorization Pipeline الجديد
             builder.Services.AddScoped<IWorkspaceAuthorizationService, WorkspaceAuthorizationService>();
 
-            //Jwt Settings
-            var jwtSettings = builder.Configuration.GetSection("JWT").Get<JwtSettings>();
+            // JWT signing material must be supplied through protected configuration
+            // (for example, the JWT__Key environment variable), never source control.
+            var jwtSettings = builder.Configuration.GetSection("JWT").Get<JwtSettings>()
+                ?? throw new InvalidOperationException("JWT configuration is required.");
+            if (string.IsNullOrWhiteSpace(jwtSettings.Key) || Encoding.UTF8.GetByteCount(jwtSettings.Key) < 32)
+            {
+                throw new InvalidOperationException("JWT:Key must be supplied through protected configuration and contain at least 32 bytes.");
+            }
+
             builder.Services.AddSingleton(jwtSettings);
             var key = Encoding.UTF8.GetBytes(jwtSettings.Key);
 
@@ -173,10 +180,20 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             // Authorization
             builder.Services.AddAuthorization(options =>
             {
-                // ApiPermissions: platform/API-level permissions (legacy catalog).
-                // JWT claims granted via AspNetRoles → RolePermissions (PermissionAndRoleSeeder).
+                // BizPermissions are workspace-level under X2. They must own any
+                // shared policy name so endpoint gates stay authenticated-only;
+                // WorkspaceMember.Role -> RolePermissionCatalog -> Pipeline makes
+                // the actual workspace authorization decision in the service.
+                var workspacePermissions = new HashSet<string>(BizPermissions.All, StringComparer.Ordinal);
+
+                // ApiPermissions remain claim-gated only when they are not also
+                // workspace business permissions. This preserves platform/API
+                // authorization without letting an Identity role override workspace authority.
                 foreach (var permission in ApiPermissions.All)
                 {
+                    if (workspacePermissions.Contains(permission))
+                        continue;
+
                     options.AddPolicy(permission,
                         policy =>
                         {
@@ -186,31 +203,29 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
                         });
                 }
 
-                // BizPermissions: workspace-level permissions used by
-                // WorkspaceController/TaskController policies (X2 — user-approved):
-                // endpoint gate is AUTHENTICATED-ONLY, no permission claim
-                // requirement — platform Identity roles must NOT govern workspace
-                // permissions. The real decision happens inside the services via
-                // WorkspaceMember.Role -> RolePermissionCatalog -> Pipeline.
                 foreach (var permission in BizPermissions.All)
                 {
-                    if (options.GetPolicy(permission) == null)
-                    {
-                        options.AddPolicy(permission,
-                            policy =>
-                            {
-                                policy.RequireAuthenticatedUser();
-                            });
-                    }
+                    options.AddPolicy(permission,
+                        policy =>
+                        {
+                            policy.RequireAuthenticatedUser();
+                        });
                 }
             });
 
-            // CORS
+            // CORS is opt-in and origin-specific. Configure Cors:AllowedOrigins through
+            // environment-specific settings (for example, Cors__AllowedOrigins__0).
+            var allowedCorsOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", policy =>
+                options.AddPolicy("ConfiguredCors", policy =>
                 {
-                    policy.AllowAnyOrigin()
+                    if (allowedCorsOrigins.Length == 0)
+                    {
+                        return;
+                    }
+
+                    policy.WithOrigins(allowedCorsOrigins)
                           .AllowAnyMethod()
                           .AllowAnyHeader();
                 });
@@ -251,9 +266,12 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             }
 
             // Configure the HTTP request pipeline.
-            app.UseSwagger();
-            app.UseSwaggerUI();
-            
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
             // CorrelationIdMiddleware
             app.UseMiddleware<CorrelationIdMiddleware>();
             // Middleware
@@ -262,13 +280,13 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             app.UseSerilogRequestLogging();
 
             app.UseHttpsRedirection();
-            app.UseCors("AllowAll");
+            app.UseCors("ConfiguredCors");
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();
             // health check
-            app.MapHealthCheckEndpoints();
+            app.MapHealthCheckEndpoints(app.Environment.IsDevelopment());
 
             if (app.Environment.IsDevelopment())
             {

@@ -8,6 +8,8 @@ namespace TaskManager.API.Mapping
     {
         public UserProfile()
         {
+            CreateMap<UserUpdateDto, ApplicationUser>();
+
             CreateMap<ApplicationUser, UserReadDto>()
                 .ForMember(d => d.TeamIds, o => o.MapFrom(s =>
                     s.WorkspaceMemberships.SelectMany(wm => wm.TeamMemberships).Select(tm => tm.TeamId)))

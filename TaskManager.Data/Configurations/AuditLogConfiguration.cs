@@ -22,6 +22,7 @@ namespace TaskManager.Data.Configurations
             builder.HasOne(a => a.Workspace)
                 .WithMany()
                 .HasForeignKey(a => a.WorkspaceId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(a => a.WorkspaceMember)

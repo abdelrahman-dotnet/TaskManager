@@ -117,8 +117,28 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Task not found.");
             }
 
-            // WORKSPACE PIVOT: the FK is now a member id; resolve the caller's membership
-            // within the task's project (same workspace scope used by the Authorization pipeline).
+            // WORKSPACE PIVOT: resolve the parent project before the authoritative
+            // workspace pipeline and reuse the same scope for the audit trail.
+            var project = await _unitOfWork.Projects.GetByIdAsync(task.ProjectId, cancellationToken);
+            if (project == null)
+            {
+                _logger.LogWarning("CreateComment failed. Parent project not found. ProjectId: {ProjectId}", task.ProjectId);
+                throw new NotFoundException("Comment's project not found.");
+            }
+
+            var authResult = await _authService.AuthorizeAsync(
+                project.WorkspaceId,
+                currentUserId,
+                Permissions.CommentsCreate,
+                resourceCondition: null);
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("CreateComment pipeline failed. Reason: {Reason}, WorkspaceId: {WorkspaceId}, UserId: {UserId}, TaskId: {TaskId}",
+                    authResult.FailureReason, project.WorkspaceId, currentUserId, taskId);
+                throw authResult.ToAuthorizationException();
+            }
+
+            // Keep the existing project/task access guard after the central pipeline.
             var callerMemberId = await _unitOfWork.ProjectMembers.GetAllQuery()
                 .Where(pm => pm.ProjectId == task.ProjectId && pm.WorkspaceMember.UserId == currentUserId)
                 .Select(pm => pm.WorkspaceMemberId)
@@ -137,15 +157,6 @@ namespace TaskManager.API.Services
             comment.TaskItemId = taskId;
             comment.WorkspaceMemberId = callerMemberId;
 
-            // WORKSPACE PIVOT: resolve the parent project for the audit trail (same
-            // scope used by the Authorization pipeline).
-            var project = await _unitOfWork.Projects.GetByIdAsync(task.ProjectId, cancellationToken);
-            if (project == null)
-            {
-                _logger.LogWarning("CreateComment failed. Parent project not found. ProjectId: {ProjectId}", task.ProjectId);
-                throw new NotFoundException("Comment's project not found.");
-            }
-
             await _unitOfWork.Comments.AddAsync(comment, cancellationToken);
             var newValues = JsonSerializer.Serialize(new { comment.Content, comment.TaskItemId, comment.WorkspaceMemberId });
             // Save first - comment.Id is DB-generated, so it isn't known until after this completes.
@@ -161,7 +172,7 @@ namespace TaskManager.API.Services
 
             // G-7 / D-29: store @Mention entities and notify the mentioned members
             // (non-blocking — a mention failure must not roll back the comment).
-            await HandleMentionsAsync(comment.Id, dto.Content, project.WorkspaceId, comment.WorkspaceMemberId, currentUserId, cancellationToken);
+            await HandleMentionsAsync(comment.Id, dto.Content, project.WorkspaceId, comment.WorkspaceMemberId, currentUserId, Permissions.CommentsCreate, cancellationToken);
 
             return _mapper.Map<CommentReadDto>(comment);
         }
@@ -236,7 +247,7 @@ namespace TaskManager.API.Services
                 .Distinct()
                 .ToListAsync(cancellationToken);
 
-            await SyncMentionsAsync(comment.Id, comment.Content, project.WorkspaceId, comment.WorkspaceMemberId, currentUserId, existingMentionedIds, cancellationToken);
+            await SyncMentionsAsync(comment.Id, comment.Content, project.WorkspaceId, comment.WorkspaceMemberId, currentUserId, existingMentionedIds, Permissions.CommentsUpdate, cancellationToken);
 
             return _mapper.Map<CommentReadDto>(comment);
         }
@@ -303,9 +314,9 @@ namespace TaskManager.API.Services
         // workspace (same scope as the comment), stores CommentMention rows, and
         // raises a Mentioned notification for each. Failures are logged but never
         // propagate — the comment itself is the source of truth.
-        private async Task HandleMentionsAsync(long commentId, string content, long workspaceId, long commenterMemberId, string currentUserId, CancellationToken cancellationToken)
+        private async Task HandleMentionsAsync(long commentId, string content, long workspaceId, long commenterMemberId, string currentUserId, string triggeringPermission, CancellationToken cancellationToken)
         {
-            await SyncMentionsAsync(commentId, content, workspaceId, commenterMemberId, currentUserId, Array.Empty<long>(), cancellationToken);
+            await SyncMentionsAsync(commentId, content, workspaceId, commenterMemberId, currentUserId, Array.Empty<long>(), triggeringPermission, cancellationToken);
         }
 
         // DELTA-SYNC (user-approved behavior for Update): synchronizes the
@@ -314,7 +325,7 @@ namespace TaskManager.API.Services
         // are soft-deleted, genuinely new mentions get rows + Mentioned
         // notification. On Create there are no existing mentions, so it behaves
         // exactly like the original additive logic.
-        private async Task SyncMentionsAsync(long commentId, string content, long workspaceId, long commenterMemberId, string currentUserId, IReadOnlyList<long> previouslyMentionedIds, CancellationToken cancellationToken)
+        private async Task SyncMentionsAsync(long commentId, string content, long workspaceId, long commenterMemberId, string currentUserId, IReadOnlyList<long> previouslyMentionedIds, string triggeringPermission, CancellationToken cancellationToken)
         {
             try
             {
@@ -354,13 +365,17 @@ namespace TaskManager.API.Services
                     await _unitOfWork.CommentMentions.AddAsync(mention, cancellationToken);
                 }
 
-                // Soft-delete removed mentions (they stay in the audit trail).
-                foreach (var removedId in removedIds)
+                // Soft-delete removed mentions (they stay in the audit trail) in one
+                // workspace-scoped comment query rather than one lookup per removed member.
+                if (removedIds.Count > 0)
                 {
-                    var mention = await _unitOfWork.CommentMentions.GetAllQuery()
-                        .Where(cm => cm.CommentId == commentId && cm.MentionedWorkspaceMemberId == removedId && !cm.IsDeleted)
-                        .FirstOrDefaultAsync(cancellationToken);
-                    if (mention != null)
+                    var removedMentions = await _unitOfWork.CommentMentions.GetAllQuery()
+                        .Where(cm => cm.CommentId == commentId
+                                     && removedIds.Contains(cm.MentionedWorkspaceMemberId)
+                                     && !cm.IsDeleted)
+                        .ToListAsync(cancellationToken);
+
+                    foreach (var mention in removedMentions)
                         _unitOfWork.CommentMentions.Delete(mention);
                 }
 
@@ -388,7 +403,8 @@ namespace TaskManager.API.Services
                                 },
                                 currentUserId,
                                 NotificationType.Mentioned,
-                                commentId);
+                                commentId,
+                                triggeringPermission: triggeringPermission);
                         }
                         catch (Exception ex)
                         {

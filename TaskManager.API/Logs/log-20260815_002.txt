@@ -1,0 +1,672 @@
+[2026-08-15 15:43:56 WRN] [CorrelationId: ] Entity 'Comment' has a global query filter defined and is the required end of a relationship with the entity 'CommentMention'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[2026-08-15 15:43:57 INF] [CorrelationId: ] Initializing UI Database
+[2026-08-15 15:43:58 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-08-15 15:43:58 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-15 15:43:58 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-15 15:43:58 WRN] [CorrelationId: 6936062b-2e5a-4955-b13e-900d98c44a34] Failed to determine the https port for redirect.
+[2026-08-15 15:43:58 INF] [CorrelationId: 6936062b-2e5a-4955-b13e-900d98c44a34] HTTP GET /health responded 200 in 334.8042 ms
+[2026-08-15 15:43:58 INF] [CorrelationId: bec0b866-f494-4ccb-90dd-7fcfc6cb035c] HTTP GET /health responded 200 in 218.3789 ms
+[2026-08-15 15:43:58 INF] [CorrelationId: ] Received HTTP response headers after 505.0898ms - 200
+[2026-08-15 15:43:58 INF] [CorrelationId: ] End processing HTTP request after 523.1298ms - 200
+[2026-08-15 15:43:59 INF] [CorrelationId: 42226c5b-9a86-49ac-8540-2b351a4f38fb] User registered successfully. UserName: p3owner-aAUTH-P3-02-20260815154359413, UserId: b51abf5c-1eb3-4c7d-b6ed-fb5c6c976972
+[2026-08-15 15:43:59 INF] [CorrelationId: 42226c5b-9a86-49ac-8540-2b351a4f38fb] HTTP POST /api/Auth/Register responded 200 in 334.4561 ms
+[2026-08-15 15:44:00 INF] [CorrelationId: 5098444c-fd96-4711-9e09-0b7442878350] Login successful. Email: authp302-auth-p3-02-20260815154359413-owner-a@test.local
+[2026-08-15 15:44:00 INF] [CorrelationId: 5098444c-fd96-4711-9e09-0b7442878350] HTTP POST /api/Auth/Login responded 200 in 503.1535 ms
+[2026-08-15 15:44:00 INF] [CorrelationId: 8f057ce8-04fd-4ac0-9a72-8726ded5df0e] User registered successfully. UserName: p3owner-bAUTH-P3-02-20260815154359413, UserId: 2fabddb9-82fe-4a54-b9b9-db6a1e9ba880
+[2026-08-15 15:44:00 INF] [CorrelationId: 8f057ce8-04fd-4ac0-9a72-8726ded5df0e] HTTP POST /api/Auth/Register responded 200 in 28.5623 ms
+[2026-08-15 15:44:00 INF] [CorrelationId: 7407c0c1-8984-4eb5-87b1-bd5b69457487] Login successful. Email: authp302-auth-p3-02-20260815154359413-owner-b@test.local
+[2026-08-15 15:44:00 INF] [CorrelationId: 7407c0c1-8984-4eb5-87b1-bd5b69457487] HTTP POST /api/Auth/Login responded 200 in 15.5383 ms
+[2026-08-15 15:44:00 INF] [CorrelationId: adfd80d6-9130-4396-897e-37f6488b4c71] User registered successfully. UserName: p3member-aAUTH-P3-02-20260815154359413, UserId: 7827ff36-2d4e-4816-9b22-fedd6701096d
+[2026-08-15 15:44:00 INF] [CorrelationId: adfd80d6-9130-4396-897e-37f6488b4c71] HTTP POST /api/Auth/Register responded 200 in 16.1177 ms
+[2026-08-15 15:44:00 INF] [CorrelationId: 8d6f628d-c932-4b43-9a40-61380a0acc23] Login successful. Email: authp302-auth-p3-02-20260815154359413-member-a@test.local
+[2026-08-15 15:44:00 INF] [CorrelationId: 8d6f628d-c932-4b43-9a40-61380a0acc23] HTTP POST /api/Auth/Login responded 200 in 12.4444 ms
+[2026-08-15 15:44:00 INF] [CorrelationId: 8bf6208b-5015-4e44-8d05-86bbf30d77d1] User registered successfully. UserName: p3outsiderAUTH-P3-02-20260815154359413, UserId: a2eeddea-141d-4986-8165-96e6428e061d
+[2026-08-15 15:44:00 INF] [CorrelationId: 8bf6208b-5015-4e44-8d05-86bbf30d77d1] HTTP POST /api/Auth/Register responded 200 in 110.0891 ms
+[2026-08-15 15:44:01 INF] [CorrelationId: a81223d1-2045-405b-8d5c-3a489d012102] Login successful. Email: authp302-auth-p3-02-20260815154359413-outsider@test.local
+[2026-08-15 15:44:01 INF] [CorrelationId: a81223d1-2045-405b-8d5c-3a489d012102] HTTP POST /api/Auth/Login responded 200 in 15.0672 ms
+[2026-08-15 15:44:01 INF] [CorrelationId: 99ab5f40-fd1f-4a72-9be5-16ea95122037] Audit log created. Action: Create Workspace, Entity: Workspace, EntityId: 8, WorkspaceId: 8, ActorMemberId: 10
+[2026-08-15 15:44:01 INF] [CorrelationId: 99ab5f40-fd1f-4a72-9be5-16ea95122037] Audit log created. Action: Join Workspace as Owner, Entity: WorkspaceMember, EntityId: 10, WorkspaceId: 8, ActorMemberId: 10
+[2026-08-15 15:44:01 INF] [CorrelationId: 99ab5f40-fd1f-4a72-9be5-16ea95122037] Workspace created. Id: 8, Name: AUTH-P3-02-20260815154359413 Workspace A, OwnerUserId: b51abf5c-1eb3-4c7d-b6ed-fb5c6c976972
+[2026-08-15 15:44:01 INF] [CorrelationId: 99ab5f40-fd1f-4a72-9be5-16ea95122037] HTTP POST /api/Workspace responded 201 in 510.5029 ms
+[2026-08-15 15:44:01 INF] [CorrelationId: fd24efbf-1f65-4c7f-b160-3543aaf3b82b] Audit log created. Action: Create Workspace, Entity: Workspace, EntityId: 9, WorkspaceId: 9, ActorMemberId: 11
+[2026-08-15 15:44:01 INF] [CorrelationId: fd24efbf-1f65-4c7f-b160-3543aaf3b82b] Audit log created. Action: Join Workspace as Owner, Entity: WorkspaceMember, EntityId: 11, WorkspaceId: 9, ActorMemberId: 11
+[2026-08-15 15:44:01 INF] [CorrelationId: fd24efbf-1f65-4c7f-b160-3543aaf3b82b] Workspace created. Id: 9, Name: AUTH-P3-02-20260815154359413 Workspace B, OwnerUserId: 2fabddb9-82fe-4a54-b9b9-db6a1e9ba880
+[2026-08-15 15:44:01 INF] [CorrelationId: fd24efbf-1f65-4c7f-b160-3543aaf3b82b] HTTP POST /api/Workspace responded 201 in 14.5462 ms
+[2026-08-15 15:44:01 INF] [CorrelationId: 6f126f9f-541e-420f-939c-c55f32d602ba] Audit log created. Action: Create Project, Entity: Project, EntityId: 1, WorkspaceId: 8, ActorMemberId: 10
+[2026-08-15 15:44:01 INF] [CorrelationId: 6f126f9f-541e-420f-939c-c55f32d602ba] Project created successfully. ProjectId: 1,CurrentUserId:b51abf5c-1eb3-4c7d-b6ed-fb5c6c976972
+[2026-08-15 15:44:01 INF] [CorrelationId: 6f126f9f-541e-420f-939c-c55f32d602ba] HTTP POST /api/Project/8 responded 201 in 188.2973 ms
+[2026-08-15 15:44:01 INF] [CorrelationId: f7c60e7e-a79b-45fb-b548-820c0d1b9a6f] Audit log created. Action: Create Project, Entity: Project, EntityId: 2, WorkspaceId: 9, ActorMemberId: 11
+[2026-08-15 15:44:01 INF] [CorrelationId: f7c60e7e-a79b-45fb-b548-820c0d1b9a6f] Project created successfully. ProjectId: 2,CurrentUserId:2fabddb9-82fe-4a54-b9b9-db6a1e9ba880
+[2026-08-15 15:44:01 INF] [CorrelationId: f7c60e7e-a79b-45fb-b548-820c0d1b9a6f] HTTP POST /api/Project/9 responded 201 in 18.1400 ms
+[2026-08-15 15:44:02 ERR] [CorrelationId: 4662384f-0a20-4369-93f8-24a76e7c1340] Failed executing DbCommand (14ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 450), @p3='?' (DbType = Int64), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Boolean), @p8='?' (DbType = Boolean), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = Int64), @p12='?' (DbType = Int32), @p13='?' (Size = 200), @p14='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [TaskItems] ([CompletedAt], [CreatedAt], [CreatedByUserId], [CreatedByWorkspaceMemberId], [DeletedAt], [Description], [DueDate], [IsArchived], [IsDeleted], [Position], [Priority], [ProjectId], [Status], [Title], [UpdatedAt])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+SELECT [Id]
+FROM [TaskItems]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+[2026-08-15 15:44:02 ERR] [CorrelationId: 4662384f-0a20-4369-93f8-24a76e7c1340] An exception occurred in the database while saving changes for context type 'TaskManager.Data.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_TaskItems_WorkspaceMembers_CreatedByWorkspaceMemberId". The conflict occurred in database "TaskManagerRefactorDb", table "dbo.WorkspaceMembers", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:b4321f27-d2bf-4b27-a7e5-369bdae9bdd4
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_TaskItems_WorkspaceMembers_CreatedByWorkspaceMemberId". The conflict occurred in database "TaskManagerRefactorDb", table "dbo.WorkspaceMembers", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:b4321f27-d2bf-4b27-a7e5-369bdae9bdd4
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[2026-08-15 15:44:02 ERR] [CorrelationId: 4662384f-0a20-4369-93f8-24a76e7c1340] HTTP POST /api/Task responded 500 in 190.5142 ms
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_TaskItems_WorkspaceMembers_CreatedByWorkspaceMemberId". The conflict occurred in database "TaskManagerRefactorDb", table "dbo.WorkspaceMembers", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:b4321f27-d2bf-4b27-a7e5-369bdae9bdd4
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at TaskManager.Data.UnitOfWork.UnitOfWork.CompleteAsync(CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\Repositories\UnitOfWorkRepo.cs:line 64
+   at TaskManager.API.Services.TaskService.CreateAsync(TaskCreateDto dto, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\TaskService.cs:line 251
+   at TaskManager.API.Controllers.TaskController.Create(TaskCreateDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TaskController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 15:44:02 ERR] [CorrelationId: 4662384f-0a20-4369-93f8-24a76e7c1340] Unhandled exception. CorrelationId: 4662384f-0a20-4369-93f8-24a76e7c1340, Path: /api/Task, Method: POST
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_TaskItems_WorkspaceMembers_CreatedByWorkspaceMemberId". The conflict occurred in database "TaskManagerRefactorDb", table "dbo.WorkspaceMembers", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:b4321f27-d2bf-4b27-a7e5-369bdae9bdd4
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at TaskManager.Data.UnitOfWork.UnitOfWork.CompleteAsync(CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Bussiness\Repositories\UnitOfWorkRepo.cs:line 64
+   at TaskManager.API.Services.TaskService.CreateAsync(TaskCreateDto dto, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\TaskService.cs:line 251
+   at TaskManager.API.Controllers.TaskController.Create(TaskCreateDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TaskController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 15:48:08 WRN] [CorrelationId: ] Entity 'Comment' has a global query filter defined and is the required end of a relationship with the entity 'CommentMention'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[2026-08-15 15:48:09 INF] [CorrelationId: ] Initializing UI Database
+[2026-08-15 15:48:10 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-08-15 15:48:10 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-15 15:48:10 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-15 15:48:10 WRN] [CorrelationId: b64c0ad1-ecea-4e2f-88a0-6b3774c26750] Failed to determine the https port for redirect.
+[2026-08-15 15:48:10 INF] [CorrelationId: b64c0ad1-ecea-4e2f-88a0-6b3774c26750] HTTP GET /health responded 200 in 274.7542 ms
+[2026-08-15 15:48:10 INF] [CorrelationId: ] Received HTTP response headers after 442.3682ms - 200
+[2026-08-15 15:48:10 INF] [CorrelationId: ] End processing HTTP request after 458.0543ms - 200
+[2026-08-15 15:48:11 INF] [CorrelationId: f91b82ef-f21a-4834-a972-4e61adc69427] HTTP GET /health responded 200 in 20.7042 ms
+[2026-08-15 15:48:12 INF] [CorrelationId: 85d2e0db-9a0d-43e9-b209-d6de672e35bf] User registered successfully. UserName: p3owner-aAUTH-P3-02-20260815154811681, UserId: a4523853-157f-4dd7-8476-897ac92c7de6
+[2026-08-15 15:48:12 INF] [CorrelationId: 85d2e0db-9a0d-43e9-b209-d6de672e35bf] HTTP POST /api/Auth/Register responded 200 in 370.7726 ms
+[2026-08-15 15:48:12 INF] [CorrelationId: bb51dc1c-1b81-45bc-85a2-e3b74da440b1] Login successful. Email: authp302-auth-p3-02-20260815154811681-owner-a@test.local
+[2026-08-15 15:48:12 INF] [CorrelationId: bb51dc1c-1b81-45bc-85a2-e3b74da440b1] HTTP POST /api/Auth/Login responded 200 in 307.7164 ms
+[2026-08-15 15:48:12 INF] [CorrelationId: 9936deea-0942-4e0f-b0fc-46686c5b68ca] User registered successfully. UserName: p3owner-bAUTH-P3-02-20260815154811681, UserId: 62baed15-92ad-4b96-94c4-df0e6a026e03
+[2026-08-15 15:48:12 INF] [CorrelationId: 9936deea-0942-4e0f-b0fc-46686c5b68ca] HTTP POST /api/Auth/Register responded 200 in 45.2336 ms
+[2026-08-15 15:48:12 INF] [CorrelationId: a0c17685-719d-4118-abe9-c1d23a4b05bf] Login successful. Email: authp302-auth-p3-02-20260815154811681-owner-b@test.local
+[2026-08-15 15:48:12 INF] [CorrelationId: a0c17685-719d-4118-abe9-c1d23a4b05bf] HTTP POST /api/Auth/Login responded 200 in 26.4036 ms
+[2026-08-15 15:48:12 INF] [CorrelationId: 6fe2eaa0-f49a-4eaa-b7c1-b7856a8ee2b2] User registered successfully. UserName: p3member-aAUTH-P3-02-20260815154811681, UserId: ac650fbd-2419-48ba-9144-3861aacd6b61
+[2026-08-15 15:48:12 INF] [CorrelationId: 6fe2eaa0-f49a-4eaa-b7c1-b7856a8ee2b2] HTTP POST /api/Auth/Register responded 200 in 45.2665 ms
+[2026-08-15 15:48:13 INF] [CorrelationId: 7027cef0-bbab-40e4-b975-764e772ec89a] Login successful. Email: authp302-auth-p3-02-20260815154811681-member-a@test.local
+[2026-08-15 15:48:13 INF] [CorrelationId: 7027cef0-bbab-40e4-b975-764e772ec89a] HTTP POST /api/Auth/Login responded 200 in 58.8629 ms
+[2026-08-15 15:48:13 INF] [CorrelationId: 66a56f95-4822-4e88-895c-c4ebcd8a10bb] User registered successfully. UserName: p3outsiderAUTH-P3-02-20260815154811681, UserId: 33cb0c7c-140f-48fb-a87d-d653a665ea67
+[2026-08-15 15:48:13 INF] [CorrelationId: 66a56f95-4822-4e88-895c-c4ebcd8a10bb] HTTP POST /api/Auth/Register responded 200 in 45.1624 ms
+[2026-08-15 15:48:13 INF] [CorrelationId: 04d9866b-686e-41c0-b32a-0fdff4ccdf58] Login successful. Email: authp302-auth-p3-02-20260815154811681-outsider@test.local
+[2026-08-15 15:48:13 INF] [CorrelationId: 04d9866b-686e-41c0-b32a-0fdff4ccdf58] HTTP POST /api/Auth/Login responded 200 in 34.2237 ms
+[2026-08-15 15:48:13 INF] [CorrelationId: b7caa15c-7ef0-4080-8e20-ddbf5d2991ab] Audit log created. Action: Create Workspace, Entity: Workspace, EntityId: 10, WorkspaceId: 10, ActorMemberId: 12
+[2026-08-15 15:48:13 INF] [CorrelationId: b7caa15c-7ef0-4080-8e20-ddbf5d2991ab] Audit log created. Action: Join Workspace as Owner, Entity: WorkspaceMember, EntityId: 12, WorkspaceId: 10, ActorMemberId: 12
+[2026-08-15 15:48:13 INF] [CorrelationId: b7caa15c-7ef0-4080-8e20-ddbf5d2991ab] Workspace created. Id: 10, Name: AUTH-P3-02-20260815154811681 Workspace A, OwnerUserId: a4523853-157f-4dd7-8476-897ac92c7de6
+[2026-08-15 15:48:13 INF] [CorrelationId: b7caa15c-7ef0-4080-8e20-ddbf5d2991ab] HTTP POST /api/Workspace responded 201 in 593.7103 ms
+[2026-08-15 15:48:13 INF] [CorrelationId: 282c5738-102f-495d-8f34-c61b7e1e3648] Audit log created. Action: Create Workspace, Entity: Workspace, EntityId: 11, WorkspaceId: 11, ActorMemberId: 13
+[2026-08-15 15:48:13 INF] [CorrelationId: 282c5738-102f-495d-8f34-c61b7e1e3648] Audit log created. Action: Join Workspace as Owner, Entity: WorkspaceMember, EntityId: 13, WorkspaceId: 11, ActorMemberId: 13
+[2026-08-15 15:48:14 INF] [CorrelationId: 282c5738-102f-495d-8f34-c61b7e1e3648] Workspace created. Id: 11, Name: AUTH-P3-02-20260815154811681 Workspace B, OwnerUserId: 62baed15-92ad-4b96-94c4-df0e6a026e03
+[2026-08-15 15:48:14 INF] [CorrelationId: 282c5738-102f-495d-8f34-c61b7e1e3648] HTTP POST /api/Workspace responded 201 in 35.9152 ms
+[2026-08-15 15:48:14 INF] [CorrelationId: 6aacb103-3458-4d98-9a8c-d2b1d3fed94e] Audit log created. Action: Create Project, Entity: Project, EntityId: 3, WorkspaceId: 10, ActorMemberId: 12
+[2026-08-15 15:48:14 INF] [CorrelationId: 6aacb103-3458-4d98-9a8c-d2b1d3fed94e] Project created successfully. ProjectId: 3,CurrentUserId:a4523853-157f-4dd7-8476-897ac92c7de6
+[2026-08-15 15:48:14 INF] [CorrelationId: 6aacb103-3458-4d98-9a8c-d2b1d3fed94e] HTTP POST /api/Project/10 responded 201 in 284.7421 ms
+[2026-08-15 15:48:14 INF] [CorrelationId: f658829c-9f42-4c83-8e3d-7512b72d2111] Audit log created. Action: Create Project, Entity: Project, EntityId: 4, WorkspaceId: 11, ActorMemberId: 13
+[2026-08-15 15:48:14 INF] [CorrelationId: f658829c-9f42-4c83-8e3d-7512b72d2111] Project created successfully. ProjectId: 4,CurrentUserId:62baed15-92ad-4b96-94c4-df0e6a026e03
+[2026-08-15 15:48:14 INF] [CorrelationId: f658829c-9f42-4c83-8e3d-7512b72d2111] HTTP POST /api/Project/11 responded 201 in 44.0971 ms
+[2026-08-15 15:48:15 INF] [CorrelationId: 534f4ce9-74d9-4110-a881-8693faa5b256] Audit log created. Action: Send Invitation, Entity: Invitation, EntityId: 5, WorkspaceId: 10, ActorMemberId: 12
+[2026-08-15 15:48:15 INF] [CorrelationId: 534f4ce9-74d9-4110-a881-8693faa5b256] Invitation sent. Id: 5, WorkspaceId: 10, InvitedUserId: ac650fbd-2419-48ba-9144-3861aacd6b61, Role: "Member"
+[2026-08-15 15:48:15 INF] [CorrelationId: 534f4ce9-74d9-4110-a881-8693faa5b256] HTTP POST /api/Invitation responded 201 in 154.5202 ms
+[2026-08-15 15:48:15 INF] [CorrelationId: e8523e63-bab1-450b-8038-87e0c96c1782] Audit log created. Action: Accept Invitation, Entity: Invitation, EntityId: 5, WorkspaceId: 10, ActorMemberId: 14
+[2026-08-15 15:48:15 INF] [CorrelationId: e8523e63-bab1-450b-8038-87e0c96c1782] Audit log created. Action: Join Workspace as Member, Entity: WorkspaceMember, EntityId: 14, WorkspaceId: 10, ActorMemberId: 14
+[2026-08-15 15:48:15 INF] [CorrelationId: e8523e63-bab1-450b-8038-87e0c96c1782] Invitation accepted. Id: 5, WorkspaceId: 10, UserId: ac650fbd-2419-48ba-9144-3861aacd6b61, Role: "Member"
+[2026-08-15 15:48:15 INF] [CorrelationId: e8523e63-bab1-450b-8038-87e0c96c1782] HTTP POST /api/Invitation/5/accept responded 204 in 64.4030 ms
+[2026-08-15 15:48:15 WRN] [CorrelationId: 0b6b41e4-4de4-4f0c-9245-e16f1f1b6364] DeleteTask pipeline failed. Reason: "NotFound", UserId: a4523853-157f-4dd7-8476-897ac92c7de6, TaskId: 4
+[2026-08-15 15:48:15 ERR] [CorrelationId: 0b6b41e4-4de4-4f0c-9245-e16f1f1b6364] HTTP DELETE /api/Task/10/4 responded 500 in 57.8114 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.TaskService.DeleteAsync(Int64 id, Int64 workspaceId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\TaskService.cs:line 318
+   at TaskManager.API.Controllers.TaskController.Delete(Int64 workspaceId, Int64 id, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TaskController.cs:line 102
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 15:48:15 ERR] [CorrelationId: 0b6b41e4-4de4-4f0c-9245-e16f1f1b6364] Unhandled exception. CorrelationId: 0b6b41e4-4de4-4f0c-9245-e16f1f1b6364, Path: /api/Task/10/4, Method: DELETE
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.TaskService.DeleteAsync(Int64 id, Int64 workspaceId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\TaskService.cs:line 318
+   at TaskManager.API.Controllers.TaskController.Delete(Int64 workspaceId, Int64 id, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TaskController.cs:line 102
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 15:48:15 INF] [CorrelationId: 17f15840-11a2-4d6a-8d81-0e5bf889e75e] Audit log created. Action: Delete Task, Entity: TaskItem, EntityId: 2, WorkspaceId: 10, ActorMemberId: 12
+[2026-08-15 15:48:15 INF] [CorrelationId: 17f15840-11a2-4d6a-8d81-0e5bf889e75e] Task deleted successfully. TaskId: 2, UserId: a4523853-157f-4dd7-8476-897ac92c7de6
+[2026-08-15 15:48:15 INF] [CorrelationId: 17f15840-11a2-4d6a-8d81-0e5bf889e75e] HTTP DELETE /api/Task/10/2 responded 204 in 38.1462 ms
+[2026-08-15 15:48:15 WRN] [CorrelationId: 1ce99432-5f95-463f-98db-ca907eef5196] DeleteTask pipeline failed. Reason: "Forbidden", UserId: ac650fbd-2419-48ba-9144-3861aacd6b61, TaskId: 3
+[2026-08-15 15:48:15 ERR] [CorrelationId: 1ce99432-5f95-463f-98db-ca907eef5196] HTTP DELETE /api/Task/10/3 responded 500 in 8.5476 ms
+TaskManager.API.Exceptions.ForbiddenException: You can only delete a task that is still 'ToDo' and that you created.
+   at TaskManager.API.Services.TaskService.DeleteAsync(Int64 id, Int64 workspaceId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\TaskService.cs:line 318
+   at TaskManager.API.Controllers.TaskController.Delete(Int64 workspaceId, Int64 id, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TaskController.cs:line 102
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 15:48:15 ERR] [CorrelationId: 1ce99432-5f95-463f-98db-ca907eef5196] Unhandled exception. CorrelationId: 1ce99432-5f95-463f-98db-ca907eef5196, Path: /api/Task/10/3, Method: DELETE
+TaskManager.API.Exceptions.ForbiddenException: You can only delete a task that is still 'ToDo' and that you created.
+   at TaskManager.API.Services.TaskService.DeleteAsync(Int64 id, Int64 workspaceId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\TaskService.cs:line 318
+   at TaskManager.API.Controllers.TaskController.Delete(Int64 workspaceId, Int64 id, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TaskController.cs:line 102
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 15:48:15 INF] [CorrelationId: cd5d2fc4-2a14-4f00-90a4-27e11a842431] Task cache miss. TaskId: 3
+[2026-08-15 15:48:16 WRN] [CorrelationId: cd5d2fc4-2a14-4f00-90a4-27e11a842431] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-08-15 15:48:16 WRN] [CorrelationId: cd5d2fc4-2a14-4f00-90a4-27e11a842431] GetTaskById pipeline failed. Reason: "NotFound", UserId: 33cb0c7c-140f-48fb-a87d-d653a665ea67, TaskId: 3
+[2026-08-15 15:48:16 ERR] [CorrelationId: cd5d2fc4-2a14-4f00-90a4-27e11a842431] HTTP GET /api/Task/3 responded 500 in 199.1214 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.TaskService.GetByIdAsync(Int64 id, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\TaskService.cs:line 212
+   at TaskManager.API.Controllers.TaskController.GetById(Int64 id, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TaskController.cs:line 71
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 15:48:16 ERR] [CorrelationId: cd5d2fc4-2a14-4f00-90a4-27e11a842431] Unhandled exception. CorrelationId: cd5d2fc4-2a14-4f00-90a4-27e11a842431, Path: /api/Task/3, Method: GET
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.TaskService.GetByIdAsync(Int64 id, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\TaskService.cs:line 212
+   at TaskManager.API.Controllers.TaskController.GetById(Int64 id, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TaskController.cs:line 71
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 15:48:16 INF] [CorrelationId: e92af164-aa51-49f7-b544-d353a041c3c8] Audit log created. Action: Delete Task, Entity: TaskItem, EntityId: 4, WorkspaceId: 11, ActorMemberId: 13
+[2026-08-15 15:48:16 INF] [CorrelationId: e92af164-aa51-49f7-b544-d353a041c3c8] Task deleted successfully. TaskId: 4, UserId: 62baed15-92ad-4b96-94c4-df0e6a026e03
+[2026-08-15 15:48:16 INF] [CorrelationId: e92af164-aa51-49f7-b544-d353a041c3c8] HTTP DELETE /api/Task/11/4 responded 204 in 12.3786 ms
+[2026-08-15 22:48:03 WRN] [CorrelationId: ] Entity 'Comment' has a global query filter defined and is the required end of a relationship with the entity 'CommentMention'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[2026-08-15 22:48:04 INF] [CorrelationId: ] Initializing UI Database
+[2026-08-15 22:48:04 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-08-15 22:48:05 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-15 22:48:05 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-15 22:48:05 WRN] [CorrelationId: 9cde7f9c-e3ae-4cb2-a4d3-b1521fabc50a] Failed to determine the https port for redirect.
+[2026-08-15 22:48:06 INF] [CorrelationId: 9cde7f9c-e3ae-4cb2-a4d3-b1521fabc50a] HTTP GET /health responded 200 in 951.7218 ms
+[2026-08-15 22:48:06 INF] [CorrelationId: 5e5ea2f4-054d-4b32-bfd7-6046c4d4c36e] HTTP GET /health responded 200 in 547.3395 ms
+[2026-08-15 22:48:06 INF] [CorrelationId: ] Received HTTP response headers after 1074.636ms - 200
+[2026-08-15 22:48:06 INF] [CorrelationId: ] End processing HTTP request after 1099.0484ms - 200
+[2026-08-15 22:48:06 INF] [CorrelationId: ccc6c5e5-a94f-4696-baea-9049d27b26b7] User registered successfully. UserName: OwnerA-46c0e1e22cbf, UserId: c7fab368-f06d-4482-aa22-a1da26531434
+[2026-08-15 22:48:06 INF] [CorrelationId: ccc6c5e5-a94f-4696-baea-9049d27b26b7] HTTP POST /api/Auth/Register responded 200 in 255.1219 ms
+[2026-08-15 22:48:06 INF] [CorrelationId: 2a07df58-264b-4219-bcfd-ec4c0eb907be] Login successful. Email: ownera-46c0e1e22cbf@example.test
+[2026-08-15 22:48:06 INF] [CorrelationId: 2a07df58-264b-4219-bcfd-ec4c0eb907be] HTTP POST /api/Auth/Login responded 200 in 254.8248 ms
+[2026-08-15 22:48:06 INF] [CorrelationId: 06899bae-0720-4903-a2d0-d12dc0d9c2dd] User registered successfully. UserName: AdminA-46c0e1e22cbf, UserId: 62adce38-4fb7-441b-aeb5-b97c2ee4e069
+[2026-08-15 22:48:06 INF] [CorrelationId: 06899bae-0720-4903-a2d0-d12dc0d9c2dd] HTTP POST /api/Auth/Register responded 200 in 33.6367 ms
+[2026-08-15 22:48:06 INF] [CorrelationId: 9f368dfc-7bcf-48f9-813a-2509c47a5daa] Login successful. Email: admina-46c0e1e22cbf@example.test
+[2026-08-15 22:48:06 INF] [CorrelationId: 9f368dfc-7bcf-48f9-813a-2509c47a5daa] HTTP POST /api/Auth/Login responded 200 in 14.1355 ms
+[2026-08-15 22:48:06 INF] [CorrelationId: df45a896-9ec7-473a-aeb9-d1250eeeb785] User registered successfully. UserName: MemberA-46c0e1e22cbf, UserId: bdce33d0-f828-4aef-aba6-8a7dafd0201a
+[2026-08-15 22:48:06 INF] [CorrelationId: df45a896-9ec7-473a-aeb9-d1250eeeb785] HTTP POST /api/Auth/Register responded 200 in 14.7096 ms
+[2026-08-15 22:48:07 INF] [CorrelationId: a027c9f2-5280-4303-9a50-cdbc51a5563e] Login successful. Email: membera-46c0e1e22cbf@example.test
+[2026-08-15 22:48:07 INF] [CorrelationId: a027c9f2-5280-4303-9a50-cdbc51a5563e] HTTP POST /api/Auth/Login responded 200 in 14.5858 ms
+[2026-08-15 22:48:07 INF] [CorrelationId: caf342c2-29ab-43c6-9a64-f4b0de0d44f7] User registered successfully. UserName: TargetA-46c0e1e22cbf, UserId: d61a14f1-7b10-4ee6-8c49-d4f5d19a71f6
+[2026-08-15 22:48:07 INF] [CorrelationId: caf342c2-29ab-43c6-9a64-f4b0de0d44f7] HTTP POST /api/Auth/Register responded 200 in 32.6030 ms
+[2026-08-15 22:48:07 INF] [CorrelationId: 2e5c0f09-e1d3-4692-9fe9-8f224ff2702a] Login successful. Email: targeta-46c0e1e22cbf@example.test
+[2026-08-15 22:48:07 INF] [CorrelationId: 2e5c0f09-e1d3-4692-9fe9-8f224ff2702a] HTTP POST /api/Auth/Login responded 200 in 25.8980 ms
+[2026-08-15 22:48:07 INF] [CorrelationId: adac6590-09da-4d49-abbd-cc6f670c7ffe] User registered successfully. UserName: OutsiderB-46c0e1e22cbf, UserId: 7e84671b-02cc-48f4-80c2-5b43a3a865f2
+[2026-08-15 22:48:07 INF] [CorrelationId: adac6590-09da-4d49-abbd-cc6f670c7ffe] HTTP POST /api/Auth/Register responded 200 in 35.3844 ms
+[2026-08-15 22:48:07 INF] [CorrelationId: b3725cc9-7ac1-46f4-8ead-661cc3913344] Login successful. Email: outsiderb-46c0e1e22cbf@example.test
+[2026-08-15 22:48:07 INF] [CorrelationId: b3725cc9-7ac1-46f4-8ead-661cc3913344] HTTP POST /api/Auth/Login responded 200 in 20.4960 ms
+[2026-08-15 22:49:28 WRN] [CorrelationId: ] Entity 'Comment' has a global query filter defined and is the required end of a relationship with the entity 'CommentMention'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[2026-08-15 22:49:29 INF] [CorrelationId: ] Initializing UI Database
+[2026-08-15 22:49:29 INF] [CorrelationId: ] Saving healthchecks configuration to database
+[2026-08-15 22:49:29 INF] [CorrelationId: ] Start processing HTTP request GET "http://localhost:5058/health"
+[2026-08-15 22:49:29 INF] [CorrelationId: ] Sending HTTP request GET "http://localhost:5058/health"
+[2026-08-15 22:49:29 WRN] [CorrelationId: f420d26d-e6b2-4e00-8f75-a4bb5266e9b6] Failed to determine the https port for redirect.
+[2026-08-15 22:49:29 INF] [CorrelationId: f420d26d-e6b2-4e00-8f75-a4bb5266e9b6] HTTP GET /health responded 200 in 218.7337 ms
+[2026-08-15 22:49:29 INF] [CorrelationId: ] Received HTTP response headers after 350.694ms - 200
+[2026-08-15 22:49:29 INF] [CorrelationId: ] End processing HTTP request after 363.8989ms - 200
+[2026-08-15 22:49:30 INF] [CorrelationId: 4bd2a726-7af5-41d5-bfcc-9360b1b1a16f] HTTP GET /health responded 200 in 11.0914 ms
+[2026-08-15 22:49:30 INF] [CorrelationId: 5af578f3-69dd-4eae-8e79-3e65e4395c87] User registered successfully. UserName: OwnerA-070dd1cf38b3, UserId: 3611f4cf-c49b-4e83-bddb-44e802a7540f
+[2026-08-15 22:49:30 INF] [CorrelationId: 5af578f3-69dd-4eae-8e79-3e65e4395c87] HTTP POST /api/Auth/Register responded 200 in 258.6701 ms
+[2026-08-15 22:49:30 INF] [CorrelationId: 0c4d5ddb-e349-4914-aa02-9d22403bd384] Login successful. Email: ownera-070dd1cf38b3@example.test
+[2026-08-15 22:49:30 INF] [CorrelationId: 0c4d5ddb-e349-4914-aa02-9d22403bd384] HTTP POST /api/Auth/Login responded 200 in 209.8839 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: ac7e2fbd-0889-4b3b-86fa-e276aab0d1c0] User registered successfully. UserName: AdminA-070dd1cf38b3, UserId: 296bbe6d-27e9-4f76-afe1-ce2f7d6c8f4a
+[2026-08-15 22:49:31 INF] [CorrelationId: ac7e2fbd-0889-4b3b-86fa-e276aab0d1c0] HTTP POST /api/Auth/Register responded 200 in 32.5091 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: 41190e85-7293-4f35-8800-0e75e1a2e6d1] Login successful. Email: admina-070dd1cf38b3@example.test
+[2026-08-15 22:49:31 INF] [CorrelationId: 41190e85-7293-4f35-8800-0e75e1a2e6d1] HTTP POST /api/Auth/Login responded 200 in 15.5558 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: 74cc9d19-a0fd-4514-8827-9a58007bd1a4] User registered successfully. UserName: MemberA-070dd1cf38b3, UserId: 1d69ee83-ac00-4359-b726-c283f875d735
+[2026-08-15 22:49:31 INF] [CorrelationId: 74cc9d19-a0fd-4514-8827-9a58007bd1a4] HTTP POST /api/Auth/Register responded 200 in 30.6910 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: 82367759-020b-4bc0-8f56-ac2cfb22ebda] Login successful. Email: membera-070dd1cf38b3@example.test
+[2026-08-15 22:49:31 INF] [CorrelationId: 82367759-020b-4bc0-8f56-ac2cfb22ebda] HTTP POST /api/Auth/Login responded 200 in 23.2273 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: f8b24307-1a0b-4c2b-be9c-89b14861635d] User registered successfully. UserName: TargetA-070dd1cf38b3, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa
+[2026-08-15 22:49:31 INF] [CorrelationId: f8b24307-1a0b-4c2b-be9c-89b14861635d] HTTP POST /api/Auth/Register responded 200 in 22.1355 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: e15bee0a-423e-4eb5-af07-749122b64e4a] Login successful. Email: targeta-070dd1cf38b3@example.test
+[2026-08-15 22:49:31 INF] [CorrelationId: e15bee0a-423e-4eb5-af07-749122b64e4a] HTTP POST /api/Auth/Login responded 200 in 13.3345 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: 9a36c6aa-e62e-42d6-85b9-fbda9dd7058e] User registered successfully. UserName: OutsiderB-070dd1cf38b3, UserId: 555dccdf-9481-43b6-9ab6-864fd22f15d0
+[2026-08-15 22:49:31 INF] [CorrelationId: 9a36c6aa-e62e-42d6-85b9-fbda9dd7058e] HTTP POST /api/Auth/Register responded 200 in 10.9645 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: 00550ae8-0eca-42c2-98e0-513a81b1065a] Login successful. Email: outsiderb-070dd1cf38b3@example.test
+[2026-08-15 22:49:31 INF] [CorrelationId: 00550ae8-0eca-42c2-98e0-513a81b1065a] HTTP POST /api/Auth/Login responded 200 in 10.3346 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: b984a309-3805-4876-b816-c0feaf9e03e4] Audit log created. Action: Add Team Member, Entity: TeamMember, EntityId: 1, WorkspaceId: 18, ActorMemberId: 24
+[2026-08-15 22:49:31 INF] [CorrelationId: b984a309-3805-4876-b816-c0feaf9e03e4] Team member added. TeamId: 1, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa, Role: "Member", By: 3611f4cf-c49b-4e83-bddb-44e802a7540f
+[2026-08-15 22:49:31 INF] [CorrelationId: b984a309-3805-4876-b816-c0feaf9e03e4] Team member added via API. TeamId: 1, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa, By: 3611f4cf-c49b-4e83-bddb-44e802a7540f
+[2026-08-15 22:49:31 INF] [CorrelationId: b984a309-3805-4876-b816-c0feaf9e03e4] HTTP POST /api/teams/1/members responded 204 in 422.6648 ms
+[2026-08-15 22:49:31 INF] [CorrelationId: 87f72922-8382-4bb9-84a1-bcf4dffc5abb] Audit log created. Action: Remove Team Member, Entity: TeamMember, EntityId: 1, WorkspaceId: 1, ActorMemberId: null
+[2026-08-15 22:49:31 INF] [CorrelationId: 87f72922-8382-4bb9-84a1-bcf4dffc5abb] Team member removed. TeamId: 1, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa, By: 296bbe6d-27e9-4f76-afe1-ce2f7d6c8f4a
+[2026-08-15 22:49:31 INF] [CorrelationId: 87f72922-8382-4bb9-84a1-bcf4dffc5abb] Team member removed via API. TeamId: 1, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa, By: 296bbe6d-27e9-4f76-afe1-ce2f7d6c8f4a
+[2026-08-15 22:49:31 INF] [CorrelationId: 87f72922-8382-4bb9-84a1-bcf4dffc5abb] HTTP DELETE /api/teams/1/members/7858b8cf-74e7-495c-957b-ad29887079aa responded 204 in 45.3802 ms
+[2026-08-15 22:49:32 INF] [CorrelationId: e4f67822-2209-4862-82af-64a25cb1b31f] Audit log created. Action: Add Project Member, Entity: ProjectMember, EntityId: 5, WorkspaceId: 18, ActorMemberId: 25
+[2026-08-15 22:49:32 INF] [CorrelationId: e4f67822-2209-4862-82af-64a25cb1b31f] Project member added. ProjectId: 9, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa, Role: "Member", By: 296bbe6d-27e9-4f76-afe1-ce2f7d6c8f4a
+[2026-08-15 22:49:32 INF] [CorrelationId: e4f67822-2209-4862-82af-64a25cb1b31f] Project member added via API. ProjectId: 9, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa, By: 296bbe6d-27e9-4f76-afe1-ce2f7d6c8f4a
+[2026-08-15 22:49:32 INF] [CorrelationId: e4f67822-2209-4862-82af-64a25cb1b31f] HTTP POST /api/projects/9/members responded 204 in 84.8240 ms
+[2026-08-15 22:49:32 INF] [CorrelationId: 5af51fdc-67f7-44a2-8de9-fe91c3585daa] Audit log created. Action: Remove Project Member, Entity: ProjectMember, EntityId: 5, WorkspaceId: 9, ActorMemberId: null
+[2026-08-15 22:49:32 INF] [CorrelationId: 5af51fdc-67f7-44a2-8de9-fe91c3585daa] Project member removed. ProjectId: 9, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa, By: 3611f4cf-c49b-4e83-bddb-44e802a7540f
+[2026-08-15 22:49:32 INF] [CorrelationId: 5af51fdc-67f7-44a2-8de9-fe91c3585daa] Project member removed via API. ProjectId: 9, UserId: 7858b8cf-74e7-495c-957b-ad29887079aa, By: 3611f4cf-c49b-4e83-bddb-44e802a7540f
+[2026-08-15 22:49:32 INF] [CorrelationId: 5af51fdc-67f7-44a2-8de9-fe91c3585daa] HTTP DELETE /api/projects/9/members/7858b8cf-74e7-495c-957b-ad29887079aa responded 204 in 32.2724 ms
+[2026-08-15 22:49:32 WRN] [CorrelationId: 66907a6d-e3bd-405c-b7c9-c7c7d2f27b5a] EnsureCanManageTeam pipeline failed. Reason: "Forbidden", TeamId: 1, UserId: 1d69ee83-ac00-4359-b726-c283f875d735
+[2026-08-15 22:49:32 ERR] [CorrelationId: 66907a6d-e3bd-405c-b7c9-c7c7d2f27b5a] HTTP POST /api/teams/1/members responded 500 in 6.2079 ms
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Teams.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 22:49:32 ERR] [CorrelationId: 66907a6d-e3bd-405c-b7c9-c7c7d2f27b5a] Unhandled exception. CorrelationId: 66907a6d-e3bd-405c-b7c9-c7c7d2f27b5a, Path: /api/teams/1/members, Method: POST
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Teams.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 22:49:32 WRN] [CorrelationId: 667e6ce5-b0bf-4fe6-a1fc-dd26498c8d88] EnsureCanManageProject pipeline failed. Reason: "Forbidden", ProjectId: 9, UserId: 1d69ee83-ac00-4359-b726-c283f875d735
+[2026-08-15 22:49:32 ERR] [CorrelationId: 667e6ce5-b0bf-4fe6-a1fc-dd26498c8d88] HTTP DELETE /api/projects/9/members/7858b8cf-74e7-495c-957b-ad29887079aa responded 500 in 4.2486 ms
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Projects.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 355
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 22:49:32 ERR] [CorrelationId: 667e6ce5-b0bf-4fe6-a1fc-dd26498c8d88] Unhandled exception. CorrelationId: 667e6ce5-b0bf-4fe6-a1fc-dd26498c8d88, Path: /api/projects/9/members/7858b8cf-74e7-495c-957b-ad29887079aa, Method: DELETE
+TaskManager.API.Exceptions.ForbiddenException: Role 'Member' does not have permission 'Projects.ManageMembers'.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 355
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 22:49:32 WRN] [CorrelationId: e4f8fc7f-392e-4607-9443-eea8f95fd8d5] EnsureCanManageTeam pipeline failed. Reason: "NotFound", TeamId: 1, UserId: 555dccdf-9481-43b6-9ab6-864fd22f15d0
+[2026-08-15 22:49:32 ERR] [CorrelationId: e4f8fc7f-392e-4607-9443-eea8f95fd8d5] HTTP POST /api/teams/1/members responded 500 in 4.2259 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 22:49:32 ERR] [CorrelationId: e4f8fc7f-392e-4607-9443-eea8f95fd8d5] Unhandled exception. CorrelationId: e4f8fc7f-392e-4607-9443-eea8f95fd8d5, Path: /api/teams/1/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 22:49:32 WRN] [CorrelationId: 2aeae8f9-553d-4ab9-8405-1562181df89e] EnsureCanManageProject pipeline failed. Reason: "NotFound", ProjectId: 9, UserId: 555dccdf-9481-43b6-9ab6-864fd22f15d0
+[2026-08-15 22:49:32 ERR] [CorrelationId: 2aeae8f9-553d-4ab9-8405-1562181df89e] HTTP DELETE /api/projects/9/members/7858b8cf-74e7-495c-957b-ad29887079aa responded 500 in 4.1882 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 355
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 22:49:32 ERR] [CorrelationId: 2aeae8f9-553d-4ab9-8405-1562181df89e] Unhandled exception. CorrelationId: 2aeae8f9-553d-4ab9-8405-1562181df89e, Path: /api/projects/9/members/7858b8cf-74e7-495c-957b-ad29887079aa, Method: DELETE
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.RemoveProjectMemberAsync(Int64 projectId, String userId, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 355
+   at TaskManager.API.Controllers.ProjectMembersController.RemoveMember(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 81
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 22:49:32 WRN] [CorrelationId: 495226e4-a71c-41bf-a8c6-8707b1ab3f91] EnsureCanManageTeam pipeline failed. Reason: "NotFound", TeamId: 2, UserId: 3611f4cf-c49b-4e83-bddb-44e802a7540f
+[2026-08-15 22:49:32 ERR] [CorrelationId: 495226e4-a71c-41bf-a8c6-8707b1ab3f91] HTTP POST /api/teams/2/members responded 500 in 3.4894 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 22:49:32 ERR] [CorrelationId: 495226e4-a71c-41bf-a8c6-8707b1ab3f91] Unhandled exception. CorrelationId: 495226e4-a71c-41bf-a8c6-8707b1ab3f91, Path: /api/teams/2/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageTeamAsync(Int64 teamId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 133
+   at TaskManager.API.Services.MembershipService.AddTeamMemberAsync(Int64 teamId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 240
+   at TaskManager.API.Controllers.TeamMembersController.AddMember(Int64 teamId, AddTeamMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\TeamMembersController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20
+[2026-08-15 22:49:32 WRN] [CorrelationId: 43746edc-f587-454e-b655-c3d72ec03639] EnsureCanManageProject pipeline failed. Reason: "NotFound", ProjectId: 10, UserId: 3611f4cf-c49b-4e83-bddb-44e802a7540f
+[2026-08-15 22:49:32 ERR] [CorrelationId: 43746edc-f587-454e-b655-c3d72ec03639] HTTP POST /api/projects/10/members responded 500 in 4.0637 ms
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.AddProjectMemberAsync(Int64 projectId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 286
+   at TaskManager.API.Controllers.ProjectMembersController.AddMember(Int64 projectId, AddProjectMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 69
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2026-08-15 22:49:32 ERR] [CorrelationId: 43746edc-f587-454e-b655-c3d72ec03639] Unhandled exception. CorrelationId: 43746edc-f587-454e-b655-c3d72ec03639, Path: /api/projects/10/members, Method: POST
+TaskManager.API.Exceptions.NotFoundException: Resource not found.
+   at TaskManager.API.Services.MembershipService.EnsureCanManageProjectAsync(Int64 projectId, String userId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 154
+   at TaskManager.API.Services.MembershipService.AddProjectMemberAsync(Int64 projectId, String userId, WorkspaceRole role, String currentUserId, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Services\MembershipService.cs:line 286
+   at TaskManager.API.Controllers.ProjectMembersController.AddMember(Int64 projectId, AddProjectMemberDto dto, CancellationToken cancellationToken) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Controllers\ProjectMembersController.cs:line 69
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at TaskManager.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.API\Middleware\GlobalExceptionMiddleware.cs:line 20

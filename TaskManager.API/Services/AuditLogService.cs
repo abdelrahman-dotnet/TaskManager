@@ -31,18 +31,26 @@ namespace TaskManager.API.Services
             _authService = authService;
         }
 
-        // Visibility (stage 1): audit logs are only visible to members of the workspaces
-        // the logs belong to. The permission stage (AuditLogsView) is enforced by the
-        // controller policy; ResourceCondition is not needed beyond the workspace scope.
+        // Workspace-scoped audit listing follows the shared pipeline:
+        // Visibility -> AuditLog.View permission. No resource condition is required.
         public async Task<PagedResult<AuditLogReadDto>> GetAllAsync(AuditLogQueryParams queryParams, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var query = _unitOfWork.AuditLogs.GetAllQuery().AsNoTracking();
+            var authResult = await _authService.AuthorizeAsync(
+                queryParams.WorkspaceId,
+                currentUserId,
+                Permissions.AuditLogView);
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning("Audit-log listing pipeline failed. Reason: {Reason}, WorkspaceId: {WorkspaceId}, UserId: {UserId}",
+                    authResult.FailureReason,
+                    queryParams.WorkspaceId,
+                    currentUserId);
+                throw authResult.ToAuthorizationException();
+            }
 
-            // Scope to workspaces where the caller is an active member (Visibility).
-            var memberWorkspaceIds = _unitOfWork.WorkspaceMembers.GetAllQuery()
-                .Where(wm => wm.UserId == currentUserId)
-                .Select(wm => wm.WorkspaceId);
-            query = query.Where(a => memberWorkspaceIds.Contains(a.WorkspaceId));
+            var query = _unitOfWork.AuditLogs.GetAllQuery()
+                .AsNoTracking()
+                .Where(a => a.WorkspaceId == queryParams.WorkspaceId);
 
             query = query.ApplyFiltering(queryParams, AuditLogFilterConfig.map);
 
@@ -92,7 +100,7 @@ namespace TaskManager.API.Services
 
             var log = new AuditLog
             {
-                WorkspaceId = workspaceId ?? 0,
+                WorkspaceId = workspaceId,
                 WorkspaceMemberId = actorMemberId,
                 Action = action,
                 EntityName = entityName,

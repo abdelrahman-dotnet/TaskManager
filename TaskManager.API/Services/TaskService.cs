@@ -142,6 +142,50 @@ namespace TaskManager.API.Services
             return result;
         }
 
+        public async Task<PagedResult<TaskReadDto>> GetTrashAsync(
+            long workspaceId,
+            string currentUserId,
+            CancellationToken cancellationToken = default)
+        {
+            // Trash is workspace-scoped so it can use the established pipeline:
+            // Visibility -> Tasks.ViewTrash permission (Owner/Admin) -> operation.
+            var authResult = await _authService.AuthorizeAsync(
+                workspaceId,
+                currentUserId,
+                Permissions.TasksViewTrash);
+
+            if (!authResult.Succeeded)
+            {
+                _logger.LogWarning(
+                    "ViewTrash pipeline failed. Reason: {Reason}, UserId: {UserId}, WorkspaceId: {WorkspaceId}",
+                    authResult.FailureReason, currentUserId, workspaceId);
+
+                throw authResult.FailureReason == AuthorizationFailureReason.NotFound
+                    ? new NotFoundException(authResult.Message ?? "Resource not found.")
+                    : new ForbiddenException(authResult.Message ?? "You are not authorized to perform this action.");
+            }
+
+            // Trash semantics are intentionally IsDeleted=true. Ignore the global
+            // soft-delete filter only for this authorized trash query.
+            var workspaceProjectIds = _unitOfWork.Projects.GetAllQuery()
+                .Where(project => project.WorkspaceId == workspaceId)
+                .Select(project => project.Id);
+
+            var query = _unitOfWork.Tasks.GetAllQuery()
+                .IgnoreQueryFilters()
+                .AsNoTracking()
+                .Where(task => task.IsDeleted && workspaceProjectIds.Contains(task.ProjectId));
+
+            var projected = query.ProjectTo<TaskReadDto>(_mapper.ConfigurationProvider);
+            var result = await projected.ToPagedResultAsync(1, 10, cancellationToken);
+
+            _logger.LogInformation(
+                "Workspace trash retrieved successfully. Count: {Count}, WorkspaceId: {WorkspaceId}",
+                result.Data.Count, workspaceId);
+
+            return result;
+        }
+
         public async Task<TaskDetailsReadDto> GetByIdAsync(long id, string currentUserId, CancellationToken cancellationToken = default)
         {
             var task = await _unitOfWork.Tasks.GetDetailsAsync(id, cancellationToken);
@@ -198,9 +242,24 @@ namespace TaskManager.API.Services
                     : new ForbiddenException(authResult.Message);
             }
 
+            // WORKSPACE PIVOT: the task creator FK is a WorkspaceMember. Resolve the
+            // already-authorized caller inside the task's resolved workspace; this is
+            // required relational data, not a second authorization mechanism.
+            var creatorMember = await _unitOfWork.WorkspaceMembers.GetAllQuery()
+                .Where(wm => wm.WorkspaceId == workspaceId
+                             && wm.UserId == currentUserId
+                             && wm.Status == WorkspaceMemberStatus.Active)
+                .FirstOrDefaultAsync(cancellationToken);
+            if (creatorMember is null)
+            {
+                _logger.LogWarning("CreateTask failed. Active workspace membership not found. UserId: {UserId}, WorkspaceId: {WorkspaceId}", currentUserId, workspaceId);
+                throw new NotFoundException("You are not an active member of this workspace.");
+            }
+
             var task = _mapper.Map<TaskItem>(dto);
             task.Status = TaskItemStatus.Todo;
             task.CreatedByUserId = currentUserId;
+            task.CreatedByWorkspaceMemberId = creatorMember.Id;
             task.CreatedAt = DateTime.UtcNow;
             task.UpdatedAt = DateTime.UtcNow;
             await _unitOfWork.Tasks.AddAsync(task, cancellationToken);
@@ -254,16 +313,13 @@ namespace TaskManager.API.Services
         // Condition (TaskDeleteCondition) -> Operation (Soft Delete).
         public async Task DeleteAsync(long id, long workspaceId, string currentUserId, CancellationToken cancellationToken = default)
         {
-            var task = await _unitOfWork.Tasks.GetByIdAsync(id, cancellationToken);
-            if (task == null)
-            {
-                _logger.LogWarning("DeleteTask failed. Task not found. TaskId: {TaskId}", id);
-                throw new NotFoundException("Task not found.");
-            }
+            // The route scope is a consistency check only. Authorization must always use
+            // the authoritative Task -> Project -> Workspace scope.
+            var (task, taskWorkspaceId) = await ResolveTaskWorkspaceAsync(id, cancellationToken);
 
             // === Authorization Pipeline (Ø§Ù„Ù…Ø±Ø§Ø­Ù„ 1+2+3) ===
             var authResult = await _authService.AuthorizeAsync(
-                workspaceId,
+                taskWorkspaceId,
                 currentUserId,
                 Permissions.TasksDelete,
                 new TaskDeleteCondition(task));
@@ -279,13 +335,23 @@ namespace TaskManager.API.Services
                     : new ForbiddenException(authResult.Message);
             }
 
+            // A mismatched route tenant is never an authorization authority. Hide the
+            // resource consistently after the real-workspace pipeline has evaluated it.
+            if (workspaceId != taskWorkspaceId)
+            {
+                _logger.LogWarning(
+                    "DeleteTask workspace mismatch. RouteWorkspaceId: {RouteWorkspaceId}, TaskWorkspaceId: {TaskWorkspaceId}, UserId: {UserId}, TaskId: {TaskId}",
+                    workspaceId, taskWorkspaceId, currentUserId, id);
+                throw new NotFoundException("Task not found.");
+            }
+
             // === Ø§Ù„Ù…Ø±Ø­Ù„Ø© 4: Business Rules (Dependencies - future) ===
 
             // === Ø§Ù„Ù…Ø±Ø­Ù„Ø© 5: Operation (Soft Delete) ===
             if (task.IsArchived)
                 throw new BadRequestException("This task is archived. Restore it first before deleting.");
             _unitOfWork.Tasks.Delete(task);
-            await _auditLogService.LogAsync(currentUserId, "Delete Task", nameof(TaskItem), id.ToString(), workspaceId);
+            await _auditLogService.LogAsync(currentUserId, "Delete Task", nameof(TaskItem), id.ToString(), taskWorkspaceId);
             await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Task deleted successfully. TaskId: {TaskId}, UserId: {UserId}", id, currentUserId);
@@ -388,7 +454,8 @@ namespace TaskManager.API.Services
                         Title = "Task Assigned",
                         Message = $"You have been assigned to task \"{task.Title}\"."
                     },
-                    currentUserId);
+                    currentUserId,
+                    triggeringPermission: Permissions.TasksAssign);
             }
             catch (Exception ex)
             {

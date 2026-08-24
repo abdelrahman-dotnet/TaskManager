@@ -11,6 +11,13 @@ namespace TaskManager.Business.Services.Interfaces
             string currentUserId,
             CancellationToken cancellationToken = default);
 
+        // PIPELINE: Visibility -> Permission (Tasks.ViewTrash) -> Operation.
+        // Trash is workspace-scoped and contains only soft-deleted tasks.
+        Task<PagedResult<TaskReadDto>> GetTrashAsync(
+            long workspaceId,
+            string currentUserId,
+            CancellationToken cancellationToken = default);
+
         Task<TaskDetailsReadDto> GetByIdAsync(
             long id,
             string currentUserId,

@@ -35,7 +35,7 @@ namespace TaskManager.API.Controllers
         // standard lists "Users" under the Ownership/ManageAny pattern. Defaulting to false
         // (strict self-only enforcement) below until this permission is added - see notes at
         // the end of this response instead of inventing a constant that doesn't exist yet.
-        private bool CanManageAnyUser => false;
+        private bool CanManageAnyUser => _currentUser.HasPermission(Permissions.UsersManageAny);
 
         [HttpGet]
         [Authorize(Policy = Permissions.UsersView)]

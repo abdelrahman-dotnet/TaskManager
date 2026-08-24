@@ -129,6 +129,7 @@ namespace TaskManager.API.Services
             var newValues = JsonSerializer.Serialize(new { Name = workspace.Name, Slug = workspace.Slug, OwnerUserId = currentUserId });
             await _auditLogService.LogAsync(currentUserId, "Create Workspace", nameof(Workspace), workspace.Id.ToString(), workspaceId: workspace.Id, oldValues: null, newValues: newValues, cancellationToken: cancellationToken);
             await _auditLogService.LogAsync(currentUserId, "Join Workspace as Owner", nameof(WorkspaceMember), ownerMember.Id.ToString(), workspaceId: workspace.Id, oldValues: null, newValues: JsonSerializer.Serialize(new { WorkspaceId = workspace.Id, Role = WorkspaceRole.Owner }), cancellationToken: cancellationToken);
+            await _unitOfWork.CompleteAsync(cancellationToken);
 
             _logger.LogInformation("Workspace created. Id: {Id}, Name: {Name}, OwnerUserId: {UserId}", workspace.Id, workspace.Name, currentUserId);
 
@@ -339,6 +340,8 @@ namespace TaskManager.API.Services
                 throw new NotFoundException("Caller membership not found.");
 
             // BR-WS-04
+            var oldValues = JsonSerializer.Serialize(new { CallerRole = caller.Role.ToString(), TargetRole = target.Role.ToString() });
+
             caller.Role = WorkspaceRole.Admin;
             caller.UpdatedAt = DateTime.UtcNow;
             target.Role = WorkspaceRole.Owner;
@@ -346,7 +349,7 @@ namespace TaskManager.API.Services
 
             await _auditLogService.LogAsync(currentUserId, "Transfer Ownership", nameof(WorkspaceMember), workspaceId.ToString(),
                 workspaceId: workspaceId,
-                oldValues: JsonSerializer.Serialize(new { CallerRole = caller.Role.ToString(), TargetRole = target.Role.ToString() }),
+                oldValues: oldValues,
                 newValues: JsonSerializer.Serialize(new { CallerRole = WorkspaceRole.Admin, TargetRole = WorkspaceRole.Owner }),
                 cancellationToken: cancellationToken);
             await _unitOfWork.CompleteAsync(cancellationToken);

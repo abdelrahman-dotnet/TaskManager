@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TaskManager.Business.UnitOfWork;
 using TaskManager.Bussiness.Interfaces;
+using TaskManager.Data.Entities;
 using TaskManager.Data.Enums;
 
 namespace TaskManager.Bussiness.Authorization
@@ -27,23 +28,49 @@ namespace TaskManager.Bussiness.Authorization
                     && m.UserId == currentUserId
                     && !m.IsDeleted);
 
-            if (member is null || member.Status != WorkspaceMemberStatus.Active)
-            {
-                return AuthorizationResult.NotFound();
-            }
-
             var workspace = await _unitOfWork.Workspaces.GetByIdAsync(workspaceId);
             if (workspace is null || workspace.IsDeleted)
             {
                 return AuthorizationResult.NotFound();
             }
 
-            // === S-8: Workspace Suspended → Read-only mode ===
-            // أي Permission غير View → Forbidden (مش NotFound، لأنه شايف الـ Workspace بس read-only).
-            if (workspace.Status == WorkspaceStatus.Suspended && !permission.EndsWith(".View"))
+            // Workspace suspension cascades the Owner's membership to Suspended.
+            // The Owner must still be able to pass the existing pipeline to reactivate
+            // that same workspace; all other suspended-membership requests remain hidden.
+            var isSuspendedOwnerRecovery = workspace.Status == WorkspaceStatus.Suspended
+                && member is not null
+                && member.Status == WorkspaceMemberStatus.Suspended
+                && member.Role == WorkspaceRole.Owner
+                && permission == Permissions.WorkspaceUpdate;
+
+            var isArchivedOwnerRecovery = workspace.Status == WorkspaceStatus.Archived
+                && member is not null
+                && member.Status == WorkspaceMemberStatus.Active
+                && member.Role == WorkspaceRole.Owner
+                && permission == Permissions.WorkspaceUpdate;
+
+            if (member is null || (member.Status != WorkspaceMemberStatus.Active && !isSuspendedOwnerRecovery))
+            {
+                return AuthorizationResult.NotFound();
+            }
+
+            // === S-8 / BR-WS-03: Non-active workspace → Read-only mode ===
+            // Non-view operations remain forbidden, except the Owner's recovery
+            // authorization above; the catalog still determines the actual role permission.
+            if (workspace.Status == WorkspaceStatus.Suspended
+                && !permission.EndsWith(".View")
+                && !isSuspendedOwnerRecovery)
             {
                 return AuthorizationResult.Forbidden(
                     "This workspace is suspended. Only read operations are allowed.");
+            }
+
+            if (workspace.Status == WorkspaceStatus.Archived
+                && !permission.EndsWith(".View")
+                && !isArchivedOwnerRecovery)
+            {
+                return AuthorizationResult.Forbidden(
+                    "This workspace is archived. Only read operations are allowed.");
             }
 
             // === المرحلة 2: Permission ===
@@ -64,6 +91,72 @@ namespace TaskManager.Bussiness.Authorization
             }
 
             return AuthorizationResult.Success();
+        }
+
+        public async Task<List<long>> GetAuthorizedWorkspaceMemberIdsAsync(
+            string currentUserId,
+            string permission,
+            Func<WorkspaceMember, IResourceCondition?> resourceConditionFactory,
+            CancellationToken cancellationToken = default)
+        {
+            var candidates = await (
+                from member in _unitOfWork.WorkspaceMembers.GetAllQuery()
+                join workspace in _unitOfWork.Workspaces.GetAllQuery()
+                    on member.WorkspaceId equals workspace.Id
+                where member.UserId == currentUserId
+                    && !member.IsDeleted
+                    && !workspace.IsDeleted
+                select new { Member = member, Workspace = workspace }
+            ).ToListAsync(cancellationToken);
+
+            var authorizedMembershipIds = new List<long>();
+            foreach (var candidate in candidates)
+            {
+                var isSuspendedOwnerRecovery = candidate.Workspace.Status == WorkspaceStatus.Suspended
+                    && candidate.Member.Status == WorkspaceMemberStatus.Suspended
+                    && candidate.Member.Role == WorkspaceRole.Owner
+                    && permission == Permissions.WorkspaceUpdate;
+
+                var isArchivedOwnerRecovery = candidate.Workspace.Status == WorkspaceStatus.Archived
+                    && candidate.Member.Status == WorkspaceMemberStatus.Active
+                    && candidate.Member.Role == WorkspaceRole.Owner
+                    && permission == Permissions.WorkspaceUpdate;
+
+                if (candidate.Member.Status != WorkspaceMemberStatus.Active && !isSuspendedOwnerRecovery)
+                {
+                    continue;
+                }
+
+                if (candidate.Workspace.Status == WorkspaceStatus.Suspended
+                    && !permission.EndsWith(".View")
+                    && !isSuspendedOwnerRecovery)
+                {
+                    continue;
+                }
+
+                if (candidate.Workspace.Status == WorkspaceStatus.Archived
+                    && !permission.EndsWith(".View")
+                    && !isArchivedOwnerRecovery)
+                {
+                    continue;
+                }
+
+                if (!RolePermissionCatalog.HasPermission(candidate.Member.Role, permission))
+                {
+                    continue;
+                }
+
+                var resourceCondition = resourceConditionFactory(candidate.Member);
+                if (resourceCondition is not null
+                    && !await resourceCondition.IsSatisfiedAsync(candidate.Member))
+                {
+                    continue;
+                }
+
+                authorizedMembershipIds.Add(candidate.Member.Id);
+            }
+
+            return authorizedMembershipIds;
         }
     }
 }

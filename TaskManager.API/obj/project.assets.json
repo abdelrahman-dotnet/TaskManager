@@ -7792,7 +7792,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Abdelrahman\\.nuget\\packages\\": {}
+    "C:\\Users\\Abdelrahman\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -7803,13 +7804,19 @@
       "packagesPath": "C:\\Users\\Abdelrahman\\.nuget\\packages\\",
       "outputPath": "D:\\asp.net\\API Projects\\TaskManagerRefactor\\TaskManager.API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Abdelrahman\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Abdelrahman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

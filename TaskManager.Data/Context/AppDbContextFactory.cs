@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace TaskManager.Data.Context
@@ -7,9 +7,22 @@ namespace TaskManager.Data.Context
     {
         public AppDbContext CreateDbContext(string[] args)
         {
+            // Design-time tooling must never silently target an unrelated database.
+            // Supply TASKMANAGER_DESIGNTIME_CONNECTION for EF commands, or use the
+            // standard .NET configuration environment-variable convention.
+            var connectionString =
+                Environment.GetEnvironmentVariable("TASKMANAGER_DESIGNTIME_CONNECTION") ??
+                Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new InvalidOperationException(
+                    "A design-time database target is required. Set TASKMANAGER_DESIGNTIME_CONNECTION " +
+                    "(preferred) or ConnectionStrings__DefaultConnection before running EF Core tooling.");
+            }
+
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            // Use a dummy connection string just for migration generation
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TaskManagerDB;Trusted_Connection=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer(connectionString);
 
             return new AppDbContext(optionsBuilder.Options);
         }

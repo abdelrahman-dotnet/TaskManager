@@ -9,6 +9,7 @@ namespace TaskManager.API.Mapping
         public RoleProfile()
         {
             CreateMap<ApplicationRole, RoleReadDto>();
+            CreateMap<RoleCreateAndUpdateDto, ApplicationRole>();
         }
     }
 }

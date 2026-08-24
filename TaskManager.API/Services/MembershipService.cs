@@ -237,6 +237,8 @@ namespace TaskManager.API.Services
 
         public async Task AddTeamMemberAsync(long teamId, string userId, WorkspaceRole role, string currentUserId, CancellationToken cancellationToken = default)
         {
+            await EnsureCanManageTeamAsync(teamId, currentUserId, cancellationToken);
+
             var team = await _unitOfWork.Teams.GetByIdAsync(teamId, cancellationToken);
             if (team is null)
                 throw new NotFoundException("Team not found.");
@@ -281,6 +283,8 @@ namespace TaskManager.API.Services
 
         public async Task AddProjectMemberAsync(long projectId, string userId, WorkspaceRole role, string currentUserId, CancellationToken cancellationToken = default)
         {
+            await EnsureCanManageProjectAsync(projectId, currentUserId, cancellationToken);
+
             var project = await _unitOfWork.Projects.GetByIdAsync(projectId, cancellationToken);
             if (project is null)
                 throw new NotFoundException("Project not found.");
@@ -325,7 +329,14 @@ namespace TaskManager.API.Services
 
         public async Task RemoveTeamMemberAsync(long teamId, string userId, string currentUserId, CancellationToken cancellationToken = default)
         {
+            await EnsureCanManageTeamAsync(teamId, currentUserId, cancellationToken);
+
+            var team = await _unitOfWork.Teams.GetByIdAsync(teamId, cancellationToken);
+            if (team is null)
+                throw new NotFoundException("Team not found.");
+
             var member = await _unitOfWork.TeamMembers.GetAllQuery()
+                .Include(tm => tm.WorkspaceMember)
                 .Where(tm => tm.TeamId == teamId && tm.WorkspaceMember.UserId == userId)
                 .FirstOrDefaultAsync(cancellationToken);
 
@@ -335,9 +346,8 @@ namespace TaskManager.API.Services
             var oldValues = JsonSerializer.Serialize(new { TeamId = teamId, UserId = userId, WorkspaceRole = member.WorkspaceMember.Role });
 
             _unitOfWork.TeamMembers.Delete(member);
+            await _auditLogService.LogAsync(currentUserId, "Remove Team Member", nameof(TeamMember), member.Id.ToString(), workspaceId: team.WorkspaceId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
             await _unitOfWork.CompleteAsync(cancellationToken);
-
-            await _auditLogService.LogAsync(currentUserId, "Remove Team Member", nameof(TeamMember), member.Id.ToString(), workspaceId: teamId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
 
             _logger.LogInformation("Team member removed. TeamId: {TeamId}, UserId: {UserId}, By: {CurrentUserId}",
                 teamId, userId, currentUserId);
@@ -345,7 +355,14 @@ namespace TaskManager.API.Services
 
         public async Task RemoveProjectMemberAsync(long projectId, string userId, string currentUserId, CancellationToken cancellationToken = default)
         {
+            await EnsureCanManageProjectAsync(projectId, currentUserId, cancellationToken);
+
+            var project = await _unitOfWork.Projects.GetByIdAsync(projectId, cancellationToken);
+            if (project is null)
+                throw new NotFoundException("Project not found.");
+
             var member = await _unitOfWork.ProjectMembers.GetAllQuery()
+                .Include(pm => pm.WorkspaceMember)
                 .Where(pm => pm.ProjectId == projectId && pm.WorkspaceMember.UserId == userId)
                 .FirstOrDefaultAsync(cancellationToken);
 
@@ -355,9 +372,8 @@ namespace TaskManager.API.Services
             var oldValues = JsonSerializer.Serialize(new { ProjectId = projectId, UserId = userId, WorkspaceRole = member.WorkspaceMember.Role });
 
             _unitOfWork.ProjectMembers.Delete(member);
+            await _auditLogService.LogAsync(currentUserId, "Remove Project Member", nameof(ProjectMember), member.Id.ToString(), workspaceId: project.WorkspaceId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
             await _unitOfWork.CompleteAsync(cancellationToken);
-
-            await _auditLogService.LogAsync(currentUserId, "Remove Project Member", nameof(ProjectMember), member.Id.ToString(), workspaceId: projectId, oldValues: oldValues, newValues: null, cancellationToken: cancellationToken);
 
             _logger.LogInformation("Project member removed. ProjectId: {ProjectId}, UserId: {UserId}, By: {CurrentUserId}",
                 projectId, userId, currentUserId);
