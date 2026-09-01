@@ -1,0 +1,15 @@
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\bin\Debug\net10.0\TaskManager.Data.deps.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\bin\Debug\net10.0\TaskManager.Data.runtimeconfig.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\bin\Debug\net10.0\TaskManager.Data.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\bin\Debug\net10.0\TaskManager.Data.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.csproj.AssemblyReference.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.AssemblyInfoInputs.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.AssemblyInfo.cs
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.csproj.CoreCompileInputs.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.sourcelink.json
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\refint\TaskManager.Data.dll
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.pdb
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\TaskManager.Data.genruntimeconfig.cache
+D:\asp.net\API Projects\TaskManagerRefactor\TaskManager.Data\obj\Debug\net10.0\ref\TaskManager.Data.dll

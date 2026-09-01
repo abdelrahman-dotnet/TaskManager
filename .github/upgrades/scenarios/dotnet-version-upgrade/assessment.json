@@ -1,0 +1,2035 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-08-24T13:02:40.7190635Z",
+  "analysisEndTime": "2026-08-24T13:02:43.7676656Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 3,
+      "issues": 7,
+      "incidents": 68,
+      "effort": 68
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 22,
+        "Optional": 4,
+        "Potential": 42,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 13,
+        "Project": 3,
+        "Api": 52
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "TaskManager.API\\TaskManager.API.csproj",
+      "startingProject": true,
+      "issues": 6,
+      "storyPoints": 51,
+      "properties": {
+        "appName": "TaskManager.API",
+        "projectKind": "AspNetCore",
+        "frameworks": [
+          "net6.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 205,
+        "numberOfCodeFiles": 203,
+        "linesTotal": 10085,
+        "linesOfCode": 10002,
+        "totalApiScanned": 12951,
+        "minLinesOfCodeToChange": 42,
+        "maxLinesOfCodeToChange": 42
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "f33eabaa-00d2-4c96-9255-fd27e364761d",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Authentication.JwtBearer, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Authentication.JwtBearer, and replace with new package Microsoft.AspNetCore.Authentication.JwtBearer 10.0.11",
+              "protected": "Microsoft.AspNetCore.Authentication.JwtBearer, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Authentication.JwtBearer, and replace with new package Microsoft.AspNetCore.Authentication.JwtBearer 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "Microsoft.AspNetCore.Authentication.JwtBearer, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Authentication.JwtBearer, and replace with new package Microsoft.AspNetCore.Authentication.JwtBearer 10.0.11",
+            "protectedSnippet": "Microsoft.AspNetCore.Authentication.JwtBearer, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Authentication.JwtBearer, and replace with new package Microsoft.AspNetCore.Authentication.JwtBearer 10.0.11",
+            "label": "Microsoft.AspNetCore.Authentication.JwtBearer 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "6a6b0173-b032-4662-8d0f-f97c1d0f0c3f",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Design, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.11",
+              "protected": "Microsoft.EntityFrameworkCore.Design, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Design, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.11",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Design, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.11",
+            "label": "Microsoft.EntityFrameworkCore.Design 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Design",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "c3a80910-29aa-4217-926b-53e7a7dbc631",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Caching.StackExchangeRedis, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.StackExchangeRedis, and replace with new package Microsoft.Extensions.Caching.StackExchangeRedis 10.0.11",
+              "protected": "Microsoft.Extensions.Caching.StackExchangeRedis, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.StackExchangeRedis, and replace with new package Microsoft.Extensions.Caching.StackExchangeRedis 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "Microsoft.Extensions.Caching.StackExchangeRedis, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.StackExchangeRedis, and replace with new package Microsoft.Extensions.Caching.StackExchangeRedis 10.0.11",
+            "protectedSnippet": "Microsoft.Extensions.Caching.StackExchangeRedis, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.Extensions.Caching.StackExchangeRedis, and replace with new package Microsoft.Extensions.Caching.StackExchangeRedis 10.0.11",
+            "label": "Microsoft.Extensions.Caching.StackExchangeRedis 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Caching.StackExchangeRedis",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "68c54172-b6a3-4125-b478-39cf71dce803",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore, and replace with new package Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore 10.0.11",
+              "protected": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore, and replace with new package Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore, and replace with new package Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore 10.0.11",
+            "protectedSnippet": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore, and replace with new package Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore 10.0.11",
+            "label": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e29e6063-78a6-4a11-9864-8c135ae4fcdd",
+          "ruleId": "NuGet.0004",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "AutoMapper, 12.0.1\n\nRecommendation:\n\nAutoMapper, 16.2.0",
+              "protected": "AutoMapper, 12.0.1\n\nRecommendation:\n\nAutoMapper, 16.2.0"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "AutoMapper, 12.0.1\n\nRecommendation:\n\nAutoMapper, 16.2.0",
+            "protectedSnippet": "AutoMapper, 12.0.1\n\nRecommendation:\n\nAutoMapper, 16.2.0",
+            "label": "AutoMapper 12.0.1",
+            "properties": {
+              "PackageId": "AutoMapper",
+              "PackageVersion": "12.0.1",
+              "PackageNewVersion": "16.2.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "c545bdac-257e-46b6-8dac-df5cbd32c889",
+          "ruleId": "NuGet.0005",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "AutoMapper.Extensions.Microsoft.DependencyInjection, 12.0.1\n\nRecommendation:\n\nThe functionality of this package is now included directly in AutoMapper.\nRemove AutoMapper.Extensions.Microsoft.DependencyInjection, and replace with new package AutoMapper.Extensions.Microsoft.DependencyInjection, 12.0.1",
+              "protected": "AutoMapper.Extensions.Microsoft.DependencyInjection, 12.0.1\n\nRecommendation:\n\nThe functionality of this package is now included directly in AutoMapper.\nRemove AutoMapper.Extensions.Microsoft.DependencyInjection, and replace with new package AutoMapper.Extensions.Microsoft.DependencyInjection, 12.0.1"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "AutoMapper.Extensions.Microsoft.DependencyInjection, 12.0.1\n\nRecommendation:\n\nThe functionality of this package is now included directly in AutoMapper.\nRemove AutoMapper.Extensions.Microsoft.DependencyInjection, and replace with new package AutoMapper.Extensions.Microsoft.DependencyInjection, 12.0.1",
+            "protectedSnippet": "AutoMapper.Extensions.Microsoft.DependencyInjection, 12.0.1\n\nRecommendation:\n\nThe functionality of this package is now included directly in AutoMapper.\nRemove AutoMapper.Extensions.Microsoft.DependencyInjection, and replace with new package AutoMapper.Extensions.Microsoft.DependencyInjection, 12.0.1",
+            "label": "AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1",
+            "properties": {
+              "PackageId": "AutoMapper.Extensions.Microsoft.DependencyInjection",
+              "PackageVersion": "12.0.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "cea9839b-a06c-423e-a212-c307bcd12633",
+          "ruleId": "NuGet.0005",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "FluentValidation.AspNetCore, 11.3.1\n\nRecommendation:\n\nShould be replaced.\nRemove FluentValidation.AspNetCore, and replace with new package FluentValidation.AspNetCore, 11.3.1",
+              "protected": "FluentValidation.AspNetCore, 11.3.1\n\nRecommendation:\n\nShould be replaced.\nRemove FluentValidation.AspNetCore, and replace with new package FluentValidation.AspNetCore, 11.3.1"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "FluentValidation.AspNetCore, 11.3.1\n\nRecommendation:\n\nShould be replaced.\nRemove FluentValidation.AspNetCore, and replace with new package FluentValidation.AspNetCore, 11.3.1",
+            "protectedSnippet": "FluentValidation.AspNetCore, 11.3.1\n\nRecommendation:\n\nShould be replaced.\nRemove FluentValidation.AspNetCore, and replace with new package FluentValidation.AspNetCore, 11.3.1",
+            "label": "FluentValidation.AspNetCore 11.3.1",
+            "properties": {
+              "PackageId": "FluentValidation.AspNetCore",
+              "PackageVersion": "11.3.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a42f972f-d129-4b9c-bfa5-7728379e7815",
+          "ruleId": "NuGet.0005",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.IdentityModel.Tokens.Jwt, 6.36.0\n\nRecommendation:\n\nMove to latest https://aka.ms/IdentityModel/LTS\nRemove System.IdentityModel.Tokens.Jwt, and replace with new package System.IdentityModel.Tokens.Jwt, 8.22.0",
+              "protected": "System.IdentityModel.Tokens.Jwt, 6.36.0\n\nRecommendation:\n\nMove to latest https://aka.ms/IdentityModel/LTS\nRemove System.IdentityModel.Tokens.Jwt, and replace with new package System.IdentityModel.Tokens.Jwt, 8.22.0"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "System.IdentityModel.Tokens.Jwt, 6.36.0\n\nRecommendation:\n\nMove to latest https://aka.ms/IdentityModel/LTS\nRemove System.IdentityModel.Tokens.Jwt, and replace with new package System.IdentityModel.Tokens.Jwt, 8.22.0",
+            "protectedSnippet": "System.IdentityModel.Tokens.Jwt, 6.36.0\n\nRecommendation:\n\nMove to latest https://aka.ms/IdentityModel/LTS\nRemove System.IdentityModel.Tokens.Jwt, and replace with new package System.IdentityModel.Tokens.Jwt, 8.22.0",
+            "label": "System.IdentityModel.Tokens.Jwt 6.36.0",
+            "properties": {
+              "PackageId": "System.IdentityModel.Tokens.Jwt",
+              "PackageVersion": "6.36.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f279801b-a0a6-4599-98cb-6b1886a37e63",
+          "ruleId": "Project.0002",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net6.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net6.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\TaskManager.API.csproj",
+            "snippet": "Current target framework: net6.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net6.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net6.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "1d7ef32e-e1eb-491a-8495-efbeeadd9732",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.MaximumHistoryEntriesPerEndpoint(\r\n                configuration.GetValue\u003Cint\u003E(\u0022HealthChecksUI:MaximumHistoryEntriesPerEndpoint\u0022));",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\HealthChecks\\HealthCheckExtensions.cs",
+            "snippet": "options.MaximumHistoryEntriesPerEndpoint(\r\n                configuration.GetValue\u003Cint\u003E(\u0022HealthChecksUI:MaximumHistoryEntriesPerEndpoint\u0022));",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "properties": {
+              "CharCount": "3943"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 40,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "59318490-453e-4e34-a4cf-5cf8873e59df",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.SetEvaluationTimeInSeconds(\r\n                configuration.GetValue\u003Cint\u003E(\u0022HealthChecksUI:EvaluationTimeInSeconds\u0022));",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\HealthChecks\\HealthCheckExtensions.cs",
+            "snippet": "options.SetEvaluationTimeInSeconds(\r\n                configuration.GetValue\u003Cint\u003E(\u0022HealthChecksUI:EvaluationTimeInSeconds\u0022));",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "properties": {
+              "CharCount": "3943"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 37,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f08640b0-4371-4be8-b3e1-b2542b01a4e6",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "services.AddHealthChecksUI(options =\u003E\r\n        {\r\n            options.SetEvaluationTimeInSeconds(\r\n                configuration.GetValue\u003Cint\u003E(\u0022HealthChecksUI:EvaluationTimeInSeconds\u0022));\r\n\r\n            options.MaximumHistoryEntriesPerEndpoint(\r\n                configuration.GetValue\u003Cint\u003E(\u0022HealthChecksUI:MaximumHistoryEntriesPerEndpoint\u0022));\r\n\r\n            options.AddHealthCheckEndpoint(\r\n                \u0022TaskManager API\u0022,\r\n                endpoint);\r\n        })\r\n        .AddInMemoryStorage();",
+              "protected": "T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\HealthChecks\\HealthCheckExtensions.cs",
+            "snippet": "services.AddHealthChecksUI(options =\u003E\r\n        {\r\n            options.SetEvaluationTimeInSeconds(\r\n                configuration.GetValue\u003Cint\u003E(\u0022HealthChecksUI:EvaluationTimeInSeconds\u0022));\r\n\r\n            options.MaximumHistoryEntriesPerEndpoint(\r\n                configuration.GetValue\u003Cint\u003E(\u0022HealthChecksUI:MaximumHistoryEntriesPerEndpoint\u0022));\r\n\r\n            options.AddHealthCheckEndpoint(\r\n                \u0022TaskManager API\u0022,\r\n                endpoint);\r\n        })\r\n        .AddInMemoryStorage();",
+            "protectedSnippet": "T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions",
+            "label": "T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions",
+            "properties": {
+              "CharCount": "3943"
+            },
+            "line": 35,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "25d589e9-1604-463a-835f-892bb8abf1a2",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, mapped, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\MembershipController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, mapped, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "5943"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 61,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "dab77196-189a-482e-b18d-190bd1bf8206",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, user, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\UserController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, user, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "5802"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 76,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b7c38b4f-8487-474a-8439-d0c4db4961ce",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\UserController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "5802"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 55,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "663e310a-c2d2-4336-96c9-aaf675c64ec7",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, project, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\ProjectController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, project, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "7539"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 69,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a992941f-36ab-4bc9-98ac-b0a06f41ec5f",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\ProjectController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "7539"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "dcdbf29a-6981-4264-aac5-a9c3364a3aba",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, role, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\RoleController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, role, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "4143"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 67,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "de255246-7dd4-4dbe-86db-fbf23b6f09e7",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\RoleController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "4143"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 47,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f9128721-fc3d-4313-a934-5abe3b86aea4",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\AuditLogController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "2356"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "d1169b0a-b352-4638-902e-640b12a10876",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\TaskController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "9611"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 170,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "e1624680-2d09-4fb9-9d92-dfc2b7ce85a9",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, task, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\TaskController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, task, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "9611"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 71,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b4e0c970-6199-425e-8845-96c919f5f004",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\TaskController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "9611"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 51,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "1b1fd669-d3c2-423d-b186-f33e53ffbc9c",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, team, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\TeamController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, team, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "4708"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 69,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "390da47c-9dda-42ad-ae92-f038fefa7aec",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\TeamController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "4708"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "69003769-925c-4cf6-ada7-2775a9979e78",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\TeamMembersController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "4449"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 58,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a309be97-32f4-4433-8e8d-bab273508fe7",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, comments, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\CommentController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, comments, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "5088"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 74,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "24b9554a-5b2c-4521-b5e3-3ad1c953d424",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\CommentController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "5088"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 53,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a4d8259a-ceda-4d1f-ba8d-01af73f4908b",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\ProjectMembersController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "4471"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 57,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "3bd775f1-5429-45a4-8b18-7c5c8fb4ab34",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, invitation, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\InvitationController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, invitation, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "8136"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 121,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f9f0bfb5-2e1d-44e1-aad3-f915723c9efa",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\InvitationController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "8136"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 98,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "15da5499-02ae-4961-83db-effce73196c8",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\NotificationController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "2831"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 46,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "2e87af5d-baca-4eac-aad2-ce3a7bc0ff3d",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\WorkspaceController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "7349"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 72,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "452e769e-a906-4035-8bb0-4a08cd7a4dcc",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\TaskAssignmentController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "2249"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 44,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "6a5ac7ee-2a90-4178-80a3-935e1dbda0bd",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\AttachmentController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "4176"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 51,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "646e4bde-46eb-4ec2-9db5-b58fca1d0c89",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Controllers\\TaskStatusHistoryController.cs",
+            "snippet": "await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "properties": {
+              "CharCount": "2348"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 44,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "5fffd35b-e784-41d9-a092-45286b1a1b82",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var maximumFileSizeBytes = configuration.GetValue\u003Clong?\u003E(\u0022AttachmentUpload:MaxFileSizeBytes\u0022)\n                ?? DefaultMaximumFileSizeBytes;",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Validators\\Attachment\\AttachmentCreateValidator.cs",
+            "snippet": "var maximumFileSizeBytes = configuration.GetValue\u003Clong?\u003E(\u0022AttachmentUpload:MaxFileSizeBytes\u0022)\n                ?? DefaultMaximumFileSizeBytes;",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "properties": {
+              "CharCount": "2978"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 12,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "6c9cea2e-5e61-4028-94a9-c68315f4a141",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var maximumFileSizeBytes = configuration.GetValue\u003Clong?\u003E(\u0022AttachmentUpload:MaxFileSizeBytes\u0022)\n                ?? DefaultMaximumFileSizeBytes;",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Validators\\Attachment\\AttachmentCreateValidator.cs",
+            "snippet": "var maximumFileSizeBytes = configuration.GetValue\u003Clong?\u003E(\u0022AttachmentUpload:MaxFileSizeBytes\u0022)\n                ?? DefaultMaximumFileSizeBytes;",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "properties": {
+              "CharCount": "2978"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 12,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "4fb91498-6e73-4eef-a770-5ac0b0543b3f",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var allowedCorsOrigins = builder.Configuration.GetSection(\u0022Cors:AllowedOrigins\u0022).Get\u003Cstring[]\u003E() ?? Array.Empty\u003Cstring\u003E();",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.Get\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "var allowedCorsOrigins = builder.Configuration.GetSection(\u0022Cors:AllowedOrigins\u0022).Get\u003Cstring[]\u003E() ?? Array.Empty\u003Cstring\u003E();",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.Get\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.Get\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration)",
+            "properties": {
+              "CharCount": "13260"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 217,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "eeb9fe4a-a22a-492f-8f39-072227fd7a85",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.TokenValidationParameters = new TokenValidationParameters\n                {\n                    ValidateIssuer = true,\n                    ValidateAudience = true,\n                    ValidateLifetime = true,\n                    ValidateIssuerSigningKey = true,\n\n                    ValidIssuer = jwtSettings.Issuer,\n                    ValidAudience = jwtSettings.Audience,\n                    IssuerSigningKey = new SymmetricSecurityKey(key)\n                };",
+              "protected": "P:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.TokenValidationParameters"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "options.TokenValidationParameters = new TokenValidationParameters\n                {\n                    ValidateIssuer = true,\n                    ValidateAudience = true,\n                    ValidateLifetime = true,\n                    ValidateIssuerSigningKey = true,\n\n                    ValidIssuer = jwtSettings.Issuer,\n                    ValidAudience = jwtSettings.Audience,\n                    IssuerSigningKey = new SymmetricSecurityKey(key)\n                };",
+            "protectedSnippet": "P:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.TokenValidationParameters",
+            "label": "P:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.TokenValidationParameters",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 166,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "3ff7949d-cc29-47d0-add2-334c9c935088",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;",
+              "protected": "T:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;",
+            "protectedSnippet": "T:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults",
+            "label": "T:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 163,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "96868383-e6f4-4d70-a514-04b6615f2bce",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;",
+              "protected": "F:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;",
+            "protectedSnippet": "F:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme",
+            "label": "F:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 163,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "8eb1d67b-b337-4092-a1f1-d7262ca9d59f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;",
+              "protected": "T:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;",
+            "protectedSnippet": "T:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults",
+            "label": "T:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 162,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "0952fe63-b269-4762-9edf-b727ea78c01f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;",
+              "protected": "F:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;",
+            "protectedSnippet": "F:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme",
+            "label": "F:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 162,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "41adda19-b10d-4ae2-bc78-b7b5a6d1b1c3",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddAuthentication(options =\u003E\n            {\n                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;\n                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;\n            }).AddJwtBearer(options =\u003E\n            {\n                options.TokenValidationParameters = new TokenValidationParameters\n                {\n                    ValidateIssuer = true,\n                    ValidateAudience = true,\n                    ValidateLifetime = true,\n                    ValidateIssuerSigningKey = true,\n\n                    ValidIssuer = jwtSettings.Issuer,\n                    ValidAudience = jwtSettings.Audience,\n                    IssuerSigningKey = new SymmetricSecurityKey(key)\n                };\n            });",
+              "protected": "T:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "builder.Services.AddAuthentication(options =\u003E\n            {\n                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;\n                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;\n            }).AddJwtBearer(options =\u003E\n            {\n                options.TokenValidationParameters = new TokenValidationParameters\n                {\n                    ValidateIssuer = true,\n                    ValidateAudience = true,\n                    ValidateLifetime = true,\n                    ValidateIssuerSigningKey = true,\n\n                    ValidIssuer = jwtSettings.Issuer,\n                    ValidAudience = jwtSettings.Audience,\n                    IssuerSigningKey = new SymmetricSecurityKey(key)\n                };\n            });",
+            "protectedSnippet": "T:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions",
+            "label": "T:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 160,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "905d2e1f-b856-4fff-95f1-7ea3e4d78d90",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddAuthentication(options =\u003E\n            {\n                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;\n                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;\n            }).AddJwtBearer(options =\u003E\n            {\n                options.TokenValidationParameters = new TokenValidationParameters\n                {\n                    ValidateIssuer = true,\n                    ValidateAudience = true,\n                    ValidateLifetime = true,\n                    ValidateIssuerSigningKey = true,\n\n                    ValidIssuer = jwtSettings.Issuer,\n                    ValidAudience = jwtSettings.Audience,\n                    IssuerSigningKey = new SymmetricSecurityKey(key)\n                };\n            });",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions.AddJwtBearer(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.Action{Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions})"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "builder.Services.AddAuthentication(options =\u003E\n            {\n                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;\n                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;\n            }).AddJwtBearer(options =\u003E\n            {\n                options.TokenValidationParameters = new TokenValidationParameters\n                {\n                    ValidateIssuer = true,\n                    ValidateAudience = true,\n                    ValidateLifetime = true,\n                    ValidateIssuerSigningKey = true,\n\n                    ValidIssuer = jwtSettings.Issuer,\n                    ValidAudience = jwtSettings.Audience,\n                    IssuerSigningKey = new SymmetricSecurityKey(key)\n                };\n            });",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions.AddJwtBearer(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.Action{Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions})",
+            "label": "M:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions.AddJwtBearer(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.Action{Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions})",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 160,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b4ef74ec-a2ff-4ec5-8bb8-444e2691e9c5",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var jwtSettings = builder.Configuration.GetSection(\u0022JWT\u0022).Get\u003CJwtSettings\u003E()\n                ?? throw new InvalidOperationException(\u0022JWT configuration is required.\u0022);",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.Get\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "var jwtSettings = builder.Configuration.GetSection(\u0022JWT\u0022).Get\u003CJwtSettings\u003E()\n                ?? throw new InvalidOperationException(\u0022JWT configuration is required.\u0022);",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.Get\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.Get\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration)",
+            "properties": {
+              "CharCount": "13260"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 149,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "82ab5915-aa9b-4c47-aefd-8eaa580ac52f",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.Configure\u003CJwtSettings\u003E(builder.Configuration.GetSection(\u0022JWT\u0022));",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "builder.Services.Configure\u003CJwtSettings\u003E(builder.Configuration.GetSection(\u0022JWT\u0022));",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)",
+            "label": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)",
+            "properties": {
+              "CharCount": "13260"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 126,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f8bafc9b-0a68-4e5a-964d-a6e30669014a",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());",
+              "protected": "T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());",
+            "protectedSnippet": "T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions",
+            "label": "T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions",
+            "properties": {
+              "CharCount": "13260"
+            },
+            "line": 124,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "8e0b48c3-1f3d-441e-a8e8-fd0b4a8eccc3",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6. Add package reference to Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E()\n                .AddEntityFrameworkStores\u003CAppDbContext\u003E()\n                .AddDefaultTokenProviders();",
+              "protected": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E()\n                .AddEntityFrameworkStores\u003CAppDbContext\u003E()\n                .AddDefaultTokenProviders();",
+            "protectedSnippet": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions",
+            "label": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 120,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a0820227-b723-43ab-b172-c78ab39bc151",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6. Add package reference to Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6",
+          "projectPath": "TaskManager.API\\TaskManager.API.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E()\n                .AddEntityFrameworkStores\u003CAppDbContext\u003E()\n                .AddDefaultTokenProviders();",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)"
+            },
+            "kind": "File",
+            "path": "TaskManager.API\\Program.cs",
+            "snippet": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E()\n                .AddEntityFrameworkStores\u003CAppDbContext\u003E()\n                .AddDefaultTokenProviders();",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)",
+            "label": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+              "PackageNewVersion": "8.0.6",
+              "CharCount": "13260"
+            },
+            "line": 120,
+            "column": 12
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 11,
+      "properties": {
+        "appName": "TaskManager.Bussiness",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net6.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 36,
+        "numberOfCodeFiles": 36,
+        "linesTotal": 1462,
+        "linesOfCode": 1462,
+        "totalApiScanned": 904,
+        "minLinesOfCodeToChange": 10,
+        "maxLinesOfCodeToChange": 10
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "0c9faf0c-4405-4a3b-bad3-894b3dd7fc90",
+          "ruleId": "Project.0002",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net6.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net6.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+            "snippet": "Current target framework: net6.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net6.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net6.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "4fb77175-bf8b-46f6-b3c9-0c04a759f580",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return new JwtSecurityTokenHandler().WriteToken(token);",
+              "protected": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\TokenServices.cs",
+            "snippet": "return new JwtSecurityTokenHandler().WriteToken(token);",
+            "protectedSnippet": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler",
+            "label": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler",
+            "properties": {
+              "CharCount": "2648"
+            },
+            "line": 61,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ee1fd2f2-b5f7-4d67-9870-ad62ede550d7",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return new JwtSecurityTokenHandler().WriteToken(token);",
+              "protected": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\TokenServices.cs",
+            "snippet": "return new JwtSecurityTokenHandler().WriteToken(token);",
+            "protectedSnippet": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor",
+            "label": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor",
+            "properties": {
+              "CharCount": "2648"
+            },
+            "line": 61,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "1928c5eb-722e-481e-b23a-cd9ddfb95b2d",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return new JwtSecurityTokenHandler().WriteToken(token);",
+              "protected": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(Microsoft.IdentityModel.Tokens.SecurityToken)"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\TokenServices.cs",
+            "snippet": "return new JwtSecurityTokenHandler().WriteToken(token);",
+            "protectedSnippet": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(Microsoft.IdentityModel.Tokens.SecurityToken)",
+            "label": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(Microsoft.IdentityModel.Tokens.SecurityToken)",
+            "properties": {
+              "CharCount": "2648"
+            },
+            "line": 61,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b3693475-eda9-4607-ae97-bf5a075d18cc",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var token = new JwtSecurityToken(\r\n                issuer: _jwt.Issuer,\r\n                audience: _jwt.Audience,\r\n                expires: DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes),\r\n                claims: claims,\r\n                signingCredentials: cred);",
+              "protected": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityToken"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\TokenServices.cs",
+            "snippet": "var token = new JwtSecurityToken(\r\n                issuer: _jwt.Issuer,\r\n                audience: _jwt.Audience,\r\n                expires: DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes),\r\n                claims: claims,\r\n                signingCredentials: cred);",
+            "protectedSnippet": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityToken",
+            "label": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityToken",
+            "properties": {
+              "CharCount": "2648"
+            },
+            "line": 54,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "9586e1de-bddd-47f6-9857-8e7781ec9dc2",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var token = new JwtSecurityToken(\r\n                issuer: _jwt.Issuer,\r\n                audience: _jwt.Audience,\r\n                expires: DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes),\r\n                claims: claims,\r\n                signingCredentials: cred);",
+              "protected": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.Security.Claims.Claim},System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.IdentityModel.Tokens.SigningCredentials)"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\TokenServices.cs",
+            "snippet": "var token = new JwtSecurityToken(\r\n                issuer: _jwt.Issuer,\r\n                audience: _jwt.Audience,\r\n                expires: DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes),\r\n                claims: claims,\r\n                signingCredentials: cred);",
+            "protectedSnippet": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.Security.Claims.Claim},System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.IdentityModel.Tokens.SigningCredentials)",
+            "label": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.Security.Claims.Claim},System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.IdentityModel.Tokens.SigningCredentials)",
+            "properties": {
+              "CharCount": "2648"
+            },
+            "line": 54,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a2db382d-d3f6-45f3-8165-ee087aa4b87e",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var claims = new List\u003CClaim\u003E\r\n            {\r\n                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),\r\n                new Claim(ClaimTypes.Email, user.Email ?? string.Empty),\r\n                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())\r\n            };",
+              "protected": "T:System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\TokenServices.cs",
+            "snippet": "var claims = new List\u003CClaim\u003E\r\n            {\r\n                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),\r\n                new Claim(ClaimTypes.Email, user.Email ?? string.Empty),\r\n                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())\r\n            };",
+            "protectedSnippet": "T:System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames",
+            "label": "T:System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames",
+            "properties": {
+              "CharCount": "2648"
+            },
+            "line": 24,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b650274a-4c97-44f9-a157-5709314431b8",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var claims = new List\u003CClaim\u003E\r\n            {\r\n                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),\r\n                new Claim(ClaimTypes.Email, user.Email ?? string.Empty),\r\n                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())\r\n            };",
+              "protected": "F:System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\TokenServices.cs",
+            "snippet": "var claims = new List\u003CClaim\u003E\r\n            {\r\n                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),\r\n                new Claim(ClaimTypes.Email, user.Email ?? string.Empty),\r\n                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())\r\n            };",
+            "protectedSnippet": "F:System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti",
+            "label": "F:System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti",
+            "properties": {
+              "CharCount": "2648"
+            },
+            "line": 24,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "2700df41-b7cb-4940-b9b7-211a5bb2b4f3",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var jwtToken = new JwtSecurityTokenHandler().ReadToken(token);",
+              "protected": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\AuthService.cs",
+            "snippet": "var jwtToken = new JwtSecurityTokenHandler().ReadToken(token);",
+            "protectedSnippet": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler",
+            "label": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler",
+            "properties": {
+              "CharCount": "3698"
+            },
+            "line": 76,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "6c883a18-a298-47cd-80a8-cfaf6ffde1df",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var jwtToken = new JwtSecurityTokenHandler().ReadToken(token);",
+              "protected": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\AuthService.cs",
+            "snippet": "var jwtToken = new JwtSecurityTokenHandler().ReadToken(token);",
+            "protectedSnippet": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor",
+            "label": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor",
+            "properties": {
+              "CharCount": "3698"
+            },
+            "line": 76,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ca10c644-5203-44de-96c2-dd3751ce9b68",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "TaskManager.Bussiness\\TaskManager.Bussiness.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var jwtToken = new JwtSecurityTokenHandler().ReadToken(token);",
+              "protected": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ReadToken(System.String)"
+            },
+            "kind": "File",
+            "path": "TaskManager.Bussiness\\Services\\AuthService.cs",
+            "snippet": "var jwtToken = new JwtSecurityTokenHandler().ReadToken(token);",
+            "protectedSnippet": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ReadToken(System.String)",
+            "label": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ReadToken(System.String)",
+            "properties": {
+              "CharCount": "3698"
+            },
+            "line": 76,
+            "column": 12
+          }
+        }
+      ],
+      "features": [
+        {
+          "featureId": "IdentityModel",
+          "incidents": [
+            "ca10c644-5203-44de-96c2-dd3751ce9b68",
+            "6c883a18-a298-47cd-80a8-cfaf6ffde1df",
+            "2700df41-b7cb-4940-b9b7-211a5bb2b4f3",
+            "b650274a-4c97-44f9-a157-5709314431b8",
+            "a2db382d-d3f6-45f3-8165-ee087aa4b87e",
+            "9586e1de-bddd-47f6-9857-8e7781ec9dc2",
+            "b3693475-eda9-4607-ae97-bf5a075d18cc",
+            "1928c5eb-722e-481e-b23a-cd9ddfb95b2d",
+            "ee1fd2f2-b5f7-4d67-9870-ad62ede550d7",
+            "4fb77175-bf8b-46f6-b3c9-0c04a759f580"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "TaskManager.Data\\TaskManager.Data.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 6,
+      "properties": {
+        "appName": "TaskManager.Data",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net6.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 60,
+        "numberOfCodeFiles": 60,
+        "linesTotal": 10423,
+        "linesOfCode": 10423,
+        "totalApiScanned": 13784,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "02f0b3ba-9218-4e12-9f87-8726823abd73",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.Data\\TaskManager.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Identity.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Identity.EntityFrameworkCore 10.0.11",
+              "protected": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Identity.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Identity.EntityFrameworkCore 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.Data\\TaskManager.Data.csproj",
+            "snippet": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Identity.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Identity.EntityFrameworkCore 10.0.11",
+            "protectedSnippet": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Identity.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Identity.EntityFrameworkCore 10.0.11",
+            "label": "Microsoft.AspNetCore.Identity.EntityFrameworkCore 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "4869c9f8-9a23-4db8-8d1f-965e13297741",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.Data\\TaskManager.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.11",
+              "protected": "Microsoft.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.Data\\TaskManager.Data.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.11",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.11",
+            "label": "Microsoft.EntityFrameworkCore 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "da08bb88-ad58-4d8f-bc6d-849c66859af8",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.Data\\TaskManager.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Design, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.11",
+              "protected": "Microsoft.EntityFrameworkCore.Design, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.Data\\TaskManager.Data.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Design, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.11",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Design, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.11",
+            "label": "Microsoft.EntityFrameworkCore.Design 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Design",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "4ed5e592-5848-47df-bfd9-39109ecbc884",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.Data\\TaskManager.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.SqlServer, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.11",
+              "protected": "Microsoft.EntityFrameworkCore.SqlServer, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.Data\\TaskManager.Data.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.SqlServer, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.11",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.SqlServer, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.11",
+            "label": "Microsoft.EntityFrameworkCore.SqlServer 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.SqlServer",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "15185027-9dcf-46f1-9121-bf7c2f3b94a8",
+          "ruleId": "NuGet.0002",
+          "projectPath": "TaskManager.Data\\TaskManager.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Tools, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.11",
+              "protected": "Microsoft.EntityFrameworkCore.Tools, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.11"
+            },
+            "kind": "File",
+            "path": "TaskManager.Data\\TaskManager.Data.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Tools, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.11",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Tools, 6.0.36\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.11",
+            "label": "Microsoft.EntityFrameworkCore.Tools 6.0.36",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Tools",
+              "PackageVersion": "6.0.36",
+              "PackageNewVersion": "10.0.11",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "c9f6f364-41e4-4979-b10a-1459783ff189",
+          "ruleId": "Project.0002",
+          "projectPath": "TaskManager.Data\\TaskManager.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net6.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net6.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "TaskManager.Data\\TaskManager.Data.csproj",
+            "snippet": "Current target framework: net6.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net6.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net6.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "API is binary incompatible for selected .NET version: affects existing binaries, often requiring recompilation, because the API has changed in a way that prevents older binaries from loading or executing.",
+      "label": "Binary incompatible for selected .NET version",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "IdentityModel": {
+      "id": "IdentityModel",
+      "isFeature": false,
+      "description": "Windows Identity Foundation (WIF), SAML, and claims-based authentication APIs that have been replaced by modern identity libraries. WIF was the original identity framework for .NET Framework. Migrate to Microsoft.IdentityModel.* packages (modern identity stack).",
+      "label": "IdentityModel \u0026 Claims-based Security",
+      "severity": "Mandatory",
+      "effort": 4,
+      "links": [
+        {
+          "title": "Microsoft.IdentityModel packages",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341614",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0004": {
+      "id": "NuGet.0004",
+      "isFeature": false,
+      "description": "NuGet package contains security vulnerabilities.\n\nPackage needs to be upgraded to a newer version that addresses known security vulnerabilities.",
+      "label": "NuGet package contains security vulnerability",
+      "severity": "Optional",
+      "effort": 1
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "isFeature": false,
+      "description": "NuGet package is deprecated.\n\nGo to its documentation and if there is a guidance for replacement of functionality provided by this package.",
+      "label": "NuGet package is deprecated",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "API is source incompatible for selected .NET version: requires code changes to compile successfully when targeting a new version, such as removing obsolete APIs or changing method signatures.",
+      "label": "Source incompatible for selected .NET version",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}

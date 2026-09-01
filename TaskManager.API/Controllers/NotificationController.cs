@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.DTOs.Notification;
 using TaskManager.API.Helpers;
@@ -12,6 +14,8 @@ namespace TaskManager.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
+
     public class NotificationController : ControllerBase
     {
         private readonly INotificationService _notificationService;

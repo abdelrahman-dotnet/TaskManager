@@ -1,13 +1,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
-
+using Microsoft.AspNetCore.RateLimiting;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.AuditLog;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Bussiness.Caching;
 using TaskManager.Bussiness.Services;
+using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
 
 namespace TaskManager.API.Controllers
 {
@@ -15,6 +16,7 @@ namespace TaskManager.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Policy = BizPermissions.AuditLogView)]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
     public class AuditLogController : ControllerBase
     {
         private readonly IAuditLogService _auditLogService;

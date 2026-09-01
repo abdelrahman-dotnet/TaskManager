@@ -1,0 +1,1721 @@
+{
+  "reportConfigHash": "dd505e3d",
+  "createdAtUtc": "2026-08-24T13:02:44.1489084Z",
+  "entries": [
+    {
+      "packageName": "AspNetCore.HealthChecks.Redis",
+      "packageVersion": "6.0.4",
+      "insightsName": "AspNetCore.HealthChecks.Redis",
+      "insightsCurrentVersion": "6.0.4",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "AspNetCore.HealthChecks.UI",
+      "packageVersion": "6.0.5",
+      "insightsName": "AspNetCore.HealthChecks.UI",
+      "insightsCurrentVersion": "6.0.5",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "AspNetCore.HealthChecks.UI.Client",
+      "packageVersion": "6.0.5",
+      "insightsName": "AspNetCore.HealthChecks.UI.Client",
+      "insightsCurrentVersion": "6.0.5",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "AspNetCore.HealthChecks.UI.Core",
+      "packageVersion": "6.0.5",
+      "insightsName": "AspNetCore.HealthChecks.UI.Core",
+      "insightsCurrentVersion": "6.0.5",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "AspNetCore.HealthChecks.UI.InMemory.Storage",
+      "packageVersion": "6.0.5",
+      "insightsName": "AspNetCore.HealthChecks.UI.InMemory.Storage",
+      "insightsCurrentVersion": "6.0.5",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "AutoMapper",
+      "packageVersion": "12.0.1",
+      "insightsName": "AutoMapper",
+      "insightsCurrentVersion": "12.0.1",
+      "insightsNewVersion": "16.2.0",
+      "insightsDescription": "NuGet package contains security vulnerability",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.API\\TaskManager.API.csproj"
+      ]
+    },
+    {
+      "packageName": "AutoMapper.Extensions.Microsoft.DependencyInjection",
+      "packageVersion": "12.0.1",
+      "insightsName": "AutoMapper.Extensions.Microsoft.DependencyInjection",
+      "insightsCurrentVersion": "12.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "NuGet package is deprecated",
+      "insightsIsCompatible": false,
+      "insightsProjects": [
+        "TaskManager.API\\TaskManager.API.csproj"
+      ]
+    },
+    {
+      "packageName": "FluentValidation",
+      "packageVersion": "11.11.0",
+      "insightsName": "FluentValidation",
+      "insightsCurrentVersion": "11.11.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "FluentValidation.AspNetCore",
+      "packageVersion": "11.3.1",
+      "insightsName": "FluentValidation.AspNetCore",
+      "insightsCurrentVersion": "11.3.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "NuGet package is deprecated",
+      "insightsIsCompatible": false,
+      "insightsProjects": [
+        "TaskManager.API\\TaskManager.API.csproj"
+      ]
+    },
+    {
+      "packageName": "FluentValidation.DependencyInjectionExtensions",
+      "packageVersion": "11.11.0",
+      "insightsName": "FluentValidation.DependencyInjectionExtensions",
+      "insightsCurrentVersion": "11.11.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Fractions",
+      "packageVersion": "4.0.1",
+      "insightsName": "Fractions",
+      "insightsCurrentVersion": "4.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Humanizer.Core",
+      "packageVersion": "2.8.26",
+      "insightsName": "Humanizer.Core",
+      "insightsCurrentVersion": "2.8.26",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "IdentityModel",
+      "packageVersion": "4.1.0",
+      "insightsName": "IdentityModel",
+      "insightsCurrentVersion": "4.1.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "IdentityModel.OidcClient",
+      "packageVersion": "3.1.2",
+      "insightsName": "IdentityModel.OidcClient",
+      "insightsCurrentVersion": "3.1.2",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "KubernetesClient",
+      "packageVersion": "4.0.26",
+      "insightsName": "KubernetesClient",
+      "insightsCurrentVersion": "4.0.26",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Authentication",
+      "packageVersion": "2.3.9",
+      "insightsName": "Microsoft.AspNetCore.Authentication",
+      "insightsCurrentVersion": "2.3.9",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Authentication.Abstractions",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.AspNetCore.Authentication.Abstractions",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Authentication.Cookies",
+      "packageVersion": "2.3.10",
+      "insightsName": "Microsoft.AspNetCore.Authentication.Cookies",
+      "insightsCurrentVersion": "2.3.10",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Authentication.Core",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.AspNetCore.Authentication.Core",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Authentication.JwtBearer",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.AspNetCore.Authentication.JwtBearer",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "10.0.11",
+      "insightsDescription": "NuGet package upgrade is recommended",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.API\\TaskManager.API.csproj"
+      ]
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Cryptography.Internal",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.AspNetCore.Cryptography.Internal",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Cryptography.KeyDerivation",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.AspNetCore.Cryptography.KeyDerivation",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.DataProtection",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.AspNetCore.DataProtection",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.DataProtection.Abstractions",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.AspNetCore.DataProtection.Abstractions",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Hosting.Abstractions",
+      "packageVersion": "2.3.10",
+      "insightsName": "Microsoft.AspNetCore.Hosting.Abstractions",
+      "insightsCurrentVersion": "2.3.10",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Hosting.Server.Abstractions",
+      "packageVersion": "2.3.9",
+      "insightsName": "Microsoft.AspNetCore.Hosting.Server.Abstractions",
+      "insightsCurrentVersion": "2.3.9",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Http",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.AspNetCore.Http",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Http.Abstractions",
+      "packageVersion": "2.3.9",
+      "insightsName": "Microsoft.AspNetCore.Http.Abstractions",
+      "insightsCurrentVersion": "2.3.9",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Http.Extensions",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.AspNetCore.Http.Extensions",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Http.Features",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.AspNetCore.Http.Features",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Identity",
+      "packageVersion": "2.3.11",
+      "insightsName": "Microsoft.AspNetCore.Identity",
+      "insightsCurrentVersion": "2.3.11",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "10.0.11",
+      "insightsDescription": "NuGet package upgrade is recommended",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.Data\\TaskManager.Data.csproj"
+      ]
+    },
+    {
+      "packageName": "Microsoft.AspNetCore.WebUtilities",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.AspNetCore.WebUtilities",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.CSharp",
+      "packageVersion": "4.7.0",
+      "insightsName": "Microsoft.CSharp",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Data.SqlClient",
+      "packageVersion": "2.1.7",
+      "insightsName": "Microsoft.Data.SqlClient",
+      "insightsCurrentVersion": "2.1.7",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Data.SqlClient.SNI.runtime",
+      "packageVersion": "2.1.1",
+      "insightsName": "Microsoft.Data.SqlClient.SNI.runtime",
+      "insightsCurrentVersion": "2.1.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Data.Sqlite.Core",
+      "packageVersion": "6.0.7",
+      "insightsName": "Microsoft.Data.Sqlite.Core",
+      "insightsCurrentVersion": "6.0.7",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.EntityFrameworkCore",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "10.0.11",
+      "insightsDescription": "NuGet package upgrade is recommended",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.Data\\TaskManager.Data.csproj"
+      ]
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Abstractions",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.EntityFrameworkCore.Abstractions",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Analyzers",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.EntityFrameworkCore.Analyzers",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Design",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.EntityFrameworkCore.Design",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "10.0.11",
+      "insightsDescription": "NuGet package upgrade is recommended",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.API\\TaskManager.API.csproj",
+        "TaskManager.Data\\TaskManager.Data.csproj"
+      ]
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.InMemory",
+      "packageVersion": "6.0.7",
+      "insightsName": "Microsoft.EntityFrameworkCore.InMemory",
+      "insightsCurrentVersion": "6.0.7",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Relational",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.EntityFrameworkCore.Relational",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Relational.Design",
+      "packageVersion": "2.0.0-preview1-final",
+      "insightsName": "Microsoft.EntityFrameworkCore.Relational.Design",
+      "insightsCurrentVersion": "2.0.0-preview1-final",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Sqlite",
+      "packageVersion": "6.0.7",
+      "insightsName": "Microsoft.EntityFrameworkCore.Sqlite",
+      "insightsCurrentVersion": "6.0.7",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Sqlite.Core",
+      "packageVersion": "6.0.7",
+      "insightsName": "Microsoft.EntityFrameworkCore.Sqlite.Core",
+      "insightsCurrentVersion": "6.0.7",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Sqlite.Design",
+      "packageVersion": "2.0.0-preview1-final",
+      "insightsName": "Microsoft.EntityFrameworkCore.Sqlite.Design",
+      "insightsCurrentVersion": "2.0.0-preview1-final",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.SqlServer",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.EntityFrameworkCore.SqlServer",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "10.0.11",
+      "insightsDescription": "NuGet package upgrade is recommended",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.Data\\TaskManager.Data.csproj"
+      ]
+    },
+    {
+      "packageName": "Microsoft.Extensions.ApiDescription.Server",
+      "packageVersion": "6.0.5",
+      "insightsName": "Microsoft.Extensions.ApiDescription.Server",
+      "insightsCurrentVersion": "6.0.5",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Caching.Abstractions",
+      "packageVersion": "6.0.1",
+      "insightsName": "Microsoft.Extensions.Caching.Abstractions",
+      "insightsCurrentVersion": "6.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Caching.Memory",
+      "packageVersion": "6.0.3",
+      "insightsName": "Microsoft.Extensions.Caching.Memory",
+      "insightsCurrentVersion": "6.0.3",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Caching.StackExchangeRedis",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.Extensions.Caching.StackExchangeRedis",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "10.0.11",
+      "insightsDescription": "NuGet package upgrade is recommended",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.API\\TaskManager.API.csproj"
+      ]
+    },
+    {
+      "packageName": "Microsoft.Extensions.Configuration",
+      "packageVersion": "2.0.0",
+      "insightsName": "Microsoft.Extensions.Configuration",
+      "insightsCurrentVersion": "2.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Configuration.Abstractions",
+      "packageVersion": "8.0.0",
+      "insightsName": "Microsoft.Extensions.Configuration.Abstractions",
+      "insightsCurrentVersion": "8.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Configuration.Binder",
+      "packageVersion": "2.0.0",
+      "insightsName": "Microsoft.Extensions.Configuration.Binder",
+      "insightsCurrentVersion": "2.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.DependencyInjection",
+      "packageVersion": "6.0.2",
+      "insightsName": "Microsoft.Extensions.DependencyInjection",
+      "insightsCurrentVersion": "6.0.2",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "packageVersion": "8.0.2",
+      "insightsName": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "insightsCurrentVersion": "8.0.2",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.DependencyModel",
+      "packageVersion": "6.0.0",
+      "insightsName": "Microsoft.Extensions.DependencyModel",
+      "insightsCurrentVersion": "6.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Diagnostics.Abstractions",
+      "packageVersion": "8.0.1",
+      "insightsName": "Microsoft.Extensions.Diagnostics.Abstractions",
+      "insightsCurrentVersion": "8.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Diagnostics.HealthChecks",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.Extensions.Diagnostics.HealthChecks",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "10.0.11",
+      "insightsDescription": "NuGet package upgrade is recommended",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.API\\TaskManager.API.csproj"
+      ]
+    },
+    {
+      "packageName": "Microsoft.Extensions.FileProviders.Abstractions",
+      "packageVersion": "8.0.0",
+      "insightsName": "Microsoft.Extensions.FileProviders.Abstractions",
+      "insightsCurrentVersion": "8.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Hosting.Abstractions",
+      "packageVersion": "8.0.1",
+      "insightsName": "Microsoft.Extensions.Hosting.Abstractions",
+      "insightsCurrentVersion": "8.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Http",
+      "packageVersion": "6.0.0",
+      "insightsName": "Microsoft.Extensions.Http",
+      "insightsCurrentVersion": "6.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Identity.Core",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.Extensions.Identity.Core",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Identity.Stores",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.Extensions.Identity.Stores",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Logging",
+      "packageVersion": "6.0.1",
+      "insightsName": "Microsoft.Extensions.Logging",
+      "insightsCurrentVersion": "6.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Logging.Abstractions",
+      "packageVersion": "8.0.2",
+      "insightsName": "Microsoft.Extensions.Logging.Abstractions",
+      "insightsCurrentVersion": "8.0.2",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.ObjectPool",
+      "packageVersion": "8.0.11",
+      "insightsName": "Microsoft.Extensions.ObjectPool",
+      "insightsCurrentVersion": "8.0.11",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Options",
+      "packageVersion": "8.0.2",
+      "insightsName": "Microsoft.Extensions.Options",
+      "insightsCurrentVersion": "8.0.2",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Primitives",
+      "packageVersion": "8.0.0",
+      "insightsName": "Microsoft.Extensions.Primitives",
+      "insightsCurrentVersion": "8.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.WebEncoders",
+      "packageVersion": "8.0.11",
+      "insightsName": "Microsoft.Extensions.WebEncoders",
+      "insightsCurrentVersion": "8.0.11",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Identity.Client",
+      "packageVersion": "4.21.1",
+      "insightsName": "Microsoft.Identity.Client",
+      "insightsCurrentVersion": "4.21.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.IdentityModel.Abstractions",
+      "packageVersion": "6.36.0",
+      "insightsName": "Microsoft.IdentityModel.Abstractions",
+      "insightsCurrentVersion": "6.36.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.IdentityModel.JsonWebTokens",
+      "packageVersion": "6.36.0",
+      "insightsName": "Microsoft.IdentityModel.JsonWebTokens",
+      "insightsCurrentVersion": "6.36.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.IdentityModel.Logging",
+      "packageVersion": "6.36.0",
+      "insightsName": "Microsoft.IdentityModel.Logging",
+      "insightsCurrentVersion": "6.36.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.IdentityModel.Protocols",
+      "packageVersion": "6.36.0",
+      "insightsName": "Microsoft.IdentityModel.Protocols",
+      "insightsCurrentVersion": "6.36.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.IdentityModel.Protocols.OpenIdConnect",
+      "packageVersion": "6.36.0",
+      "insightsName": "Microsoft.IdentityModel.Protocols.OpenIdConnect",
+      "insightsCurrentVersion": "6.36.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.IdentityModel.Tokens",
+      "packageVersion": "6.36.0",
+      "insightsName": "Microsoft.IdentityModel.Tokens",
+      "insightsCurrentVersion": "6.36.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Net.Http.Headers",
+      "packageVersion": "2.3.0",
+      "insightsName": "Microsoft.Net.Http.Headers",
+      "insightsCurrentVersion": "2.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.NETCore.Platforms",
+      "packageVersion": "3.1.9",
+      "insightsName": "Microsoft.NETCore.Platforms",
+      "insightsCurrentVersion": "3.1.9",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.NETCore.Targets",
+      "packageVersion": "1.1.0",
+      "insightsName": "Microsoft.NETCore.Targets",
+      "insightsCurrentVersion": "1.1.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.OpenApi",
+      "packageVersion": "1.2.3",
+      "insightsName": "Microsoft.OpenApi",
+      "insightsCurrentVersion": "1.2.3",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Packaging.Tools",
+      "packageVersion": "1.0.0-preview1-25301-01",
+      "insightsName": "Microsoft.Packaging.Tools",
+      "insightsCurrentVersion": "1.0.0-preview1-25301-01",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Rest.ClientRuntime",
+      "packageVersion": "2.3.10",
+      "insightsName": "Microsoft.Rest.ClientRuntime",
+      "insightsCurrentVersion": "2.3.10",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Win32.Registry",
+      "packageVersion": "4.7.0",
+      "insightsName": "Microsoft.Win32.Registry",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Win32.SystemEvents",
+      "packageVersion": "4.7.0",
+      "insightsName": "Microsoft.Win32.SystemEvents",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "NETStandard.Library",
+      "packageVersion": "2.0.0-preview1-25301-01",
+      "insightsName": "NETStandard.Library",
+      "insightsCurrentVersion": "2.0.0-preview1-25301-01",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Newtonsoft.Json",
+      "packageVersion": "13.0.1",
+      "insightsName": "Newtonsoft.Json",
+      "insightsCurrentVersion": "13.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Npgsql",
+      "packageVersion": "6.0.11",
+      "insightsName": "Npgsql",
+      "insightsCurrentVersion": "6.0.11",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Npgsql.EntityFrameworkCore.PostgreSQL",
+      "packageVersion": "6.0.29",
+      "insightsName": "Npgsql.EntityFrameworkCore.PostgreSQL",
+      "insightsCurrentVersion": "6.0.29",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Pipelines.Sockets.Unofficial",
+      "packageVersion": "2.2.8",
+      "insightsName": "Pipelines.Sockets.Unofficial",
+      "insightsCurrentVersion": "2.2.8",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Portable.BouncyCastle",
+      "packageVersion": "1.8.1.3",
+      "insightsName": "Portable.BouncyCastle",
+      "insightsCurrentVersion": "1.8.1.3",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "prometheus-net",
+      "packageVersion": "4.1.1",
+      "insightsName": "prometheus-net",
+      "insightsCurrentVersion": "4.1.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog",
+      "packageVersion": "2.10.0",
+      "insightsName": "Serilog",
+      "insightsCurrentVersion": "2.10.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog.AspNetCore",
+      "packageVersion": "6.1.0",
+      "insightsName": "Serilog.AspNetCore",
+      "insightsCurrentVersion": "6.1.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog.Extensions.Hosting",
+      "packageVersion": "5.0.1",
+      "insightsName": "Serilog.Extensions.Hosting",
+      "insightsCurrentVersion": "5.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog.Extensions.Logging",
+      "packageVersion": "3.1.0",
+      "insightsName": "Serilog.Extensions.Logging",
+      "insightsCurrentVersion": "3.1.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog.Formatting.Compact",
+      "packageVersion": "1.1.0",
+      "insightsName": "Serilog.Formatting.Compact",
+      "insightsCurrentVersion": "1.1.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog.Settings.Configuration",
+      "packageVersion": "3.4.0",
+      "insightsName": "Serilog.Settings.Configuration",
+      "insightsCurrentVersion": "3.4.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog.Sinks.Console",
+      "packageVersion": "4.1.0",
+      "insightsName": "Serilog.Sinks.Console",
+      "insightsCurrentVersion": "4.1.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog.Sinks.Debug",
+      "packageVersion": "2.0.0",
+      "insightsName": "Serilog.Sinks.Debug",
+      "insightsCurrentVersion": "2.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Serilog.Sinks.File",
+      "packageVersion": "5.0.0",
+      "insightsName": "Serilog.Sinks.File",
+      "insightsCurrentVersion": "5.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "SQLitePCLRaw.bundle_e_sqlite3",
+      "packageVersion": "2.0.6",
+      "insightsName": "SQLitePCLRaw.bundle_e_sqlite3",
+      "insightsCurrentVersion": "2.0.6",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "SQLitePCLRaw.core",
+      "packageVersion": "2.0.6",
+      "insightsName": "SQLitePCLRaw.core",
+      "insightsCurrentVersion": "2.0.6",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "SQLitePCLRaw.lib.e_sqlite3",
+      "packageVersion": "2.0.6",
+      "insightsName": "SQLitePCLRaw.lib.e_sqlite3",
+      "insightsCurrentVersion": "2.0.6",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "SQLitePCLRaw.provider.e_sqlite3",
+      "packageVersion": "2.0.6",
+      "insightsName": "SQLitePCLRaw.provider.e_sqlite3",
+      "insightsCurrentVersion": "2.0.6",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "StackExchange.Redis",
+      "packageVersion": "2.7.27",
+      "insightsName": "StackExchange.Redis",
+      "insightsCurrentVersion": "2.7.27",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Swashbuckle.AspNetCore",
+      "packageVersion": "6.5.0",
+      "insightsName": "Swashbuckle.AspNetCore",
+      "insightsCurrentVersion": "6.5.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Swashbuckle.AspNetCore.Swagger",
+      "packageVersion": "6.5.0",
+      "insightsName": "Swashbuckle.AspNetCore.Swagger",
+      "insightsCurrentVersion": "6.5.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Swashbuckle.AspNetCore.SwaggerGen",
+      "packageVersion": "6.5.0",
+      "insightsName": "Swashbuckle.AspNetCore.SwaggerGen",
+      "insightsCurrentVersion": "6.5.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Swashbuckle.AspNetCore.SwaggerUI",
+      "packageVersion": "6.5.0",
+      "insightsName": "Swashbuckle.AspNetCore.SwaggerUI",
+      "insightsCurrentVersion": "6.5.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Buffers",
+      "packageVersion": "4.6.0",
+      "insightsName": "System.Buffers",
+      "insightsCurrentVersion": "4.6.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Collections",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Collections",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Collections.Immutable",
+      "packageVersion": "6.0.1",
+      "insightsName": "System.Collections.Immutable",
+      "insightsCurrentVersion": "6.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Collections.NonGeneric",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Collections.NonGeneric",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Collections.Specialized",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Collections.Specialized",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.ComponentModel",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.ComponentModel",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.ComponentModel.Primitives",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.ComponentModel.Primitives",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.ComponentModel.TypeConverter",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.ComponentModel.TypeConverter",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Configuration.ConfigurationManager",
+      "packageVersion": "4.7.0",
+      "insightsName": "System.Configuration.ConfigurationManager",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Diagnostics.Debug",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Diagnostics.Debug",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Diagnostics.DiagnosticSource",
+      "packageVersion": "8.0.1",
+      "insightsName": "System.Diagnostics.DiagnosticSource",
+      "insightsCurrentVersion": "8.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Drawing.Common",
+      "packageVersion": "4.7.3",
+      "insightsName": "System.Drawing.Common",
+      "insightsCurrentVersion": "4.7.3",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Formats.Asn1",
+      "packageVersion": "8.0.1",
+      "insightsName": "System.Formats.Asn1",
+      "insightsCurrentVersion": "8.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Globalization",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Globalization",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Globalization.Extensions",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Globalization.Extensions",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.IdentityModel.Tokens.Jwt",
+      "packageVersion": "6.36.0",
+      "insightsName": "System.IdentityModel.Tokens.Jwt",
+      "insightsCurrentVersion": "6.36.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "NuGet package is deprecated",
+      "insightsIsCompatible": false,
+      "insightsProjects": [
+        "TaskManager.API\\TaskManager.API.csproj"
+      ]
+    },
+    {
+      "packageName": "System.IO",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.IO",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.IO.Pipelines",
+      "packageVersion": "5.0.1",
+      "insightsName": "System.IO.Pipelines",
+      "insightsCurrentVersion": "5.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Linq",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Linq",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Memory",
+      "packageVersion": "4.5.4",
+      "insightsName": "System.Memory",
+      "insightsCurrentVersion": "4.5.4",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Reflection",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Reflection",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Reflection.Extensions",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Reflection.Extensions",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Reflection.Primitives",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Reflection.Primitives",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Reflection.TypeExtensions",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Reflection.TypeExtensions",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Resources.ResourceManager",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Resources.ResourceManager",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Runtime",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Runtime",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Runtime.Caching",
+      "packageVersion": "4.7.0",
+      "insightsName": "System.Runtime.Caching",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Runtime.CompilerServices.Unsafe",
+      "packageVersion": "6.0.0",
+      "insightsName": "System.Runtime.CompilerServices.Unsafe",
+      "insightsCurrentVersion": "6.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Runtime.Extensions",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Runtime.Extensions",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Runtime.Handles",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Runtime.Handles",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Runtime.InteropServices",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Runtime.InteropServices",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Runtime.Numerics",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Runtime.Numerics",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Security.AccessControl",
+      "packageVersion": "4.7.0",
+      "insightsName": "System.Security.AccessControl",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Security.Cryptography.Cng",
+      "packageVersion": "4.5.0",
+      "insightsName": "System.Security.Cryptography.Cng",
+      "insightsCurrentVersion": "4.5.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Security.Cryptography.Pkcs",
+      "packageVersion": "8.0.1",
+      "insightsName": "System.Security.Cryptography.Pkcs",
+      "insightsCurrentVersion": "8.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Security.Cryptography.ProtectedData",
+      "packageVersion": "4.7.0",
+      "insightsName": "System.Security.Cryptography.ProtectedData",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Security.Cryptography.Xml",
+      "packageVersion": "8.0.2",
+      "insightsName": "System.Security.Cryptography.Xml",
+      "insightsCurrentVersion": "8.0.2",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Security.Permissions",
+      "packageVersion": "4.7.0",
+      "insightsName": "System.Security.Permissions",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Security.Principal.Windows",
+      "packageVersion": "5.0.0",
+      "insightsName": "System.Security.Principal.Windows",
+      "insightsCurrentVersion": "5.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Text.Encoding",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Text.Encoding",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Text.Encoding.CodePages",
+      "packageVersion": "4.7.0",
+      "insightsName": "System.Text.Encoding.CodePages",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Text.Encodings.Web",
+      "packageVersion": "8.0.0",
+      "insightsName": "System.Text.Encodings.Web",
+      "insightsCurrentVersion": "8.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Text.Json",
+      "packageVersion": "6.0.5",
+      "insightsName": "System.Text.Json",
+      "insightsCurrentVersion": "6.0.5",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Threading",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Threading",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Threading.Tasks",
+      "packageVersion": "4.3.0",
+      "insightsName": "System.Threading.Tasks",
+      "insightsCurrentVersion": "4.3.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Windows.Extensions",
+      "packageVersion": "4.7.0",
+      "insightsName": "System.Windows.Extensions",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "YamlDotNet",
+      "packageVersion": "8.1.2",
+      "insightsName": "YamlDotNet",
+      "insightsCurrentVersion": "8.1.2",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.CSharp",
+      "packageVersion": "4.5.0",
+      "insightsName": "Microsoft.CSharp",
+      "insightsCurrentVersion": "4.5.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.EntityFrameworkCore.Tools",
+      "packageVersion": "6.0.36",
+      "insightsName": "Microsoft.EntityFrameworkCore.Tools",
+      "insightsCurrentVersion": "6.0.36",
+      "insightsNewVersion": "10.0.11",
+      "insightsDescription": "NuGet package upgrade is recommended",
+      "insightsIsCompatible": true,
+      "insightsProjects": [
+        "TaskManager.Data\\TaskManager.Data.csproj"
+      ]
+    },
+    {
+      "packageName": "Microsoft.Extensions.Configuration.Abstractions",
+      "packageVersion": "6.0.1",
+      "insightsName": "Microsoft.Extensions.Configuration.Abstractions",
+      "insightsCurrentVersion": "6.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "packageVersion": "6.0.0",
+      "insightsName": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "insightsCurrentVersion": "6.0.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Logging.Abstractions",
+      "packageVersion": "6.0.4",
+      "insightsName": "Microsoft.Extensions.Logging.Abstractions",
+      "insightsCurrentVersion": "6.0.4",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Options",
+      "packageVersion": "6.0.1",
+      "insightsName": "Microsoft.Extensions.Options",
+      "insightsCurrentVersion": "6.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "Microsoft.Extensions.Primitives",
+      "packageVersion": "6.0.1",
+      "insightsName": "Microsoft.Extensions.Primitives",
+      "insightsCurrentVersion": "6.0.1",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Diagnostics.DiagnosticSource",
+      "packageVersion": "6.0.2",
+      "insightsName": "System.Diagnostics.DiagnosticSource",
+      "insightsCurrentVersion": "6.0.2",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    },
+    {
+      "packageName": "System.Security.Principal.Windows",
+      "packageVersion": "4.7.0",
+      "insightsName": "System.Security.Principal.Windows",
+      "insightsCurrentVersion": "4.7.0",
+      "insightsNewVersion": "",
+      "insightsDescription": "",
+      "insightsIsCompatible": true,
+      "insightsProjects": []
+    }
+  ]
+}

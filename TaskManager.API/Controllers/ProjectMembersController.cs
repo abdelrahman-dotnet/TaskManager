@@ -1,7 +1,9 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using TaskManager.API.Authorization;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.ProjectMember;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
@@ -14,6 +16,8 @@ namespace TaskManager.API.Controllers
     [Route("api/projects/{projectId}/members")]
     [ApiController]
     [Authorize]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
+
     public class ProjectMembersController : ControllerBase
     {
         private readonly IMembershipService _membershipService;

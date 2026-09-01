@@ -53,7 +53,7 @@ namespace TaskManager.Bussiness.Services
             {
                 return default;
             }
-            var value = JsonSerializer.Deserialize<T>(redisValue!,JsonOptions);
+            var value = JsonSerializer.Deserialize<T>(redisValue.ToString(), JsonOptions);
             if (value is not null)
             {
                 _memory.Set(key,value,MemoryCacheDuration);

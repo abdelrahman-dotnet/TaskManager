@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using TaskManager.API.Authorization;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.DTOs.TaskAssignment;
 using TaskManager.API.Helpers;
@@ -15,6 +17,8 @@ namespace TaskManager.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Policy = Permissions.TaskAssignmentsView)]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
+
     public class TaskAssignmentController : ControllerBase
     {
         private readonly ITaskAssignmentService _taskAssignmentService;

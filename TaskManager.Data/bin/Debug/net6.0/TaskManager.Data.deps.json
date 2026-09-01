@@ -12,7 +12,6 @@
           "Microsoft.EntityFrameworkCore": "6.0.36",
           "Microsoft.EntityFrameworkCore.Design": "6.0.36",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36",
-          "Microsoft.EntityFrameworkCore.Tools": "6.0.36",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.29"
         },
         "runtime": {
@@ -58,19 +57,15 @@
           }
         }
       },
-      "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Data.SqlClient/2.1.7": {
         "dependencies": {
           "Microsoft.Data.SqlClient.SNI.runtime": "2.1.1",
           "Microsoft.Identity.Client": "4.21.1",
           "Microsoft.IdentityModel.JsonWebTokens": "6.36.0",
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.36.0",
-          "Microsoft.Win32.Registry": "4.7.0",
           "System.Configuration.ConfigurationManager": "4.7.0",
           "System.Diagnostics.DiagnosticSource": "6.0.2",
-          "System.Runtime.Caching": "4.7.0",
-          "System.Security.Principal.Windows": "4.7.0",
-          "System.Text.Encoding.CodePages": "4.7.0"
+          "System.Runtime.Caching": "4.7.0"
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll": {
@@ -120,7 +115,6 @@
       "Microsoft.EntityFrameworkCore/6.0.36": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "6.0.36",
-          "Microsoft.EntityFrameworkCore.Analyzers": "6.0.36",
           "Microsoft.Extensions.Caching.Memory": "6.0.3",
           "Microsoft.Extensions.DependencyInjection": "6.0.2",
           "Microsoft.Extensions.Logging": "6.0.1",
@@ -142,7 +136,6 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/6.0.36": {},
       "Microsoft.EntityFrameworkCore.Design/6.0.36": {
         "dependencies": {
           "Humanizer.Core": "2.8.26",
@@ -180,11 +173,6 @@
             "assemblyVersion": "6.0.36.0",
             "fileVersion": "6.0.3624.51504"
           }
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Tools/6.0.36": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "6.0.36"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/6.0.1": {
@@ -376,9 +364,7 @@
       },
       "Microsoft.IdentityModel.Tokens/6.36.0": {
         "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "Microsoft.IdentityModel.Logging": "6.36.0",
-          "System.Security.Cryptography.Cng": "4.5.0"
+          "Microsoft.IdentityModel.Logging": "6.36.0"
         },
         "runtime": {
           "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
@@ -387,17 +373,7 @@
           }
         }
       },
-      "Microsoft.NETCore.Platforms/3.1.9": {},
-      "Microsoft.Win32.Registry/4.7.0": {
-        "dependencies": {
-          "System.Security.AccessControl": "4.7.0",
-          "System.Security.Principal.Windows": "4.7.0"
-        }
-      },
       "Microsoft.Win32.SystemEvents/4.7.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.9"
-        },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
             "assemblyVersion": "4.0.2.0",
@@ -414,9 +390,6 @@
         }
       },
       "Npgsql/6.0.11": {
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        },
         "runtime": {
           "lib/net6.0/Npgsql.dll": {
             "assemblyVersion": "6.0.11.0",
@@ -468,7 +441,6 @@
       },
       "System.Drawing.Common/4.7.3": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.9",
           "Microsoft.Win32.SystemEvents": "4.7.0"
         },
         "runtime": {
@@ -523,14 +495,6 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
-      "System.Security.AccessControl/4.7.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.9",
-          "System.Security.Principal.Windows": "4.7.0"
-        }
-      },
-      "System.Security.Cryptography.Cng/4.5.0": {},
       "System.Security.Cryptography.ProtectedData/4.7.0": {
         "runtime": {
           "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -549,7 +513,6 @@
       },
       "System.Security.Permissions/4.7.0": {
         "dependencies": {
-          "System.Security.AccessControl": "4.7.0",
           "System.Windows.Extensions": "4.7.0"
         },
         "runtime": {
@@ -557,12 +520,6 @@
             "assemblyVersion": "4.0.3.0",
             "fileVersion": "4.700.19.56404"
           }
-        }
-      },
-      "System.Security.Principal.Windows/4.7.0": {},
-      "System.Text.Encoding.CodePages/4.7.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.9"
         }
       },
       "System.Windows.Extensions/4.7.0": {
@@ -620,13 +577,6 @@
       "path": "microsoft.aspnetcore.identity.entityframeworkcore/6.0.36",
       "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.6.0.36.nupkg.sha512"
     },
-    "Microsoft.CSharp/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
-      "path": "microsoft.csharp/4.5.0",
-      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
-    },
     "Microsoft.Data.SqlClient/2.1.7": {
       "type": "package",
       "serviceable": true,
@@ -655,13 +605,6 @@
       "path": "microsoft.entityframeworkcore.abstractions/6.0.36",
       "hashPath": "microsoft.entityframeworkcore.abstractions.6.0.36.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/6.0.36": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Se0wloBaAJcLwgSW4hvGdAWjKnuIwgQ2PKTNkvG80PW/WFgedwKomY9wuO5BPewIHlX6huGyP//StQQRQOWr+Q==",
-      "path": "microsoft.entityframeworkcore.analyzers/6.0.36",
-      "hashPath": "microsoft.entityframeworkcore.analyzers.6.0.36.nupkg.sha512"
-    },
     "Microsoft.EntityFrameworkCore.Design/6.0.36": {
       "type": "package",
       "serviceable": true,
@@ -682,13 +625,6 @@
       "sha512": "sha512-kSpJFqRu8KM6J/C+Q93n5wcqVKt3cu9jRy0P1HlWm6RSQfCoEAyonwOaMmOctN+d8ooziUanTAFV63iQyww0Ug==",
       "path": "microsoft.entityframeworkcore.sqlserver/6.0.36",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.6.0.36.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Tools/6.0.36": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zBo/oepzDsoXCwfE4mwxzA3lBrYMtfpmkQ1rmtQnuvaORY6yCeVIx4Vpr/ENz3DShuHiNYr7c1ClBSZleW78Dw==",
-      "path": "microsoft.entityframeworkcore.tools/6.0.36",
-      "hashPath": "microsoft.entityframeworkcore.tools.6.0.36.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/6.0.1": {
       "type": "package",
@@ -816,20 +752,6 @@
       "path": "microsoft.identitymodel.tokens/6.36.0",
       "hashPath": "microsoft.identitymodel.tokens.6.36.0.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/3.1.9": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-e+/BrhryHoMojWlbcPJAFcShpk3JYvsMfrmoM26dnvHARWR6vtmGbfHppZcANVqf7DUBDIRxlZXcWg7v/9e1TQ==",
-      "path": "microsoft.netcore.platforms/3.1.9",
-      "hashPath": "microsoft.netcore.platforms.3.1.9.nupkg.sha512"
-    },
-    "Microsoft.Win32.Registry/4.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
-      "path": "microsoft.win32.registry/4.7.0",
-      "hashPath": "microsoft.win32.registry.4.7.0.nupkg.sha512"
-    },
     "Microsoft.Win32.SystemEvents/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -893,27 +815,6 @@
       "path": "system.runtime.caching/4.7.0",
       "hashPath": "system.runtime.caching.4.7.0.nupkg.sha512"
     },
-    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
-      "path": "system.runtime.compilerservices.unsafe/6.0.0",
-      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
-    },
-    "System.Security.AccessControl/4.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-JECvTt5aFF3WT3gHpfofL2MNNP6v84sxtXxpqhLBCcDRzqsPBmHhQ6shv4DwwN2tRlzsUxtb3G9M3763rbXKDg==",
-      "path": "system.security.accesscontrol/4.7.0",
-      "hashPath": "system.security.accesscontrol.4.7.0.nupkg.sha512"
-    },
-    "System.Security.Cryptography.Cng/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
-      "path": "system.security.cryptography.cng/4.5.0",
-      "hashPath": "system.security.cryptography.cng.4.5.0.nupkg.sha512"
-    },
     "System.Security.Cryptography.ProtectedData/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -927,20 +828,6 @@
       "sha512": "sha512-dkOV6YYVBnYRa15/yv004eCGRBVADXw8qRbbNiCn/XpdJSUXkkUeIvdvFHkvnko4CdKMqG8yRHC4ox83LSlMsQ==",
       "path": "system.security.permissions/4.7.0",
       "hashPath": "system.security.permissions.4.7.0.nupkg.sha512"
-    },
-    "System.Security.Principal.Windows/4.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
-      "path": "system.security.principal.windows/4.7.0",
-      "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
-    },
-    "System.Text.Encoding.CodePages/4.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-aeu4FlaUTemuT1qOd1MyU4T516QR4Fy+9yDbwWMPHOHy7U8FD6SgTzdZFO7gHcfAPHtECqInbwklVvUK4RHcNg==",
-      "path": "system.text.encoding.codepages/4.7.0",
-      "hashPath": "system.text.encoding.codepages.4.7.0.nupkg.sha512"
     },
     "System.Windows.Extensions/4.7.0": {
       "type": "package",

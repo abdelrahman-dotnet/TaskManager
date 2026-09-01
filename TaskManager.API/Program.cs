@@ -1,21 +1,18 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Serilog;
 using StackExchange.Redis;
 using System.Text;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using TaskManager.API.Authorization;
-using ApiPermissions = TaskManager.API.Authorization.Permissions;
-using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
+using TaskManager.API.Extensions;
 using TaskManager.API.Filters;
 using TaskManager.API.HealthChecks;
 using TaskManager.API.Middleware;
@@ -32,6 +29,8 @@ using TaskManager.Data.Context;
 using TaskManager.Data.Entities;
 using TaskManager.Data.Repositories;
 using TaskManager.Data.UnitOfWork;
+using ApiPermissions = TaskManager.API.Authorization.Permissions;
+using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
 
 namespace TaskManager.API
 {
@@ -58,7 +57,19 @@ namespace TaskManager.API
                   .Enrich.WithProperty("Environment", ctx.HostingEnvironment.EnvironmentName)
                   .WriteTo.Console();
             });
+            // rate limiting
+            builder.Services.AddRateLimiting(builder.Configuration);
             // Add services to the container.
+            // Hangfire
+            builder.Services.AddHangfire(configuration =>
+            {
+                configuration.UseSqlServerStorage(
+                    builder.Configuration.GetConnectionString("HangfireConnection")
+                    ?? throw new InvalidOperationException(
+                        "Hangfire connection string is required."));
+            });
+
+            builder.Services.AddHangfireServer();
             builder.Services.AddControllers(options =>
             {                
                 options.Filters.Add<ValidationFilter>();
@@ -92,19 +103,9 @@ namespace TaskManager.API
                 });
 
                 // Apply Security to all endpoints
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                c.AddSecurityRequirement(document => new OpenApiSecurityRequirement
                 {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        Array.Empty<string>()
-                    }
+                    [new OpenApiSecuritySchemeReference("Bearer", document)] = new List<string>()
                 });
             });
 
@@ -134,7 +135,7 @@ namespace TaskManager.API
             builder.Services.AddScoped<IAttachmentService, AttachmentService>();
             builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<ITaskAssignmentService, TaskAssignmentService>();
-builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
+            builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             builder.Services.AddScoped<ITaskItemStatusHistoryService, TaskItemStatusHistoryService>();
             builder.Services.AddScoped<IAuditLogService, AuditLogService>();
             builder.Services.AddScoped<IUserService, UserService>();
@@ -282,6 +283,7 @@ builder.Services.AddScoped<IWorkspaceService, WorkspaceService>();
             app.UseHttpsRedirection();
             app.UseCors("ConfiguredCors");
             app.UseAuthentication();
+            app.UseRateLimiter();
             app.UseAuthorization();
 
             app.MapControllers();

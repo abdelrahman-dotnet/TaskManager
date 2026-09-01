@@ -1,0 +1,13 @@
+﻿# 01-update-project-targetframeworks: Update project TargetFramework to net10.0
+
+Description:
+Change each project's TargetFramework to net10.0 (or add multi-targeting if required). Ensure project file properties, nullable settings, LangVersion, and implicit usings are adjusted as warranted.
+
+Affected items:
+- TaskManager.API/TaskManager.API.csproj
+- TaskManager.Bussiness/TaskManager.Bussiness.csproj
+- TaskManager.Data/TaskManager.Data.csproj
+
+Done when:
+- All project files target net10.0
+- Solution builds without project file parsing errors

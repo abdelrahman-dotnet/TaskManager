@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using TaskManager.API.Authorization;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.DTOs.Team;
 using TaskManager.API.Helpers;
@@ -13,6 +15,8 @@ namespace TaskManager.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
+
     public class TeamController : ControllerBase
     {
         private readonly ITeamService _teamService;

@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY . .
@@ -6,7 +6,7 @@ COPY . .
 RUN dotnet restore "TaskManager.API/TaskManager.API.csproj"
 RUN dotnet publish "TaskManager.API/TaskManager.API.csproj" -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
 
 WORKDIR /app
 

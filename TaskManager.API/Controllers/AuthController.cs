@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.Account;
 using TaskManager.Bussiness.Services;
 using TaskManager.Data.Entities;
@@ -8,6 +10,7 @@ namespace TaskManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableRateLimiting(RateLimitPolicyNames.Login)]
     public class AuthController : ControllerBase
     {
         private readonly AuthService _authService;

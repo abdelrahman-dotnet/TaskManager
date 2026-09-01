@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using TaskManager.API.Authorization;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.DTOs.Role;
 using TaskManager.API.Helpers;
@@ -13,6 +15,7 @@ namespace TaskManager.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Policy = Permissions.RolesManage)]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
 
     public class RoleController : ControllerBase
     {

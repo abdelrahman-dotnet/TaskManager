@@ -1,19 +1,23 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using TaskManager.API.Authorization;
-using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.FilterQueryParams;
 using TaskManager.API.DTOs.Task;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Bussiness.Caching;
 using TaskManager.Bussiness.Services;
+using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
 
 namespace TaskManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
+
     public class TaskController : ControllerBase
     {
         private readonly ITaskService _taskService;

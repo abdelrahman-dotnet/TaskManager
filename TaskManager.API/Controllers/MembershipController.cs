@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Logging;
 using TaskManager.API.Authorization;
+using TaskManager.API.Constants;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
 using TaskManager.Bussiness.Caching;
@@ -15,6 +17,8 @@ namespace TaskManager.API.Controllers
     // stay broad (membership-gated) and the service owns the fine-grained checks.
     [Route("api/workspaces/{workspaceId}/members")]
     [ApiController]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
+
     public class MembershipController : ControllerBase
     {
         private readonly IMembershipService _membershipService;

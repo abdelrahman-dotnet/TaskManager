@@ -1,18 +1,22 @@
-using TaskManager.Bussiness.Caching;
-using TaskManager.Bussiness.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ApiPermissions = TaskManager.API.Authorization.Permissions;
-using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
+using Microsoft.AspNetCore.RateLimiting;
+using TaskManager.API.Constants;
 using TaskManager.API.DTOs.Workspace;
 using TaskManager.API.Helpers;
 using TaskManager.Business.Services.Interfaces;
+using TaskManager.Bussiness.Caching;
+using TaskManager.Bussiness.Services;
+using ApiPermissions = TaskManager.API.Authorization.Permissions;
+using BizPermissions = TaskManager.Bussiness.Authorization.Permissions;
 
 namespace TaskManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [EnableRateLimiting(RateLimitPolicyNames.Global)]
+
     public class WorkspaceController : ControllerBase
     {
         private readonly IWorkspaceService _workspaceService;
